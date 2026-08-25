@@ -1,0 +1,53 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "V3-T5-root-integration",
+  "task_revision": 1,
+  "summary": "Joined all accepted v0.3 artifacts and passed the 27-test fixture suite, 13-test named-run suite, v0.2/v0.3 evidence validators, overlap gate, nested-Git invariants, and immutable v0.1/v0.2 preservation manifests.",
+  "claims": [
+    {"claim": "The v0.3 implementation and compatibility suites pass after the documentation change.", "confidence": "high", "evidence": ["Full fixture suite: 27/27, exit 0.", "Named v0.2 run: 13/13, exit 0."]},
+    {"claim": "Current orchestrator evidence validates fail-closed without findings.", "confidence": "high", "evidence": ["validate_evidence.py accepted completed v0.2 and current v0.3, both exit 0.", "Six current v0.3 contracts exactly match their declared immutable revisions."]},
+    {"claim": "The real probe wave contains a positive measured overlap.", "confidence": "high", "evidence": ["overlap_count=1; overlap duration=8,751,591,800 ns between the accepted task-owned streams."]},
+    {"claim": "The immutable baselines and named run remain exact.", "confidence": "high", "evidence": ["v0.1 archive 25/25; v0.1 snapshot 7/7; v0.2 integrity 100/100.", "Named-run HEAD, seven-path status, four critical file hashes, and git fsck all pass."]}
+  ],
+  "uncertainty": [
+    "Atomic rollback covers caught failures under the cooperative local lock, not process crashes or stale-lock recovery.",
+    "Overlap evidence is single-host and does not measure scheduler throughput or cross-host clock behavior.",
+    "Third-party OpenAPI semantic validation and a second topology remain deferred.",
+    "The root project is not a Git repository, so this iteration cannot be represented by a root commit."
+  ],
+  "artifacts_or_changes": [
+    {"path": "fixtures/adaptive-task-orchestrator-write-dag/README.md", "action": "updated", "purpose": "document atomic publication and new validator/event commands"},
+    {"path": "docs/context/adaptive-task-orchestrator-v0.3/evidence/V3-T4-overlap-summary.json", "action": "created", "sha256": "EB187F3A7F3B9E9BAEA85A4A0D0FD1A26922F8D4741BE5FFF1C322BEF856CB51"},
+    {"path": "docs/context/adaptive-task-orchestrator-v0.3/evidence/V3-T5-integration-summary.json", "action": "created"}
+  ],
+  "resources_accessed": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0002-record-v0.1-bundle-fingerprint-errata.md",
+    "docs/decisions/0005-atomically-publish-materialized-runs.md",
+    "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md",
+    "docs/context/adaptive-task-orchestrator-v0.1/",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "docs/context/adaptive-task-orchestrator-v0.3/",
+    "fixtures/adaptive-task-orchestrator-write-dag/",
+    "automatically cleaned OS TemporaryDirectory paths created by unittests"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "complete fixture unittest suite", "result": "pass", "tests": 27, "exit_code": 0},
+    {"check": "named-run unittest suite", "result": "pass", "tests": 13, "exit_code": 0},
+    {"check": "v0.2 and v0.3 evidence validators", "result": "pass", "findings": 0, "exit_code": 0},
+    {"check": "real interval overlap", "result": "pass", "overlap_count": 1, "overlap_nanoseconds": 8751591800},
+    {"check": "materializer transient artifact scan", "result": "pass", "persistent_artifacts": 0},
+    {"check": "named-run exact status, hashes, HEAD, and git fsck", "result": "pass", "exit_code": 0},
+    {"check": "v0.1 archive and snapshot manifests", "result": "pass", "archive": "25/25", "snapshot": "7/7"},
+    {"check": "v0.2 integrity manifest", "result": "pass", "entries": "100/100"},
+    {"check": "historical and true Ordinal fingerprints", "result": "pass"},
+    {"check": "first combined JSON/Git inspection command", "result": "transient_command_error", "exit_code": 1, "details": "PowerShell rejected an interpolated variable followed by a colon before executing any verification or write."},
+    {"check": "corrected JSON, JSONL, contract identity, nested-Git, overlap, and live/snapshot inspection", "result": "pass", "exit_code": 0}
+  ],
+  "contradictions": [],
+  "recommended_next": "independent_review",
+  "root_disposition": {"accepted": true, "scheduler_state": "ACCEPTED", "unblocks": ["V3-T6-independent-review@1"]}
+}

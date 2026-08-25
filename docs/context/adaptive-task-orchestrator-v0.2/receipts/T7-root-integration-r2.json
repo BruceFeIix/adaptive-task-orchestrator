@@ -1,0 +1,78 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "T7-root-integration",
+  "task_revision": 2,
+  "summary": "Re-ran the complete root integration after explicitly authorizing the materializer tests' unique, automatically cleaned TemporaryDirectory writes. All deterministic gates passed and no project path was added or changed by the integration commands.",
+  "claims": [
+    {
+      "claim": "The repaired integration contract covers all test side effects and both suites pass.",
+      "confidence": "high",
+      "evidence": [
+        "Materializer suite uses unittest TemporaryDirectory for isolated test runs; 5 tests exited 0.",
+        "Named-run suite ran 13 tests with bytecode writes disabled and exited 0.",
+        "The exact project fixture status remained the seven accepted paths after the tests."
+      ]
+    },
+    {
+      "claim": "All orchestration fault and preservation gates reconcile under current revisions.",
+      "confidence": "high",
+      "evidence": [
+        "All v0.2 JSON parsed and deterministic F1/F2/F3/T5-T6 lifecycle assertions passed.",
+        "T7 is revision 2 with one explicit ephemeral temp scope; T8 is revision 3 and depends on T7@2.",
+        "The nested baseline commit and user-notes hash remained exact."
+      ]
+    },
+    {
+      "claim": "The immutable v0.1 archive/snapshot and both bundle fingerprints remain exact, with one intentional live policy delta.",
+      "confidence": "high",
+      "evidence": [
+        "archive 25/25 and snapshot 7/7.",
+        "OrdinalIgnoreCase 8563586856A87E5309CE35459ACAFBC785C413833B3A8494ACA6EA50E1BDFE8D.",
+        "Ordinal 11B134AD4C9611F3845BCB1655AA208F361C020AD03D19C06E66E8FC6E295E42.",
+        "Only live references/task-contract.md differs, exactly as ADR-0003 records."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "The root route execution is observed, but the exact inherited root model/effort is not runtime-attested.",
+    "The validation scope remains one local fixture and does not establish production or cross-machine behavior.",
+    "No third-party OpenAPI validator was installed."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "docs/decisions/0002-record-v0.1-bundle-fingerprint-errata.md",
+    "docs/decisions/0003-close-transitive-read-and-dirty-state-evidence-gaps.md",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "docs/context/adaptive-task-orchestrator-v0.1/",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "fixtures/adaptive-task-orchestrator-write-dag/",
+    "runtime-selected OS temp directories created and cleaned by unittest TemporaryDirectory",
+    "tasks/plan.md",
+    "tasks/todo.md"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "materializer unittest suite with ephemeral TemporaryDirectory writes", "result": "pass", "exit_code": 0, "tests": 5},
+    {"check": "named-run unittest suite", "result": "pass", "exit_code": 0, "tests": 13},
+    {"check": "all v0.2 JSON and fault gates", "result": "pass", "exit_code": 0},
+    {"check": "policy regression text", "result": "pass", "exit_code": 0},
+    {"check": "exact nested Git state, diff whitespace, baseline HEAD, and user-note hash", "result": "pass", "exit_code": 0},
+    {"check": "first compact v0.1 verification command", "result": "transient_command_error", "exit_code": 1, "details": "PowerShell parser rejected a compact foreach form before verification completed; no write occurred."},
+    {"check": "second compact v0.1 verification command", "result": "transient_command_error", "exit_code": 1, "details": "A compact return token was parsed as a command; no write occurred."},
+    {"check": "corrected v0.1 manifests, fingerprints, and live-delta verification", "result": "pass", "exit_code": 0, "archive": "25/25", "snapshot": "7/7"}
+  ],
+  "contradictions": [],
+  "recommended_next": "review",
+  "root_disposition": {
+    "accepted": true,
+    "accepted_at_revision": true,
+    "current_scheduler_state": "STALE",
+    "invalidated_by": "T7-root-integration@3 evidence-ledger conformance repair",
+    "stale_predecessors": [
+      "T7-root-integration@1"
+    ],
+    "next": "T8-independent-final-review@3"
+  }
+}

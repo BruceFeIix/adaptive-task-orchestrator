@@ -1,0 +1,9 @@
+{
+  "purpose": "Preserve the exact invalid review contract that was rejected and cancelled without treating it as an accepted executable contract.",
+  "policy": "Current contracts are validated strictly. The listed historical body is byte-exact lifecycle evidence; its invalid assurance enum is the recorded reason it was cancelled and revised.",
+  "exact_revisions": [
+    {"task": "V3-T6-independent-review@1", "path": "contracts/revisions/V3-T6-independent-review-r1.contract.json"}
+  ],
+  "unavailable_exact_bodies": [],
+  "claim_boundary": "Revision 1 proves fail-closed cancellation and exact preservation only. It is not an accepted review contract, receipt, or assurance result."
+}

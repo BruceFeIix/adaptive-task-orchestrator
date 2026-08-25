@@ -1,0 +1,30 @@
+{
+  "task_id": "T8-independent-final-review",
+  "task_revision": 6,
+  "profile": "balanced",
+  "preferred_capability": "deep_reasoner",
+  "requested_capability": "deep_reasoner",
+  "route_reason_codes": [
+    "fresh-final-review",
+    "post-required-finding-repair",
+    "conformant-root-integration-dependency",
+    "corrected-preservation-axis"
+  ],
+  "effective_floor": "deep_reasoner",
+  "floor_reasons": [
+    "A fresh reviewer must independently verify R1-R3 closure and the bounded historical-fidelity caveat."
+  ],
+  "selected_model": "gpt-5.6-sol",
+  "selected_effort": "high",
+  "fork_turns": "none",
+  "fallback_chain": [
+    "gpt-5.6-sol/xhigh"
+  ],
+  "selection_reason": "preferred",
+  "route_status": "observed",
+  "capability_attested": true,
+  "attestation_source": "runtime-schema",
+  "floor_satisfied": true,
+  "worker": "/root/final_reviewer_3",
+  "dispatch_result": "accepted_with_caveats"
+}

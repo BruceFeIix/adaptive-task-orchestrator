@@ -1,0 +1,40 @@
+{
+  "status": "DONE",
+  "task_id": "F2-missing-context",
+  "task_revision": 2,
+  "summary": "After the required context was supplied through a revised contract, the worker read the exact canonical compatibility field as displayName without using substitutes.",
+  "claims": [
+    {
+      "claim": "The exact canonical_compatibility_field is displayName.",
+      "confidence": "high",
+      "evidence": [
+        "The required artifact existed and parsed as JSON.",
+        "A case-sensitive exact-value assertion passed."
+      ]
+    }
+  ],
+  "uncertainty": [],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/F2-missing-context.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/evidence/F2-required-context.json"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "required input existence", "result": "pass"},
+    {"check": "case-sensitive exact-value assertion", "result": "pass"},
+    {"check": "no substitute source accessed", "result": "pass"},
+    {"check": "no writes", "result": "pass"},
+    {"check": "root repeated exact-value assertion", "result": "pass", "output": "F2_R2_OK|displayName"}
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "root_disposition": {
+    "accepted": true,
+    "accepted_at_revision": true,
+    "current_scheduler_state": "STALE",
+    "invalidated_by": "F2-missing-context@3 enum normalization"
+  }
+}

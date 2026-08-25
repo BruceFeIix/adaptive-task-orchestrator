@@ -1,0 +1,68 @@
+{
+  "status": "DONE",
+  "task_id": "T3-schema-review",
+  "task_revision": 2,
+  "summary": "Independent review re-verified the migrated User OpenAPI schema under the corrected explicit read scope and returned ACCEPT.",
+  "claims": [
+    {
+      "claim": "The schema implements canonical displayName, deprecated legacy name, either-key anyOf, id-only unconditional requirement, and closed additional properties.",
+      "confidence": "high",
+      "evidence": [
+        "Targeted schema test: exit 0, Ran 1 test, OK",
+        "Raw OpenAPI artifact inspection",
+        "Exact schema Git diff"
+      ]
+    },
+    {
+      "claim": "No schema-writer change outside contract/openapi.json was evidenced.",
+      "confidence": "high",
+      "evidence": [
+        "Git status/diff and accepted T2 revision 3 contract/receipt"
+      ]
+    }
+  ],
+  "uncertainty": [
+    "Git path evidence is not process-level forensic attribution.",
+    "Consumer runtime compatibility remains assigned to T4-T7.",
+    "No third-party OpenAPI validator was used."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/review-and-escalation.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T3-schema-review.json",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T2-schema-writer.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T2-schema-writer-r3.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T2-schema-writer-r3.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/server/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/client/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "targeted schema test", "result": "pass", "exit_code": 0},
+    {"check": "Git status/diff", "result": "pass", "exit_code": 0},
+    {"check": "read-scope reconciliation", "result": "pass"}
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "review_outcome": {
+    "decision": "ACCEPT",
+    "critical_findings": [],
+    "failed_or_missing_checks": [],
+    "required_next_action": "none"
+  },
+  "root_disposition": {
+    "accepted": true,
+    "scheduler_state": "ACCEPTED",
+    "supersedes_stale_receipt": "T3-schema-review@1",
+    "current_scheduler_state": "STALE",
+    "invalidated_by": "T2-schema-writer@4 schema-order repair"
+  }
+}

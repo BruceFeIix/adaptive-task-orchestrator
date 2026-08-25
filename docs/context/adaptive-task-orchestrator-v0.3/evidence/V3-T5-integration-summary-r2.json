@@ -1,0 +1,75 @@
+{
+  "validation_id": "adaptive-task-orchestrator-v0.3-root-integration-r2",
+  "validated_on": "2026-08-25",
+  "task_id": "V3-T5-root-integration",
+  "task_revision": 2,
+  "result": "PASS_WITH_BOUNDED_CAVEATS",
+  "runtime_matrix": {
+    "python_3_10_0": {"fixture_tests": "44/44", "named_run_tests": "13/13", "exit_code": 0},
+    "python_3_11_9": {"fixture_tests": "44/44", "named_run_tests": "13/13", "exit_code": 0}
+  },
+  "repair_closure": {
+    "R1": "V3-T1-atomic-materializer@3: lock-token write/flush failure cleanup and same-ID retry pass.",
+    "R2": "V3-T2-evidence-validator@2: complete selected shapes, DONE/check consistency, and closed route-profile enum pass.",
+    "R3": "V3-T3-event-log@2: timezone.utc works on Python 3.10 and 3.11 with unchanged serialization.",
+    "A1": "ADR-0007 and T5@2 explicitly separate verification side effects from root synthesis outputs.",
+    "A2": "V3-T1-atomic-materializer@3 rejects equal/descendant runs roots before copy or directory creation."
+  },
+  "implementation_hashes": {
+    "materialize_py": "4BF16116431A22763BE4DDE10DBEB7ACCB817A68B158E07C5E85F697B2F2750D",
+    "test_materialize_py": "BF78430179F69AEBE1691AD83D3889130B5A0DCE201031CEDB29C50091BB29D4",
+    "validate_evidence_py": "2C41D68199755CBADF3038097F9FB0ADA548EA2DB8392E4C0C4217BDAAD69150",
+    "test_validate_evidence_py": "C4CF806FE42BC4B3E00F4E133B1D428B40BF855F2F8144B053A24F7B1439616C",
+    "event_log_py": "E01C8B93D349DCC0A054E22E1463E54D1BEF7B64871C7EEB2687D58CC2AF72C7",
+    "test_event_log_py": "DC351A1A4B41B62BB4A82FCC1E39E556D1DBF556A68CF094AD29874B2046B18D"
+  },
+  "evidence_validation": {
+    "v0_2_findings": 0,
+    "v0_3_findings": 0,
+    "validator_exit_code": 0,
+    "json_files_parsed_before_r2_summary_receipt": 55,
+    "json_failures": 0,
+    "jsonl_records_parsed": 4,
+    "jsonl_failures": 0,
+    "current_immutable_contract_matches": "7/7",
+    "route_profiles_all_live_enum": true,
+    "preserved_pre_normalization_route_hashes": "3/3"
+  },
+  "overlap": {
+    "overlap_count": 1,
+    "overlap_nanoseconds": 8751591800,
+    "overlap_seconds": 8.7515918,
+    "claim_boundary": "One instrumented two-worker wave on one local host; not a scheduler-performance or cross-host claim."
+  },
+  "named_run": {
+    "head": "39995e833b35190fdcf80a3ed31449b712e05364",
+    "status_exact": true,
+    "dirty_path_count": 7,
+    "user_notes_sha256": "4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2",
+    "generated_sha256": "4203EBE635A76CD5A1BB1076C2A174654C3B3BC4A9DA51CA852FFD6412A3BAE8",
+    "server_sha256": "969C26DD03C2D533C5248FEDDD5CB3A73CE319AFB697616958E495D04474CFC6",
+    "client_sha256": "C7FB1267D6D767A646700BF7181B8380235CDAE5DAEB2D653F3F5B58550BF00C",
+    "git_fsck_exit_code": 0
+  },
+  "preservation": {
+    "v0_1_archive": "25/25",
+    "v0_1_snapshot": "7/7",
+    "v0_2_integrity": "100/100",
+    "historical_listed_order_ordinal_ignore_case_fingerprint": "8563586856A87E5309CE35459ACAFBC785C413833B3A8494ACA6EA50E1BDFE8D",
+    "true_case_sensitive_ordinal_fingerprint": "11B134AD4C9611F3845BCB1655AA208F361C020AD03D19C06E66E8FC6E295E42",
+    "per_file_hashes_unaffected": true
+  },
+  "verification_side_effects": ["Unique automatically cleaned unittest TemporaryDirectory paths outside the project."],
+  "root_synthesis_outputs": [
+    "routes/V3-T5-root-integration-r2.route.json",
+    "evidence/V3-T5-integration-summary-r2.json",
+    "receipts/V3-T5-root-integration-r2.json"
+  ],
+  "persistent_materializer_transients": 0,
+  "caveats": [
+    "Process-crash recovery and stale-lock reclamation remain deferred.",
+    "Third-party OpenAPI validation and a second topology remain deferred.",
+    "Evidence validation proves structure/lifecycle consistency, not authenticity or signatures.",
+    "The project root is not a Git repository, so no root commit or branch exists."
+  ]
+}

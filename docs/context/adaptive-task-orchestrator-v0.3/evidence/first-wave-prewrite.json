@@ -1,0 +1,24 @@
+{
+  "captured_on": "2026-08-25",
+  "workspace": "F:/Projects/CodexProjects",
+  "root_is_git_repository": false,
+  "owned_artifacts": [
+    {
+      "task": "V3-T1-atomic-materializer@1",
+      "path": "fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py",
+      "state": "existing",
+      "sha256": "E32E92FE5002144FD53BD07F6E4EE33CB3CCAE903C185A53C68DE73FC3ABA54B"
+    },
+    {
+      "task": "V3-T1-atomic-materializer@1",
+      "path": "fixtures/adaptive-task-orchestrator-write-dag/tests/test_materialize.py",
+      "state": "existing",
+      "sha256": "EC05E26A494E1ACE7FC9FC8E2B842A1393EF3DD2FE59553482250C1A28EAB918"
+    },
+    {"task": "V3-T2-evidence-validator@1", "path": "fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py", "state": "absent"},
+    {"task": "V3-T2-evidence-validator@1", "path": "fixtures/adaptive-task-orchestrator-write-dag/tests/test_validate_evidence.py", "state": "absent"},
+    {"task": "V3-T3-event-log@1", "path": "fixtures/adaptive-task-orchestrator-write-dag/tools/event_log.py", "state": "absent"},
+    {"task": "V3-T3-event-log@1", "path": "fixtures/adaptive-task-orchestrator-write-dag/tests/test_event_log.py", "state": "absent"}
+  ],
+  "claim_boundary": "This inventory was captured immediately after dispatch while all four new-file paths were still absent and both existing materializer paths retained their v0.2 bytes. Acceptance also requires each worker's exact operations, final hashes, scoped paths, and tests."
+}

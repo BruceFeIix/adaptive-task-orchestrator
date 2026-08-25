@@ -1,0 +1,16 @@
+{
+  "gate": "writer-conflict-preflight",
+  "contracts": [
+    "F1-conflict-a@1",
+    "F1-conflict-b@1"
+  ],
+  "write_scope_intersection": [
+    "docs/context/adaptive-task-orchestrator-v0.2/evidence/F1-conflict-target.txt"
+  ],
+  "resource_lock_intersection": [
+    "evidence:F1-conflict-target"
+  ],
+  "decision": "REJECT_BEFORE_DISPATCH",
+  "workers_spawned": 0,
+  "target_created": false
+}

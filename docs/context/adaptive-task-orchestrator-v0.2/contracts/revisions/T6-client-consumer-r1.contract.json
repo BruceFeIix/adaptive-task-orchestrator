@@ -1,0 +1,65 @@
+{
+  "id": "T6-client-consumer",
+  "revision": 1,
+  "objective": "Update only the client consumer so current or legacy internal users serialize to equal displayName and name wire keys and conflicting dual keys fail closed.",
+  "task_type": "implementation",
+  "mode": "write",
+  "dependencies": [
+    "T4-codegen-owner@2"
+  ],
+  "inputs": [
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py"
+    ,
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T4-codegen-owner-r2.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T4-codegen-owner-r2.json"
+  ],
+  "deliverable": "A client adapter satisfying all client compatibility tests.",
+  "read_scope": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T6-client-consumer.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T4-codegen-owner-r2.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T4-codegen-owner-r2.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/client/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/server/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/user-notes.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git (read-only via git status/diff)"
+  ],
+  "write_scope": [
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/client/user_adapter.py"
+  ],
+  "resource_locks": [
+    "fixture:20260824-v0.2.0:consumer-client"
+  ],
+  "classification": {
+    "reasoning_depth": 1,
+    "context_breadth": 1,
+    "uncertainty": 0,
+    "novelty": 0,
+    "impact": 1,
+    "verifiability": 3,
+    "coupling": 1
+  },
+  "acceptance_checks": [
+    "The pre-write client adapter SHA-256 is B7823724990B11279F2519B323097958FCBE7739D8B8344A7089496CEB0DAFE0.",
+    "All ClientCompatibilityTests pass.",
+    "The legacy client baseline regression passes.",
+    "No path outside the client adapter is written by this node.",
+    "user-notes.md retains its recorded SHA-256."
+  ],
+  "evidence_required": [
+    "Pre/post SHA-256 for the owned client adapter.",
+    "Targeted test results.",
+    "Exact changed path and Git diff summary.",
+    "Post-write user-notes SHA-256."
+  ],
+  "assurance_requirement": "deterministic"
+}

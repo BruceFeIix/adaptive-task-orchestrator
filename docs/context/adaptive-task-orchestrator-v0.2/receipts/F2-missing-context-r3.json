@@ -1,0 +1,32 @@
+{
+  "status": "DONE",
+  "task_id": "F2-missing-context",
+  "task_revision": 3,
+  "summary": "Verified the normalized research TaskContract against its immutable revision copy and read displayName only from the required context artifact.",
+  "claims": [
+    {"claim": "Current and immutable F2 revision 3 contracts are byte-identical.", "confidence": "high", "evidence": ["Both SHA-256 values are 1EA4BDFB55EA2AEF673A022325A7943014A2805FA12B58F78011515256970815."]},
+    {"claim": "canonical_compatibility_field is displayName.", "confidence": "high", "evidence": ["The required context existed, parsed, and passed a case-sensitive exact-value assertion."]}
+  ],
+  "uncertainty": [],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/F2-missing-context.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/revisions/F2-missing-context-r3.contract.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/evidence/F2-required-context.json"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "contract id/revision and byte/hash equality", "result": "pass", "exit_code": 0},
+    {"check": "required context exact value", "result": "pass", "exit_code": 0},
+    {"check": "root repeated equality and value assertion", "result": "pass", "exit_code": 0}
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "root_disposition": {
+    "accepted": true,
+    "scheduler_state": "ACCEPTED",
+    "stale_predecessors": ["F2-missing-context@1", "F2-missing-context@2"]
+  }
+}

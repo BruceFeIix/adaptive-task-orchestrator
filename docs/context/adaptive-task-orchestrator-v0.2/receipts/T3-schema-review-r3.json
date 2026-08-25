@@ -1,0 +1,63 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "T3-schema-review",
+  "task_revision": 3,
+  "summary": "Independent review accepted T2 revision 4 semantics and ordering with caveats, but could not directly inspect tools/generate.py because that required source was omitted from the literal read scope.",
+  "claims": [
+    {
+      "claim": "User.properties is id,name,displayName and all migration semantics remain correct.",
+      "confidence": "high",
+      "evidence": [
+        "Exact order assertion exited 0.",
+        "Targeted schema migration test exited 0; Ran 1 test; OK.",
+        "Direct schema and migration-test inspection covered current, legacy, equal-dual, conflict, and missing-name cases."
+      ]
+    },
+    {
+      "claim": "The dirty generated artifact is attributable to T4 revision 1 rather than T2 revision 4.",
+      "confidence": "high",
+      "evidence": [
+        "Current generated content exactly matches the accepted T4 revision 1 blocking receipt.",
+        "T2 revision 4 reported one write operation scoped to contract/openapi.json."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "tools/generate.py was not directly inspected because T3 revision 3 omitted it from read_scope; generator compatibility was inferred from accepted T4 evidence."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/review-and-escalation.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T3-schema-review.json",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T2-schema-writer.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T2-schema-writer-r4.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T2-schema-writer-r4.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T4-codegen-owner.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T4-codegen-owner-r1.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/server/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/client/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "exact schema order assertion", "result": "pass", "exit_code": 0},
+    {"check": "targeted schema test", "result": "pass", "exit_code": 0},
+    {"check": "direct generator source inspection", "result": "not_authorized", "details": "tools/generate.py was absent from revision 3 read_scope."}
+  ],
+  "contradictions": [],
+  "recommended_next": "new_task",
+  "review_outcome": "ACCEPT_WITH_CAVEATS",
+  "root_disposition": {
+    "accepted_at_revision": true,
+    "current_scheduler_state": "STALE",
+    "invalidated_by": "T3-schema-review@4 adds the omitted generator source to the literal read scope"
+  }
+}

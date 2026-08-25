@@ -1,0 +1,32 @@
+{
+  "task_id": "T2-schema-writer",
+  "task_revision": 2,
+  "profile": "balanced",
+  "preferred_capability": "deep_reasoner",
+  "requested_capability": "deep_reasoner",
+  "route_reason_codes": [
+    "public-api-compatibility",
+    "shared-contract-root",
+    "revised-read-scope"
+  ],
+  "effective_floor": "deep_reasoner",
+  "floor_reasons": [
+    "The node decides a public compatibility contract consumed by multiple writers."
+  ],
+  "selected_model": "gpt-5.6-sol",
+  "selected_effort": "high",
+  "fork_turns": "existing-worker-followup",
+  "fallback_chain": [
+    "gpt-5.6-sol/xhigh"
+  ],
+  "selection_reason": "preferred",
+  "route_status": "observed",
+  "capability_attested": true,
+  "attestation_source": "runtime-result",
+  "floor_satisfied": true,
+  "worker": "/root/schema_writer",
+  "dispatch_result": "completed_receipt_rejected",
+  "evidence_disposition": "rejected_for_scope_violation",
+  "scheduler_state": "STALE",
+  "stale_reason": "Task revision 3 makes the contract file, user-notes.md, and fixture-local Git metadata explicit in read_scope."
+}

@@ -1,0 +1,46 @@
+{
+  "status": "DONE",
+  "task_id": "V3-T2-evidence-validator",
+  "task_revision": 2,
+  "summary": "Closed review R2 with complete record-specific fail-closed validation, adversarial nested-shape tests, DONE/check consistency, explicit lifecycle compatibility, and a closed RouteDecision profile enum.",
+  "claims": [
+    {"claim": "Current and immutable revision 2 contracts are byte-identical.", "confidence": "high", "evidence": ["Both SHA-256 values are D93D6EBB629B9AAE5B72FFE3C10DADF4F4698DA5CBCC56773B82A365B96686A6."]},
+    {"claim": "R2 malformed selected records now fail closed.", "confidence": "high", "evidence": ["Twenty-five targeted tests cover missing context fields, complete child/root routes, receipt scalars/containers, claims/checks, status consistency, revisions, and dependencies.", "DONE with a non-passing check emits RECEIPT_STATUS_CHECK_CONFLICT."]},
+    {"claim": "Route profiles are limited to the live interface.", "confidence": "high", "evidence": ["Only frugal, balanced, quality, and user_pinned are accepted; thorough and reckless emit ROUTE_INVALID_ENUM.", "Three root-authored historical thorough routes were preserved and their current records normalized to quality before acceptance."]},
+    {"claim": "Completed package compatibility remains bounded and green.", "confidence": "high", "evidence": ["Completed v0.2 and current v0.3 both validate with zero findings on Python 3.10 and 3.11 targeted suites.", "Exact rejected T6 r1 history remains lifecycle evidence rather than an executable assurance result."]}
+  ],
+  "uncertainty": [
+    "The validator establishes structural and lifecycle consistency, not signatures, authenticity, or a trusted external provenance root.",
+    "It does not validate OpenAPI semantics, runtime registries, or reconstruct unavailable v0.2 contracts."
+  ],
+  "artifacts_or_changes": [
+    {"path": "fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py", "action": "updated", "before_sha256": "CEAC09B68E3D1D50BD3DDF745C8EF6E67EEDD9F14BD55D2F6751DD8410A3E396", "sha256": "2C41D68199755CBADF3038097F9FB0ADA548EA2DB8392E4C0C4217BDAAD69150"},
+    {"path": "fixtures/adaptive-task-orchestrator-write-dag/tests/test_validate_evidence.py", "action": "updated", "before_sha256": "FA461CD0FEF067058C63A7F55E166CC45451EDC356D75244BC2B29E2E8E8044F", "sha256": "C4CF806FE42BC4B3E00F4E133B1D428B40BF855F2F8144B053A24F7B1439616C"}
+  ],
+  "resources_accessed": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "F:/CodexData/.codex/skills/test-driven-development/SKILL.md",
+    "F:/CodexData/.codex/skills/api-and-interface-design/SKILL.md",
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "docs/context/adaptive-task-orchestrator-v0.3/",
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/test_validate_evidence.py",
+    "automatically cleaned OS TemporaryDirectory paths"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "R2 adversarial targeted suite before repair", "result": "expected_red", "tests": 24, "failures": 26, "exit_code": 1},
+    {"check": "non-standard profile focused test before exception removal", "result": "expected_red", "tests": 25, "failures": 1, "exit_code": 1},
+    {"check": "Python 3.10 targeted validator suite", "result": "pass", "tests": 25, "exit_code": 0},
+    {"check": "Python 3.11 targeted validator suite", "result": "pass", "tests": 25, "exit_code": 0},
+    {"check": "completed v0.2 package CLI", "result": "pass", "findings": 0, "exit_code": 0},
+    {"check": "current v0.3 package CLI", "result": "pass", "findings": 0, "exit_code": 0},
+    {"check": "root repeated targeted suites and package CLIs", "result": "pass", "tests_per_runtime": 25, "exit_code": 0}
+  ],
+  "contradictions": [],
+  "recommended_next": "root_integration",
+  "root_disposition": {"accepted": true, "scheduler_state": "ACCEPTED", "closes": ["V3-T6@2/R2"]}
+}

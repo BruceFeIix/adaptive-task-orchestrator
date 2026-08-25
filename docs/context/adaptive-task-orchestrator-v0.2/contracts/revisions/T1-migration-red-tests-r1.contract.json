@@ -1,0 +1,73 @@
+{
+  "id": "T1-migration-red-tests",
+  "revision": 1,
+  "objective": "Create root-owned compatibility tests for the name-to-displayName migration and prove they fail against the legacy fixture before child writers start.",
+  "task_type": "implementation",
+  "mode": "write",
+  "dependencies": [],
+  "inputs": [
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/server/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/client/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py"
+  ],
+  "deliverable": "A migration test module and updated baseline expectations that form the deterministic RED oracle for T2 through T6.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/server/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/client/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git (read-only via status/diff)"
+  ],
+  "write_scope": [
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py"
+  ],
+  "resource_locks": [
+    "fixture:20260824-v0.2.0:test-oracles"
+  ],
+  "context_package": {
+    "authoritative_facts": [
+      "The named run passed its three-test baseline before migration tests were added.",
+      "The migration requires canonical displayName, accepted legacy name, equal dual keys, conflict rejection, and missing-name rejection.",
+      "T1 is a root-owned historical node reconstructed from the still-present exact test artifacts and recorded RED result."
+    ],
+    "accepted_upstream_results": [
+      "Named-run materialization and initial dirty-state checks passed."
+    ],
+    "user_constraints": [
+      "Preserve user-notes.md and v0.1; use no network or dependency installation."
+    ],
+    "permissions": [
+      "Root may write only the two declared test files."
+    ],
+    "non_goals": [
+      "Do not change schema, generator, generated output, consumers, user notes, or Git metadata."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 2,
+    "context_breadth": 2,
+    "uncertainty": 1,
+    "novelty": 1,
+    "impact": 2,
+    "verifiability": 3,
+    "coupling": 3
+  },
+  "acceptance_checks": [
+    "The complete suite is RED against the legacy fixture for only the expected migration incompatibilities.",
+    "Exactly three legacy baseline tests remain green.",
+    "No path outside the two test files is written by T1."
+  ],
+  "evidence_required": [
+    "Exact changed paths, RED command, test totals, failure/error counts, and Git status."
+  ],
+  "assurance_requirement": "root_check"
+}

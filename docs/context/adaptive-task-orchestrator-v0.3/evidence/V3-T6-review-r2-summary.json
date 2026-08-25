@@ -1,0 +1,42 @@
+{
+  "task_id": "V3-T6-independent-review",
+  "task_revision": 2,
+  "decision": "REVISE",
+  "severity_counts": {"Critical": 0, "Required": 3, "Advisory": 2},
+  "required_findings": [
+    {
+      "id": "R1",
+      "title": "Lock-token write failure strands the invocation-owned materializer lock and blocks retry",
+      "evidence": ["Injected token-write OSError left .test-run.materialize.lock.", "Same-ID retry then raised FileExistsError."],
+      "required_fix": "Track exclusive lock creation independently, safely clean it when token write/flush fails, and add cleanup/retry regression coverage."
+    },
+    {
+      "id": "R2",
+      "title": "Evidence validator accepts materially malformed contracts, routes, receipts, and DONE receipts with failed checks",
+      "evidence": ["Malformed shape probe returned MALFORMED_FINDINGS=[].", "DONE plus checks result fail also returned zero findings."],
+      "required_fix": "Validate complete selected shapes, nested field types/enums, and receipt status/check consistency with adversarial tests."
+    },
+    {
+      "id": "R3",
+      "title": "Generic Python 3 documentation conflicts with datetime.UTC requirement",
+      "evidence": ["python 3.10.0 failed importing datetime.UTC.", "py -3 using 3.11.9 passed 27/27."],
+      "required_fix": "Use datetime.timezone.utc to retain Python 3.10 compatibility, or declare and test Python 3.11 or newer everywhere."
+    }
+  ],
+  "advisory_findings": [
+    {"id": "A1", "title": "Clarify that README/evidence synthesis writes are root-owned outside the read-only T5 verification node."},
+    {"id": "A2", "title": "Reject runs_root inside template_root to avoid recursive self-copy and RecursionError."}
+  ],
+  "accepted_evidence": {
+    "full_fixture_py3_11": "27/27",
+    "named_run": "13/13",
+    "v0_1_archive": "25/25",
+    "v0_1_snapshot": "7/7",
+    "v0_2_integrity": "100/100",
+    "overlap_count": 1,
+    "overlap_nanoseconds": 8751591800,
+    "named_run_head": "39995e833b35190fdcf80a3ed31449b712e05364"
+  },
+  "project_writes_by_reviewer": [],
+  "next": "Revise T1, T2, and T3 through new frozen contracts; repeat root integration and fresh independent review."
+}

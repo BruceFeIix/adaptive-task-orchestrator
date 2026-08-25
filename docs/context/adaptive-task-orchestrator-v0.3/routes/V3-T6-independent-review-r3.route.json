@@ -1,0 +1,22 @@
+{
+  "task_id": "V3-T6-independent-review",
+  "task_revision": 3,
+  "profile": "quality",
+  "preferred_capability": "deep_reasoner",
+  "requested_capability": "deep_reasoner",
+  "route_reason_codes": ["fresh-post-repair-final-review", "r1-r3-adversarial-closure", "dual-runtime-and-evidence-integrity"],
+  "effective_floor": "deep_reasoner",
+  "floor_reasons": ["Final acceptance requires independent reproduction of three prior Required defects and their repairs across implementation, safety, tests, evidence, and documentation."],
+  "selected_model": "gpt-5.6-sol",
+  "selected_effort": "high",
+  "fork_turns": "none",
+  "fallback_chain": ["gpt-5.6-sol/xhigh"],
+  "selection_reason": "preferred",
+  "route_status": "observed",
+  "capability_attested": true,
+  "attestation_source": "runtime-schema",
+  "floor_satisfied": true,
+  "worker": "/root/v3_final_review_r3",
+  "dispatch_result": "accepted_with_caveats",
+  "review_decision": "ACCEPT_WITH_CAVEATS"
+}

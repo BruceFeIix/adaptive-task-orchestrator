@@ -1,0 +1,43 @@
+{
+  "run_id": "20260824-v0.2.0",
+  "verified_on": "2026-08-25",
+  "task_revision": 4,
+  "fixture_baseline_commit": "39995e833b35190fdcf80a3ed31449b712e05364",
+  "materializer_tests": {"passed": 5, "failed": 0},
+  "materializer_temp_scope": "unique automatically cleaned unittest TemporaryDirectory paths outside the project",
+  "named_run_tests": {"passed": 13, "failed": 0},
+  "user_notes_sha256": "4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2",
+  "expected_dirty_paths": [
+    "consumers/client/user_adapter.py",
+    "consumers/server/user_adapter.py",
+    "contract/openapi.json",
+    "generated/user_fields.py",
+    "tests/test_baseline.py",
+    "user-notes.md",
+    "tests/test_migration.py (untracked)"
+  ],
+  "v0_1": {
+    "archive": "25/25",
+    "immutable_snapshot": "7/7",
+    "historical_ignore_case_fingerprint": "8563586856A87E5309CE35459ACAFBC785C413833B3A8494ACA6EA50E1BDFE8D",
+    "true_ordinal_fingerprint": "11B134AD4C9611F3845BCB1655AA208F361C020AD03D19C06E66E8FC6E295E42"
+  },
+  "live_skill": {
+    "matches_v0_1_snapshot": "6/7",
+    "intentional_delta": "references/task-contract.md",
+    "v0_1_sha256": "F92BAF3F281CF14F09815B721E98B756BA393238CDD732E19C1AB116A5D0EDEC",
+    "v0_2_live_sha256": "EF6E57688F00DB8BF8FBAFA04DE8E17AF941B8A5277DF188821B183F60B40E9C",
+    "decisions": [
+      "docs/decisions/0003-close-transitive-read-and-dirty-state-evidence-gaps.md",
+      "docs/decisions/0004-preserve-revisioned-task-contract-evidence.md"
+    ]
+  },
+  "fault_gates": {
+    "writer_conflict": "PASS_REJECTED_PRE_DISPATCH",
+    "needs_context": "PASS_REVISION_1_NEEDS_CONTEXT_REVISION_2_DONE_REVISION_3_CONFORMANT_REACCEPTED",
+    "stale_revisions": "PASS",
+    "blocked_repair_loop": "PASS_T4_R1_BLOCKED_T4_R2_DONE",
+    "requested_vs_observed_route": "PASS_F3_REQUESTED_UNATTESTED_NOT_DISPATCHED"
+  },
+  "root_integration_status": "PASS"
+}

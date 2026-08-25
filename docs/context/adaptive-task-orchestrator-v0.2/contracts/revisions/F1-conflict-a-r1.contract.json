@@ -1,0 +1,24 @@
+{
+  "id": "F1-conflict-a",
+  "revision": 1,
+  "objective": "Fault-only hypothetical writer A for pre-dispatch overlap detection.",
+  "task_type": "implementation",
+  "mode": "write",
+  "dependencies": [],
+  "inputs": [],
+  "deliverable": "Never dispatched; overlap evidence only.",
+  "read_scope": [],
+  "write_scope": [
+    "docs/context/adaptive-task-orchestrator-v0.2/evidence/F1-conflict-target.txt"
+  ],
+  "resource_locks": [
+    "evidence:F1-conflict-target"
+  ],
+  "acceptance_checks": [
+    "Reject before dispatch when compared with F1-conflict-b."
+  ],
+  "evidence_required": [
+    "Exact write-scope and lock intersections."
+  ],
+  "assurance_requirement": "deterministic"
+}

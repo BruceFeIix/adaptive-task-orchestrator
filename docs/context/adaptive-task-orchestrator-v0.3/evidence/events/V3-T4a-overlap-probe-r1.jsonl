@@ -1,0 +1,2 @@
+{"event":"started","schema_version":1,"span_id":"V3-T4a-overlap-probe-r1","task_id":"V3-T4a-overlap-probe","task_revision":1,"timestamp_ns":1787597279721455300,"timestamp_utc":"2026-08-24T18:47:59.721455300Z"}
+{"event":"finished","schema_version":1,"span_id":"V3-T4a-overlap-probe-r1","task_id":"V3-T4a-overlap-probe","task_revision":1,"timestamp_ns":1787597296539827800,"timestamp_utc":"2026-08-24T18:48:16.539827800Z"}

@@ -1,0 +1,75 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "T3-schema-review",
+  "task_revision": 4,
+  "summary": "Independent review directly inspected tools/generate.py and accepted T2 revision 4 ordering and migration semantics. The only remaining caveats are the known T4 revision 1 stale generated artifact and shared-dirty-fixture attribution limits.",
+  "claims": [
+    {
+      "claim": "The schema order id,name,displayName is directly compatible with the existing generator and both executable oracles.",
+      "confidence": "high",
+      "evidence": [
+        "tools/generate.py constructs FIELDS from list(user_schema['properties']) without reordering.",
+        "A mock-intercepted call to the real generate() captured FIELDS=('id','name','displayName'), REQUIRED_FIELDS=('id',), canonical displayName, and legacy ('name',) without disk writes.",
+        "The targeted schema migration test exited 0."
+      ]
+    },
+    {
+      "claim": "The stale disk generated artifact belongs to T4 revision 1, not T2 revision 4.",
+      "confidence": "high",
+      "evidence": [
+        "Its exact old-order content matches the accepted T4 revision 1 blocking receipt.",
+        "T2 revision 4 wrote only contract/openapi.json."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "The disk generated artifact remains stale until T4 revision 2 legally reruns the generator.",
+    "Fixture-global Git state alone cannot attribute writers; accepted per-node evidence supplies that attribution."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/review-and-escalation.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T3-schema-review.json",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T2-schema-writer.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T2-schema-writer-r4.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T2-schema-writer-r4.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T4-codegen-owner.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T4-codegen-owner-r1.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tools/generate.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/server/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/client/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "direct generator source inspection", "result": "pass"},
+    {"check": "mock-intercepted real generate() execution", "result": "pass", "exit_code": 0},
+    {"check": "targeted schema migration test", "result": "pass", "exit_code": 0},
+    {"check": "first mock command quoting attempt", "result": "transient_command_error", "exit_code": 1, "details": "PowerShell parser rejected the command before Python started; corrected command passed and no file was written."},
+    {"check": "no project writes", "result": "pass"}
+  ],
+  "contradictions": [
+    "The current disk generated artifact has the pre-repair order, while direct in-memory generation from T2 revision 4 produces the approved order. This is the expected T4 revision 2 work item."
+  ],
+  "recommended_next": "accept",
+  "review_outcome": "ACCEPT_WITH_CAVEATS",
+  "root_disposition": {
+    "accepted": true,
+    "scheduler_state": "ACCEPTED",
+    "accepted_upstream": "T2-schema-writer@4",
+    "stale_predecessors": [
+      "T3-schema-review@1",
+      "T3-schema-review@2",
+      "T3-schema-review@3"
+    ],
+    "next": "T4-codegen-owner@2"
+  }
+}

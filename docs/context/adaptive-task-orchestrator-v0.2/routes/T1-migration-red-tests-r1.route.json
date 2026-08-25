@@ -1,0 +1,10 @@
+{
+  "record_kind": "root_execution_record",
+  "task_id": "T1-migration-red-tests",
+  "task_revision": 1,
+  "execution_target": "current_root",
+  "execution_status": "observed",
+  "exact_root_model_attested": false,
+  "route_status": "inherited-unattested",
+  "reason": "T1 was authored and executed by root before child dispatch; this is not a child RouteDecision."
+}

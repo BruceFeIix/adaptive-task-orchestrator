@@ -1,0 +1,29 @@
+{
+  "task_id": "T6-client-consumer",
+  "task_revision": 1,
+  "profile": "balanced",
+  "preferred_capability": "general_worker",
+  "requested_capability": "general_worker",
+  "route_reason_codes": [
+    "bounded-consumer-implementation",
+    "strong-tests"
+  ],
+  "effective_floor": "general_worker",
+  "floor_reasons": [],
+  "selected_model": "gpt-5.6-terra",
+  "selected_effort": "medium",
+  "fork_turns": "none",
+  "fallback_chain": [
+    "gpt-5.6-terra/high",
+    "gpt-5.6-sol/high"
+  ],
+  "selection_reason": "lowest-safe",
+  "route_status": "observed",
+  "capability_attested": true,
+  "attestation_source": "runtime-schema",
+  "floor_satisfied": true,
+  "worker": "/root/client_consumer",
+  "dispatch_result": "accepted",
+  "scheduler_state": "STALE",
+  "stale_reason": "T6 revision 2 adds the required context package and immutable revisioned contract evidence."
+}

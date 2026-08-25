@@ -1,0 +1,23 @@
+{
+  "task_id": "V3-T1-atomic-materializer",
+  "task_revision": 1,
+  "profile": "balanced",
+  "preferred_capability": "deep_reasoner",
+  "requested_capability": "deep_reasoner",
+  "route_reason_codes": ["filesystem-publication-invariants", "failure-cleanup-ownership"],
+  "effective_floor": "deep_reasoner",
+  "floor_reasons": ["Incorrect cleanup or promotion can destroy or expose ambiguous filesystem state."],
+  "selected_model": "gpt-5.6-sol",
+  "selected_effort": "high",
+  "fork_turns": "none",
+  "fallback_chain": ["gpt-5.6-sol/xhigh"],
+  "selection_reason": "preferred",
+  "route_status": "observed",
+  "capability_attested": true,
+  "attestation_source": "runtime-schema",
+  "floor_satisfied": true,
+  "worker": "/root/atomic_materializer",
+  "dispatch_result": "cancelled_before_acceptance",
+  "scheduler_state": "CANCELLED",
+  "cancel_reason": "ADR-0005 contained contradictory post-promotion cleanup wording; the worker had produced unaccepted partial source/test changes before root interruption."
+}

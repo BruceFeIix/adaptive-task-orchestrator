@@ -1,0 +1,14 @@
+{
+  "task_id": "V3-T6-independent-review",
+  "task_revision": 1,
+  "scheduler_state": "CANCELLED",
+  "accepted": false,
+  "immutable_contract_sha256": "3468631D0F0531CBBBB2C49C5877D319CF48BC115F71E0B799608E4FE9DA8891",
+  "reason": "Fail-closed validation found an invalid assurance_requirement immediately after dispatch; root interrupted the read-only worker before acceptance.",
+  "findings": [
+    {"code": "CONTRACT_INVALID_ENUM", "path": "contracts/V3-T6-independent-review.json", "detail": "assurance_requirement"},
+    {"code": "CONTRACT_INVALID_ENUM", "path": "contracts/revisions/V3-T6-independent-review-r1.contract.json", "detail": "assurance_requirement"}
+  ],
+  "project_writes_by_worker": [],
+  "root_action": "Preserve revision 1 exactly as rejected history; increment the current contract to revision 2 with independent_adversarial assurance; preflight revision 2 before redispatch."
+}

@@ -1,0 +1,45 @@
+{
+  "status": "DONE",
+  "task_id": "T1-migration-red-tests",
+  "task_revision": 1,
+  "summary": "Root added the exact migration behavior oracles and confirmed the legacy named run was RED before child writers started.",
+  "claims": [
+    {
+      "claim": "The legacy fixture failed only the new migration behavior while all three baseline tests remained green.",
+      "confidence": "high",
+      "evidence": [
+        "The recorded pre-writer full suite ran 13 tests: 3 passed, 8 failed, and 2 errored.",
+        "The exact test files remain in the named run and later pass unchanged after T2 through T6."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "This root-owned node record was added during T9 ledger repair because the original T1 node artifact was omitted; its facts are limited to surviving files and the root execution record, not invented child permissions."
+  ],
+  "artifacts_or_changes": [
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py"
+  ],
+  "resources_accessed": [
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/server/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/client/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "pre-writer full suite", "result": "expected_red", "tests": 13, "passed": 3, "failures": 8, "errors": 2},
+    {"check": "root-owned path inventory", "result": "pass"}
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "root_disposition": {
+    "accepted": true,
+    "scheduler_state": "ACCEPTED",
+    "unblocks": "T2-schema-writer@4 dependency identity"
+  }
+}

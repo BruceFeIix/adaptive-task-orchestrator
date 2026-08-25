@@ -1,0 +1,63 @@
+{
+  "id": "V3-T6-independent-review",
+  "revision": 1,
+  "objective": "Perform a fresh-context, read-only five-axis final review of the complete pre-final v0.3 implementation and evidence, reporting every finding with severity and exact evidence.",
+  "task_type": "review",
+  "mode": "read",
+  "dependencies": ["V3-T5-root-integration@1"],
+  "inputs": [
+    "docs/context/adaptive-task-orchestrator-v0.3/contracts/revisions/V3-T6-independent-review-r1.contract.json",
+    "docs/context/adaptive-task-orchestrator-v0.3/receipts/V3-T5-root-integration-r1.json",
+    "docs/context/adaptive-task-orchestrator-v0.3/evidence/V3-T5-integration-summary.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/"
+  ],
+  "deliverable": "A structured review receipt covering implementation, tests, safety/security, evidence/integrity, and documentation/operability, with an explicit acceptance recommendation.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "F:/CodexData/.codex/skills/code-review-and-quality/SKILL.md",
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0002-record-v0.1-bundle-fingerprint-errata.md",
+    "docs/decisions/0005-atomically-publish-materialized-runs.md",
+    "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md",
+    "docs/context/adaptive-task-orchestrator-v0.1/ (read-only baseline)",
+    "docs/context/adaptive-task-orchestrator-v0.2/ (read-only baseline)",
+    "docs/context/adaptive-task-orchestrator-v0.3/ (entire pre-final package)",
+    "fixtures/adaptive-task-orchestrator-write-dag/ (source, tests, README, named run, and nested Git metadata)",
+    "tasks/plan.md",
+    "tasks/todo.md"
+  ],
+  "write_scope": [
+    "Unique automatically cleaned unittest TemporaryDirectory paths outside the project if the reviewer reruns tests"
+  ],
+  "resource_locks": [],
+  "context_package": {
+    "authoritative_facts": [
+      "The reviewer did not author T1 through T5 and must independently test claims rather than rely on receipts alone.",
+      "integrity.sha256, the final validation receipt, and this reviewer's root-saved receipt are intentionally absent until review acceptance.",
+      "v0.1 and v0.2 are immutable; the project root is not a Git repository."
+    ],
+    "relevant_artifacts": [
+      "fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py",
+      "fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py",
+      "fixtures/adaptive-task-orchestrator-write-dag/tools/event_log.py",
+      "fixtures/adaptive-task-orchestrator-write-dag/tests/",
+      "docs/context/adaptive-task-orchestrator-v0.3/"
+    ],
+    "accepted_upstream_results": ["V3-T5-root-integration@1 passed and is root-accepted."],
+    "user_constraints": ["Read-only project review; no fixes, dependency installs, network, external runtimes, v0.1/v0.2 mutations, or destructive Git actions."],
+    "permissions": ["Read declared paths and use only automatically cleaned OS temporary directories through existing tests."],
+    "non_goals": ["Do not demand deferred third-party OpenAPI validation, stale-lock recovery, a second topology, cross-host clocks, or production/performance claims as v0.3 acceptance requirements."]
+  },
+  "classification": {"reasoning_depth": 3, "context_breadth": 3, "uncertainty": 2, "novelty": 1, "impact": 3, "verifiability": 3, "coupling": 3},
+  "acceptance_checks": [
+    "Implementation axis: atomic materializer ownership/cleanup behavior, validator fail-closed boundaries, and event-transition/overlap logic satisfy the spec and ADRs.",
+    "Test axis: meaningful normal, malformed, conflict, failure-injection, cleanup/retry, transition, and overlap cases are exercised and reproducible.",
+    "Safety/security axis: path validation, non-overwrite behavior, lock/cleanup ownership, input parsing, command invocation, and write scopes have no Critical or Required defect.",
+    "Evidence/integrity axis: receipts and summaries reconcile with files, routes, immutable contracts, manifests, hashes, and the bounded single-host claim.",
+    "Documentation/operability axis: README/spec/ADRs clearly describe commands, failure semantics, compatibility, and deferred limitations.",
+    "Report severity as Critical, Required, or Advisory; acceptance requires zero Critical and zero Required findings."
+  ],
+  "evidence_required": ["Reviewed paths", "commands and exit codes", "five-axis findings", "severity counts", "contradictions", "uncertainties", "acceptance recommendation"],
+  "assurance_requirement": "independent_review"
+}

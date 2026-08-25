@@ -1,0 +1,36 @@
+{
+  "id": "V3-T4b-overlap-probe",
+  "revision": 1,
+  "objective": "Record one complete eight-second local worker span in the task-owned probe-b JSONL stream.",
+  "task_type": "verification",
+  "mode": "write",
+  "dependencies": ["V3-T3-event-log@1"],
+  "inputs": [
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/event_log.py",
+    "docs/context/adaptive-task-orchestrator-v0.3/receipts/V3-T3-event-log-r1.json"
+  ],
+  "deliverable": "A complete, valid probe-b JSONL event stream and structured receipt.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    "docs/context/adaptive-task-orchestrator-v0.3/contracts/V3-T4b-overlap-probe.json",
+    "docs/context/adaptive-task-orchestrator-v0.3/contracts/revisions/V3-T4b-overlap-probe-r1.contract.json",
+    "docs/context/adaptive-task-orchestrator-v0.3/receipts/V3-T3-event-log-r1.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/event_log.py"
+  ],
+  "write_scope": ["docs/context/adaptive-task-orchestrator-v0.3/evidence/events/V3-T4b-overlap-probe-r1.jsonl"],
+  "resource_locks": ["v0.3:event-stream:probe-b"],
+  "context_package": {
+    "authoritative_facts": ["The event file must not exist before dispatch and is owned only by this task revision.", "The worker must record started, wait eight seconds, then record finished using separate CLI calls."],
+    "relevant_artifacts": ["fixtures/adaptive-task-orchestrator-write-dag/tools/event_log.py"],
+    "accepted_upstream_results": ["V3-T3-event-log@1 is root-accepted."],
+    "user_constraints": ["No project write except the one event stream; no network, dependencies, caches, or external runtime."],
+    "permissions": ["Create and append only the declared probe-b stream."],
+    "non_goals": ["Do not summarize streams, edit source/docs, or claim overlap independently."]
+  },
+  "classification": {"reasoning_depth": 0, "context_breadth": 1, "uncertainty": 0, "novelty": 0, "impact": 1, "verifiability": 3, "coupling": 1},
+  "acceptance_checks": ["Contract and immutable revision are byte-identical.", "Both record CLI calls exit 0.", "The stream has exactly started then finished for V3-T4b-overlap-probe@1 and span V3-T4b-overlap-probe-r1.", "No other project path is written."],
+  "evidence_required": ["commands", "exit codes", "serialized events", "event stream SHA-256", "written path"],
+  "assurance_requirement": "deterministic"
+}

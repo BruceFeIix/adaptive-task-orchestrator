@@ -1,0 +1,43 @@
+{
+  "status": "DONE",
+  "task_id": "T9-evidence-ledger-repair",
+  "task_revision": 1,
+  "summary": "Root resolved T8 revision 3 Required findings R1-R3 by making current contracts conformant, preserving exact revision copies, declaring unavailable historical bodies, repairing route semantics, and reconciling the checklist without changing fixture behavior.",
+  "claims": [
+    {"claim": "All current executable TaskContracts use declared enums, required fields, resolvable dependencies, and byte-identical immutable revision copies.", "confidence": "high", "evidence": ["Current TaskContract audit passes for 10 contracts."]},
+    {"claim": "T1 now has bounded root-owned contract, route, and receipt evidence.", "confidence": "high", "evidence": ["T1 records only the surviving test artifacts and the pre-writer 13-test RED outcome: 3 passed, 8 failed, 2 errored."]},
+    {"claim": "Historical contract fidelity is explicit rather than reconstructed.", "confidence": "high", "evidence": ["18 exact revision copies are listed; 11 unavailable early bodies are declared with secondary lifecycle evidence only."]},
+    {"claim": "Route and checklist semantics reconcile current versus stale, cancelled, blocked, requested, and observed states.", "confidence": "high", "evidence": ["F1/F3 remain requested and not dispatched; T4 revision 1 distinguishes BLOCKED worker outcome from accepted blocking evidence; current F2/T4/T5/T6 routes are observed and accepted."]},
+    {"claim": "The live TaskContract policy now requires declared transitive reads, immutable revision snapshots, and ownership-aware dirty-state evidence.", "confidence": "high", "evidence": ["ADR-0003 and ADR-0004 govern the additive live-only policy amendment."]}
+  ],
+  "uncertainty": ["Eleven overwritten early contract bodies cannot be recovered exactly and are intentionally not fabricated.", "The fixture implementation and nested Git state were outside T9 write scope and unchanged by this repair."],
+  "artifacts_or_changes": [
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    "docs/decisions/0004-preserve-revisioned-task-contract-evidence.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/",
+    "docs/context/adaptive-task-orchestrator-v0.2/evidence/historical-contract-fidelity.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/README.md",
+    "tasks/plan.md",
+    "tasks/todo.md"
+  ],
+  "resources_accessed": [
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T8-independent-final-review-r3.json",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/routing-policy.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "tasks/plan.md",
+    "tasks/todo.md"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "all v0.2 JSON parse", "result": "pass"},
+    {"check": "current TaskContract enums/fields/dependencies/revision copies", "result": "pass", "contracts": 10},
+    {"check": "historical fidelity paths", "result": "pass", "exact": 18, "unavailable": 11},
+    {"check": "fixture behavior after evidence repair", "result": "pass", "materializer_tests": 5, "named_run_tests": 13}
+  ],
+  "contradictions": [],
+  "recommended_next": "accept T7-root-integration@4, then dispatch T8-independent-final-review@5",
+  "root_disposition": {"accepted": true, "scheduler_state": "ACCEPTED", "repairs": ["T8-r3-R1", "T8-r3-R2", "T8-r3-R3"]}
+}

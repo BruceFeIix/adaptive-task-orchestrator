@@ -1,0 +1,36 @@
+{
+  "status": "DONE",
+  "task_id": "T4-codegen-owner",
+  "task_revision": 3,
+  "summary": "Verified the immutable revision 3 contract, executed the existing generator exactly once, and reproduced the byte-identical accepted generated artifact with all targeted integrity checks passing.",
+  "claims": [
+    {"claim": "Current and immutable revision 3 contracts are byte-identical.", "confidence": "high", "evidence": ["Both contract SHA-256 values are E7677406F22BE725294D54DEB4250978ACD66DCBFE57BB68A0042B2E6BEBC2F0."]},
+    {"claim": "The generator wrote only generated/user_fields.py exactly once and produced unchanged deterministic bytes.", "confidence": "high", "evidence": ["Pre/post SHA-256 is 4203EBE635A76CD5A1BB1076C2A174654C3B3BC4A9DA51CA852FFD6412A3BAE8; targeted test exited 0."]},
+    {"claim": "user-notes.md remained unchanged.", "confidence": "high", "evidence": ["SHA-256 remained 4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2."]}
+  ],
+  "uncertainty": ["Fixture-global status remains intentionally dirty; ownership is established by the sole generator invocation, immutable contract, scoped diff, and owned-file hashes."],
+  "artifacts_or_changes": [{"path": "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py", "action": "regenerated_exactly_once", "pre_sha256": "4203EBE635A76CD5A1BB1076C2A174654C3B3BC4A9DA51CA852FFD6412A3BAE8", "post_sha256": "4203EBE635A76CD5A1BB1076C2A174654C3B3BC4A9DA51CA852FFD6412A3BAE8"}],
+  "resources_accessed": [
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T4-codegen-owner.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/revisions/T4-codegen-owner-r3.contract.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T3-schema-review-r4.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T3-schema-review-r4.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tools/generate.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/user-notes.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "immutable contract byte/hash identity", "result": "pass", "exit_code": 0},
+    {"check": "existing generator exactly once", "result": "pass", "exit_code": 0},
+    {"check": "targeted metadata migration test", "result": "pass", "exit_code": 0},
+    {"check": "pre/post generated and user-notes hashes", "result": "pass"},
+    {"check": "root repeated targeted test and hashes", "result": "pass", "exit_code": 0}
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "root_disposition": {"accepted": true, "scheduler_state": "ACCEPTED", "stale_predecessors": ["T4-codegen-owner@1", "T4-codegen-owner@2"], "unblocks": ["T5-server-consumer@2", "T6-client-consumer@2"]}
+}

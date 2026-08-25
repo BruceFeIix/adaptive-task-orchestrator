@@ -1,0 +1,32 @@
+{
+  "status": "DONE",
+  "task_id": "V3-T4a-overlap-probe",
+  "task_revision": 1,
+  "summary": "Recorded the task-owned start and finish events around the bounded local probe wait; root independently accepted the stream after proving positive overlap with probe B.",
+  "claims": [
+    {"claim": "Current and immutable revision 1 contracts are byte-identical.", "confidence": "high", "evidence": ["Both SHA-256 values are E0C2C6051F250904BBF2C88F46652D02084926F45D0EDB3F422DFEEAA73FD5EB."]},
+    {"claim": "Only the declared probe-A event stream was written by the worker.", "confidence": "high", "evidence": ["The 421-byte stream has SHA-256 37A78CF3E99CEF3106E6376DAD94BCCACF8A4191F90497DEE976C6A47C2C2DBD."]},
+    {"claim": "The stream contains one ordered started/finished pair.", "confidence": "high", "evidence": ["Started at 1787597279721455300 ns and finished at 1787597296539827800 ns."]}
+  ],
+  "uncertainty": ["The wait requested eight seconds; scheduling outside that wait contributes to the measured interval, so it is not a performance measurement."],
+  "artifacts_or_changes": [
+    {"path": "docs/context/adaptive-task-orchestrator-v0.3/evidence/events/V3-T4a-overlap-probe-r1.jsonl", "action": "created_then_appended", "sha256": "37A78CF3E99CEF3106E6376DAD94BCCACF8A4191F90497DEE976C6A47C2C2DBD", "bytes": 421}
+  ],
+  "resources_accessed": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "docs/context/adaptive-task-orchestrator-v0.3/contracts/V3-T4a-overlap-probe.json",
+    "docs/context/adaptive-task-orchestrator-v0.3/contracts/revisions/V3-T4a-overlap-probe-r1.contract.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/event_log.py"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "current/immutable contract identity", "result": "pass"},
+    {"check": "output absent before dispatch", "result": "pass"},
+    {"check": "started and finished record commands", "result": "pass", "exit_code": 0},
+    {"check": "root overlap merge", "result": "pass", "overlap_count": 1}
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "root_disposition": {"accepted": true, "scheduler_state": "ACCEPTED", "unblocks": ["V3-T5-root-integration@1"]}
+}

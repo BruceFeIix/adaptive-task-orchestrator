@@ -1,0 +1,11 @@
+{
+  "task_id": "F1-conflict-b",
+  "task_revision": 1,
+  "requested_capability": "general_worker",
+  "route_status": "requested",
+  "capability_attested": false,
+  "attestation_source": null,
+  "floor_satisfied": null,
+  "dispatch_result": "not_dispatched_writer_conflict",
+  "conflicts_with": "F1-conflict-a@1"
+}

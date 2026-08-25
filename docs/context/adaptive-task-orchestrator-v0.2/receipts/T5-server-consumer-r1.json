@@ -1,0 +1,69 @@
+{
+  "status": "DONE",
+  "task_id": "T5-server-consumer",
+  "task_revision": 1,
+  "summary": "Updated only the server adapter to normalize current or legacy name fields to canonical displayName, accept equal dual keys, and reject conflicts or missing names.",
+  "claims": [
+    {
+      "claim": "All five server migration cases and the legacy server regression pass.",
+      "confidence": "high",
+      "evidence": [
+        "Pre-write RED command ran 6 tests with expected server failures.",
+        "Post-write targeted command ran 6 tests and exited 0."
+      ]
+    },
+    {
+      "claim": "Only consumers/server/user_adapter.py was written and user-notes.md was preserved.",
+      "confidence": "high",
+      "evidence": [
+        "The sole mutation was apply_patch to the owned server adapter.",
+        "Owned hash changed from 08630EC6DD07EE4EF7F7A27D54F9FA0AA4DB0D3E95CA8C3DEA71DE077D7119BE to 969C26DD03C2D533C5248FEDDD5CB3A73CE319AFB697616958E495D04474CFC6.",
+        "user-notes.md retained 4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "Fixture-global status includes accepted upstream, parallel consumer, root-test, and user-note changes; per-node operation and hash evidence establish T5 ownership.",
+    "Git emitted non-failing LF-to-CRLF inspection warnings."
+  ],
+  "artifacts_or_changes": [
+    {
+      "path": "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/server/user_adapter.py",
+      "pre_sha256": "08630EC6DD07EE4EF7F7A27D54F9FA0AA4DB0D3E95CA8C3DEA71DE077D7119BE",
+      "post_sha256": "969C26DD03C2D533C5248FEDDD5CB3A73CE319AFB697616958E495D04474CFC6"
+    }
+  ],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T5-server-consumer.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T4-codegen-owner-r2.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T4-codegen-owner-r2.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/server/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/client/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/user-notes.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "pre-write server hash", "result": "pass"},
+    {"check": "pre-write RED reproduction", "result": "pass", "exit_code": 1},
+    {"check": "five server migration tests plus legacy regression", "result": "pass", "exit_code": 0, "tests": 6},
+    {"check": "scoped diff and whitespace", "result": "pass"},
+    {"check": "post-write server and user-notes hashes", "result": "pass"},
+    {"check": "root full-suite join and hash verification", "result": "pass"}
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "root_disposition": {
+    "accepted": true,
+    "accepted_at_revision": true,
+    "current_scheduler_state": "STALE",
+    "invalidated_by": "T5-server-consumer@2 evidence-ledger conformance repair"
+  }
+}

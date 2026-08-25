@@ -1,0 +1,45 @@
+{
+  "status": "DONE",
+  "task_id": "V3-T2-evidence-validator",
+  "task_revision": 1,
+  "summary": "Implemented and root-reproduced a standard-library fail-closed evidence validator with deterministic JSON findings for current contracts, immutable revisions, preflight records, child routes, root execution records, receipts, dependencies, and historical boundaries.",
+  "claims": [
+    {"claim": "Current and immutable revision 1 contracts are byte-identical.", "confidence": "high", "evidence": ["Both are 4,071 bytes with SHA-256 B09C76DF9D2C7A78095875979CC84ED18C6AE45DDFCC00C30DBA91D40BAF033B."]},
+    {"claim": "Malformed selected evidence fails closed with stable code/path/detail JSON findings.", "confidence": "high", "evidence": ["Tests cover missing fields, invalid enums, unresolved dependencies, current/revision mismatch, illegal child-route state, receipt revision mismatch, and unknown record kinds."]},
+    {"claim": "Explicit current, immutable, preflight, child route, root route, legacy root route, and receipt variants are distinguished.", "confidence": "high", "evidence": ["Ten targeted tests pass and diagnostics are sorted and deduplicated."]},
+    {"claim": "Completed v0.2 and current pre-final v0.3 packages validate with zero findings.", "confidence": "high", "evidence": ["Root repeated both CLI commands after adding the probe contracts and immutable copies; both exited 0."]}
+  ],
+  "uncertainty": [
+    "The tool validates orchestrator records under contracts, revisions, routes, and receipts; arbitrary domain JSON under evidence is outside its record selection.",
+    "Declared v0.2 historical revisions use their preserved core boundary and are not retroactively required to contain later optional structure.",
+    "The tool does not validate OpenAPI semantics, runtime model registries, signatures/authenticity, or reconstruct unavailable contracts."
+  ],
+  "artifacts_or_changes": [
+    {"path": "fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py", "action": "created", "sha256": "CEAC09B68E3D1D50BD3DDF745C8EF6E67EEDD9F14BD55D2F6751DD8410A3E396", "bytes": 19332},
+    {"path": "fixtures/adaptive-task-orchestrator-write-dag/tests/test_validate_evidence.py", "action": "created", "sha256": "FA461CD0FEF067058C63A7F55E166CC45451EDC356D75244BC2B29E2E8E8044F", "bytes": 9808}
+  ],
+  "resources_accessed": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "F:/CodexData/.codex/skills/test-driven-development/SKILL.md",
+    "F:/CodexData/.codex/skills/api-and-interface-design/SKILL.md",
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "docs/context/adaptive-task-orchestrator-v0.3/",
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/test_validate_evidence.py",
+    "automatically cleaned OS TemporaryDirectory paths"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "missing-module RED", "result": "expected_fail", "tests": 1, "errors": 1, "exit_code": 1},
+    {"check": "worker targeted GREEN", "result": "pass", "tests": 10, "exit_code": 0},
+    {"check": "root repeated targeted GREEN", "result": "pass", "tests": 10, "exit_code": 0},
+    {"check": "root v0.2 integration", "result": "pass", "findings": 0, "exit_code": 0},
+    {"check": "root current v0.3 integration", "result": "pass", "findings": 0, "exit_code": 0}
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "root_disposition": {"accepted": true, "scheduler_state": "ACCEPTED", "unblocks": ["V3-T5-root-integration@1"]}
+}

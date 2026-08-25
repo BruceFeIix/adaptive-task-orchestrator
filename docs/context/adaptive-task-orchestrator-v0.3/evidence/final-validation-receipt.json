@@ -1,0 +1,84 @@
+{
+  "validation_id": "adaptive-task-orchestrator-v0.3-hardening",
+  "validated_on": "2026-08-25",
+  "overall_result": "ACCEPT_WITH_CAVEATS",
+  "scope": "One local standard-library hardening iteration over the accepted write-DAG fixture: atomic publication cleanup/retry, fail-closed orchestrator evidence validation, and real single-host interval-overlap evidence.",
+  "implementation": {
+    "python_3_10_fixture_tests": {"passed": 44, "failed": 0},
+    "python_3_11_fixture_tests": {"passed": 44, "failed": 0},
+    "python_3_10_named_run_tests": {"passed": 13, "failed": 0},
+    "python_3_11_named_run_tests": {"passed": 13, "failed": 0},
+    "materializer_sha256": "4BF16116431A22763BE4DDE10DBEB7ACCB817A68B158E07C5E85F697B2F2750D",
+    "materializer_tests_sha256": "BF78430179F69AEBE1691AD83D3889130B5A0DCE201031CEDB29C50091BB29D4",
+    "validator_sha256": "2C41D68199755CBADF3038097F9FB0ADA548EA2DB8392E4C0C4217BDAAD69150",
+    "validator_tests_sha256": "C4CF806FE42BC4B3E00F4E133B1D428B40BF855F2F8144B053A24F7B1439616C",
+    "event_log_sha256": "E01C8B93D349DCC0A054E22E1463E54D1BEF7B64871C7EEB2687D58CC2AF72C7",
+    "event_log_tests_sha256": "DC351A1A4B41B62BB4A82FCC1E39E556D1DBF556A68CF094AD29874B2046B18D"
+  },
+  "review_repair_closure": {
+    "R1": "Closed by V3-T1-atomic-materializer@3 and independently reproduced by V3-T6@3.",
+    "R2": "Closed by V3-T2-evidence-validator@2 and independently reproduced by V3-T6@3.",
+    "R3": "Closed by V3-T3-event-log@2 and independently reproduced by V3-T6@3.",
+    "A1": "Closed by ADR-0007 and V3-T5-root-integration@2 explicit root synthesis scope.",
+    "A2": "Closed by V3-T1-atomic-materializer@3 topology rejection."
+  },
+  "orchestration": {
+    "current_contracts": 7,
+    "current_immutable_contract_matches": "7/7",
+    "current_routes": 14,
+    "invalid_current_route_profiles": 0,
+    "preserved_route_profile_history": "3/3",
+    "completed_v0_2_validator_findings": 0,
+    "completed_v0_3_validator_findings": 0,
+    "real_overlap_count": 1,
+    "real_overlap_nanoseconds": 8751591800,
+    "parallel_claim_boundary": "One real instrumented two-agent overlap on one local host; no throughput, latency, production, or cross-host claim."
+  },
+  "named_run": {
+    "baseline_commit": "39995e833b35190fdcf80a3ed31449b712e05364",
+    "dirty_path_count": 7,
+    "user_notes_sha256": "4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2",
+    "generated_sha256": "4203EBE635A76CD5A1BB1076C2A174654C3B3BC4A9DA51CA852FFD6412A3BAE8",
+    "server_sha256": "969C26DD03C2D533C5248FEDDD5CB3A73CE319AFB697616958E495D04474CFC6",
+    "client_sha256": "C7FB1267D6D767A646700BF7181B8380235CDAE5DAEB2D653F3F5B58550BF00C",
+    "git_fsck": "PASS"
+  },
+  "preservation": {
+    "v0_1_archive": "25/25",
+    "v0_1_snapshot": "7/7",
+    "v0_2_integrity": "100/100",
+    "historical_listed_order_ordinal_ignore_case_fingerprint": "8563586856A87E5309CE35459ACAFBC785C413833B3A8494ACA6EA50E1BDFE8D",
+    "true_case_sensitive_ordinal_fingerprint": "11B134AD4C9611F3845BCB1655AA208F361C020AD03D19C06E66E8FC6E295E42",
+    "per_file_hashes_unaffected": true,
+    "live_snapshot_match": "6/7",
+    "sole_live_delta": "references/task-contract.md under accepted ADR-0003/ADR-0004",
+    "persistent_materializer_transients": 0
+  },
+  "independent_review": {
+    "task": "V3-T6-independent-review@3",
+    "decision": "ACCEPT_WITH_CAVEATS",
+    "critical_findings": 0,
+    "required_findings": 0,
+    "advisory_findings": 0,
+    "receipt_sha256": "6E35D7A8424CB117DCC7702A7EF01C88255BD64A0CC27B89E88E4DB89B7A4419"
+  },
+  "integrity_manifest": {
+    "path": "integrity.sha256",
+    "algorithm": "SHA-256",
+    "self_excluded": true,
+    "canonical_order": "case-sensitive ordinal relative path",
+    "verification": "Generated after this receipt and verified as the final root step."
+  },
+  "caveats": [
+    "Process termination, machine crash, stale-lock detection, and stale-lock reclamation are deferred.",
+    "Evidence validation proves selected structure/lifecycle consistency, not signatures, authenticity, trusted timestamps, OpenAPI semantics, or runtime registry support.",
+    "Third-party OpenAPI validation, a second domain topology, cross-host execution, persistent scheduling, and production/performance evaluation are deferred.",
+    "The exact inherited root model/effort is not runtime-attested.",
+    "The project root is not a Git repository, so no root commit or branch was created."
+  ],
+  "root_acceptance": {
+    "accepted": true,
+    "basis": ["V3-T5-root-integration@2", "V3-T6-independent-review@3"],
+    "required_follow_up": []
+  }
+}

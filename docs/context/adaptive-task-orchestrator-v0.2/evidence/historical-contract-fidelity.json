@@ -1,0 +1,39 @@
+{
+  "purpose": "Declare exact TaskContract availability by dispatched or root-executed revision without inventing missing permission boundaries.",
+  "policy": "Exact current/future revisions are copied before dispatch. Historical bodies not preserved at execution time remain unavailable; their routes, receipts, and dispositions are secondary lifecycle evidence only.",
+  "exact_revisions": [
+    {"task": "T1-migration-red-tests@1", "path": "contracts/revisions/T1-migration-red-tests-r1.contract.json"},
+    {"task": "F2-missing-context@2", "path": "contracts/revisions/F2-missing-context-r2.contract.json"},
+    {"task": "F2-missing-context@3", "path": "contracts/revisions/F2-missing-context-r3.contract.json"},
+    {"task": "T2-schema-writer@4", "path": "contracts/revisions/T2-schema-writer-r4.contract.json"},
+    {"task": "T3-schema-review@4", "path": "contracts/revisions/T3-schema-review-r4.contract.json"},
+    {"task": "T4-codegen-owner@2", "path": "contracts/revisions/T4-codegen-owner-r2.contract.json"},
+    {"task": "T4-codegen-owner@3", "path": "contracts/revisions/T4-codegen-owner-r3.contract.json"},
+    {"task": "T5-server-consumer@1", "path": "contracts/revisions/T5-server-consumer-r1.contract.json"},
+    {"task": "T5-server-consumer@2", "path": "contracts/revisions/T5-server-consumer-r2.contract.json"},
+    {"task": "T6-client-consumer@1", "path": "contracts/revisions/T6-client-consumer-r1.contract.json"},
+    {"task": "T6-client-consumer@2", "path": "contracts/revisions/T6-client-consumer-r2.contract.json"},
+    {"task": "T7-root-integration@2", "path": "contracts/revisions/T7-root-integration-r2.contract.json"},
+    {"task": "T7-root-integration@3", "path": "contracts/revisions/T7-root-integration-r3.contract.json"},
+    {"task": "T7-root-integration@4", "path": "contracts/revisions/T7-root-integration-r4.contract.json"},
+    {"task": "T8-independent-final-review@3", "path": "contracts/revisions/T8-independent-final-review-r3.contract.json"},
+    {"task": "T8-independent-final-review@4", "path": "contracts/revisions/T8-independent-final-review-r4.contract.json"},
+    {"task": "T8-independent-final-review@5", "path": "contracts/revisions/T8-independent-final-review-r5.contract.json"},
+    {"task": "T8-independent-final-review@6", "path": "contracts/revisions/T8-independent-final-review-r6.contract.json"},
+    {"task": "T9-evidence-ledger-repair@1", "path": "contracts/revisions/T9-evidence-ledger-repair-r1.contract.json"}
+  ],
+  "unavailable_exact_bodies": [
+    {"task": "F2-missing-context@1", "secondary_evidence": ["routes/F2-missing-context-r1.route.json", "receipts/F2-missing-context-r1.json"]},
+    {"task": "T2-schema-writer@1", "secondary_evidence": ["routes/T2-schema-writer.route.json", "receipts/T2-schema-writer-r1.json"]},
+    {"task": "T2-schema-writer@2", "secondary_evidence": ["routes/T2-schema-writer-r2.route.json", "receipts/T2-schema-writer-r2.json"]},
+    {"task": "T2-schema-writer@3", "secondary_evidence": ["routes/T2-schema-writer-r3.route.json", "receipts/T2-schema-writer-r3.json"]},
+    {"task": "T3-schema-review@1", "secondary_evidence": ["routes/T3-schema-review.route.json", "receipts/T3-schema-review-r1.json"]},
+    {"task": "T3-schema-review@2", "secondary_evidence": ["routes/T3-schema-review-r2.route.json", "receipts/T3-schema-review-r2.json"]},
+    {"task": "T3-schema-review@3", "secondary_evidence": ["routes/T3-schema-review-r3.route.json", "receipts/T3-schema-review-r3.json"]},
+    {"task": "T4-codegen-owner@1", "secondary_evidence": ["routes/T4-codegen-owner.route.json", "receipts/T4-codegen-owner-r1.json"]},
+    {"task": "T7-root-integration@1", "secondary_evidence": ["routes/T7-root-integration.route.json", "receipts/T7-root-integration-r1.json"]},
+    {"task": "T8-independent-final-review@1", "secondary_evidence": ["routes/T8-independent-final-review-r1.route.json"]},
+    {"task": "T8-independent-final-review@2", "secondary_evidence": ["routes/T8-independent-final-review-r2.route.json"]}
+  ],
+  "claim_boundary": "The unavailable revisions prove that stale/cancelled/blocked lifecycle handling occurred through their accepted secondary evidence, but they do not support exact replay of the original contract scopes. No final claim treats those missing bodies as present."
+}

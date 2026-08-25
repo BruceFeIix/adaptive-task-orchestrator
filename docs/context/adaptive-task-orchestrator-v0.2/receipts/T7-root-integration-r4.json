@@ -1,0 +1,51 @@
+{
+  "status": "DONE",
+  "task_id": "T7-root-integration",
+  "task_revision": 4,
+  "summary": "Root joined all accepted revisioned artifacts and reproduced the complete deterministic fixture, evidence-ledger, fault-gate, nested-Git, and v0.1 preservation checks.",
+  "claims": [
+    {"claim": "The fixture materializer suite and named-run suite pass completely.", "confidence": "high", "evidence": ["Materializer: 5 tests passed; named run: 13 tests passed; both commands exited 0 with Python bytecode writes disabled."]},
+    {"claim": "The shared dirty workspace is reconciled to the accepted DAG artifacts plus the original user-owned edit.", "confidence": "high", "evidence": ["Nested baseline HEAD is 39995e833b35190fdcf80a3ed31449b712e05364; status contains exactly six modified paths and tests/test_migration.py untracked; git diff --check and git fsck --no-dangling exited 0."]},
+    {"claim": "The original dirty user note and all current owned artifacts retain their accepted identities.", "confidence": "high", "evidence": ["user-notes.md=4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2; generated=4203EBE635A76CD5A1BB1076C2A174654C3B3BC4A9DA51CA852FFD6412A3BAE8; server=969C26DD03C2D533C5248FEDDD5CB3A73CE319AFB697616958E495D04474CFC6; client=C7FB1267D6D767A646700BF7181B8380235CDAE5DAEB2D653F3F5B58550BF00C."]},
+    {"claim": "The repaired evidence ledger is structurally conformant and preserves bounded historical fidelity.", "confidence": "high", "evidence": ["93 v0.2 JSON files parsed; 10 current TaskContracts passed field/enum/dependency/immutable-copy checks; historical fidelity lists 18 exact and 11 explicitly unavailable revisions."]},
+    {"claim": "All required orchestration fault gates reconcile.", "confidence": "high", "evidence": ["F1 conflict routes remain requested/not dispatched; F2 records NEEDS_CONTEXT then accepted recovery and conformant reacceptance; F3 remains requested/unattested/not dispatched; T4 BLOCKED evidence was accepted and repaired; T5/T6 current scopes and locks are disjoint."]},
+    {"claim": "The immutable v0.1 baseline is preserved and both fingerprint interpretations reproduce.", "confidence": "high", "evidence": ["archive 25/25; snapshot 7/7; historical listed-order/OrdinalIgnoreCase fingerprint 8563586856A87E5309CE35459ACAFBC785C413833B3A8494ACA6EA50E1BDFE8D; true case-sensitive Ordinal fingerprint 11B134AD4C9611F3845BCB1655AA208F361C020AD03D19C06E66E8FC6E295E42."]},
+    {"claim": "The live Skill differs from v0.1 only in the additive TaskContract policy amendments governed by ADR-0003 and ADR-0004.", "confidence": "high", "evidence": ["Live/snapshot match is 6/7; only references/task-contract.md differs; current live SHA-256 is EF6E57688F00DB8BF8FBAFA04DE8E17AF941B8A5277DF188821B183F60B40E9C."]}
+  ],
+  "uncertainty": [
+    "The exact root model and effort remain inherited but runtime-unattested; this is a root execution record, not a child RouteDecision.",
+    "Materializer tests write only unique, automatically cleaned unittest TemporaryDirectory paths outside the project.",
+    "Eleven early overwritten TaskContract bodies are explicitly unavailable; their routes and receipts support bounded lifecycle claims but not exact replay.",
+    "No third-party OpenAPI validator was installed; validation is limited to the deterministic local fixture and Python tests."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "docs/decisions/0002-record-v0.1-bundle-fingerprint-errata.md",
+    "docs/decisions/0003-close-transitive-read-and-dirty-state-evidence-gaps.md",
+    "docs/decisions/0004-preserve-revisioned-task-contract-evidence.md",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "docs/context/adaptive-task-orchestrator-v0.1/",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "fixtures/adaptive-task-orchestrator-write-dag/",
+    "tasks/plan.md",
+    "tasks/todo.md"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "materializer suite", "result": "pass", "passed": 5, "failed": 0, "exit_code": 0},
+    {"check": "named-run full suite", "result": "pass", "passed": 13, "failed": 0, "exit_code": 0},
+    {"check": "nested Git baseline/status/diff/fsck", "result": "pass", "exit_code": 0},
+    {"check": "v0.2 JSON parse", "result": "pass", "files": 93},
+    {"check": "current TaskContract audit", "result": "pass", "contracts": 10},
+    {"check": "historical contract fidelity", "result": "pass", "exact": 18, "unavailable": 11},
+    {"check": "fault and route gates", "result": "pass"},
+    {"check": "v0.1 archive and snapshot", "result": "pass", "archive": "25/25", "snapshot": "7/7"},
+    {"check": "v0.1 listed-order/OrdinalIgnoreCase and true Ordinal fingerprints", "result": "pass"},
+    {"check": "live Skill delta", "result": "pass", "matches": "6/7", "delta": "references/task-contract.md"}
+  ],
+  "contradictions": [],
+  "recommended_next": "dispatch T8-independent-final-review@5",
+  "root_disposition": {"accepted": true, "scheduler_state": "ACCEPTED", "stale_predecessors": ["T7-root-integration@1", "T7-root-integration@2", "T7-root-integration@3"], "unblocks": ["T8-independent-final-review@5"]}
+}

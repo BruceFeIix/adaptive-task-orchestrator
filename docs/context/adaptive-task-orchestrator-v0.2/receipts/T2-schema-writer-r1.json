@@ -1,0 +1,64 @@
+{
+  "status": "DONE",
+  "task_id": "T2-schema-writer",
+  "task_revision": 1,
+  "summary": "Updated only contract/openapi.json to make displayName canonical and name deprecated-compatible; all worker acceptance checks passed.",
+  "claims": [
+    {
+      "claim": "The targeted OpenAPI migration test passed and the document parses as JSON.",
+      "confidence": "high",
+      "evidence": [
+        "py -3 -m unittest discover -s tests -p test_migration.py -k openapi_declares -v: exit 0, Ran 1 test, OK",
+        "py -3 -m json.tool contract/openapi.json: exit 0"
+      ]
+    },
+    {
+      "claim": "The pre-existing user-notes.md bytes were preserved.",
+      "confidence": "high",
+      "evidence": [
+        "Pre/post SHA-256: 4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2"
+      ]
+    }
+  ],
+  "uncertainty": [],
+  "artifacts_or_changes": [
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json"
+  ],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T2-schema-writer.json",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixture-local Git status/diff metadata",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/user-notes.md"
+  ],
+  "external_calls": [],
+  "checks": [
+    {
+      "check": "targeted OpenAPI migration test",
+      "result": "pass"
+    },
+    {
+      "check": "JSON parse",
+      "result": "pass"
+    },
+    {
+      "check": "user-notes SHA-256",
+      "result": "pass"
+    },
+    {
+      "check": "Git diff/status inspection",
+      "result": "pass"
+    }
+  ],
+  "contradictions": [],
+  "recommended_next": "review",
+  "root_disposition": {
+    "accepted": false,
+    "scheduler_state": "STALE",
+    "reason": "The receipt disclosed reads of three policy files outside revision 1 read_scope. Contract revision 2 adds those policy inputs; revision 1 route and receipt are stale."
+  }
+}

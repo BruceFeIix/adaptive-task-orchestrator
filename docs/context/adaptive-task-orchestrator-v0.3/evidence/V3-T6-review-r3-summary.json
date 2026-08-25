@@ -1,0 +1,47 @@
+{
+  "task_id": "V3-T6-independent-review",
+  "task_revision": 3,
+  "decision": "ACCEPT_WITH_CAVEATS",
+  "severity_counts": {"Critical": 0, "Required": 0, "Advisory": 0},
+  "prior_review_closure": {
+    "R1": "CLOSED: independent write/flush fault probes left zero artifacts and both same-ID retries succeeded.",
+    "R2": "CLOSED: two malformed-shape runs each emitted the same 21 fail-closed findings; v0.2/v0.3 remain zero-findings on Python 3.10/3.11.",
+    "R3": "CLOSED: both runtimes pass and recompute the persisted overlap summary byte-identically.",
+    "A1": "CLOSED: ADR-0007 and T5@2 explicitly attribute verification side effects and root synthesis outputs.",
+    "A2": "CLOSED: equal/descendant runs roots are rejected before copy with zero new artifacts."
+  },
+  "runtime_matrix": {
+    "python_3_10_0": {"fixture": "44/44", "named_run": "13/13"},
+    "python_3_11_9": {"fixture": "44/44", "named_run": "13/13"}
+  },
+  "integrity": {
+    "current_immutable_contracts": "7/7",
+    "versioned_filename_identities": "39/39",
+    "current_routes": 14,
+    "profiled_routes": 12,
+    "invalid_current_profiles": 0,
+    "preserved_profile_history": "3/3",
+    "v0_1_archive": "25/25",
+    "v0_1_snapshot": "7/7",
+    "v0_2_integrity": "100/100",
+    "pre_receipt_v0_3_json": 59,
+    "v0_3_jsonl_records": 4,
+    "persistent_materializer_transients": 0
+  },
+  "overlap": {"overlap_count": 1, "overlap_nanoseconds": 8751591800, "sha256": "EB187F3A7F3B9E9BAEA85A4A0D0FD1A26922F8D4741BE5FFF1C322BEF856CB51"},
+  "preservation": {
+    "historical_listed_order_ordinal_ignore_case_fingerprint": "8563586856A87E5309CE35459ACAFBC785C413833B3A8494ACA6EA50E1BDFE8D",
+    "true_case_sensitive_ordinal_fingerprint": "11B134AD4C9611F3845BCB1655AA208F361C020AD03D19C06E66E8FC6E295E42",
+    "named_run_head": "39995e833b35190fdcf80a3ed31449b712e05364",
+    "named_run_dirty_paths": 7,
+    "named_run_git_fsck": "pass"
+  },
+  "reviewer_project_writes": [],
+  "residual_risk": [
+    "Process-crash/stale-lock recovery is deferred.",
+    "Third-party OpenAPI validation and a second topology are deferred.",
+    "Evidence has no signature/authenticity root.",
+    "Overlap is single-host evidence without production/performance claims.",
+    "The project root is not a Git repository."
+  ]
+}

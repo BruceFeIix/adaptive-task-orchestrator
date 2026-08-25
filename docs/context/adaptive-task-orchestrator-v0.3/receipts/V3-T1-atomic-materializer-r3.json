@@ -1,0 +1,42 @@
+{
+  "status": "DONE",
+  "task_id": "V3-T1-atomic-materializer",
+  "task_revision": 3,
+  "summary": "Closed review R1 and A2 with RED/GREEN regressions: lock-token write/flush failures now clean invocation-owned artifacts and allow retry, and runs roots equal to or contained by the template are rejected before any copy or durable artifact.",
+  "claims": [
+    {"claim": "Current and immutable revision 3 contracts are byte-identical.", "confidence": "high", "evidence": ["Both SHA-256 values are 49B4E28D957B6C7AFAA6810CFE7C729905494DF2A0D294B0714743E8BE273B25."]},
+    {"claim": "R1 is closed for caught lock-token write and flush failures.", "confidence": "high", "evidence": ["Exclusive lock ownership is recorded immediately after open(x) succeeds.", "Both injected modes leave an empty failure inventory and then succeed on same-ID retry."]},
+    {"claim": "A2 is closed without recursive copy.", "confidence": "high", "evidence": ["Equal and descendant resolved runs roots raise ValueError before runs-root creation or copytree; sentinel call count remains zero."]},
+    {"claim": "Atomic publication and v0.2 receipt compatibility remain intact.", "confidence": "high", "evidence": ["All seven prior materializer tests and two new regressions pass on Python 3.10 and 3.11.", "Function signature and five MaterializeReceipt fields are unchanged."]}
+  ],
+  "uncertainty": ["Process termination/machine crash and stale-lock reclamation remain outside the caught-exception guarantee."],
+  "artifacts_or_changes": [
+    {"path": "fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py", "action": "updated", "before_sha256": "225E8DF77B5235D51AC976D637FC705BED4F5530ABBE7BE70C566C4ADA94D587", "sha256": "4BF16116431A22763BE4DDE10DBEB7ACCB817A68B158E07C5E85F697B2F2750D"},
+    {"path": "fixtures/adaptive-task-orchestrator-write-dag/tests/test_materialize.py", "action": "updated", "before_sha256": "7ACD9F8E95824A2BE19C89DBEADB9AD93A57EB770D7F42740D0F01C585CCC96C", "sha256": "BF78430179F69AEBE1691AD83D3889130B5A0DCE201031CEDB29C50091BB29D4"}
+  ],
+  "resources_accessed": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "F:/CodexData/.codex/skills/test-driven-development/SKILL.md",
+    "F:/CodexData/.codex/skills/code-review-and-quality/SKILL.md",
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0005-atomically-publish-materialized-runs.md",
+    "docs/context/adaptive-task-orchestrator-v0.3/receipts/V3-T6-independent-review-r2.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/test_materialize.py",
+    "automatically cleaned OS TemporaryDirectory paths",
+    "local Python and Git executables"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "R1 lock-write regression before repair", "result": "expected_fail", "tests": 1, "exit_code": 1, "artifact": ".test-run.materialize.lock"},
+    {"check": "A2 topology regressions before repair", "result": "expected_fail", "subtests": 2, "exit_code": 1},
+    {"check": "Python 3.10 targeted materializer suite", "result": "pass", "tests": 9, "exit_code": 0},
+    {"check": "Python 3.11 targeted materializer suite", "result": "pass", "tests": 9, "exit_code": 0},
+    {"check": "root repeated Python 3.10 and 3.11 suites", "result": "pass", "tests_per_runtime": 9, "exit_code": 0},
+    {"check": "failure and invalid-topology artifact inventories", "result": "pass", "persistent_artifacts": 0}
+  ],
+  "contradictions": [],
+  "recommended_next": "root_integration",
+  "root_disposition": {"accepted": true, "scheduler_state": "ACCEPTED", "closes": ["V3-T6@2/R1", "V3-T6@2/A2"]}
+}

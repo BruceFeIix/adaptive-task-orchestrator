@@ -1,0 +1,56 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "V3-T5-root-integration",
+  "task_revision": 2,
+  "summary": "Post-repair root integration passed 44/44 fixture tests and 13/13 named-run tests on Python 3.10 and 3.11, both evidence packages, all preservation and route-profile gates, the real overlap gate, and exact nested-Git invariants.",
+  "claims": [
+    {"claim": "Independent-review Required findings R1-R3 are closed by accepted revisions.", "confidence": "high", "evidence": ["T1@3 closes lock cleanup/retry; T2@2 closes fail-closed record validation; T3@2 closes Python 3.10 compatibility.", "Full dual-runtime suite passes 44/44 after all repairs."]},
+    {"claim": "Advisories A1 and A2 have explicit dispositions.", "confidence": "high", "evidence": ["ADR-0007 and this write-scoped root contract clarify synthesis provenance.", "T1@3 rejects recursive runs-root topology before mutation."]},
+    {"claim": "Evidence, route, overlap, and immutable identities reconcile.", "confidence": "high", "evidence": ["v0.2/v0.3 validator findings=0; current/immutable contracts=7/7; route profiles all use live enum; original normalized route hashes=3/3; overlap=8,751,591,800 ns."]},
+    {"claim": "Completed baselines and the named nested-Git run remain exact.", "confidence": "high", "evidence": ["v0.1 25/25 and 7/7; v0.2 100/100.", "Named HEAD, seven-path status, four critical hashes, and git fsck pass."]}
+  ],
+  "uncertainty": [
+    "Caught-exception atomicity does not cover process crashes or stale-lock reclamation.",
+    "Structural evidence validation does not prove authenticity, signatures, OpenAPI semantics, or current runtime registry support.",
+    "Overlap is one single-host observation without a performance or cross-host claim.",
+    "The non-Git project root cannot provide a root commit/branch safety record."
+  ],
+  "artifacts_or_changes": [
+    {"path": "docs/context/adaptive-task-orchestrator-v0.3/routes/V3-T5-root-integration-r2.route.json", "action": "root_synthesis_disposition"},
+    {"path": "docs/context/adaptive-task-orchestrator-v0.3/evidence/V3-T5-integration-summary-r2.json", "action": "root_synthesis_created"},
+    {"path": "docs/context/adaptive-task-orchestrator-v0.3/receipts/V3-T5-root-integration-r2.json", "action": "root_synthesis_created"}
+  ],
+  "resources_accessed": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0002-record-v0.1-bundle-fingerprint-errata.md",
+    "docs/decisions/0005-atomically-publish-materialized-runs.md",
+    "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md",
+    "docs/decisions/0007-separate-root-verification-from-evidence-synthesis.md",
+    "docs/context/adaptive-task-orchestrator-v0.1/",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "docs/context/adaptive-task-orchestrator-v0.3/",
+    "fixtures/adaptive-task-orchestrator-write-dag/",
+    "automatically cleaned OS TemporaryDirectory paths",
+    "local Python 3.10.0, Python 3.11.9, and Git executables"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "Python 3.10 complete fixture suite", "result": "pass", "tests": 44, "exit_code": 0},
+    {"check": "Python 3.11 complete fixture suite", "result": "pass", "tests": 44, "exit_code": 0},
+    {"check": "Python 3.10 and 3.11 named-run suites", "result": "pass", "tests_per_runtime": 13, "exit_code": 0},
+    {"check": "completed v0.2 and current v0.3 evidence validators", "result": "pass", "findings": 0, "exit_code": 0},
+    {"check": "current/immutable v0.3 contract identities", "result": "pass", "matches": "7/7"},
+    {"check": "live route profile enum and preserved normalization history", "result": "pass", "history_hashes": "3/3"},
+    {"check": "real overlap summary", "result": "pass", "overlap_count": 1, "overlap_nanoseconds": 8751591800},
+    {"check": "materializer transient artifact scan", "result": "pass", "persistent_artifacts": 0},
+    {"check": "named-run HEAD, status, hashes, and git fsck", "result": "pass", "exit_code": 0},
+    {"check": "v0.1 archive/snapshot and v0.2 integrity", "result": "pass", "v0_1_archive": "25/25", "v0_1_snapshot": "7/7", "v0_2": "100/100"},
+    {"check": "both documented v0.1 fingerprints", "result": "pass"},
+    {"check": "JSON and JSONL parse before root synthesis outputs", "result": "pass", "json_files": 55, "jsonl_records": 4}
+  ],
+  "contradictions": [],
+  "recommended_next": "independent_review",
+  "root_disposition": {"accepted": true, "scheduler_state": "ACCEPTED", "unblocks": ["V3-T6-independent-review@3"]}
+}

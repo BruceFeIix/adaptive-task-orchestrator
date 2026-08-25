@@ -1,0 +1,65 @@
+{
+  "status": "DONE",
+  "task_id": "T2-schema-writer",
+  "task_revision": 3,
+  "summary": "Re-verified the migrated User OpenAPI schema under a fully explicit read scope; no further write occurred in revision 3.",
+  "claims": [
+    {
+      "claim": "displayName is canonical, name is deprecated-compatible, either naming field is accepted, and id remains the sole unconditional requirement.",
+      "confidence": "high",
+      "evidence": [
+        "Targeted schema migration test: exit 0, Ran 1 test, OK",
+        "py -3 -m json.tool contract/openapi.json: exit 0"
+      ]
+    },
+    {
+      "claim": "The pre-existing user note bytes were preserved and no revision 3 write occurred.",
+      "confidence": "high",
+      "evidence": [
+        "user-notes.md SHA-256: 4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2",
+        "Worker reported only read-only revision 3 commands."
+      ]
+    }
+  ],
+  "uncertainty": [],
+  "artifacts_or_changes": [
+    {
+      "path": "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+      "originating_write_revision": 1,
+      "accepted_under_revision": 3,
+      "further_write_in_revision_3": false
+    }
+  ],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T2-schema-writer.json",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/user-notes.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "targeted OpenAPI migration test", "result": "pass", "exit_code": 0},
+    {"check": "JSON parse", "result": "pass", "exit_code": 0},
+    {"check": "user-notes SHA-256", "result": "pass"},
+    {"check": "Git diff/status inspection", "result": "pass"},
+    {"check": "root repeated targeted test and integrity checks", "result": "pass"}
+  ],
+  "contradictions": [],
+  "recommended_next": "review",
+  "root_disposition": {
+    "accepted": true,
+    "scheduler_state": "ACCEPTED",
+    "accepted_artifact": "contract/openapi.json",
+    "stale_predecessors": [
+      "T2-schema-writer@1",
+      "T2-schema-writer@2"
+    ],
+    "current_scheduler_state": "STALE",
+    "invalidated_by": "T4-codegen-owner@1 ordering contradiction and T2-schema-writer@4"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "record_kind": "root_execution_record_with_legacy_route_fields",
+  "semantic_note": "root_controller is retained as historical text only; the current root identity is not a routable child capability.",
+  "task_id": "T7-root-integration",
+  "task_revision": 2,
+  "preferred_capability": "root_controller",
+  "requested_capability": "root_controller",
+  "route_reason_codes": [
+    "sole-merge-owner",
+    "root-final-authority",
+    "ephemeral-test-write-scope-repair"
+  ],
+  "effective_floor": "root_controller",
+  "floor_reasons": [
+    "The orchestration Skill reserves final integration and evidence acceptance for root."
+  ],
+  "selected_model": "root-current-model",
+  "selected_effort": "current",
+  "fork_turns": "inherited",
+  "fallback_chain": [],
+  "selection_reason": "root-authority",
+  "route_status": "inherited-unattested",
+  "capability_attested": false,
+  "attestation_source": "none",
+  "floor_satisfied": true,
+  "execution_status": "observed",
+  "worker": "/root",
+  "dispatch_result": "accepted_with_caveats",
+  "scheduler_state": "STALE",
+  "stale_reason": "T7 revision 3 normalizes TaskContract enums/context and depends on the conformant current writer revisions."
+}

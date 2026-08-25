@@ -1,0 +1,22 @@
+{
+  "id": "F3-unattested-route-probe",
+  "revision": 1,
+  "objective": "Prove that a requested but unavailable route is not recorded as observed.",
+  "task_type": "review",
+  "mode": "read",
+  "dependencies": [],
+  "inputs": [],
+  "deliverable": "A non-dispatched route record retaining requested status.",
+  "read_scope": [],
+  "write_scope": [],
+  "resource_locks": [],
+  "acceptance_checks": [
+    "route_status remains requested",
+    "capability_attested is false",
+    "no worker is dispatched and no receipt exists"
+  ],
+  "evidence_required": [
+    "Requested route record with explicit non-dispatch reason."
+  ],
+  "assurance_requirement": "deterministic"
+}

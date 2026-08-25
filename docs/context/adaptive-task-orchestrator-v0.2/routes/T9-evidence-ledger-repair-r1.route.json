@@ -1,0 +1,11 @@
+{
+  "record_kind": "root_execution_record",
+  "task_id": "T9-evidence-ledger-repair",
+  "task_revision": 1,
+  "execution_target": "current_root",
+  "execution_status": "observed",
+  "exact_root_model_attested": false,
+  "route_status": "inherited-unattested",
+  "reason": "Root is the sole evidence-ledger and live-policy merge owner; this is not a child RouteDecision.",
+  "execution_result": "accepted"
+}

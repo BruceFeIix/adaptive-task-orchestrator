@@ -1,0 +1,11 @@
+{
+  "record_kind": "root_execution_record",
+  "task_id": "T7-root-integration",
+  "task_revision": 4,
+  "execution_target": "current_root",
+  "execution_status": "observed",
+  "exact_root_model_attested": false,
+  "route_status": "inherited-unattested",
+  "reason": "Root is the sole integration and acceptance authority; this is not a child RouteDecision.",
+  "execution_result": "accepted"
+}

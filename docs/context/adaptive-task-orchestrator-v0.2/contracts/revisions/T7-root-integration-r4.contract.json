@@ -1,0 +1,89 @@
+{
+  "id": "T7-root-integration",
+  "revision": 4,
+  "objective": "Join all accepted writer artifacts and run the deterministic root integration, preservation, route, and fault-gate checks.",
+  "task_type": "verification",
+  "mode": "read",
+  "dependencies": [
+    "T5-server-consumer@2",
+    "T6-client-consumer@2",
+    "F2-missing-context@3"
+  ],
+  "inputs": [
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/revisions/T7-root-integration-r4.contract.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T5-server-consumer-r2.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T6-client-consumer-r2.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/F2-missing-context-r3.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/ (read-only JSON inventory)",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/ (read-only JSON inventory)",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/ (read-only JSON inventory)",
+    "docs/context/adaptive-task-orchestrator-v0.2/evidence/ (read-only pre-final evidence inventory)",
+    "fixtures/adaptive-task-orchestrator-write-dag/",
+    "docs/context/adaptive-task-orchestrator-v0.1/archive.sha256",
+    "docs/context/adaptive-task-orchestrator-v0.1/first-implementation.sha256"
+  ],
+  "deliverable": "A root integration receipt containing exact deterministic results and bounded caveats.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/ (read-only live Skill tree)",
+    "docs/decisions/0002-record-v0.1-bundle-fingerprint-errata.md",
+    "docs/decisions/0003-close-transitive-read-and-dirty-state-evidence-gaps.md",
+    "docs/decisions/0004-preserve-revisioned-task-contract-evidence.md",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "docs/context/adaptive-task-orchestrator-v0.1/ (read-only archive and snapshot)",
+    "docs/context/adaptive-task-orchestrator-v0.2/ (read-only current evidence tree before synthesis)",
+    "fixtures/adaptive-task-orchestrator-write-dag/ (read-only fixture, nested Git metadata, tests, and named run)",
+    "tasks/plan.md",
+    "tasks/todo.md"
+  ],
+  "write_scope": [
+    "Ephemeral directories created by unittest TemporaryDirectory under the runtime-selected OS temp root, solely for materializer tests; each directory must be unique, outside the project, and automatically cleaned by the test."
+  ],
+  "resource_locks": [],
+  "context_package": {
+    "authoritative_facts": [
+      "T7 revisions 1 and 2 are historical; revision 3 was cancelled before execution because it omitted classification; revision 4 is the conformant root integration contract.",
+      "Materializer tests create only unique automatically cleaned OS TemporaryDirectory paths outside the project.",
+      "The named-run user-notes hash and seven-path dirty inventory are immutable acceptance identities."
+    ],
+    "accepted_upstream_results": [
+      "T5-server-consumer@2, T6-client-consumer@2, and F2-missing-context@3 must be accepted before integration."
+    ],
+    "user_constraints": [
+      "Do not modify project files, v0.1, user notes, nested Git metadata, permissions, or external systems."
+    ],
+    "permissions": [
+      "Read declared project resources and allow only the declared automatically cleaned OS temp writes."
+    ],
+    "non_goals": [
+      "Do not implement fixes, update evidence during checks, install validators, or attest the hidden root model."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 2,
+    "context_breadth": 3,
+    "uncertainty": 1,
+    "novelty": 1,
+    "impact": 2,
+    "verifiability": 3,
+    "coupling": 3
+  },
+  "acceptance_checks": [
+    "Materializer test suite passes.",
+    "Materializer temp directories are unique, outside the project, and cleaned; no persistent project path is written by integration checks.",
+    "Named-run full test suite passes.",
+    "user-notes.md remains at its original dirty SHA-256.",
+    "The named-run Git status contains exactly the accepted DAG paths plus the original user note.",
+    "All v0.2 JSON artifacts parse.",
+    "T5/T6 write scopes and resource locks are disjoint.",
+    "F1 conflict is rejected before dispatch and F3 remains requested/unattested.",
+    "F2 revision 1 NEEDS_CONTEXT, revision 2 recovery, and conformant revision 3 evidence reconcile.",
+    "v0.1 archive is 25/25 and immutable snapshot is 7/7.",
+    "Both documented v0.1 fingerprints reproduce exactly.",
+    "The only live-vs-v0.1 delta is task-contract.md, with additive amendments recorded in ADR-0003 and ADR-0004."
+  ],
+  "evidence_required": [
+    "Exact commands, exit codes, counts, hashes, expected dirty paths, route states, and remaining caveats."
+  ],
+  "assurance_requirement": "root_check"
+}

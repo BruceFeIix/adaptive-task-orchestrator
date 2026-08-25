@@ -1,0 +1,63 @@
+{
+  "status": "DONE",
+  "task_id": "T3-schema-review",
+  "task_revision": 1,
+  "summary": "Independent reconstruction returned ACCEPT for the schema artifact; one additional consumer probe remained RED as expected before T4-T6.",
+  "claims": [
+    {
+      "claim": "The accepted schema implements canonical displayName with deprecated legacy name compatibility and bounded ownership.",
+      "confidence": "high",
+      "evidence": [
+        "Targeted schema test: exit 0",
+        "JSON parse: exit 0",
+        "Schema diff confined to contract/openapi.json"
+      ]
+    }
+  ],
+  "uncertainty": [
+    "Git state supports bounded ownership but is not process-level forensic attribution.",
+    "Consumer runtime probe is intentionally RED before T4-T6."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/review-and-escalation.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T3-schema-review.json",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T2-schema-writer.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T2-schema-writer-r3.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T2-schema-writer-r3.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/server/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/client/user_adapter.py"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "targeted schema test", "result": "pass", "exit_code": 0},
+    {"check": "consumer RED probe", "result": "fail", "exit_code": 1, "gating": false},
+    {"check": "JSON parse", "result": "pass", "exit_code": 0},
+    {"check": "Git status/diff", "result": "pass", "exit_code": 0}
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "review_outcome": {
+    "decision": "ACCEPT",
+    "critical_findings": [],
+    "failed_or_missing_checks": [],
+    "residual_risk": [
+      "T4-T6 and root integration remain pending."
+    ],
+    "required_next_action": "none"
+  },
+  "root_disposition": {
+    "accepted": false,
+    "scheduler_state": "STALE",
+    "reason": "The authorized Python test command transitively imported generated/user_fields.py and both consumer adapters, but revision 1 did not literally list those project runtime dependencies in read_scope."
+  }
+}

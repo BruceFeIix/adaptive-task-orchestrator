@@ -1,0 +1,31 @@
+{
+  "issue": "Three v0.3 RouteDecision records serialized the non-standard profile value thorough, while the live route interface permits frugal, balanced, quality, or user_pinned.",
+  "disposition": "Preserve the exact pre-normalization route bytes under evidence/route-profile-history, normalize the current route records to quality without changing model, effort, capability, status, worker, or result, and keep the validator's profile enum closed to the live interface.",
+  "records": [
+    {
+      "route": "routes/V3-T2-evidence-validator-r2.route.json",
+      "history": "evidence/route-profile-history/V3-T2-evidence-validator-r2.route.json",
+      "original_sha256": "7666498177E7E105F67AFD9C08B57040EA781CA345E98E0B81121E029A08B5A6",
+      "original_profile": "thorough",
+      "current_profile": "quality",
+      "lifecycle_note": "Normalized before root acceptance of the revision-2 worker receipt."
+    },
+    {
+      "route": "routes/V3-T6-independent-review-r1.route.json",
+      "history": "evidence/route-profile-history/V3-T6-independent-review-r1.route.json",
+      "original_sha256": "54D3FCF58493B83CE2C101DA471FFC37CE4BCBEA77B17F2CE568794FB7D8D5C0",
+      "original_profile": "thorough",
+      "current_profile": "quality",
+      "lifecycle_note": "Revision 1 remained cancelled before acceptance; only the invalid profile serialization was normalized."
+    },
+    {
+      "route": "routes/V3-T6-independent-review-r2.route.json",
+      "history": "evidence/route-profile-history/V3-T6-independent-review-r2.route.json",
+      "original_sha256": "7948A64EA2DCE54DFD6B71ACA612050FC4A541FB8D69CA2B1F61F02126B37C33",
+      "original_profile": "thorough",
+      "current_profile": "quality",
+      "lifecycle_note": "The accepted REVISE review result, concrete model/effort, worker, and findings are unchanged."
+    }
+  ],
+  "claim_boundary": "This is an evidence-enum normalization, not a route re-execution or model change. The original bytes remain available and no acceptance claim relies on thorough as a valid profile."
+}

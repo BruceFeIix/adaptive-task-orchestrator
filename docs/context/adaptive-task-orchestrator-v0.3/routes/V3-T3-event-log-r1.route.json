@@ -1,0 +1,21 @@
+{
+  "task_id": "V3-T3-event-log",
+  "task_revision": 1,
+  "profile": "balanced",
+  "preferred_capability": "deep_reasoner",
+  "requested_capability": "deep_reasoner",
+  "route_reason_codes": ["concurrency-evidence-invariants", "append-only-interface"],
+  "effective_floor": "deep_reasoner",
+  "floor_reasons": ["Incorrect transition or interval logic would produce false concurrency claims."],
+  "selected_model": "gpt-5.6-sol",
+  "selected_effort": "high",
+  "fork_turns": "none",
+  "fallback_chain": ["gpt-5.6-sol/xhigh"],
+  "selection_reason": "preferred",
+  "route_status": "observed",
+  "capability_attested": true,
+  "attestation_source": "runtime-schema",
+  "floor_satisfied": true,
+  "worker": "/root/event_log_owner",
+  "dispatch_result": "accepted"
+}

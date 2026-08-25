@@ -1,0 +1,55 @@
+{
+  "status": "DONE",
+  "task_id": "T2-schema-writer",
+  "task_revision": 2,
+  "summary": "Re-verified the existing migrated OpenAPI artifact without further writes; all requested checks passed.",
+  "claims": [
+    {
+      "claim": "The revision 2 artifact satisfies the schema migration test and parses as JSON.",
+      "confidence": "high",
+      "evidence": [
+        "Targeted OpenAPI test: exit 0, Ran 1 test, OK",
+        "py -3 -m json.tool contract/openapi.json: exit 0"
+      ]
+    },
+    {
+      "claim": "No further write occurred in revision 2 and the user note hash remained 4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2.",
+      "confidence": "high",
+      "evidence": [
+        "Worker reported only read-only inspection and verification commands."
+      ]
+    }
+  ],
+  "uncertainty": [],
+  "artifacts_or_changes": [
+    {
+      "path": "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+      "further_write_in_revision_2": false
+    }
+  ],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T2-schema-writer.json",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/user-notes.md",
+    "fixture-local Git metadata"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "targeted OpenAPI migration test", "result": "pass"},
+    {"check": "JSON parse", "result": "pass"},
+    {"check": "user-notes SHA-256", "result": "pass"},
+    {"check": "Git diff/status inspection", "result": "pass"}
+  ],
+  "contradictions": [],
+  "recommended_next": "review",
+  "root_disposition": {
+    "accepted": false,
+    "scheduler_state": "STALE",
+    "reason": "Revision 2 acceptance checks implied access to the contract file, user-notes.md, and fixture-local Git metadata but its literal read_scope omitted them. Revision 3 makes every read resource explicit."
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "status": "BLOCKED",
+  "task_id": "T4-codegen-owner",
+  "task_revision": 1,
+  "summary": "The generator ran exactly once and produced contract-order fields, but the targeted test required a conflicting order; the generated artifact was not hand-edited.",
+  "claims": [
+    {
+      "claim": "The generator produced FIELDS in accepted OpenAPI property order: displayName, id, name.",
+      "confidence": "high",
+      "evidence": [
+        "py -3 tools/generate.py: exit 0",
+        "generated/user_fields.py contains FIELDS = ('displayName', 'id', 'name')",
+        "tools/generate.py uses list(user_schema['properties'])"
+      ]
+    },
+    {
+      "claim": "The targeted test contradicts the generated order and failed deterministically.",
+      "confidence": "high",
+      "evidence": [
+        "Targeted metadata test: exit 1",
+        "Expected ('id', 'name', 'displayName'); actual ('displayName', 'id', 'name')"
+      ]
+    },
+    {
+      "claim": "Only generated/user_fields.py was added to this worker's write set and user-notes.md remained unchanged.",
+      "confidence": "high",
+      "evidence": [
+        "Scoped Git diff: one generated file, 4 insertions and 4 deletions",
+        "user-notes SHA-256: 4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2"
+      ]
+    }
+  ],
+  "uncertainty": [
+    "T4 was not authorized to decide whether the test or schema property order should change."
+  ],
+  "artifacts_or_changes": [
+    {
+      "path": "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+      "action": "regenerated",
+      "state": "generator-produced but blocked by upstream contradiction"
+    }
+  ],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T4-codegen-owner.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tools/generate.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/user-notes.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "generator execution", "result": "pass", "exit_code": 0},
+    {"check": "targeted generated metadata test", "result": "fail", "exit_code": 1},
+    {"check": "scoped generated diff", "result": "pass"},
+    {"check": "user-notes SHA-256", "result": "pass"}
+  ],
+  "contradictions": [
+    "Accepted schema order displayName,id,name and deterministic generator behavior conflict with test-required id,name,displayName."
+  ],
+  "recommended_next": "escalate",
+  "root_disposition": {
+    "accepted": true,
+    "accepted_as": "blocking evidence",
+    "scheduler_state": "BLOCKED",
+    "resolution": "Revise the upstream schema contract to preserve id,name and append displayName; then invalidate downstream receipts and rerun review/codegen."
+  }
+}

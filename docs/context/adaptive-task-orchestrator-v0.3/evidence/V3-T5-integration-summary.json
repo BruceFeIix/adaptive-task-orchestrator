@@ -1,0 +1,67 @@
+{
+  "validation_id": "adaptive-task-orchestrator-v0.3-root-integration",
+  "validated_on": "2026-08-25",
+  "task_id": "V3-T5-root-integration",
+  "task_revision": 1,
+  "result": "PASS_WITH_BOUNDED_CAVEATS",
+  "fixture": {
+    "full_tests": {"passed": 27, "failed": 0, "exit_code": 0},
+    "named_run_tests": {"passed": 13, "failed": 0, "exit_code": 0},
+    "named_run_head": "39995e833b35190fdcf80a3ed31449b712e05364",
+    "named_run_status_exact": true,
+    "named_run_dirty_paths": [
+      " M consumers/client/user_adapter.py",
+      " M consumers/server/user_adapter.py",
+      " M contract/openapi.json",
+      " M generated/user_fields.py",
+      " M tests/test_baseline.py",
+      " M user-notes.md",
+      "?? tests/test_migration.py"
+    ],
+    "named_run_hashes": {
+      "user_notes": "4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2",
+      "generated": "4203EBE635A76CD5A1BB1076C2A174654C3B3BC4A9DA51CA852FFD6412A3BAE8",
+      "server": "969C26DD03C2D533C5248FEDDD5CB3A73CE319AFB697616958E495D04474CFC6",
+      "client": "C7FB1267D6D767A646700BF7181B8380235CDAE5DAEB2D653F3F5B58550BF00C"
+    },
+    "git_fsck_exit_code": 0,
+    "persistent_staging_or_lock_artifacts": 0
+  },
+  "evidence_validation": {
+    "v0_2_findings": 0,
+    "v0_2_exit_code": 0,
+    "v0_3_findings": 0,
+    "v0_3_exit_code": 0,
+    "pre_receipt_json_files_parsed": 29,
+    "json_failures": 0,
+    "jsonl_records_parsed": 4,
+    "jsonl_failures": 0,
+    "current_immutable_contract_matches": 6,
+    "current_immutable_contract_mismatches": 0
+  },
+  "overlap": {
+    "overlap_count": 1,
+    "overlap_nanoseconds": 8751591800,
+    "overlap_seconds": 8.7515918,
+    "left": "V3-T4a-overlap-probe/r1/V3-T4a-overlap-probe-r1",
+    "right": "V3-T4b-overlap-probe/r1/V3-T4b-overlap-probe-r1",
+    "claim_boundary": "Observed positive interval overlap for one instrumented two-worker wave on one local host; not a scheduler-performance or cross-host claim."
+  },
+  "preservation": {
+    "v0_1_archive": "25/25",
+    "v0_1_snapshot": "7/7",
+    "v0_2_integrity": "100/100",
+    "historical_listed_order_ordinal_ignore_case_fingerprint": "8563586856A87E5309CE35459ACAFBC785C413833B3A8494ACA6EA50E1BDFE8D",
+    "true_case_sensitive_ordinal_fingerprint": "11B134AD4C9611F3845BCB1655AA208F361C020AD03D19C06E66E8FC6E295E42",
+    "per_file_hashes_unaffected": true,
+    "live_snapshot_match": "6/7",
+    "sole_live_delta": "references/task-contract.md",
+    "live_task_contract_sha256": "EF6E57688F00DB8BF8FBAFA04DE8E17AF941B8A5277DF188821B183F60B40E9C"
+  },
+  "caveats": [
+    "Process-crash recovery and stale-lock reclamation are not implemented.",
+    "Third-party OpenAPI validation and a second execution topology are deferred.",
+    "The v0.1 historical fingerprint is OrdinalIgnoreCase / manifest-listed order; the true case-sensitive Ordinal fingerprint is recorded separately.",
+    "The project root is not a Git repository, so no root commit or branch was created."
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "task_id": "F3-unattested-route-probe",
+  "task_revision": 1,
+  "profile": "balanced",
+  "preferred_capability": "general_worker",
+  "requested_capability": "general_worker",
+  "route_reason_codes": [
+    "fault-injection-unavailable-effort-tier"
+  ],
+  "effective_floor": "general_worker",
+  "floor_reasons": [],
+  "selected_model": "gpt-5.6-luna",
+  "selected_effort": "ultra",
+  "fork_turns": "none",
+  "fallback_chain": [],
+  "selection_reason": "fault-probe-only",
+  "route_status": "requested",
+  "capability_attested": false,
+  "attestation_source": null,
+  "floor_satisfied": false,
+  "dispatch_result": "not_dispatched_unavailable_effort_tier",
+  "worker": null
+}

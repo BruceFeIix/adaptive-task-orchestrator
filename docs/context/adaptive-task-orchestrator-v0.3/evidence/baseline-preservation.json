@@ -1,0 +1,12 @@
+{
+  "captured_on": "2026-08-25",
+  "before_v0_3_implementation": {
+    "v0_1_archive": "25/25",
+    "v0_1_immutable_snapshot": "7/7",
+    "v0_2_integrity_manifest": "100/100"
+  },
+  "required_final_comparison": [
+    "Repeat all three checks after the final v0.3 change.",
+    "Do not edit any v0.1 or v0.2 context file."
+  ]
+}

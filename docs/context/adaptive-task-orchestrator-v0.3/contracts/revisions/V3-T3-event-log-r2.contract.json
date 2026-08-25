@@ -1,0 +1,55 @@
+{
+  "id": "V3-T3-event-log",
+  "revision": 2,
+  "objective": "Close review R3 by retaining event behavior while replacing the Python 3.11-only UTC import and proving compatibility on the local Python 3.10 and 3.11 runtimes.",
+  "task_type": "implementation",
+  "mode": "write",
+  "dependencies": [],
+  "inputs": [
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md",
+    "docs/context/adaptive-task-orchestrator-v0.3/receipts/V3-T6-independent-review-r2.json"
+  ],
+  "deliverable": "event_log.py, focused tests, and a structured worker receipt.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "F:/CodexData/.codex/skills/test-driven-development/SKILL.md",
+    "F:/CodexData/.codex/skills/api-and-interface-design/SKILL.md",
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/ and tools/ (read-only except declared new files)"
+  ],
+  "write_scope": [
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/event_log.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/test_event_log.py",
+    "Unique automatically cleaned unittest TemporaryDirectory paths outside the project"
+  ],
+  "resource_locks": ["fixture:event-log-source-and-tests"],
+  "context_package": {
+    "authoritative_facts": [
+      "Each task revision owns exactly one event stream; no concurrent shared append is permitted.",
+      "A valid span contains exactly one started then one finished event for one task/revision/span identity.",
+      "Current timestamps are comparable only on this local host and do not support cross-machine claims."
+      ,"Review R3 proved datetime.UTC fails to import on local Python 3.10.0 while py -3 Python 3.11.9 passes."
+    ],
+    "relevant_artifacts": ["docs/specs/adaptive-task-orchestrator-v0.3-hardening.md", "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md"],
+    "accepted_upstream_results": ["V3-T3@1 was accepted before V3-T6@2 found R3; preserve revision 1 evidence and repair through revision 2."],
+    "user_constraints": ["Standard library only; no dependency install, network, shared event file, or v0.1/v0.2 mutation."],
+    "permissions": ["Edit only the two declared new event-log files and use auto-cleaned OS temp directories."],
+    "non_goals": ["Do not build a scheduler, benchmark throughput, or support cross-host clock reconciliation."]
+  },
+  "classification": {"reasoning_depth": 2, "context_breadth": 2, "uncertainty": 1, "novelty": 2, "impact": 2, "verifiability": 3, "coupling": 2},
+  "acceptance_checks": [
+    "Record the existing Python 3.10 import failure as RED before changing the UTC implementation.",
+    "Use a standard-library UTC expression supported by Python 3.10 without changing serialized timestamps or the public CLI.",
+    "Record stable UTC and epoch-nanosecond timestamps in append-only same-owner JSONL.",
+    "Reject owner mismatches, unknown events, duplicate transitions, finish-before-start, and incomplete spans.",
+    "Classify overlapping and non-overlapping valid intervals exactly and make --require-overlap fail when none overlap.",
+    "Run the targeted test module with both local python -B (3.10) and py -3 -B (3.11), reporting versions, exact counts, and exit codes."
+  ],
+  "evidence_required": ["review R3 RED output", "Python versions", "3.10 and 3.11 GREEN output", "serialized event example", "unchanged overlap result", "changed paths", "single-host caveat"],
+  "assurance_requirement": "root_check"
+}

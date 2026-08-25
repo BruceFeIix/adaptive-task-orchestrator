@@ -1,0 +1,27 @@
+{
+  "task_id": "T4-codegen-owner",
+  "task_revision": 3,
+  "profile": "balanced",
+  "preferred_capability": "general_worker",
+  "requested_capability": "general_worker",
+  "route_reason_codes": [
+    "mechanical-generation",
+    "immutable-contract-and-context-package-repair"
+  ],
+  "effective_floor": "general_worker",
+  "floor_reasons": [],
+  "selected_model": "gpt-5.6-terra",
+  "selected_effort": "medium",
+  "fork_turns": "existing-worker-followup",
+  "fallback_chain": [
+    "gpt-5.6-terra/high",
+    "gpt-5.6-sol/high"
+  ],
+  "selection_reason": "lowest-safe",
+  "route_status": "observed",
+  "capability_attested": true,
+  "attestation_source": "runtime-schema",
+  "floor_satisfied": true,
+  "worker": "/root/codegen_owner",
+  "dispatch_result": "accepted"
+}

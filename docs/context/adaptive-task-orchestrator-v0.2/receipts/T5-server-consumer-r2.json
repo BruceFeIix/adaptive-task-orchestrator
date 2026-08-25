@@ -1,0 +1,41 @@
+{
+  "status": "DONE",
+  "task_id": "T5-server-consumer",
+  "task_revision": 2,
+  "summary": "Revalidated the accepted server adapter against the immutable revision 2 contract; all current, legacy, conflict, and missing-field behaviors pass without a revision 2 write.",
+  "claims": [
+    {"claim": "Current and immutable revision 2 contracts are byte-identical.", "confidence": "high", "evidence": ["Both contract SHA-256 values are EE373E541D8129301C97895912487D149AF38FE6CB9FCC42D4E4177FE6D794F7."]},
+    {"claim": "The required upstream dependency T4-codegen-owner@3 is accepted.", "confidence": "high", "evidence": ["T4 revision 3 route dispatch_result is accepted and its receipt root disposition is accepted."]},
+    {"claim": "All required server migration behavior and the legacy server baseline regression pass.", "confidence": "high", "evidence": ["Six targeted tests passed: five ServerCompatibilityTests plus the legacy server baseline regression."]},
+    {"claim": "Revision 2 made no write to the owned server adapter or user-notes.md.", "confidence": "high", "evidence": ["Server adapter pre/post SHA-256 remained 969C26DD03C2D533C5248FEDDD5CB3A73CE319AFB697616958E495D04474CFC6; user-notes.md remained 4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2."]}
+  ],
+  "uncertainty": ["The fixture worktree remains intentionally dirty from accepted DAG work; revision 2 attribution is established by equal pre/post owned hashes, no edit command, and scoped diff inspection."],
+  "artifacts_or_changes": [
+    {"path": "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/server/user_adapter.py", "action": "verified_unchanged_in_revision_2", "pre_sha256": "969C26DD03C2D533C5248FEDDD5CB3A73CE319AFB697616958E495D04474CFC6", "post_sha256": "969C26DD03C2D533C5248FEDDD5CB3A73CE319AFB697616958E495D04474CFC6"},
+    {"path": "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/user-notes.md", "action": "verified_unchanged", "post_sha256": "4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2"}
+  ],
+  "resources_accessed": [
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T5-server-consumer.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/revisions/T5-server-consumer-r2.contract.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T4-codegen-owner-r3.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T4-codegen-owner-r3.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/server/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/user-notes.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "current and immutable revision 2 contract byte identity", "result": "pass"},
+    {"check": "T4-codegen-owner@3 accepted receipt", "result": "pass"},
+    {"check": "server migration and legacy regression tests", "result": "pass", "test_count": 6, "exit_code": 0},
+    {"check": "no revision 2 server artifact change", "result": "pass"},
+    {"check": "user-notes.md preservation", "result": "pass"}
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "root_disposition": {"accepted": true, "scheduler_state": "ACCEPTED", "stale_predecessors": ["T5-server-consumer@1"], "unblocks": ["T7-root-integration@4"]}
+}

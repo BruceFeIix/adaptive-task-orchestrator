@@ -1,0 +1,91 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "T8-independent-final-review",
+  "task_revision": 3,
+  "decision": "REVISE",
+  "summary": "Implementation, tests, preservation, fingerprints, and the single live Skill delta passed. Final acceptance is blocked by three Required evidence-ledger groups: nonconformant current contract fields, missing immutable historical contract revisions, and a stale completion checklist.",
+  "claims": [
+    {
+      "claim": "The fixture implementation and deterministic preservation checks are correct.",
+      "confidence": "high",
+      "evidence": [
+        "Materializer suite 5/5 and named-run suite 13/13 passed.",
+        "Nested status, HEAD, git fsck, user-notes hash, v0.1 25/25 and 7/7, both fingerprints, and the one-file live delta passed independent checks.",
+        "Three unique OS TemporaryDirectory paths were outside the project and cleaned."
+      ]
+    },
+    {
+      "claim": "The v0.2 evidence ledger is not yet acceptable under the live TaskContract policy.",
+      "confidence": "high",
+      "evidence": [
+        "R1: current contracts use undeclared enum values or omit required context_package/classification fields; T1 dependency has no node artifact.",
+        "R2: overwritten historical contract revisions prevent exact revision-level scope reconstruction.",
+        "R3: tasks/todo.md contradicts accepted current evidence."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "Some original historical contract bodies may be unrecoverable; they must be declared unavailable rather than reconstructed as authoritative.",
+    "Edge-case tests and materializer mid-Git-failure recovery remain advisory gaps.",
+    "The scope remains one local fixture and does not validate production, persistent, cross-machine, or every routing/domain scenario."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    "AGENTS.md",
+    "F:/CodexData/.codex/skills/code-review-and-quality/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "docs/decisions/0002-record-v0.1-bundle-fingerprint-errata.md",
+    "docs/decisions/0003-close-transitive-read-and-dirty-state-evidence-gaps.md",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "tasks/plan.md",
+    "tasks/todo.md",
+    "docs/context/adaptive-task-orchestrator-v0.1/",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "fixtures/adaptive-task-orchestrator-write-dag/",
+    "three runtime OS TemporaryDirectory paths created and cleaned by the materializer suite"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "materializer suite with instrumented temp cleanup", "result": "pass", "exit_code": 0, "tests": 5, "temp_directories": 3, "cleaned": true},
+    {"check": "named-run suite", "result": "pass", "exit_code": 0, "tests": 13},
+    {"check": "nested Git status, HEAD, fsck, and diff", "result": "pass"},
+    {"check": "v0.2 JSON parse", "result": "pass", "parsed": 53},
+    {"check": "v0.1 archive/snapshot/fingerprints/live delta", "result": "pass"},
+    {"check": "contract enum, dependency, revision, and checklist audit", "result": "fail", "required_findings": 3}
+  ],
+  "contradictions": [
+    "Several current contracts do not conform to live TaskContract enums or required context fields.",
+    "Stale/blocked receipts exist for revisions whose exact original contract bodies are not preserved.",
+    "tasks/todo.md reports incomplete work already supported by accepted receipts."
+  ],
+  "required_findings": [
+    {
+      "id": "R1",
+      "title": "Current TaskContract set does not conform to the live TaskContract policy",
+      "required_action": "Normalize enums and required fields, add a real T1 root node, and represent fault/root records without silently extending RouteDecision semantics."
+    },
+    {
+      "id": "R2",
+      "title": "Revision-level contract evidence was overwritten",
+      "required_action": "Preserve exact current/future revisioned contracts and explicitly declare unrecoverable historical bodies unavailable; do not invent them."
+    },
+    {
+      "id": "R3",
+      "title": "Completion checklist contradicts accepted evidence",
+      "required_action": "Reconcile each checkbox to an accepted, stale, blocked, or still-pending revision."
+    }
+  ],
+  "advisories": [
+    "Normalize route status/outcome semantics, especially F1, T4 revision 1, and root execution records.",
+    "Add direct edge-case tests and document or improve partial materializer recovery in a later iteration.",
+    "Preserve current bounded validation claims."
+  ],
+  "recommended_next": "review",
+  "root_disposition": {
+    "accepted": true,
+    "accepted_as": "REVISE finding set",
+    "accepted_at_revision": true,
+    "current_scheduler_state": "STALE",
+    "invalidated_by": "T9 evidence-ledger repair and T8-independent-final-review@4"
+  }
+}

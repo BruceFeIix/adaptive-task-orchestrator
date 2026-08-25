@@ -1,0 +1,10 @@
+{
+  "record_kind": "root_execution_record",
+  "task_id": "T7-root-integration",
+  "task_revision": 3,
+  "execution_target": "current_root",
+  "execution_status": "cancelled_pre_dispatch",
+  "exact_root_model_attested": false,
+  "route_status": "inherited-unattested",
+  "reason": "Cancelled before execution because the revisioned contract omitted classification; no receipt was produced."
+}

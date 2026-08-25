@@ -1,0 +1,5 @@
+{
+  "canonical_compatibility_field": "displayName",
+  "source": "v0.2 compatibility specification",
+  "purpose": "Revision-2 input for the deterministic NEEDS_CONTEXT recovery gate"
+}

@@ -1,0 +1,82 @@
+{
+  "id": "T2-schema-writer",
+  "revision": 4,
+  "objective": "Update the fixture User OpenAPI schema so displayName is canonical while legacy name remains accepted and deprecated.",
+  "task_type": "implementation",
+  "mode": "write",
+  "dependencies": [
+    "T1-migration-red-tests@1"
+  ],
+  "inputs": [
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py"
+  ],
+  "deliverable": "A JSON-form OpenAPI contract satisfying the migration schema test.",
+  "read_scope": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T2-schema-writer.json",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py"
+    ,
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/user-notes.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git (read-only via git status/diff)"
+  ],
+  "write_scope": [
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json"
+  ],
+  "resource_locks": [
+    "fixture:20260824-v0.2.0:shared-openapi"
+  ],
+  "context_package": {
+    "authoritative_facts": [
+      "Revisions 1 and 2 are stale because their receipts disclosed reads omitted from the literal read_scope.",
+      "Revision 3 is stale because T4 proved its property order contradicts the approved generated-metadata oracle.",
+      "The accepted ordering decision preserves baseline fields id,name and appends displayName, yielding id,name,displayName.",
+      "The fixture baseline tests passed before migration tests were added.",
+      "The pre-existing user-notes.md dirty SHA-256 is 4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2.",
+      "Only the OpenAPI schema belongs to this node."
+    ],
+    "accepted_upstream_results": [
+      "T1 migration schema test is RED against the legacy contract."
+    ],
+    "user_constraints": [
+      "Preserve the v0.1 baseline and all pre-existing user work.",
+      "Do not install dependencies or use the network."
+    ],
+    "permissions": [
+      "Read the declared scopes and edit only contract/openapi.json."
+    ],
+    "non_goals": [
+      "Do not edit tests, generated output, consumers, user-notes.md, Git metadata, or project documentation."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 2,
+    "context_breadth": 1,
+    "uncertainty": 1,
+    "novelty": 1,
+    "impact": 2,
+    "verifiability": 3,
+    "coupling": 2
+  },
+  "acceptance_checks": [
+    "The receipt binds T2-schema-writer revision 4; revisions 1 through 3 are not current acceptance evidence.",
+    "User.properties order is exactly id, name, displayName.",
+    "The targeted OpenAPI migration test passes.",
+    "openapi.json parses as JSON.",
+    "Git diff reports no changed path outside contract/openapi.json and the pre-existing test/user note changes.",
+    "user-notes.md retains its recorded SHA-256."
+  ],
+  "evidence_required": [
+    "Exact changed path.",
+    "Targeted test command and exit status.",
+    "Post-write user-notes.md SHA-256.",
+    "Git diff/status summary."
+  ],
+  "assurance_requirement": "independent"
+}

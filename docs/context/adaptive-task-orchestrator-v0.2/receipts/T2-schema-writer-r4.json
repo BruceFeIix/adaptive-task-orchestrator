@@ -1,0 +1,69 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "T2-schema-writer",
+  "task_revision": 4,
+  "summary": "Reordered User.properties to id, name, displayName without changing migration semantics. Root accepts the bounded artifact with a caveat: generated/user_fields.py was already dirty from T4 revision 1 and was outside this worker's read/write activity.",
+  "claims": [
+    {
+      "claim": "The schema property order is exactly id, name, displayName and the targeted schema test passes.",
+      "confidence": "high",
+      "evidence": [
+        "Exact order assertion exited 0 and printed ['id', 'name', 'displayName'].",
+        "Targeted OpenAPI migration test exited 0; Ran 1 test; OK.",
+        "py -3 -m json.tool contract/openapi.json exited 0."
+      ]
+    },
+    {
+      "claim": "Revision 4 wrote only contract/openapi.json and preserved user-notes.md.",
+      "confidence": "high",
+      "evidence": [
+        "The worker reported one apply_patch operation targeting only contract/openapi.json.",
+        "user-notes.md SHA-256 remained 4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2."
+      ]
+    }
+  ],
+  "uncertainty": [],
+  "artifacts_or_changes": [
+    {
+      "path": "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+      "action": "reordered User.properties from displayName,id,name to id,name,displayName",
+      "write_scope_compliance": "pass"
+    }
+  ],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T2-schema-writer.json",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/user-notes.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "exact property-order assertion", "result": "pass", "exit_code": 0},
+    {"check": "targeted OpenAPI migration test", "result": "pass", "exit_code": 0},
+    {"check": "JSON parse", "result": "pass", "exit_code": 0},
+    {"check": "user-notes SHA-256", "result": "pass"},
+    {"check": "fixture-wide git status allowlist", "result": "concern", "details": "generated/user_fields.py was dirty from T4-codegen-owner revision 1; T2 did not access or modify it."},
+    {"check": "root repeated artifact, targeted test, hash, and Git inspection", "result": "pass"}
+  ],
+  "contradictions": [
+    "The literal fixture-wide dirty-state check observed generated/user_fields.py. Prior accepted scheduler evidence attributes that path to T4 revision 1; it is not a T2 scope violation."
+  ],
+  "recommended_next": "review",
+  "root_disposition": {
+    "accepted": true,
+    "decision": "ACCEPT_WITH_CAVEATS",
+    "scheduler_state": "ACCEPTED",
+    "accepted_artifact": "contract/openapi.json",
+    "caveat": "Use per-node pre/post baselines or ownership-aware dirty-state checks in a shared dirty fixture; fixture-global cleanliness cannot establish writer attribution.",
+    "stale_predecessors": [
+      "T2-schema-writer@1",
+      "T2-schema-writer@2",
+      "T2-schema-writer@3"
+    ]
+  }
+}

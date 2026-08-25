@@ -1,0 +1,36 @@
+{
+  "intervals": [
+    {
+      "finish_ns": 1787597296539827800,
+      "finish_utc": "2026-08-24T18:48:16.539827800Z",
+      "identity": "V3-T4a-overlap-probe/r1/V3-T4a-overlap-probe-r1",
+      "span_id": "V3-T4a-overlap-probe-r1",
+      "start_ns": 1787597279721455300,
+      "start_utc": "2026-08-24T18:47:59.721455300Z",
+      "task_id": "V3-T4a-overlap-probe",
+      "task_revision": 1
+    },
+    {
+      "finish_ns": 1787597309453998300,
+      "finish_utc": "2026-08-24T18:48:29.453998300Z",
+      "identity": "V3-T4b-overlap-probe/r1/V3-T4b-overlap-probe-r1",
+      "span_id": "V3-T4b-overlap-probe-r1",
+      "start_ns": 1787597287788236000,
+      "start_utc": "2026-08-24T18:48:07.788236000Z",
+      "task_id": "V3-T4b-overlap-probe",
+      "task_revision": 1
+    }
+  ],
+  "non_overlap_count": 0,
+  "overlap_count": 1,
+  "pairs": [
+    {
+      "left": "V3-T4a-overlap-probe/r1/V3-T4a-overlap-probe-r1",
+      "overlap": true,
+      "overlap_finish_ns": 1787597296539827800,
+      "overlap_start_ns": 1787597287788236000,
+      "right": "V3-T4b-overlap-probe/r1/V3-T4b-overlap-probe-r1"
+    }
+  ],
+  "schema_version": 1
+}

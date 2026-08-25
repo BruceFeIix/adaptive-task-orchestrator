@@ -1,0 +1,68 @@
+{
+  "id": "V3-T2-evidence-validator",
+  "revision": 2,
+  "objective": "Close review R2 by fail-closed validating complete selected TaskContract, RouteDecision, root-route, and WorkerReceipt shapes plus receipt status/check consistency while preserving declared v0.2 compatibility.",
+  "task_type": "implementation",
+  "mode": "write",
+  "dependencies": [],
+  "inputs": [
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md",
+    "docs/context/adaptive-task-orchestrator-v0.3/receipts/V3-T6-independent-review-r2.json",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/"
+  ],
+  "deliverable": "validate_evidence.py, focused tests, and a structured worker receipt.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/routing-policy.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "F:/CodexData/.codex/skills/test-driven-development/SKILL.md",
+    "F:/CodexData/.codex/skills/api-and-interface-design/SKILL.md",
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/ (entire completed context package, read-only)",
+    "docs/context/adaptive-task-orchestrator-v0.3/ (current pre-final evidence, read-only)",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/ and tools/ (read-only except declared new files)"
+  ],
+  "write_scope": [
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/test_validate_evidence.py",
+    "Unique automatically cleaned unittest TemporaryDirectory paths outside the project"
+  ],
+  "resource_locks": ["fixture:evidence-validator-source-and-tests"],
+  "context_package": {
+    "authoritative_facts": [
+      "Evidence JSON is untrusted boundary input and unknown shapes must fail closed.",
+      "Executable TaskContracts, preflight_fixture_record contracts, child RouteDecisions, root execution records, and WorkerReceipts are distinct shapes.",
+      "Current executable contracts must match an exact immutable revision copy."
+      ,"Review R2 proved that missing context_package permissions, invalid route/receipt field types, malformed claims/checks, and DONE receipts with failed checks were accepted."
+    ],
+    "relevant_artifacts": [
+      ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+      "docs/context/adaptive-task-orchestrator-v0.2/contracts/",
+      "docs/context/adaptive-task-orchestrator-v0.2/routes/",
+      "docs/context/adaptive-task-orchestrator-v0.2/receipts/"
+    ],
+    "accepted_upstream_results": ["V3-T2@1 was accepted before V3-T6@2 found R2; preserve revision 1 evidence and repair through revision 2."],
+    "user_constraints": ["Standard library only; no v0.1/v0.2 mutation, dependency install, network, or external runtime."],
+    "permissions": ["Edit only the two declared new validator files and use auto-cleaned OS temp directories."],
+    "non_goals": ["Do not validate OpenAPI semantics, reconstruct missing v0.2 contracts, or rewrite historical evidence."]
+  },
+  "classification": {"reasoning_depth": 3, "context_breadth": 3, "uncertainty": 2, "novelty": 2, "impact": 2, "verifiability": 3, "coupling": 2},
+  "acceptance_checks": [
+    "Add adversarial tests reproducing every R2 malformed contract, child route, root route, receipt, claim, check, summary, recommended_next, and DONE-with-failed-check acceptance; record targeted RED.",
+    "Require all six context_package fields with string-list values for current executable contracts while retaining only the explicit declared historical compatibility boundary.",
+    "Validate complete child-route and root-route field types and state combinations, with explicit bounded handling for documented non-dispatched preflight and historical root variants.",
+    "Validate receipt summary/recommended_next strings; claims, checks, uncertainties, contradictions, resources, and artifacts containers; claim confidence/evidence; and task/status identity types.",
+    "Reject status DONE when any check reports a failing result; permit BLOCKED, NEEDS_CONTEXT, and DONE_WITH_CONCERNS to carry explicitly non-passing lifecycle evidence.",
+    "Emit stable JSON findings for missing fields, invalid enums, unresolved dependencies, current/revision mismatch, illegal route state, and receipt revision mismatch.",
+    "Accept explicit preflight and root record variants without treating them as executable child contracts/routes.",
+    "Accept the completed v0.2 package under its declared historical boundaries.",
+    "Run the targeted test module with py -3 -B and report exact counts and exit codes."
+  ],
+  "evidence_required": ["review R2 reproduction", "new RED output", "GREEN output", "diagnostic code inventory", "v0.2 and v0.3 integration results", "changed paths", "explicit lifecycle compatibility caveats"],
+  "assurance_requirement": "root_check"
+}

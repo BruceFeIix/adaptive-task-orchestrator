@@ -1,0 +1,39 @@
+{
+  "status": "NEEDS_CONTEXT",
+  "task_id": "F2-missing-context",
+  "task_revision": 1,
+  "summary": "The required context artifact was absent, so the worker failed closed and did not infer the canonical field from substitutes.",
+  "claims": [
+    {
+      "claim": "docs/context/adaptive-task-orchestrator-v0.2/evidence/F2-required-context.json did not exist.",
+      "confidence": "high",
+      "evidence": [
+        "Test-Path -LiteralPath returned False."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "The canonical compatibility field was unknown because the required artifact was absent."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/F2-missing-context.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/evidence/F2-required-context.json (existence check only)"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "required input existence", "result": "absent"},
+    {"check": "no substitute source accessed", "result": "pass"},
+    {"check": "no writes", "result": "pass"}
+  ],
+  "contradictions": [],
+  "recommended_next": "supply-context",
+  "root_disposition": {
+    "accepted": true,
+    "accepted_as": "NEEDS_CONTEXT fault-gate evidence",
+    "current_scheduler_state": "STALE",
+    "invalidated_by": "F2-missing-context@2 after required context was supplied"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "V3-T5-root-integration",
+  "revision": 1,
+  "objective": "Join all accepted v0.3 implementation and probe artifacts, then run deterministic fixture, evidence, preservation, and nested-Git checks from the current root.",
+  "task_type": "verification",
+  "mode": "read",
+  "dependencies": [
+    "V3-T1-atomic-materializer@2",
+    "V3-T2-evidence-validator@1",
+    "V3-T3-event-log@1",
+    "V3-T4a-overlap-probe@1",
+    "V3-T4b-overlap-probe@1"
+  ],
+  "inputs": [
+    "docs/context/adaptive-task-orchestrator-v0.3/receipts/",
+    "docs/context/adaptive-task-orchestrator-v0.3/evidence/V3-T4-overlap-summary.json",
+    "docs/context/adaptive-task-orchestrator-v0.1/archive.sha256",
+    "docs/context/adaptive-task-orchestrator-v0.1/first-implementation.sha256",
+    "docs/context/adaptive-task-orchestrator-v0.2/integrity.sha256",
+    "fixtures/adaptive-task-orchestrator-write-dag/"
+  ],
+  "deliverable": "A root integration receipt with exact test counts, manifest counts, hashes, route states, nested-Git status, and bounded caveats.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/ (live read-only tree)",
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0005-atomically-publish-materialized-runs.md",
+    "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md",
+    "docs/context/adaptive-task-orchestrator-v0.1/ (read-only completed baseline)",
+    "docs/context/adaptive-task-orchestrator-v0.2/ (read-only completed baseline)",
+    "docs/context/adaptive-task-orchestrator-v0.3/ (current pre-final evidence)",
+    "fixtures/adaptive-task-orchestrator-write-dag/ (source, tests, tools, named run, and nested Git metadata)",
+    "tasks/plan.md",
+    "tasks/todo.md"
+  ],
+  "write_scope": [
+    "Unique automatically cleaned unittest TemporaryDirectory paths outside the project, created solely by fixture tests"
+  ],
+  "resource_locks": [],
+  "context_package": {
+    "authoritative_facts": [
+      "The completed v0.1 and v0.2 context packages are immutable inputs.",
+      "The named run is fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0 with baseline commit 39995e833b35190fdcf80a3ed31449b712e05364.",
+      "Observed probe overlap must remain a single-host execution fact rather than a performance claim."
+    ],
+    "relevant_artifacts": [
+      "docs/context/adaptive-task-orchestrator-v0.3/evidence/V3-T4-overlap-summary.json",
+      "fixtures/adaptive-task-orchestrator-write-dag/tools/",
+      "fixtures/adaptive-task-orchestrator-write-dag/tests/"
+    ],
+    "accepted_upstream_results": [
+      "V3-T1@2, V3-T2@1, V3-T3@1, V3-T4a@1, and V3-T4b@1 are root-accepted."
+    ],
+    "user_constraints": [
+      "Do not mutate v0.1, v0.2, the named run, dependencies, network state, global installations, or external runtimes."
+    ],
+    "permissions": [
+      "Read declared project resources and allow only automatically cleaned unittest temporary-directory writes outside the project."
+    ],
+    "non_goals": [
+      "Do not implement fixes during verification, install a third-party OpenAPI validator, recover stale locks, test a second topology, or claim production readiness."
+    ]
+  },
+  "classification": {"reasoning_depth": 2, "context_breadth": 3, "uncertainty": 1, "novelty": 1, "impact": 2, "verifiability": 3, "coupling": 3},
+  "acceptance_checks": [
+    "The complete fixture unittest suite passes with Python bytecode writes disabled.",
+    "The completed v0.2 named-run suite remains 13/13 and its exact baseline commit, dirty inventory, and user-notes hash remain unchanged.",
+    "validate_evidence.py accepts completed v0.2 and current v0.3 with zero findings.",
+    "The accepted overlap summary has overlap_count at least one and a positive interval.",
+    "No persistent materializer staging or lock artifact exists.",
+    "v0.1 archive remains 25/25 and first implementation remains 7/7; both documented fingerprints reproduce exactly.",
+    "The self-excluding v0.2 integrity manifest remains 100/100.",
+    "All selected JSON and JSONL evidence parses and current/immutable v0.3 contracts match by task revision."
+  ],
+  "evidence_required": [
+    "Exact commands, exit codes, test and manifest counts, hashes, expected nested-Git paths, overlap interval, artifact scan, and caveats."
+  ],
+  "assurance_requirement": "root_check"
+}

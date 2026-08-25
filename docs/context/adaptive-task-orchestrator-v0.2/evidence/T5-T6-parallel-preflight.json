@@ -1,0 +1,16 @@
+{
+  "gate": "parallel-writer-preflight",
+  "tasks": [
+    "T5-server-consumer@1",
+    "T6-client-consumer@1"
+  ],
+  "write_scope_intersection": [],
+  "resource_lock_intersection": [],
+  "decision": "ALLOW_PARALLEL_DISPATCH",
+  "root_merge_owner": true,
+  "join_result": {
+    "full_test_count": 13,
+    "full_test_status": "PASS",
+    "user_notes_sha256": "4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2"
+  }
+}

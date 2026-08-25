@@ -1,0 +1,52 @@
+{
+  "id": "V3-T3-event-log",
+  "revision": 1,
+  "objective": "Use RED/GREEN tests to implement worker-owned JSONL event recording and deterministic local interval validation/overlap summaries.",
+  "task_type": "implementation",
+  "mode": "write",
+  "dependencies": [],
+  "inputs": [
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md"
+  ],
+  "deliverable": "event_log.py, focused tests, and a structured worker receipt.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "F:/CodexData/.codex/skills/test-driven-development/SKILL.md",
+    "F:/CodexData/.codex/skills/api-and-interface-design/SKILL.md",
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/ and tools/ (read-only except declared new files)"
+  ],
+  "write_scope": [
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/event_log.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/test_event_log.py",
+    "Unique automatically cleaned unittest TemporaryDirectory paths outside the project"
+  ],
+  "resource_locks": ["fixture:event-log-source-and-tests"],
+  "context_package": {
+    "authoritative_facts": [
+      "Each task revision owns exactly one event stream; no concurrent shared append is permitted.",
+      "A valid span contains exactly one started then one finished event for one task/revision/span identity.",
+      "Current timestamps are comparable only on this local host and do not support cross-machine claims."
+    ],
+    "relevant_artifacts": ["docs/specs/adaptive-task-orchestrator-v0.3-hardening.md", "docs/decisions/0006-validate-evidence-and-record-worker-owned-events.md"],
+    "accepted_upstream_results": ["The v0.3 spec and ADR-0006 are accepted."],
+    "user_constraints": ["Standard library only; no dependency install, network, shared event file, or v0.1/v0.2 mutation."],
+    "permissions": ["Edit only the two declared new event-log files and use auto-cleaned OS temp directories."],
+    "non_goals": ["Do not build a scheduler, benchmark throughput, or support cross-host clock reconciliation."]
+  },
+  "classification": {"reasoning_depth": 2, "context_breadth": 2, "uncertainty": 1, "novelty": 2, "impact": 2, "verifiability": 3, "coupling": 2},
+  "acceptance_checks": [
+    "Write transition and overlap tests first and record targeted RED output.",
+    "Record stable UTC and epoch-nanosecond timestamps in append-only same-owner JSONL.",
+    "Reject owner mismatches, unknown events, duplicate transitions, finish-before-start, and incomplete spans.",
+    "Classify overlapping and non-overlapping valid intervals exactly and make --require-overlap fail when none overlap.",
+    "Run the targeted test module with py -3 -B and report exact counts and exit codes."
+  ],
+  "evidence_required": ["RED output", "GREEN output", "serialized event example", "transition failures", "overlap/non-overlap results", "changed paths", "single-host caveat"],
+  "assurance_requirement": "root_check"
+}

@@ -1,0 +1,86 @@
+{
+  "id": "T4-codegen-owner",
+  "revision": 3,
+  "objective": "Regenerate generated/user_fields.py exactly once from the independently accepted migrated OpenAPI contract.",
+  "task_type": "implementation",
+  "mode": "write",
+  "dependencies": [
+    "T3-schema-review@4"
+  ],
+  "inputs": [
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/revisions/T4-codegen-owner-r3.contract.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T3-schema-review-r4.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T3-schema-review-r4.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tools/generate.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py"
+  ],
+  "deliverable": "generated/user_fields.py matching the migrated contract.",
+  "read_scope": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T4-codegen-owner.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/revisions/T4-codegen-owner-r3.contract.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T3-schema-review-r4.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T3-schema-review-r4.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tools/generate.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_baseline.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/server/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/consumers/client/user_adapter.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/user-notes.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git (read-only via git status/diff)"
+  ],
+  "write_scope": [
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py"
+  ],
+  "resource_locks": [
+    "fixture:20260824-v0.2.0:generated-output"
+  ],
+  "context_package": {
+    "authoritative_facts": [
+      "T4 revision 1 is BLOCKED historical evidence and revision 2 produced the accepted current artifact.",
+      "Revision 3 adds the required explicit context package and revalidates the same generator-owned artifact without changing its semantics.",
+      "The current pre-write generated SHA-256 is 4203EBE635A76CD5A1BB1076C2A174654C3B3BC4A9DA51CA852FFD6412A3BAE8."
+    ],
+    "accepted_upstream_results": [
+      "T3-schema-review@4 accepted the T2@4 schema and generator compatibility."
+    ],
+    "user_constraints": [
+      "Preserve v0.1 and user-notes.md; no network, dependency install, or hand editing of generated output."
+    ],
+    "permissions": [
+      "Execute the existing generator and write only generated/user_fields.py."
+    ],
+    "non_goals": [
+      "Do not edit schema, generator, tests, consumers, user notes, Git metadata, or documentation."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 1,
+    "context_breadth": 1,
+    "uncertainty": 0,
+    "novelty": 0,
+    "impact": 1,
+    "verifiability": 3,
+    "coupling": 1
+  },
+  "acceptance_checks": [
+    "The pre-write generated artifact SHA-256 is 4203EBE635A76CD5A1BB1076C2A174654C3B3BC4A9DA51CA852FFD6412A3BAE8.",
+    "The receipt binds T4-codegen-owner revision 3; revisions 1 and 2 are historical evidence only.",
+    "Run tools/generate.py without changing it.",
+    "The targeted generated metadata migration test passes.",
+    "Only generated/user_fields.py is added to this node's write diff.",
+    "user-notes.md retains its recorded SHA-256."
+  ],
+  "evidence_required": [
+    "Pre/post SHA-256 for generated/user_fields.py.",
+    "Generator command result.",
+    "Targeted test result.",
+    "Exact changed path and Git diff summary.",
+    "Post-write user-notes SHA-256."
+  ],
+  "assurance_requirement": "deterministic"
+}

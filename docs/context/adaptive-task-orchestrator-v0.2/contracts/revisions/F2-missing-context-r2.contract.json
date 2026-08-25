@@ -1,0 +1,55 @@
+{
+  "id": "F2-missing-context",
+  "revision": 2,
+  "objective": "Verify the canonical compatibility field from the required context artifact and report its exact value.",
+  "task_type": "investigation",
+  "mode": "read",
+  "dependencies": [],
+  "inputs": [
+    "docs/context/adaptive-task-orchestrator-v0.2/evidence/F2-required-context.json"
+  ],
+  "deliverable": "A bounded WorkerReceipt reporting the canonical compatibility field, or NEEDS_CONTEXT if the required artifact is unavailable.",
+  "read_scope": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/F2-missing-context.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/evidence/F2-required-context.json"
+  ],
+  "write_scope": [],
+  "resource_locks": [],
+  "context_package": {
+    "authoritative_facts": [
+      "Revision 1 correctly returned NEEDS_CONTEXT without inference.",
+      "The required input now exists and is the only authority for the requested value."
+    ],
+    "accepted_upstream_results": [],
+    "user_constraints": [
+      "Do not infer the missing value from chat, neighboring files, filenames, or general knowledge."
+    ],
+    "permissions": [
+      "Read only the literal read_scope."
+    ],
+    "non_goals": [
+      "Do not create or modify the missing artifact."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 0,
+    "context_breadth": 0,
+    "uncertainty": 1,
+    "novelty": 0,
+    "impact": 0,
+    "verifiability": 3,
+    "coupling": 0
+  },
+  "acceptance_checks": [
+    "Return DONE and report the exact canonical_compatibility_field from the required artifact.",
+    "Do not access or modify any substitute source."
+  ],
+  "evidence_required": [
+    "Existence check and exact result.",
+    "Complete resources_accessed list.",
+    "No external calls and no writes."
+  ],
+  "assurance_requirement": "deterministic"
+}

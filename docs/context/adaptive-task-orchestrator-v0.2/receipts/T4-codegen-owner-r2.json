@@ -1,0 +1,78 @@
+{
+  "status": "DONE",
+  "task_id": "T4-codegen-owner",
+  "task_revision": 2,
+  "summary": "Ran the existing generator exactly once after the accepted T3 revision 4 gate; the generated metadata now matches the repaired schema and targeted oracle.",
+  "claims": [
+    {
+      "claim": "generated/user_fields.py was regenerated once by the unmodified generator and is consistent with the accepted contract.",
+      "confidence": "high",
+      "evidence": [
+        "Pre-write SHA-256 matched F8FDBDDD82328C7DAC80D160F4955F0242588307ABA9287E6811F4419B11188F.",
+        "py -3 tools/generate.py exited 0.",
+        "Post-write SHA-256 is 4203EBE635A76CD5A1BB1076C2A174654C3B3BC4A9DA51CA852FFD6412A3BAE8.",
+        "Targeted generated metadata test exited 0; Ran 1 test; OK."
+      ]
+    },
+    {
+      "claim": "The node wrote only generated/user_fields.py and preserved user-notes.md.",
+      "confidence": "high",
+      "evidence": [
+        "The worker issued one write-producing generator command and its output target is generated/user_fields.py.",
+        "Scoped diff reports exactly one generated path with 4 insertions and 4 deletions.",
+        "user-notes.md SHA-256 remained 4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "Fixture-global Git status is intentionally dirty; per-node pre/post evidence establishes this node's ownership.",
+    "Git emitted a non-failing LF-to-CRLF inspection warning."
+  ],
+  "artifacts_or_changes": [
+    {
+      "path": "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+      "action": "regenerated_once",
+      "pre_sha256": "F8FDBDDD82328C7DAC80D160F4955F0242588307ABA9287E6811F4419B11188F",
+      "post_sha256": "4203EBE635A76CD5A1BB1076C2A174654C3B3BC4A9DA51CA852FFD6412A3BAE8"
+    }
+  ],
+  "resources_accessed": [
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/T4-codegen-owner.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/T3-schema-review-r4.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T3-schema-review-r4.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/contract/openapi.json",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tools/generate.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/tests/test_migration.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/generated/user_fields.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/user-notes.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/runs/20260824-v0.2.0/.git"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "pre-write generated SHA-256", "result": "pass"},
+    {"check": "generator execution", "result": "pass", "exit_code": 0},
+    {"check": "targeted generated metadata migration test", "result": "pass", "exit_code": 0},
+    {"check": "post-write generated SHA-256", "result": "pass"},
+    {"check": "scoped Git diff", "result": "pass"},
+    {"check": "post-write user-notes SHA-256", "result": "pass"},
+    {"check": "root repeated target test and both hashes", "result": "pass"}
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "root_disposition": {
+    "accepted": true,
+    "accepted_at_revision": true,
+    "current_scheduler_state": "STALE",
+    "invalidated_by": "T4-codegen-owner@3 evidence-ledger conformance repair",
+    "stale_predecessors": [
+      "T4-codegen-owner@1"
+    ],
+    "unblocks": [
+      "T5-server-consumer@1",
+      "T6-client-consumer@1"
+    ]
+  }
+}

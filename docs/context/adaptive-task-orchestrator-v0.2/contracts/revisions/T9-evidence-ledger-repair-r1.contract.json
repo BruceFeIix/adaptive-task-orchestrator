@@ -1,0 +1,90 @@
+{
+  "id": "T9-evidence-ledger-repair",
+  "revision": 1,
+  "objective": "Repair the v0.2 contract, route, revision-history, and checklist evidence required by T8 revision 3 without changing fixture behavior.",
+  "task_type": "synthesis",
+  "mode": "write",
+  "dependencies": [],
+  "inputs": [
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/T8-independent-final-review-r3.json",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/routing-policy.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/",
+    "tasks/todo.md"
+  ],
+  "deliverable": "A conformant current evidence ledger, immutable current/future revision contracts, explicit historical-fidelity declaration, reconciled checklist, and rerunnable validators.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/ (entire live Skill tree, read-only except declared TaskContract policy file)",
+    "F:/CodexData/.codex/skills/documentation-and-adrs/SKILL.md",
+    "F:/CodexData/.codex/skills/code-review-and-quality/SKILL.md",
+    "docs/decisions/",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "docs/context/adaptive-task-orchestrator-v0.1/ (read-only)",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "fixtures/adaptive-task-orchestrator-write-dag/ (read-only)",
+    "tasks/plan.md",
+    "tasks/todo.md"
+  ],
+  "write_scope": [
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    "docs/decisions/0004-preserve-revisioned-task-contract-evidence.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/README.md",
+    "docs/context/adaptive-task-orchestrator-v0.2/contracts/",
+    "docs/context/adaptive-task-orchestrator-v0.2/routes/",
+    "docs/context/adaptive-task-orchestrator-v0.2/receipts/",
+    "docs/context/adaptive-task-orchestrator-v0.2/evidence/",
+    "tasks/plan.md",
+    "tasks/todo.md"
+  ],
+  "resource_locks": [
+    "v0.2:evidence-ledger",
+    "live-skill:task-contract-policy"
+  ],
+  "context_package": {
+    "authoritative_facts": [
+      "T8 revision 3 reported REVISE with Required findings R1, R2, and R3.",
+      "Fixture implementation and all deterministic behavior tests already pass and are out of write scope.",
+      "Original contract bodies that cannot be recovered exactly must be declared unavailable, not fabricated.",
+      "Current/future dispatched revisions must receive immutable revisioned contract copies before dispatch."
+    ],
+    "accepted_upstream_results": [
+      "T7-root-integration@2 implementation and preservation results remain independently valid.",
+      "T8-independent-final-review@3 implementation/preservation findings remain valid; its evidence-ledger decision is REVISE."
+    ],
+    "user_constraints": [
+      "Do not modify v0.1 history, fixture behavior, user-notes.md, nested Git metadata, permissions, global installation, or external runtimes."
+    ],
+    "permissions": [
+      "Root may write only the declared policy, ADR, v0.2 evidence-ledger, and task-tracking paths."
+    ],
+    "non_goals": [
+      "Do not invent unavailable historical contract bodies.",
+      "Do not address Advisory edge-test or materializer recovery work in this repair."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 2,
+    "context_breadth": 3,
+    "uncertainty": 2,
+    "novelty": 1,
+    "impact": 2,
+    "verifiability": 3,
+    "coupling": 3
+  },
+  "acceptance_checks": [
+    "All current TaskContracts use only declared task_type and assurance_requirement values and contain required fields.",
+    "T1 has an auditable root-owned contract, root execution record, and receipt.",
+    "F1/F3 route semantics remain requested/not-dispatched rather than using undeclared route_status values.",
+    "T4 revision 1 distinguishes worker BLOCKED outcome from root acceptance of blocking evidence.",
+    "Every current and future dispatched revision has an exact immutable revisioned contract copy; older unavailable bodies are explicitly declared unavailable with no invented fields.",
+    "tasks/todo.md reconciles completed and pending gates to concrete evidence.",
+    "All v0.2 JSON parses and a deterministic ledger audit passes."
+  ],
+  "evidence_required": [
+    "Exact changed paths, enum/dependency/revision audit output, historical-fidelity matrix, hashes, and remaining caveats."
+  ],
+  "assurance_requirement": "root_check"
+}

@@ -1,0 +1,62 @@
+{
+  "validation_id": "adaptive-task-orchestrator-v0.2-write-dag",
+  "validated_on": "2026-08-25",
+  "overall_result": "ACCEPT_WITH_CAVEATS",
+  "scope": "One bounded local write-producing multi-agent software-development DAG in an isolated nested-Git fixture.",
+  "implementation": {
+    "materializer_tests": {"passed": 5, "failed": 0},
+    "named_run_tests": {"passed": 13, "failed": 0},
+    "fixture_baseline_commit": "39995e833b35190fdcf80a3ed31449b712e05364",
+    "dirty_path_count": 7,
+    "user_notes_sha256": "4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2",
+    "generated_sha256": "4203EBE635A76CD5A1BB1076C2A174654C3B3BC4A9DA51CA852FFD6412A3BAE8",
+    "server_sha256": "969C26DD03C2D533C5248FEDDD5CB3A73CE319AFB697616958E495D04474CFC6",
+    "client_sha256": "C7FB1267D6D767A646700BF7181B8380235CDAE5DAEB2D653F3F5B58550BF00C"
+  },
+  "orchestration": {
+    "current_executable_contracts": 10,
+    "exact_revision_contracts": 19,
+    "explicitly_unavailable_early_contract_bodies": 11,
+    "fault_gates": {
+      "writer_conflict": "PASS_REJECTED_PRE_DISPATCH",
+      "needs_context": "PASS_R1_NEEDS_CONTEXT_R2_RECOVERED_R3_CONFORMANT_ACCEPTED",
+      "stale_and_cancelled_revisions": "PASS",
+      "blocked_repair_loop": "PASS_T4_R1_BLOCKED_T4_R2_REPAIRED_T4_R3_CONFORMANT",
+      "requested_vs_observed": "PASS_F3_REQUESTED_UNATTESTED_NOT_DISPATCHED"
+    },
+    "parallel_claim_boundary": "Disjoint server/client writers were eligible for and received parallel dispatch; no physical-simultaneity or performance claim is made."
+  },
+  "preservation": {
+    "v0_1_archive": "25/25",
+    "v0_1_snapshot": "7/7",
+    "historical_listed_order_ordinal_ignore_case_fingerprint": "8563586856A87E5309CE35459ACAFBC785C413833B3A8494ACA6EA50E1BDFE8D",
+    "true_case_sensitive_ordinal_fingerprint": "11B134AD4C9611F3845BCB1655AA208F361C020AD03D19C06E66E8FC6E295E42",
+    "per_file_hashes_unaffected": true,
+    "live_snapshot_match": "6/7",
+    "sole_live_delta": "references/task-contract.md",
+    "live_task_contract_sha256": "EF6E57688F00DB8BF8FBAFA04DE8E17AF941B8A5277DF188821B183F60B40E9C",
+    "governing_decisions": ["ADR-0003", "ADR-0004"]
+  },
+  "independent_review": {
+    "task": "T8-independent-final-review@6",
+    "decision": "ACCEPT_WITH_CAVEATS",
+    "critical_findings": 0,
+    "required_findings": 0,
+    "advisory_findings": 5
+  },
+  "integrity_manifest": {
+    "path": "integrity.sha256",
+    "algorithm": "SHA-256",
+    "self_excluded": true,
+    "canonical_order": "case-sensitive ordinal relative path",
+    "verification": "Generated after this receipt and verified as the final root step."
+  },
+  "caveats": [
+    "Eleven early overwritten TaskContract bodies remain unavailable and are not reconstructed.",
+    "Materializer mid-operation failure recovery is not implemented beyond fail-closed non-overwrite behavior.",
+    "No third-party OpenAPI validator, persistent scheduler, production workload, cross-machine coordination, or every routing/domain tier was validated.",
+    "The exact inherited root model and effort are not runtime-attested.",
+    "Git line-ending warnings are non-failing but remain a Windows workspace portability risk."
+  ],
+  "root_acceptance": {"accepted": true, "basis": ["T7-root-integration@4", "T8-independent-final-review@6"], "required_follow_up": []}
+}

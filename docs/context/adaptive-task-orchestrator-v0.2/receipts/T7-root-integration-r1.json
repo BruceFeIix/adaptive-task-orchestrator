@@ -1,0 +1,95 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "T7-root-integration",
+  "task_revision": 1,
+  "summary": "Root joined all accepted artifacts and passed the materializer, full fixture, JSON, fault-gate, preservation, fingerprint, policy, and dirty-state checks. Remaining concerns are bounded historical/live-version distinctions and route attestation limits, not failed acceptance gates.",
+  "claims": [
+    {
+      "claim": "The isolated write-producing DAG passes all deterministic implementation and integration tests.",
+      "confidence": "high",
+      "evidence": [
+        "Materializer suite: 5 tests, exit 0.",
+        "Named-run suite: 13 tests, exit 0.",
+        "Full fixture diff check exited 0."
+      ]
+    },
+    {
+      "claim": "The pre-existing user dirty edit was preserved byte-for-byte and the named-run working state contains exactly the accepted paths.",
+      "confidence": "high",
+      "evidence": [
+        "user-notes.md SHA-256 is 4AAD6DFEF0AF92E1421866476F5A20BBA1C2D45CCFE4AA81DB2D1D5A8E4E0AD2.",
+        "Nested baseline HEAD remains 39995e833b35190fdcf80a3ed31449b712e05364.",
+        "Exact seven-path git status assertion passed."
+      ]
+    },
+    {
+      "claim": "The required fault gates all behaved fail closed and recovered only through explicit lifecycle changes.",
+      "confidence": "high",
+      "evidence": [
+        "F1 overlapping write scope and resource lock were rejected before dispatch with zero workers.",
+        "F2 revision 1 returned NEEDS_CONTEXT; revision 2 supplied the required artifact and returned DONE.",
+        "T2/T3/T4 stale revisions and T4 revision 1 BLOCKED evidence were preserved while descendants were replanned.",
+        "F3 unavailable effort tier remains requested and unattested with no worker or receipt.",
+        "T4 revision 2 resolved the ordering contradiction through the sole generated-output owner."
+      ]
+    },
+    {
+      "claim": "The v0.1 evidence archive and immutable snapshot remain intact, and both fingerprint interpretations reproduce.",
+      "confidence": "high",
+      "evidence": [
+        "archive.sha256: 25/25.",
+        "first-implementation.sha256 against snapshot: 7/7.",
+        "OrdinalIgnoreCase fingerprint: 8563586856A87E5309CE35459ACAFBC785C413833B3A8494ACA6EA50E1BDFE8D.",
+        "Ordinal fingerprint: 11B134AD4C9611F3845BCB1655AA208F361C020AD03D19C06E66E8FC6E295E42."
+      ]
+    },
+    {
+      "claim": "The only live-vs-v0.1 Skill delta is the intentional TaskContract policy amendment recorded by ADR-0003.",
+      "confidence": "high",
+      "evidence": [
+        "Six of seven live files still match the immutable snapshot.",
+        "references/task-contract.md changed from F92BAF3F281CF14F09815B721E98B756BA393238CDD732E19C1AB116A5D0EDEC to 01DF6A7455EA8989ECDCCF8EAEB280F0B512E31CD77803966696C18162D5D0B3.",
+        "Policy regression text checks passed."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "The historical fingerprint label remains immutable and must be read with ADR-0002: 856358... is OrdinalIgnoreCase/manifest order; 11B134... is true case-sensitive Ordinal.",
+    "The root execution route is observed but the exact root model/effort is inherited-unattested, so no stronger route claim is made.",
+    "This validation covers one local nested-Git fixture DAG, not a persistent scheduler, cross-machine execution, production workload, or external orchestration runtime.",
+    "No third-party OpenAPI validator was installed; schema behavior is supported by direct review, generator inspection, and standard-library tests."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "docs/decisions/0002-record-v0.1-bundle-fingerprint-errata.md",
+    "docs/decisions/0003-close-transitive-read-and-dirty-state-evidence-gaps.md",
+    "docs/specs/adaptive-task-orchestrator-v0.2-write-dag.md",
+    "docs/context/adaptive-task-orchestrator-v0.1/",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "fixtures/adaptive-task-orchestrator-write-dag/",
+    "tasks/plan.md",
+    "tasks/todo.md"
+  ],
+  "external_calls": [],
+  "checks": [
+    {"check": "materializer unittest suite", "result": "pass", "exit_code": 0, "tests": 5},
+    {"check": "named-run unittest suite", "result": "pass", "exit_code": 0, "tests": 13},
+    {"check": "v0.2 JSON and fault gates", "result": "pass", "exit_code": 0},
+    {"check": "TaskContract policy regression text", "result": "pass", "exit_code": 0},
+    {"check": "v0.1 archive hashes", "result": "pass", "count": "25/25"},
+    {"check": "v0.1 immutable snapshot hashes", "result": "pass", "count": "7/7"},
+    {"check": "historical and true Ordinal fingerprints", "result": "pass"},
+    {"check": "live-vs-v0.1 delta allowlist", "result": "pass", "matching": "6/7", "intentional_delta": "references/task-contract.md"},
+    {"check": "nested baseline identity, exact dirty paths, and user-note hash", "result": "pass", "exit_code": 0}
+  ],
+  "contradictions": [],
+  "recommended_next": "review",
+  "root_disposition": {
+    "accepted": true,
+    "accepted_at_revision": true,
+    "current_scheduler_state": "STALE",
+    "invalidated_by": "T7-root-integration@2 adds the omitted ephemeral TemporaryDirectory write scope"
+  }
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Adaptive Task Orchestrator"
+  short_description: "拆解复杂任务，按风险路由子模型并统一审核"
+  default_prompt: "Use $adaptive-task-orchestrator to decompose this task, route each subtask to an appropriate available model and reasoning effort, verify the outputs, and consolidate the result."
+
+policy:
+  allow_implicit_invocation: true

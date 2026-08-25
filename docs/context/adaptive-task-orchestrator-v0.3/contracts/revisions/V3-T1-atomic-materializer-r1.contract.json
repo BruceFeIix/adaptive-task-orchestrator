@@ -1,0 +1,57 @@
+{
+  "id": "V3-T1-atomic-materializer",
+  "revision": 1,
+  "objective": "Use RED/GREEN tests to make materialize_run publish atomically and clean only its owned staging/lock artifacts on failure while preserving its public receipt interface.",
+  "task_type": "implementation",
+  "mode": "write",
+  "dependencies": [],
+  "inputs": [
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0005-atomically-publish-materialized-runs.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/test_materialize.py"
+  ],
+  "deliverable": "Atomic materializer implementation plus behavior tests and a structured worker receipt.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "F:/CodexData/.codex/skills/test-driven-development/SKILL.md",
+    "docs/specs/adaptive-task-orchestrator-v0.3-hardening.md",
+    "docs/decisions/0005-atomically-publish-materialized-runs.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/ (entire fixture tree, including template and nested-Git named run, read-only except declared source/test files)",
+    "OS Git executable and automatically cleaned unittest TemporaryDirectory paths"
+  ],
+  "write_scope": [
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/test_materialize.py",
+    "Unique automatically cleaned unittest TemporaryDirectory paths outside the project"
+  ],
+  "resource_locks": ["fixture:materializer-source-and-tests"],
+  "context_package": {
+    "authoritative_facts": [
+      "The v0.2 public materialize_run signature and MaterializeReceipt fields must remain compatible.",
+      "A failed owned attempt must leave no final run, baseline receipt, staging directory, or lock; a same-ID retry must succeed.",
+      "Never delete or overwrite a pre-existing final run or receipt."
+    ],
+    "relevant_artifacts": [
+      "fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py",
+      "fixtures/adaptive-task-orchestrator-write-dag/tests/test_materialize.py"
+    ],
+    "accepted_upstream_results": ["The v0.3 spec and ADR-0005 are accepted."],
+    "user_constraints": ["No dependency installation, network, root Git mutation, v0.1/v0.2 edits, or destructive operation outside exact owned temp paths."],
+    "permissions": ["Edit only the two declared fixture files and allow tests to use auto-cleaned OS temp directories."],
+    "non_goals": ["Do not add stale-lock reclamation, modify README/docs, or change the named v0.2 run."]
+  },
+  "classification": {"reasoning_depth": 2, "context_breadth": 2, "uncertainty": 1, "novelty": 1, "impact": 2, "verifiability": 3, "coupling": 2},
+  "acceptance_checks": [
+    "Add a focused failure-injection test and record that it fails against the pre-change implementation.",
+    "After implementation, the failure-injection test proves cleanup and same-ID retry.",
+    "Existing successful materialization, dirty-state, and non-overwrite tests remain green.",
+    "Run the targeted test module with py -3 -B and report exact counts and exit codes.",
+    "Inspect the final diff and confirm only the two owned files changed."
+  ],
+  "evidence_required": ["RED output", "GREEN output", "changed paths", "failure artifact inventory", "compatibility statement", "remaining crash/stale-lock caveat"],
+  "assurance_requirement": "root_check"
+}

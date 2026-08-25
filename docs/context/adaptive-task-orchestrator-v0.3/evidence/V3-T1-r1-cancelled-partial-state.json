@@ -1,0 +1,18 @@
+{
+  "task": "V3-T1-atomic-materializer@1",
+  "scheduler_state": "CANCELLED",
+  "accepted_receipt": false,
+  "reason": "Root discovered contradictory post-promotion cleanup wording in ADR-0005 and interrupted the worker before acceptance.",
+  "partial_artifacts_at_interruption": [
+    {
+      "path": "fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py",
+      "sha256": "D703899A449B8C4FCE9D26FC13DA79BB554EA9816F7AABC5059BBB43A59FB883"
+    },
+    {
+      "path": "fixtures/adaptive-task-orchestrator-write-dag/tests/test_materialize.py",
+      "sha256": "D12157154C8E08A429863F459E2D526CE0DE2A9345AB4E690F38EAD95C6B22E4"
+    }
+  ],
+  "root_inspection": "The partial implementation stages under a UUID path and cleans pre-promotion failure, but it promotes the run before receipt publication and does not roll the invocation-owned final run back if receipt publication raises.",
+  "disposition": "Preserved as unaccepted input to revision 2; revision 2 must add a post-promotion failure RED test before repair."
+}
