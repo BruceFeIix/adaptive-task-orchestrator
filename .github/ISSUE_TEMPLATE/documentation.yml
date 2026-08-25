@@ -1,0 +1,44 @@
+name: Documentation issue
+description: Report an inaccurate, unclear, missing, or unsynchronized document.
+title: "[Docs]: "
+labels: []
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page or path
+      placeholder: README.md or docs/decisions/0001-...
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - English
+        - Simplified Chinese
+        - Both
+        - Not language-specific
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What is inaccurate or missing?
+      description: Quote only the minimum text needed and explain the factual problem.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Authoritative source
+      description: Link the live Skill, policy reference, specification, ADR, fixture, or evidence that should govern the correction.
+    validations:
+      required: true
+  - type: checkboxes
+    id: sync
+    attributes:
+      label: Synchronization
+      options:
+        - label: I checked whether the corresponding English or Chinese documentation needs the same factual update.
+          required: true

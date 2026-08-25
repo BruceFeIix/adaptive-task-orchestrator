@@ -1,0 +1,65 @@
+name: Bug report
+description: Report reproducible incorrect behavior in the Skill, fixture, or evidence tools.
+title: "[Bug]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include credentials, private repository content, or unsanitized agent evidence. Report security issues through SECURITY.md.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and its impact.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: State the policy, interface, or invariant you expected.
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: Skill revision
+      description: Commit SHA, tag, or versioned evidence milestone.
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Task mode
+      options:
+        - read
+        - write
+        - external_action
+        - not applicable
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Sanitized reproduction
+      description: Include minimal inputs, commands, stable diagnostic codes, and TaskContract/RouteDecision/WorkerReceipt excerpts when relevant.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Codex/runtime context, OS, Python version, and Git version when relevant.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: I removed secrets, private repository data, personal paths, and unrelated user content.
+          required: true
+        - label: This report is not a vulnerability requiring private disclosure.
+          required: true
