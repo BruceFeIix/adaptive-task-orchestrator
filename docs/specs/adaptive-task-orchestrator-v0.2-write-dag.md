@@ -147,7 +147,7 @@ def require_new_run(run_root: Path) -> None:
 
 - Modify `docs/context/adaptive-task-orchestrator-v0.1/snapshot/`.
 - Rewrite verbatim historical reports or existing v0.1 hash manifests.
-- Run destructive Git operations against `F:\Projects\CodexProjects`.
+- Run destructive Git operations against the repository root.
 - Install the Skill globally, add an external orchestration runtime, or broaden permissions.
 - Allow concurrent writers to share a path, generated directory, Git index, or mutable service state.
 - Claim end-to-end validation when any required receipt or deterministic check is missing.

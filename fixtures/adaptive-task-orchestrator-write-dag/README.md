@@ -22,4 +22,5 @@ py -3 -B fixtures/adaptive-task-orchestrator-write-dag/tools/event_log.py summar
 
 `validate_evidence.py` validates selected TaskContract, immutable-revision, route, and receipt records and emits stable machine-readable findings. It intentionally does not validate arbitrary domain JSON, OpenAPI semantics, runtime model registries, or signatures/authenticity. `event_log.py` requires a separate stream per task revision; its local timestamps can establish interval overlap on one host, not scheduler performance or cross-host clock correctness.
 
-Run directories contain nested `.git` metadata by design. Git commands must target the exact run directory and must never target `F:\Projects\CodexProjects`.
+Run directories contain nested `.git` metadata by design. Git commands must target
+the exact run directory and must never target the repository root.

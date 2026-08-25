@@ -51,3 +51,11 @@ jobs:
         run: >-
           python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py
           --context-root docs/context/adaptive-task-orchestrator-v0.3
+
+      - name: Verify v0.2 integrity manifest
+        working-directory: docs/context/adaptive-task-orchestrator-v0.2
+        run: sha256sum --check integrity.sha256
+
+      - name: Verify v0.3 integrity manifest
+        working-directory: docs/context/adaptive-task-orchestrator-v0.3
+        run: sha256sum --check integrity.sha256

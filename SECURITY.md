@@ -6,7 +6,10 @@ Security fixes are applied to the current `main` branch. Until the project publi
 
 ## Report a vulnerability
 
-Do not open a public issue for a suspected vulnerability, credential exposure, private-repository leak, unsafe fixture behavior, or permission-boundary bypass.
+Do not put vulnerability details in a public issue for a suspected vulnerability,
+credential exposure, private-repository leak, unsafe fixture behavior, or
+permission-boundary bypass. Use the detail-free fallback below only when private
+reporting is unavailable.
 
 Use [GitHub private vulnerability reporting](https://github.com/BruceFeIix/adaptive-task-orchestrator/security/advisories/new) to send:
 
@@ -17,7 +20,11 @@ Use [GitHub private vulnerability reporting](https://github.com/BruceFeIix/adapt
 - any suggested mitigation;
 - confirmation that the report contains no unrelated secrets or private project data.
 
-If private vulnerability reporting is unavailable, contact the repository owner through an appropriate private GitHub channel before disclosing details publicly.
+If private vulnerability reporting is unavailable, open a public issue containing
+no vulnerability details and ask the maintainer to establish a private reporting
+channel. For an active exposure of GitHub-hosted data, use GitHub's abuse-reporting
+flow as appropriate. Never publish exploit details, secrets, or affected-user data
+in an issue.
 
 The project does not currently promise a response-time SLA, bug bounty, certification, or production security support. Maintainers will acknowledge and assess reports on a best-effort basis and coordinate disclosure when a fix is ready.
 

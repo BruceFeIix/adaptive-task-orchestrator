@@ -9,6 +9,12 @@ The directories in this location preserve accepted validation artifacts. They ar
 
 Each package defines its own read order, claim boundary, caveats, and self-excluding SHA-256 manifest. Treat accepted package files as immutable. Record later corrections through a new ADR or a new versioned package.
 
+Some immutable historical documents retain the original
+`F:\Projects\CodexProjects` workspace path. That path is provenance, not a public
+usage instruction. Run the commands documented in the top-level READMEs from the
+root of your clone, and do not rewrite evidence packages merely to make historical
+paths portable.
+
 ## Public packaging boundary
 
 The original v0.1 archive is not included in this public repository because it contains task transcripts, local paths, identifiers, and verbatim historical material that are not required to use the Skill. Its immutable private baseline is not rewritten or presented here as publicly reproducible evidence.
