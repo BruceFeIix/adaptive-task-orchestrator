@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.10"
+          - "3.11"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Run fixture tooling suite
+        run: >-
+          python -B -m unittest discover
+          -s fixtures/adaptive-task-orchestrator-write-dag/tests
+          -v
+
+      - name: Validate v0.2 evidence
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.2
+
+      - name: Validate v0.3 evidence
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.3
