@@ -1,0 +1,94 @@
+{
+  "id": "V4-T2-integrity-verifier",
+  "revision": 1,
+  "objective": "Implement the minimal read-only portable integrity verifier that makes the accepted V4-T1 RED suite GREEN without changing existing validator behavior.",
+  "task_type": "implementation",
+  "mode": "write",
+  "dependencies": [
+    "V4-T1-red-tests"
+  ],
+  "inputs": [
+    "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/test_verify_integrity.py",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "docs/context/adaptive-task-orchestrator-v0.3/"
+  ],
+  "deliverable": "A single standard-library verify_integrity.py module and an evidence-bearing worker receipt.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/routing-policy.md",
+    ".agents/skills/adaptive-task-orchestrator/references/review-and-escalation.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "F:/CodexData/.codex/skills/test-driven-development/SKILL.md",
+    "F:/CodexData/.codex/skills/incremental-implementation/SKILL.md",
+    "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+    "docs/decisions/0009-verify-evidence-manifests-portably.md",
+    "tasks/plan.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/ (entire fixture, read-only except the declared tool file)",
+    "docs/context/adaptive-task-orchestrator-v0.2/ (entire immutable package)",
+    "docs/context/adaptive-task-orchestrator-v0.3/ (entire immutable package)"
+  ],
+  "write_scope": [
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py",
+    "Automatically cleaned unittest TemporaryDirectory paths outside the repository"
+  ],
+  "resource_locks": [
+    "fixture:verify-integrity-tool"
+  ],
+  "context_package": {
+    "authoritative_facts": [
+      "V4-T1@1 must be accepted with retained RED evidence before this task starts.",
+      "The manifest grammar, finding codes, quiescent-package boundary, supported matrix, and non-goals are fixed by the approved specification.",
+      "The public function returns a deterministic sorted list of immutable findings; the CLI returns 0 for no findings, 1 for findings, and argparse-controlled 2 for usage errors.",
+      "Accepted v0.2 and v0.3 bytes and validate_evidence.py behavior are immutable."
+    ],
+    "relevant_artifacts": [
+      "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+      "fixtures/adaptive-task-orchestrator-write-dag/tests/test_verify_integrity.py",
+      "fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py",
+      "docs/context/adaptive-task-orchestrator-v0.2/integrity.sha256",
+      "docs/context/adaptive-task-orchestrator-v0.3/integrity.sha256"
+    ],
+    "accepted_upstream_results": [
+      "V4-T1@1 exact targeted RED result and accepted test module."
+    ],
+    "user_constraints": [
+      "Standard library only; no dependency install, network, external runtime, historical package mutation, public push, tag, or release."
+    ],
+    "permissions": [
+      "Edit only verify_integrity.py and use automatically cleaned temporary directories while running tests."
+    ],
+    "non_goals": [
+      "Do not change tests to manufacture GREEN, alter validate_evidence.py, add a manifest generator, add signatures, claim authenticity, or broaden into strict closure/crash recovery/second-domain work."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 3,
+    "context_breadth": 2,
+    "uncertainty": 2,
+    "novelty": 2,
+    "impact": 2,
+    "verifiability": 3,
+    "coupling": 2
+  },
+  "acceptance_checks": [
+    "Make the unchanged accepted V4-T1 targeted test module pass without weakening or skipping any test.",
+    "Make the complete fixture unittest suite pass.",
+    "Accept the unchanged v0.2 100-entry and v0.3 65-entry manifests with zero findings.",
+    "Emit the exact stable finding sets required for malformed input, unsafe paths, incomplete inventory, unsupported objects, read failures, and digest mismatch.",
+    "Prove two validations are repeatable and package inventories/digests remain unchanged under python -B.",
+    "Modify no file outside the declared tool path."
+  ],
+  "evidence_required": [
+    "changed path and SHA-256",
+    "targeted GREEN command, test count, and exit status",
+    "full-suite command, test count, and exit status",
+    "v0.2 and v0.3 verifier outputs and entry counts",
+    "read-only before/after identities",
+    "out-of-scope change check",
+    "explicit residual caveats"
+  ],
+  "assurance_requirement": "root_check"
+}

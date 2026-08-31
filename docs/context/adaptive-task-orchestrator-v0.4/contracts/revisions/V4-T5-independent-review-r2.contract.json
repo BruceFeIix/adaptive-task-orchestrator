@@ -1,0 +1,87 @@
+{
+  "id": "V4-T5-independent-review",
+  "revision": 2,
+  "objective": "Perform a fresh adversarial review of the complete v0.4 implementation, tests, integration, evidence, compatibility, and public claim boundary without editing repository files.",
+  "task_type": "review",
+  "mode": "read",
+  "dependencies": [
+    "V4-T2-integrity-verifier@2",
+    "V4-T3-compatibility-verification@2",
+    "V4-T4-public-integration@2"
+  ],
+  "inputs": [
+    "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+    "docs/decisions/0009-verify-evidence-manifests-portably.md",
+    "Complete v0.4 branch diff",
+    "All targeted, regression, mutation, compatibility, integration, and evidence results"
+  ],
+  "deliverable": "An independent ACCEPT, ACCEPT_WITH_CAVEATS, REVISE, REPLAN, or STOP decision with prioritized evidence-backed findings.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/routing-policy.md",
+    ".agents/skills/adaptive-task-orchestrator/references/review-and-escalation.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "F:/CodexData/.codex/skills/code-review-and-quality/SKILL.md",
+    "Entire adaptive-task-orchestrator repository at the final pre-review branch state",
+    "Git metadata required for status, history, and diff inspection"
+  ],
+  "write_scope": [],
+  "resource_locks": [],
+  "context_package": {
+    "authoritative_facts": [
+      "The approved v0.4 specification and ADR-0009 are the review authority.",
+      "The reviewer did not author V4-T1, V4-T2, V4-T3, or V4-T4 outputs.",
+      "Passing tests do not substitute for reviewing path containment, filesystem error handling, compatibility, or public claim boundaries.",
+      "Integrity remains relative to a trusted manifest and the quiescent-package model."
+    ],
+    "relevant_artifacts": [
+      "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+      "docs/decisions/0009-verify-evidence-manifests-portably.md",
+      "fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py",
+      "fixtures/adaptive-task-orchestrator-write-dag/tests/test_verify_integrity.py",
+      ".github/workflows/ci.yml",
+      "README.md",
+      "README.zh-CN.md",
+      "docs/context/adaptive-task-orchestrator-v0.4/"
+    ],
+    "accepted_upstream_results": [
+      "Accepted receipts and root checks for V4-T1@1, V4-T2@2, V4-T3@2, and V4-T4@2."
+    ],
+    "user_constraints": [
+      "Read-only review; no historical mutation, dependency install, network, public push, tag, or release."
+    ],
+    "permissions": [
+      "Inspect repository files and Git metadata and run read-only or automatically cleaned temporary-directory checks."
+    ],
+    "non_goals": [
+      "Do not repair findings, rewrite evidence, broaden the approved version, or assess external authenticity."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 3,
+    "context_breadth": 3,
+    "uncertainty": 2,
+    "novelty": 2,
+    "impact": 2,
+    "verifiability": 2,
+    "coupling": 3
+  },
+  "acceptance_checks": [
+    "Review specification conformance, path safety, deterministic failure behavior, filesystem error handling, read-only guarantees, and manifest completeness logic.",
+    "Review test quality for missing counterexamples, platform assumptions, weakened assertions, and false-positive GREEN behavior.",
+    "Review public API compatibility, CI portability and permissions, v0.2/v0.3 immutability, bilingual claims, and integrity-not-authenticity wording.",
+    "Reproduce decisive checks where practical and identify every missing or inconclusive required check.",
+    "Return no ACCEPT decision while any Critical or Required finding remains unresolved."
+  ],
+  "evidence_required": [
+    "reviewed commit and diff identity",
+    "evidence and commands inspected",
+    "prioritized findings with file and line locations",
+    "failed or missing checks",
+    "residual risks",
+    "final review decision and required next action"
+  ],
+  "assurance_requirement": "independent_adversarial"
+}

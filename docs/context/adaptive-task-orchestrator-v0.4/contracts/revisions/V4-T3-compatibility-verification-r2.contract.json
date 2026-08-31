@@ -1,0 +1,88 @@
+{
+  "id": "V4-T3-compatibility-verification",
+  "revision": 2,
+  "objective": "Independently verify the implemented verifier's mutation behavior, read-only guarantee, legacy-package compatibility, and supported-runtime evidence without editing repository files.",
+  "task_type": "verification",
+  "mode": "read",
+  "dependencies": [
+    "V4-T2-integrity-verifier@2"
+  ],
+  "inputs": [
+    "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/test_verify_integrity.py",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "docs/context/adaptive-task-orchestrator-v0.3/"
+  ],
+  "deliverable": "A read-only verification receipt containing exact commands, mutation findings, runtime facts available locally, compatibility counts, and residual uncertainty.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/routing-policy.md",
+    ".agents/skills/adaptive-task-orchestrator/references/review-and-escalation.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+    "docs/decisions/0009-verify-evidence-manifests-portably.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/ (entire fixture)",
+    "docs/context/adaptive-task-orchestrator-v0.2/ (entire immutable package)",
+    "docs/context/adaptive-task-orchestrator-v0.3/ (entire immutable package)",
+    ".github/workflows/ci.yml"
+  ],
+  "write_scope": [
+    "Automatically cleaned unittest TemporaryDirectory paths outside the repository"
+  ],
+  "resource_locks": [],
+  "context_package": {
+    "authoritative_facts": [
+      "This task must not edit repository files.",
+      "Local Windows execution can verify only installed Python runtimes; GitHub Actions is the final Linux/Windows four-cell oracle after an authorized branch push.",
+      "Integrity is relative to a trusted manifest and does not establish authenticity.",
+      "v0.2 and v0.3 packages are immutable positive integration fixtures."
+    ],
+    "relevant_artifacts": [
+      "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+      "fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py",
+      "fixtures/adaptive-task-orchestrator-write-dag/tests/test_verify_integrity.py",
+      "docs/context/adaptive-task-orchestrator-v0.2/integrity.sha256",
+      "docs/context/adaptive-task-orchestrator-v0.3/integrity.sha256"
+    ],
+    "accepted_upstream_results": [
+      "V4-T2@2 implementation and root-check evidence."
+    ],
+    "user_constraints": [
+      "No repository writes, historical mutation, dependencies, network, public push, tag, or release."
+    ],
+    "permissions": [
+      "Run read-only repository commands and tests that write only to automatically cleaned temporary directories."
+    ],
+    "non_goals": [
+      "Do not repair findings, edit CI or docs, claim unexecuted Linux evidence, or assess signatures/authenticity."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 2,
+    "context_breadth": 3,
+    "uncertainty": 1,
+    "novelty": 1,
+    "impact": 1,
+    "verifiability": 3,
+    "coupling": 1
+  },
+  "acceptance_checks": [
+    "Run the targeted and full test commands once on each locally available supported Python runtime and report exact counts and exit statuses.",
+    "Run the new verifier separately against unchanged v0.2 and v0.3 and report zero findings plus exact entry counts.",
+    "Run the existing structural validator separately against v0.2 and v0.3.",
+    "Inspect the complete mutation corpus for exact expected/actual finding-set assertions, repeatability, and before/after package identities.",
+    "Report the supported-matrix cells not locally executed as pending CI rather than passing."
+  ],
+  "evidence_required": [
+    "exact commands and exit statuses",
+    "test counts per local runtime",
+    "mutation coverage inventory",
+    "v0.2 and v0.3 entry counts",
+    "before/after repository status and package identities",
+    "pending CI cells and residual caveats"
+  ],
+  "assurance_requirement": "independent"
+}

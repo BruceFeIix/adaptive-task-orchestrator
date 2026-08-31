@@ -1,0 +1,104 @@
+{
+  "id": "V4-T4-public-integration",
+  "revision": 1,
+  "objective": "Integrate the accepted verifier into the four-cell CI workflow and synchronize English, Chinese, fixture, and changelog documentation within the approved integrity claim boundary.",
+  "task_type": "implementation",
+  "mode": "write",
+  "dependencies": [
+    "V4-T2-integrity-verifier",
+    "V4-T3-compatibility-verification"
+  ],
+  "inputs": [
+    "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py",
+    ".github/workflows/ci.yml",
+    "README.md",
+    "README.zh-CN.md",
+    "CHANGELOG.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/README.md"
+  ],
+  "deliverable": "A portable four-cell CI workflow and synchronized bilingual/public documentation in exactly five owned files.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/routing-policy.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+    "docs/decisions/0009-verify-evidence-manifests-portably.md",
+    "tasks/plan.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/ (entire fixture, read-only except fixture README)",
+    "docs/context/adaptive-task-orchestrator-v0.2/ (entire immutable package)",
+    "docs/context/adaptive-task-orchestrator-v0.3/ (entire immutable package)",
+    ".github/workflows/ci.yml",
+    "README.md",
+    "README.zh-CN.md",
+    "CHANGELOG.md"
+  ],
+  "write_scope": [
+    ".github/workflows/ci.yml",
+    "README.md",
+    "README.zh-CN.md",
+    "CHANGELOG.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/README.md"
+  ],
+  "resource_locks": [
+    "public:ci-and-bilingual-docs"
+  ],
+  "context_package": {
+    "authoritative_facts": [
+      "CI must use exactly ubuntu-latest and windows-latest with Python 3.10 and 3.11.",
+      "Workflow permissions remain exactly contents: read and no dependency-install or network step is added.",
+      "All run commands must work in the default shell of both runner OS families.",
+      "Public claims must describe integrity or tamper detection only relative to a trusted manifest.",
+      "Strict evidence closure, crash recovery, signatures, authenticity, third-party OpenAPI semantics, and the second domain remain deferred."
+    ],
+    "relevant_artifacts": [
+      "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+      ".github/workflows/ci.yml",
+      "README.md",
+      "README.zh-CN.md",
+      "CHANGELOG.md",
+      "fixtures/adaptive-task-orchestrator-write-dag/README.md"
+    ],
+    "accepted_upstream_results": [
+      "V4-T2@1 implementation evidence.",
+      "V4-T3@1 compatibility and local-runtime verification receipt."
+    ],
+    "user_constraints": [
+      "Do not add dependencies, modify historical evidence, use networked install steps, push, tag, or publish."
+    ],
+    "permissions": [
+      "Edit only the five declared public integration files and run read-only checks."
+    ],
+    "non_goals": [
+      "Do not change production verifier behavior or tests, create v0.4 package evidence, claim GitHub Actions passed before an authorized push, or broaden v0.4 scope."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 2,
+    "context_breadth": 3,
+    "uncertainty": 1,
+    "novelty": 1,
+    "impact": 2,
+    "verifiability": 3,
+    "coupling": 2
+  },
+  "acceptance_checks": [
+    "Set the workflow matrix to the exact approved OS and Python values while retaining contents: read and bounded timeout behavior.",
+    "Run the full test suite plus separate v0.2/v0.3 structural and integrity commands in every matrix job using portable Python commands.",
+    "Remove direct GNU sha256sum reliance without adding an install or dependency step.",
+    "Synchronize version, command, test count, supported matrix, trusted-manifest premise, and deferred limitations across English and Chinese documentation.",
+    "Resolve every changed relative Markdown link and pass git diff --check for owned files."
+  ],
+  "evidence_required": [
+    "changed paths",
+    "workflow matrix and permission inspection",
+    "portable local command results",
+    "bilingual fact table",
+    "relative-link check",
+    "owned-path diff and out-of-scope check",
+    "pending GitHub Actions caveat"
+  ],
+  "assurance_requirement": "root_check"
+}

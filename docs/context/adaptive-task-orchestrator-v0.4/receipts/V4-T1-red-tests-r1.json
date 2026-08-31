@@ -1,0 +1,114 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "V4-T1-red-tests",
+  "task_revision": 1,
+  "summary": "Created and root-accepted one focused 14-method RED unittest module for the complete approved portable-integrity behavior; the qualifying Python 3.10 and 3.11 runs fail only because verify_integrity.py is absent.",
+  "claims": [
+    {
+      "claim": "The final test source is syntactically valid and exercises the approved manifest grammar, path-safety, inventory, digest, ordering, collision, filesystem error, repeatability, read-only, immutable-finding, and CLI behavior.",
+      "confidence": "high",
+      "evidence": [
+        "Python AST parsing passed after the bounded repair.",
+        "Fourteen discovered test methods contain positive v0.2/v0.3 cases and the complete specified mutation groups.",
+        "Unsafe-path cases run twice, compare package snapshots, and reject any attempted Path.open outside the selected package."
+      ]
+    },
+    {
+      "claim": "The retained qualifying RED is an implementation failure rather than malformed test syntax.",
+      "confidence": "high",
+      "evidence": [
+        "Python 3.10: 14 tests, 52 missing-module errors, 1 symlink skip, exit 1.",
+        "Python 3.11: 14 tests, 52 missing-module errors, 1 symlink skip, exit 1.",
+        "Both runs end with ModuleNotFoundError: No module named 'verify_integrity'.",
+        "verify_integrity.py remained absent after both runs."
+      ]
+    },
+    {
+      "claim": "The task changed only its declared test path.",
+      "confidence": "high",
+      "evidence": [
+        "The owned path was absent before dispatch and has final SHA-256 1FFBD6FA3C264D48385262F385AA2C447E2A2C93C57602734D29B50EA1A89E98.",
+        "No production module, cache, dependency, accepted-package file, route, receipt, or evidence file was created by the worker."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "The local Windows host lacks symlink-creation privilege, so the combined real-symlink method was skipped locally and remains pending an environment that permits symlinks.",
+    "Platform-specific OSError detail prose is intentionally not asserted; exact stable code/path sets and repeatability are asserted.",
+    "The worker's first historical targeted invocation exposed a test f-string syntax error. The worker corrected it before any production code existed; subsequent AST and qualifying RED checks are valid, but the literal first-run contract condition was not met."
+  ],
+  "artifacts_or_changes": [
+    {
+      "path": "fixtures/adaptive-task-orchestrator-write-dag/tests/test_verify_integrity.py",
+      "action": "added",
+      "before": "ABSENT",
+      "sha256": "1FFBD6FA3C264D48385262F385AA2C447E2A2C93C57602734D29B50EA1A89E98"
+    }
+  ],
+  "resources_accessed": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "F:/CodexData/.codex/skills/test-driven-development/SKILL.md",
+    "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+    "docs/decisions/0009-verify-evidence-manifests-portably.md",
+    "tasks/plan.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "docs/context/adaptive-task-orchestrator-v0.3/",
+    "Automatically cleaned unittest TemporaryDirectory paths"
+  ],
+  "external_calls": [],
+  "checks": [
+    {
+      "check": "Worker's first targeted attempt exposed a test f-string syntax error before the qualifying RED run.",
+      "result": "concern",
+      "exit_code": 1
+    },
+    {
+      "check": "Final test source parses with Python AST.",
+      "result": "pass",
+      "exit_code": 0
+    },
+    {
+      "check": "py -3.10 -B -m unittest discover -s fixtures/adaptive-task-orchestrator-write-dag/tests -p test_verify_integrity.py -v",
+      "result": "expected_red",
+      "tests": 14,
+      "errors": 52,
+      "skipped": 1,
+      "exit_code": 1,
+      "failure_signature": "ModuleNotFoundError: No module named 'verify_integrity'"
+    },
+    {
+      "check": "py -3.11 -B -m unittest discover -s fixtures/adaptive-task-orchestrator-write-dag/tests -p test_verify_integrity.py -v",
+      "result": "expected_red",
+      "tests": 14,
+      "errors": 52,
+      "skipped": 1,
+      "exit_code": 1,
+      "failure_signature": "ModuleNotFoundError: No module named 'verify_integrity'"
+    },
+    {
+      "check": "Production verifier absence and fixture bytecode absence.",
+      "result": "pass",
+      "exit_code": 0
+    },
+    {
+      "check": "Root review of the complete final test module and scoped SHA-256 identity.",
+      "result": "pass",
+      "exit_code": 0
+    }
+  ],
+  "contradictions": [
+    "The literal first targeted invocation was malformed, while the final qualifying RED executions on both supported local runtimes were valid missing-implementation failures. Root accepts this as a disclosed process caveat because no production code existed during either attempt and the final oracle is valid."
+  ],
+  "recommended_next": "accept-with-caveat-and-dispatch-V4-T2@2",
+  "root_disposition": {
+    "accepted": true,
+    "decision": "ACCEPT_WITH_CAVEATS",
+    "scheduler_state": "ACCEPTED",
+    "residual_caveats": [
+      "historical first-run syntax error",
+      "local symlink test skipped pending a permitted environment"
+    ]
+  }
+}
