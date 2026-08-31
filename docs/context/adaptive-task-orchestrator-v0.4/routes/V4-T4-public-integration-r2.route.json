@@ -1,0 +1,10 @@
+{
+  "record_kind": "root_execution_record",
+  "task_id": "V4-T4-public-integration",
+  "task_revision": 2,
+  "execution_target": "current_root",
+  "execution_status": "observed",
+  "exact_root_model_attested": false,
+  "route_status": "inherited-unattested",
+  "reason": "The current root serially owns the five shared CI and bilingual public-documentation files and will perform the required root check."
+}
