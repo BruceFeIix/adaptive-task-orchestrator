@@ -1,0 +1,29 @@
+{
+  "task_id": "V4-T5-independent-review",
+  "task_revision": 2,
+  "profile": "quality",
+  "preferred_capability": "frontier_reviewer",
+  "requested_capability": "frontier_reviewer",
+  "route_reason_codes": [
+    "fresh-independent-adversarial-review",
+    "untrusted-filesystem-boundary",
+    "cross-platform-public-claim-gate"
+  ],
+  "effective_floor": "frontier_reviewer",
+  "floor_reasons": [
+    "The final gate must independently challenge path safety, deterministic failure semantics, test quality, evidence closure, CI portability, and public integrity claims before release readiness."
+  ],
+  "selected_model": "gpt-5.6-sol",
+  "selected_effort": "xhigh",
+  "fork_turns": "none",
+  "fallback_chain": [
+    "gpt-5.6-sol/max"
+  ],
+  "selection_reason": "quality-raise",
+  "route_status": "requested",
+  "capability_attested": true,
+  "attestation_source": "runtime-schema",
+  "floor_satisfied": true,
+  "worker": "/root/v4_independent_reviewer",
+  "dispatch_result": "requested"
+}
