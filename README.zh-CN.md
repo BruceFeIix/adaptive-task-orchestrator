@@ -32,7 +32,7 @@
 | 任务合同、路由决策、回执和审查门槛 | 对 Codex 工具、权限或沙箱的替代 |
 | 依赖感知编排和写入归属规则 | 自动扩大权限或无边界自主委派 |
 | 带故障关闭风险下限的能力路由 | 对模型可用性或路由证明的保证 |
-| 标准库 fixture 和证据验证工具 | 生产、吞吐、延迟或跨主机保证 |
+| 标准库 fixture、结构验证和便携完整性工具 | 生产、吞吐、延迟或跨主机保证 |
 | 单主机插桩重叠证据 | 跨主机时钟正确性或分布式追踪 |
 
 Codex 仍然是执行环境。当前对话模型仍然负责范围、授权、冲突解决、外部操作、集成和最终交付。
@@ -190,9 +190,10 @@ py -3 -B -m unittest discover `
   -s fixtures/adaptive-task-orchestrator-write-dag/tests -v
 ```
 
-当前测试套件包含 44 项测试，覆盖原子化 materialization、证据验证和工作者独占事件流。
+当前测试套件包含 58 项测试，覆盖原子化 materialization、结构化证据验证、
+工作者独占事件流和便携 manifest 完整性行为。
 
-### 验证已发布证据包
+### 验证已发布证据包的结构
 
 ```bash
 python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py \
@@ -203,6 +204,25 @@ python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.
 ```
 
 退出码 `0` 表示所选 TaskContract、路由、不可变 revision 和回执记录全部通过。该验证器不证明签名、工件真实性、任意领域 JSON 的正确性、OpenAPI 语义或运行时模型可用性。
+
+### 验证已发布证据包的文件清单和字节
+
+便携校验器把自排除的 `integrity.sha256` 当作信任输入，核对包内普通文件的
+精确清单与 SHA-256 字节：
+
+```bash
+python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py \
+  --context-root docs/context/adaptive-task-orchestrator-v0.2
+
+python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py \
+  --context-root docs/context/adaptive-task-orchestrator-v0.3
+```
+
+该命令只读且仅使用 Python 标准库。没有 finding 时退出 `0` 且不输出；校验
+失败时退出 `1` 并输出确定性的 JSON Lines finding；参数用法错误由参数解析器
+返回 `2`。成功结果只表示相对于可信 manifest 的包变更检测，不代表签名、
+来源、可信时间戳或真实性。校验假设所选证据包在调用期间保持静止，也不是
+防御并发恶意替换的文件系统沙箱。
 
 ### 创建新的 fixture run
 
@@ -222,6 +242,7 @@ python -B fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py \
 | v0.1 | 初始 Codex-native 政策基线 | v0.1 没有完成真实写入型多代理 DAG |
 | v0.2 | 一个有界的本地 nested-Git 写入型软件开发 DAG | 不证明持久调度器、生产负载、跨主机协调或所有路由 |
 | v0.3 | 原子化 fixture 发布、故障关闭证据验证、工作者独占事件流，以及一次真实双代理重叠探针 | 仅限单主机本地证据；不证明吞吐、崩溃恢复、签名或跨主机能力 |
+| v0.4（开发中） | 相对于可信 manifest 的便携只读精确清单与 SHA-256 校验；Windows Python 3.10 和 3.11 本地均为 58/58 | 四个 GitHub Actions 单元和 Linux 真实符号链接执行仍待完成；不证明真实性或并发对抗安全 |
 
 已发布的 v0.3 回执记录了本地 Python 3.10 和 3.11 环境下 44/44 fixture 测试、有效的 v0.2/v0.3 证据包，以及没有未解决 Critical/Required 发现的独立审查。整体结果仍然是 `ACCEPT_WITH_CAVEATS`，不是生产认证。
 
@@ -231,6 +252,8 @@ python -B fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py \
 - [v0.2 证据包](docs/context/adaptive-task-orchestrator-v0.2/README.md)
 - [v0.3 硬化规格](docs/specs/adaptive-task-orchestrator-v0.3-hardening.md)
 - [v0.3 证据包](docs/context/adaptive-task-orchestrator-v0.3/README.md)
+- [v0.4 便携完整性规格](docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md)
+- [ADR-0009：便携校验证据 manifest](docs/decisions/0009-verify-evidence-manifests-portably.md)
 - [架构决策](docs/decisions/README.md)
 
 ## 已知限制
@@ -241,11 +264,14 @@ python -B fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py \
 - 生产负载就绪或性能保证；
 - 跨主机执行和跨主机时钟正确性；
 - 进程崩溃恢复、陈旧锁检测和陈旧锁回收；
+- 超出所选结构记录校验器与可信 manifest 清单范围的全部传递证据读取严格闭合；
 - 密码学签名、可信时间戳或工件真实性；
 - 第三方 OpenAPI 语义验证；
 - 所有运行时模型、effort、能力等级或领域拓扑都可工作；
 - 第二个端到端领域 fixture，包括逆向工程；
 - 精确重建当时没有保存的 11 个早期 v0.2 TaskContract 正文。
+- 在获准 push 前观测新版四单元 GitHub Actions 的结果；v0.4 当前本地证据覆盖
+  Windows Python 3.10/3.11，真实 `os.symlink` 方法因主机缺少权限而跳过。
 
 ## 贡献与安全
 

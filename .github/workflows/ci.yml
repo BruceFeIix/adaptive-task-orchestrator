@@ -17,12 +17,15 @@ concurrency:
 
 jobs:
   test:
-    name: Python ${{ matrix.python-version }}
-    runs-on: ubuntu-latest
+    name: ${{ matrix.os }} / Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
         python-version:
           - "3.10"
           - "3.11"
@@ -53,9 +56,11 @@ jobs:
           --context-root docs/context/adaptive-task-orchestrator-v0.3
 
       - name: Verify v0.2 integrity manifest
-        working-directory: docs/context/adaptive-task-orchestrator-v0.2
-        run: sha256sum --check integrity.sha256
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.2
 
       - name: Verify v0.3 integrity manifest
-        working-directory: docs/context/adaptive-task-orchestrator-v0.3
-        run: sha256sum --check integrity.sha256
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.3

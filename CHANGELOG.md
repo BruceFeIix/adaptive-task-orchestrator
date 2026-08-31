@@ -10,6 +10,41 @@ are not Git release tags.
 
 ## [Unreleased]
 
+### Added
+
+- A dependency-free `verify_integrity.py` CLI for deterministic, read-only exact
+  inventory and SHA-256 verification relative to a trusted self-excluding manifest.
+- Mutation coverage for canonical manifest grammar, unsafe paths, incomplete
+  inventory, filesystem read errors, reparse points, deterministic findings, and
+  CLI status/output behavior; the complete fixture suite now contains 58 tests.
+
+### Changed
+
+- Configured CI as the exact `ubuntu-latest`/`windows-latest` by Python 3.10/3.11
+  matrix, retaining `contents: read`, a ten-minute bound, and no dependency install.
+- Replaced direct GNU `sha256sum` use with the portable Python verifier while
+  retaining separate v0.2/v0.3 structural validation.
+- Synchronized English, Simplified Chinese, and fixture documentation for the new
+  command, test count, supported matrix, trust premise, and deferred limitations.
+
+### Security
+
+- Reject unsafe manifest paths, symlinks, Windows reparse points, non-regular
+  objects, unlisted files, missing files, read errors, and digest mismatches without
+  repairing or rewriting the selected package.
+
+### Known limitations
+
+- SHA-256 consistency is integrity relative to a trusted manifest, not a signature,
+  provenance record, trusted timestamp, or authenticity guarantee.
+- The verifier assumes a quiescent package and is not a concurrent-adversary
+  filesystem sandbox.
+- Strict transitive evidence closure, process-crash recovery, third-party OpenAPI
+  semantics, and a second end-to-end domain remain deferred.
+- Linux and all four GitHub Actions cells remain unobserved until an authorized
+  branch push; local Windows tests skipped the real `os.symlink` method because the
+  host lacked permission.
+
 ## [0.3.0] - 2026-08-25
 
 ### Added

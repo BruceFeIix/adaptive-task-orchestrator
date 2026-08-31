@@ -32,7 +32,7 @@ The Skill helps the root agent:
 | Task contracts, route decisions, receipts, and review gates | A replacement for Codex's own tools, permissions, or sandbox |
 | Dependency-aware orchestration and write-ownership rules | Automatic permission expansion or unbounded autonomous delegation |
 | Capability-aware routing with fail-closed risk floors | Guaranteed model availability or route attestation |
-| Standard-library fixture and evidence-validation tools | Production, throughput, latency, or cross-machine guarantees |
+| Standard-library fixture, structural-validation, and portable integrity tools | Production, throughput, latency, or cross-machine guarantees |
 | Single-host instrumented overlap evidence | Cross-host clock correctness or distributed tracing |
 
 Codex remains the execution environment. The current conversation model remains responsible for scope, authorization, conflict resolution, external actions, integration, and final delivery.
@@ -191,9 +191,11 @@ py -3 -B -m unittest discover `
   -s fixtures/adaptive-task-orchestrator-write-dag/tests -v
 ```
 
-The current suite contains 44 tests covering atomic materialization, evidence validation, and worker-owned event streams.
+The current suite contains 58 tests covering atomic materialization, structural
+evidence validation, worker-owned event streams, and portable manifest-integrity
+behavior.
 
-### Validate the published evidence packages
+### Validate published evidence structure
 
 ```bash
 python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py \
@@ -204,6 +206,27 @@ python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.
 ```
 
 Exit `0` means all selected TaskContract, route, immutable-revision, and receipt records passed. The validator does not prove signatures, artifact authenticity, arbitrary domain JSON correctness, OpenAPI semantics, or runtime model availability.
+
+### Verify published package inventory and bytes
+
+The portable verifier checks the exact regular-file inventory and SHA-256 bytes of
+each package against its self-excluding `integrity.sha256` trust input:
+
+```bash
+python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py \
+  --context-root docs/context/adaptive-task-orchestrator-v0.2
+
+python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py \
+  --context-root docs/context/adaptive-task-orchestrator-v0.3
+```
+
+The command is read-only and uses only the Python standard library. It exits `0`
+with no output when there are no findings, exits `1` with deterministic JSON Lines
+findings when validation fails, and lets argument parsing return `2` for usage
+errors. A successful result detects package changes only relative to the trusted
+manifest; it is not a signature, provenance record, trusted timestamp, or
+authenticity guarantee. Validation assumes the selected package is quiescent and is
+not a filesystem sandbox against concurrent hostile replacement.
 
 ### Materialize a new fixture run
 
@@ -223,6 +246,7 @@ Generated runs are intentionally ignored by the public repository. The materiali
 | v0.1 | Initial Codex-native policy baseline | No real write-producing multi-agent DAG was completed at v0.1 |
 | v0.2 | One bounded local nested-Git write-producing software-development DAG | No persistent scheduler, production workload, cross-machine coordination, or universal route validation |
 | v0.3 | Atomic fixture publication, fail-closed evidence validation, worker-owned event streams, and one real two-agent overlap probe | Single-host local evidence only; no throughput, crash recovery, signature, or cross-host claim |
+| v0.4 (in development) | Portable, read-only exact-inventory and SHA-256 verification relative to a trusted manifest; 58/58 local tests on Windows Python 3.10 and 3.11 | Four GitHub Actions cells and Linux real-symlink execution remain pending; no authenticity or concurrent-adversary claim |
 
 The published v0.3 receipt records 44/44 fixture tests on local Python 3.10 and 3.11 runtimes, valid v0.2/v0.3 evidence packages, and an independent review with no unresolved Critical or Required findings. The overall result remains `ACCEPT_WITH_CAVEATS`, not production certification.
 
@@ -232,6 +256,8 @@ Detailed evidence:
 - [v0.2 evidence package](docs/context/adaptive-task-orchestrator-v0.2/README.md)
 - [v0.3 hardening specification](docs/specs/adaptive-task-orchestrator-v0.3-hardening.md)
 - [v0.3 evidence package](docs/context/adaptive-task-orchestrator-v0.3/README.md)
+- [v0.4 portable-integrity specification](docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md)
+- [ADR-0009: verify evidence manifests portably](docs/decisions/0009-verify-evidence-manifests-portably.md)
 - [architecture decisions](docs/decisions/README.md)
 
 ## Known limitations
@@ -242,11 +268,16 @@ The following remain intentionally unclaimed or deferred:
 - production workload readiness or performance guarantees;
 - cross-machine execution and cross-host clock correctness;
 - process-crash recovery, stale-lock detection, and stale-lock reclamation;
+- strict closure of every transitive evidence read beyond the selected structural
+  record validator and trusted-manifest inventory;
 - cryptographic signatures, trusted timestamps, or artifact authenticity;
 - third-party OpenAPI semantic validation;
 - proof that every runtime model, effort, capability tier, or domain topology works;
 - a second end-to-end domain fixture, including reverse engineering;
 - exact reconstruction of eleven early v0.2 contract bodies that were not preserved at the time.
+- observed results from the new four-cell GitHub Actions definition before an
+  authorized push; local v0.4 evidence currently covers Windows Python 3.10/3.11,
+  while the real `os.symlink` method was skipped because the host lacked permission.
 
 ## Contributing and security
 
