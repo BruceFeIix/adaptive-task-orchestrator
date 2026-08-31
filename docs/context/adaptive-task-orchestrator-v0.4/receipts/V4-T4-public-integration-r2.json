@@ -1,0 +1,191 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "V4-T4-public-integration",
+  "task_revision": 2,
+  "summary": "Integrated the accepted portable verifier into an exact ubuntu-latest/windows-latest by Python 3.10/3.11 GitHub Actions matrix and synchronized the English, Simplified Chinese, fixture, and changelog claims in exactly five owned files. Local Windows equivalents pass on both runtimes; workflow execution remains pending an authorized push.",
+  "claims": [
+    {
+      "claim": "The workflow defines exactly the approved four OS/runtime cells with read-only permissions and no dependency-install or network step.",
+      "confidence": "high",
+      "evidence": [
+        "Matrix OS values are exactly ubuntu-latest and windows-latest; Python values are exactly 3.10 and 3.11.",
+        "runs-on selects matrix.os and the job name identifies OS and Python.",
+        "permissions is exactly contents: read; timeout-minutes remains 10; fail-fast remains false.",
+        "Static search found no sha256sum, pip/uv/poetry/npm install, curl, wget, or Invoke-WebRequest command."
+      ]
+    },
+    {
+      "claim": "Every matrix job runs the complete suite and separate v0.2/v0.3 structural and integrity commands using portable Python syntax.",
+      "confidence": "high",
+      "evidence": [
+        "One matrix job definition contains the full unittest discovery command.",
+        "Separate validate_evidence.py steps exist for v0.2 and v0.3.",
+        "Separate verify_integrity.py steps exist for v0.2 and v0.3.",
+        "All run commands use python, -B, repository-relative paths, and no shell-specific continuation syntax."
+      ]
+    },
+    {
+      "claim": "The five public integration files are synchronized within the approved integrity-not-authenticity boundary.",
+      "confidence": "high",
+      "evidence": [
+        "README.md and README.zh-CN.md both state 58 current tests, the two verifier commands, exits 0/1/2, trusted-manifest integrity, quiescent-package scope, and pending Actions/real-symlink evidence.",
+        "Both README milestone tables retain historical v0.3 44/44 evidence separately from v0.4 in-development 58/58 local evidence.",
+        "CHANGELOG.md and the fixture guide carry the same matrix, trust, symlink, Linux/Actions, authenticity, strict-closure, crash-recovery, third-party OpenAPI, and second-domain boundaries.",
+        "All 32 relative Markdown links across the changed documentation resolve."
+      ]
+    },
+    {
+      "claim": "The portable local command set remains GREEN after public integration.",
+      "confidence": "high",
+      "evidence": [
+        "Python 3.10 full suite: 58 tests passed, one local real-symlink method skipped, exit 0.",
+        "Python 3.11 full suite: 58 tests passed, the same method skipped, exit 0.",
+        "Eight v0.2/v0.3 integrity and structural commands exited 0 with empty output."
+      ]
+    },
+    {
+      "claim": "Only the five declared V4-T4 files changed in the public integration commit.",
+      "confidence": "high",
+      "evidence": [
+        "Commit 121c70d3935adb0ed36c3df5d1b3a0ee72fe76e8 contains exactly .github/workflows/ci.yml, README.md, README.zh-CN.md, CHANGELOG.md, and the fixture README.",
+        "git diff --check passed before commit.",
+        "The working tree was clean immediately after commit."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "No authorized push or GitHub Actions dispatch occurred, so all four workflow cells remain configured but unobserved.",
+    "No installed local YAML parser or actionlint executable was available; root used exact structural assertions and manual diff inspection. GitHub Actions remains the workflow syntax/runtime oracle after authorization.",
+    "The local Windows real-os.symlink method still skips for WinError 1314; the independently accepted NTFS-junction probe is retained but is not Linux symlink execution.",
+    "Integrity remains relative to a trusted manifest and assumes a quiescent package; it is not authenticity or concurrent-adversary assurance."
+  ],
+  "artifacts_or_changes": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "action": "modified",
+      "sha256": "4AACDEE1FC7AF5C7A4EB0F28DAF69B0C04514086FBE1DB6F1B77232E496F8870"
+    },
+    {
+      "path": "README.md",
+      "action": "modified",
+      "sha256": "BFCEE2EAAABAE1B6795C7CA445CD1E2300CB3F9C5A6D08502A268C578217875E"
+    },
+    {
+      "path": "README.zh-CN.md",
+      "action": "modified",
+      "sha256": "D1F15E5FB3A48A6ED6F75A6F564CBE382B883CAD5824DEE32671B6A7D74D5975"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "action": "modified",
+      "sha256": "D0760AF4EAD8110F24A5A49DE72021DBE0198F7BE7243EF94B61470D8BB02663"
+    },
+    {
+      "path": "fixtures/adaptive-task-orchestrator-write-dag/README.md",
+      "action": "modified",
+      "sha256": "474928D91F85C151EEF0E373BCF207384D214D3B4C92229A7F5978C3B96093FF"
+    }
+  ],
+  "resources_accessed": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "F:/CodexData/.codex/skills/ci-cd-and-automation/SKILL.md",
+    "F:/CodexData/.codex/skills/documentation-and-adrs/SKILL.md",
+    "docs/context/adaptive-task-orchestrator-v0.4/contracts/revisions/V4-T4-public-integration-r2.contract.json",
+    "docs/context/adaptive-task-orchestrator-v0.4/receipts/V4-T2-integrity-verifier-r2.json",
+    "docs/context/adaptive-task-orchestrator-v0.4/receipts/V4-T3-compatibility-verification-r2.json",
+    "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+    "docs/decisions/0009-verify-evidence-manifests-portably.md",
+    ".github/workflows/ci.yml",
+    "README.md",
+    "README.zh-CN.md",
+    "CHANGELOG.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/README.md"
+  ],
+  "external_calls": [],
+  "checks": [
+    {
+      "check": "Exact workflow permissions, timeout, matrix, run-command, and prohibited-pattern assertions",
+      "result": "pass",
+      "exit_code": 0
+    },
+    {
+      "check": "Python 3.10 full fixture suite",
+      "result": "pass",
+      "tests": 58,
+      "skipped": 1,
+      "exit_code": 0
+    },
+    {
+      "check": "Python 3.11 full fixture suite",
+      "result": "pass",
+      "tests": 58,
+      "skipped": 1,
+      "exit_code": 0
+    },
+    {
+      "check": "v0.2/v0.3 integrity and structural commands on Python 3.10/3.11",
+      "result": "pass",
+      "command_count": 8,
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "check": "Changed relative Markdown link resolution",
+      "result": "pass",
+      "links_checked": 32,
+      "missing": 0,
+      "exit_code": 0
+    },
+    {
+      "check": "Bilingual v0.4/version/command/test/matrix/trust/deferred-limitations fact-table inspection",
+      "result": "pass",
+      "exit_code": 0
+    },
+    {
+      "check": "Owned-path diff and git diff --check",
+      "result": "pass",
+      "changed_paths": 5,
+      "exit_code": 0
+    },
+    {
+      "check": "YAML parser/actionlint availability",
+      "result": "inconclusive",
+      "state": "TOOL_UNAVAILABLE",
+      "reason": "Neither a local YAML parser nor actionlint was installed; no dependency installation was authorized."
+    },
+    {
+      "check": "GitHub Actions four-cell execution",
+      "result": "inconclusive",
+      "state": "PENDING_NOT_PASSED",
+      "reason": "No authorized push or workflow dispatch occurred."
+    }
+  ],
+  "contradictions": [
+    "The workflow is configured for four cells while none of those GitHub Actions cells is observed; documentation consistently says configured/pending rather than passed.",
+    "Local tests are GREEN while the real os.symlink method is skipped; the skip remains explicit in all public v0.4 status claims.",
+    "The generic CI skill recommends all common ecosystem gates, but this repository is a dependency-free policy/tooling project with no separate lint/type/build/audit commands; the approved V4-T4 contract requires its full suite plus structural and integrity validators instead."
+  ],
+  "recommended_next": "accept-with-caveats; record V4-T4 evidence, then perform the frozen V4-T5 independent review before closing the v0.4 evidence package. Do not push, tag, release, or claim Actions success without separate user authorization.",
+  "root_disposition": {
+    "accepted": true,
+    "decision": "ACCEPT_WITH_CAVEATS",
+    "scheduler_state": "ACCEPTED",
+    "critical_findings": [],
+    "required_findings": [],
+    "residual_caveats": [
+      "GitHub Actions unobserved",
+      "local YAML parser/actionlint unavailable",
+      "real local os.symlink method skipped",
+      "trusted-manifest and quiescent-package boundaries"
+    ]
+  }
+}

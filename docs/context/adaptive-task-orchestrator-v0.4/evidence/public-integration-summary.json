@@ -1,0 +1,128 @@
+{
+  "evidence_id": "v0.4-public-integration-summary",
+  "public_integration_commit": "121c70d3935adb0ed36c3df5d1b3a0ee72fe76e8",
+  "workflow": {
+    "path": ".github/workflows/ci.yml",
+    "sha256": "4AACDEE1FC7AF5C7A4EB0F28DAF69B0C04514086FBE1DB6F1B77232E496F8870",
+    "permissions": {
+      "contents": "read"
+    },
+    "timeout_minutes": 10,
+    "fail_fast": false,
+    "matrix": {
+      "os": [
+        "ubuntu-latest",
+        "windows-latest"
+      ],
+      "python": [
+        "3.10",
+        "3.11"
+      ],
+      "cells": 4
+    },
+    "commands": [
+      {
+        "kind": "full-suite",
+        "count_per_cell": 1,
+        "portable": true
+      },
+      {
+        "kind": "structural-v0.2",
+        "count_per_cell": 1,
+        "portable": true
+      },
+      {
+        "kind": "structural-v0.3",
+        "count_per_cell": 1,
+        "portable": true
+      },
+      {
+        "kind": "integrity-v0.2",
+        "count_per_cell": 1,
+        "portable": true
+      },
+      {
+        "kind": "integrity-v0.3",
+        "count_per_cell": 1,
+        "portable": true
+      }
+    ],
+    "direct_gnu_sha256sum": false,
+    "dependency_install_steps": [],
+    "network_run_steps": [],
+    "execution_status": "PENDING_NOT_PASSED"
+  },
+  "local_equivalent_results": {
+    "windows_python_3_10": {
+      "full_tests": 58,
+      "skipped": 1,
+      "exit": 0,
+      "legacy_commands": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "windows_python_3_11": {
+      "full_tests": 58,
+      "skipped": 1,
+      "exit": 0,
+      "legacy_commands": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "linux_python_3_10": {
+      "status": "PENDING_NOT_PASSED"
+    },
+    "linux_python_3_11": {
+      "status": "PENDING_NOT_PASSED"
+    }
+  },
+  "documentation": {
+    "files": [
+      {
+        "path": "README.md",
+        "sha256": "BFCEE2EAAABAE1B6795C7CA445CD1E2300CB3F9C5A6D08502A268C578217875E"
+      },
+      {
+        "path": "README.zh-CN.md",
+        "sha256": "D1F15E5FB3A48A6ED6F75A6F564CBE382B883CAD5824DEE32671B6A7D74D5975"
+      },
+      {
+        "path": "CHANGELOG.md",
+        "sha256": "D0760AF4EAD8110F24A5A49DE72021DBE0198F7BE7243EF94B61470D8BB02663"
+      },
+      {
+        "path": "fixtures/adaptive-task-orchestrator-write-dag/README.md",
+        "sha256": "474928D91F85C151EEF0E373BCF207384D214D3B4C92229A7F5978C3B96093FF"
+      }
+    ],
+    "relative_links_checked": 32,
+    "missing_relative_links": 0,
+    "synchronized_facts": [
+      "v0.4 in development",
+      "58 current tests",
+      "portable verifier command",
+      "exit 0/1/2",
+      "Windows/Linux Python 3.10/3.11 matrix",
+      "trusted-manifest integrity",
+      "quiescent package",
+      "no authenticity",
+      "pending Actions and real symlink",
+      "deferred strict closure/crash recovery/OpenAPI/second domain"
+    ]
+  },
+  "tool_availability": {
+    "yaml_parser": false,
+    "actionlint": false
+  },
+  "pending": [
+    "authorized branch push",
+    "four GitHub Actions cell results",
+    "Linux real-os.symlink execution"
+  ]
+}
