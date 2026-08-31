@@ -52,7 +52,7 @@ Status: approved by the user on 2026-08-31; implementation is in progress.
     bounded repair and before production code, Python 3.10/3.11 each discovered 14
     tests and failed only with the expected missing-module signature.
 
-- [ ] GREEN: implement the read-only portable integrity verifier.
+- [x] GREEN: implement the read-only portable integrity verifier.
   - Acceptance: all targeted mutations produce exact stable findings; valid packages
     produce none; no write or out-of-root read occurs.
   - Verify: targeted and full suites pass; v0.2/v0.3 verify through the new CLI.
@@ -76,7 +76,7 @@ Status: approved by the user on 2026-08-31; implementation is in progress.
   - Files: `README.md`, `README.zh-CN.md`, `CHANGELOG.md`,
     `fixtures/adaptive-task-orchestrator-write-dag/README.md`.
 
-- [ ] Record `V4-T1@1`/`V4-T2@2` RED/GREEN implementation evidence (Task 6a).
+- [x] Record `V4-T1@1`/`V4-T2@2` RED/GREEN implementation evidence (Task 6a).
   - Acceptance: two routes, two receipts, and one RED/GREEN summary contain exact
     commands, statuses, identities, and read-only results.
   - Verify: all five JSON files parse and v0.4 structural identity validation passes.

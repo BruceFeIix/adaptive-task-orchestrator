@@ -192,15 +192,15 @@ comparison, deterministic findings, and the CLI needed to turn the RED suite GRE
 
 **Acceptance criteria:**
 
-- [ ] Every specified valid package returns zero findings.
-- [ ] Every mutation returns the exact expected finding set.
-- [ ] The implementation performs no package writes and no out-of-root reads.
+- [x] Every specified valid package returns zero findings.
+- [x] Every mutation returns the exact expected finding set.
+- [x] The implementation performs no package writes and no out-of-root reads.
 
 **Verification:**
 
-- [ ] Targeted v0.4 suite passes.
-- [ ] Full fixture suite passes.
-- [ ] v0.2 and v0.3 manifests report 100/100 and 65/65 through the new CLI.
+- [x] Targeted v0.4 suite passes.
+- [x] Full fixture suite passes.
+- [x] v0.2 and v0.3 manifests report 100/100 and 65/65 through the new CLI.
 
 **Dependencies:** Tasks 1c and 2.
 
@@ -212,10 +212,10 @@ comparison, deterministic findings, and the CLI needed to turn the RED suite GRE
 
 ### Checkpoint: Deterministic oracle
 
-- [ ] RED evidence is preserved.
-- [ ] GREEN targeted and full-suite evidence is preserved.
-- [ ] No accepted evidence package differs from `v0.3.0`.
-- [ ] Root inspects implementation simplicity and path-safety behavior.
+- [x] RED evidence is preserved.
+- [x] GREEN targeted and full-suite evidence is preserved.
+- [x] No accepted evidence package differs from `v0.3.0`.
+- [x] Root inspects implementation simplicity and path-safety behavior.
 
 ## Phase 3: Integrate the public capability
 
@@ -299,17 +299,17 @@ the minimal verifier implementation, plus one deterministic RED/GREEN summary.
 
 **Acceptance criteria:**
 
-- [ ] `V4-T1@1` records the expected RED command, failure signature, and unchanged
+- [x] `V4-T1@1` records the expected RED command, failure signature, and unchanged
       repository identity before production code exists.
-- [ ] `V4-T2@2` records targeted GREEN, full regression, v0.2/v0.3 compatibility,
+- [x] `V4-T2@2` records targeted GREEN, full regression, v0.2/v0.3 compatibility,
       and read-only checks.
-- [ ] Each route selects the already frozen matching TaskContract revision and each
+- [x] Each route selects the already frozen matching TaskContract revision and each
       receipt reports only evidence produced by that task.
 
 **Verification:**
 
-- [ ] The five files parse as JSON through the exact JSON command in Task 8.
-- [ ] `validate_evidence.py --context-root` for v0.4 reports no route, receipt, task,
+- [x] The five files parse as JSON through the exact JSON command in Task 8.
+- [x] `validate_evidence.py --context-root` for v0.4 reports no route, receipt, task,
       or revision identity finding after the files exist.
 
 **Dependencies:** Task 3.

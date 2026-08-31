@@ -1,0 +1,181 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "V4-T2-integrity-verifier",
+  "task_revision": 2,
+  "summary": "Implemented and root-accepted the dependency-free, read-only portable integrity verifier. The final artifact makes the unchanged V4-T1 oracle GREEN on local Python 3.10 and 3.11, preserves v0.2/v0.3 compatibility and bytes, rejects intermediate Windows junctions without following them, and enforces case-sensitive serialized paths independently of the host filesystem.",
+  "claims": [
+    {
+      "claim": "The final verifier is the only V4-T2 production artifact and has a fixed reviewed identity.",
+      "confidence": "high",
+      "evidence": [
+        "Path: fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py.",
+        "Before V4-T2 the path was absent.",
+        "Final SHA-256: E595F6141B48480D10CB1AA9B354B012DB8FE756E09A81C1FD31BEA26276337E.",
+        "Final size: 15113 bytes; final line count: 490.",
+        "The accepted test oracle remains SHA-256 1FFBD6FA3C264D48385262F385AA2C447E2A2C93C57602734D29B50EA1A89E98."
+      ]
+    },
+    {
+      "claim": "The unchanged targeted oracle and complete fixture suite are GREEN on both locally available supported Python runtimes.",
+      "confidence": "high",
+      "evidence": [
+        "Python 3.10 targeted: 14 tests passed, 1 combined real-symlink method skipped for WinError 1314, exit 0.",
+        "Python 3.11 targeted: 14 tests passed, the same method skipped, exit 0.",
+        "Python 3.10 full suite: 58 tests passed, 1 skip, exit 0.",
+        "Python 3.11 full suite: 58 tests passed, 1 skip, exit 0.",
+        "Python 3.10 and 3.11 AST parsing both passed."
+      ]
+    },
+    {
+      "claim": "The implementation is read-only, standard-library-only, deterministic, and fails closed at the approved parser, inventory, path, object, read, and digest boundaries.",
+      "confidence": "high",
+      "evidence": [
+        "Static inspection found no package-writing API, broad except Exception, dependency, subprocess, network, repair, or cache behavior.",
+        "Any manifest parser-semantic finding returns before target verification, preventing host-dependent cascaded findings.",
+        "Listed components are selected by exact child.name equality, inspected with lstat, rejected when reparse/nonconforming, contained, and only then opened for hashing.",
+        "Inventory checks Windows reparse attributes before directory descent.",
+        "Finding records are frozen and final results are sorted by code, path, and detail."
+      ]
+    },
+    {
+      "claim": "Windows-specific path hazards are rejected without changing the selected package or an out-of-package canary.",
+      "confidence": "high",
+      "evidence": [
+        "A real Windows junction listed as linked/target.txt returned MANIFEST_FILE_NOT_REGULAR for the listed path and MANIFEST_UNSUPPORTED_OBJECT for linked, exit 1.",
+        "The junction target canary SHA-256 was identical before and after verification, and the temporary probe was cleaned.",
+        "A real case.txt with manifest path Case.txt returned MANIFEST_FILE_MISSING for Case.txt and MANIFEST_UNLISTED_FILE for case.txt, exit 1.",
+        "The exact-case temporary probe was cleaned."
+      ]
+    },
+    {
+      "claim": "The immutable v0.2 and v0.3 packages retain their exact bytes and pass both integrity and structural validation on Python 3.10 and 3.11.",
+      "confidence": "high",
+      "evidence": [
+        "Four verify_integrity.py commands and four unchanged validate_evidence.py commands returned exit 0 with empty stdout.",
+        "v0.2 still declares 100 entries and manifest SHA-256 1B6B79AF7428AB0FF2D9F883858DBF4B78B4106880C3720D0E374397F7322A56.",
+        "v0.3 still declares 65 entries and manifest SHA-256 5B5831CFB6F597DC5D41E456D36B8C8CC4EB244E2E58D6EC25B00A84E11041A1.",
+        "git diff --name-only 52ec8c9 for both historical package paths is empty."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "The local Windows host cannot create real os.symlink objects because of WinError 1314, so the accepted combined manifest/listed-file/directory symlink method remains skipped locally. The executed Windows junction probe covers the repaired reparse and intermediate-component behavior but is not POSIX symlink execution.",
+    "Linux Python 3.10 and 3.11 and the GitHub Actions Windows/Linux matrix have not yet executed the final artifact; they remain V4-T3/V4-T4 evidence rather than V4-T2 claims.",
+    "The first exact-case repair run exposed one case-collision regression by adding a host finding after a parser finding. The result is retained as repair evidence; the parser-semantic gate fixed it and all final targeted and full runs are GREEN.",
+    "The verifier assumes a quiescent package and is not a concurrent-adversary sandbox or an authenticity mechanism."
+  ],
+  "artifacts_or_changes": [
+    {
+      "path": "fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py",
+      "action": "added",
+      "before": "ABSENT",
+      "sha256": "E595F6141B48480D10CB1AA9B354B012DB8FE756E09A81C1FD31BEA26276337E",
+      "size_bytes": 15113,
+      "lines": 490
+    }
+  ],
+  "resources_accessed": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "F:/CodexData/.codex/skills/test-driven-development/SKILL.md",
+    "F:/CodexData/.codex/skills/incremental-implementation/SKILL.md",
+    "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+    "docs/decisions/0009-verify-evidence-manifests-portably.md",
+    "tasks/plan.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "docs/context/adaptive-task-orchestrator-v0.3/",
+    "Automatically cleaned unittest and bounded Windows probe temporary directories"
+  ],
+  "external_calls": [],
+  "checks": [
+    {
+      "check": "Final verifier SHA-256, size, line count, and accepted test-oracle identity.",
+      "result": "pass",
+      "exit_code": 0
+    },
+    {
+      "check": "py -3.10 -B -m unittest fixtures/adaptive-task-orchestrator-write-dag/tests/test_verify_integrity.py -v",
+      "result": "pass",
+      "tests": 14,
+      "skipped": 1,
+      "exit_code": 0
+    },
+    {
+      "check": "py -3.11 -B -m unittest fixtures/adaptive-task-orchestrator-write-dag/tests/test_verify_integrity.py -v",
+      "result": "pass",
+      "tests": 14,
+      "skipped": 1,
+      "exit_code": 0
+    },
+    {
+      "check": "py -3.10 -B -m unittest discover -s fixtures/adaptive-task-orchestrator-write-dag/tests -v",
+      "result": "pass",
+      "tests": 58,
+      "skipped": 1,
+      "exit_code": 0
+    },
+    {
+      "check": "py -3.11 -B -m unittest discover -s fixtures/adaptive-task-orchestrator-write-dag/tests -v",
+      "result": "pass",
+      "tests": 58,
+      "skipped": 1,
+      "exit_code": 0
+    },
+    {
+      "check": "Final v0.2/v0.3 integrity and structural compatibility on Python 3.10 and 3.11.",
+      "result": "pass",
+      "command_count": 8,
+      "exit_codes": [0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+      "check": "Windows exact-case probe.",
+      "result": "pass",
+      "exit_code": 1,
+      "finding_pairs": [
+        ["MANIFEST_FILE_MISSING", "Case.txt"],
+        ["MANIFEST_UNLISTED_FILE", "case.txt"]
+      ]
+    },
+    {
+      "check": "Windows intermediate-junction no-follow probe.",
+      "result": "pass",
+      "exit_code": 1,
+      "finding_pairs": [
+        ["MANIFEST_FILE_NOT_REGULAR", "linked/target.txt"],
+        ["MANIFEST_UNSUPPORTED_OBJECT", "linked"]
+      ],
+      "outside_canary": "unchanged"
+    },
+    {
+      "check": "Historical v0.2/v0.3 diff from 52ec8c9 and static no-write/no-network/no-dependency inspection.",
+      "result": "pass",
+      "exit_code": 0
+    }
+  ],
+  "contradictions": [
+    "The initial interrupted artifact passed the accepted oracle but could hash through an intermediate directory symlink; root and worker independently found the gap. The final per-component no-follow implementation and executed Windows junction probe resolve it.",
+    "The first exact-case patch produced a legitimate targeted regression; the final parser-semantic gate resolves it, and the failed intermediate run is preserved rather than hidden.",
+    "All local executable checks are GREEN, while Linux, GitHub Actions, and real os.symlink execution remain pending and are not claimed."
+  ],
+  "recommended_next": "accept-with-caveats-and-dispatch-V4-T3@2-against-E595F6141B48480D10CB1AA9B354B012DB8FE756E09A81C1FD31BEA26276337E",
+  "root_disposition": {
+    "accepted": true,
+    "decision": "ACCEPT_WITH_CAVEATS",
+    "scheduler_state": "ACCEPTED",
+    "critical_findings": [],
+    "required_findings": [],
+    "resolved_findings": [
+      "intermediate directory symlink and Windows junction traversal",
+      "Windows reparse-point inventory descent",
+      "root and manifest reparse acceptance",
+      "Windows case-insensitive component aliasing",
+      "parser-semantic finding cascades"
+    ],
+    "residual_caveats": [
+      "Linux Python 3.10/3.11 not yet executed",
+      "GitHub Actions Windows/Linux matrix not yet executed",
+      "real local os.symlink method skipped for WinError 1314"
+    ]
+  }
+}
