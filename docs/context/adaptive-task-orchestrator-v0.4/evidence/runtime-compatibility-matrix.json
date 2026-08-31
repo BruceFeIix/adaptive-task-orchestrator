@@ -1,0 +1,144 @@
+{
+  "evidence_id": "v0.4-runtime-compatibility-matrix",
+  "intended_ci_matrix": {
+    "os": [
+      "ubuntu-latest",
+      "windows-latest"
+    ],
+    "python": [
+      "3.10",
+      "3.11"
+    ]
+  },
+  "commands": [
+    "python -B -m unittest discover -s fixtures/adaptive-task-orchestrator-write-dag/tests -v",
+    "python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py --context-root docs/context/adaptive-task-orchestrator-v0.2",
+    "python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py --context-root docs/context/adaptive-task-orchestrator-v0.3",
+    "python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py --context-root docs/context/adaptive-task-orchestrator-v0.2",
+    "python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py --context-root docs/context/adaptive-task-orchestrator-v0.3"
+  ],
+  "cells": [
+    {
+      "os": "windows-latest",
+      "python": "3.10",
+      "local_equivalent": {
+        "host": "Windows",
+        "version": "3.10.0",
+        "targeted": {
+          "tests": 14,
+          "skipped": 1,
+          "exit": 0
+        },
+        "full": {
+          "tests": 58,
+          "skipped": 1,
+          "exit": 0
+        },
+        "legacy_commands": {
+          "count": 4,
+          "exits": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "stdout": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        "status": "PASS_WITH_REAL_SYMLINK_SKIP"
+      },
+      "github_actions": {
+        "status": "PENDING_NOT_PASSED"
+      }
+    },
+    {
+      "os": "windows-latest",
+      "python": "3.11",
+      "local_equivalent": {
+        "host": "Windows",
+        "version": "3.11.9",
+        "targeted": {
+          "tests": 14,
+          "skipped": 1,
+          "exit": 0
+        },
+        "full": {
+          "tests": 58,
+          "skipped": 1,
+          "exit": 0
+        },
+        "legacy_commands": {
+          "count": 4,
+          "exits": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "stdout": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        "status": "PASS_WITH_REAL_SYMLINK_SKIP"
+      },
+      "github_actions": {
+        "status": "PENDING_NOT_PASSED"
+      }
+    },
+    {
+      "os": "ubuntu-latest",
+      "python": "3.10",
+      "local_equivalent": {
+        "status": "NOT_AVAILABLE"
+      },
+      "github_actions": {
+        "status": "PENDING_NOT_PASSED"
+      }
+    },
+    {
+      "os": "ubuntu-latest",
+      "python": "3.11",
+      "local_equivalent": {
+        "status": "NOT_AVAILABLE"
+      },
+      "github_actions": {
+        "status": "PENDING_NOT_PASSED"
+      }
+    }
+  ],
+  "immutable_packages": {
+    "v0.2": {
+      "entries": 100,
+      "manifest_sha256": "1B6B79AF7428AB0FF2D9F883858DBF4B78B4106880C3720D0E374397F7322A56",
+      "pre_post": "IDENTICAL"
+    },
+    "v0.3": {
+      "entries": 65,
+      "manifest_sha256": "5B5831CFB6F597DC5D41E456D36B8C8CC4EB244E2E58D6EC25B00A84E11041A1",
+      "pre_post": "IDENTICAL"
+    }
+  },
+  "repository_status": {
+    "before": "## feature/v0.4-portable-integrity",
+    "after": "## feature/v0.4-portable-integrity"
+  },
+  "current_workflow_observation": {
+    "status": "PENDING_V4_T4",
+    "os": [
+      "ubuntu-latest"
+    ],
+    "python": [
+      "3.10",
+      "3.11"
+    ],
+    "integrity_command": "GNU sha256sum; not yet portable verifier"
+  },
+  "claim_boundary": "Local Windows evidence is not GitHub Actions evidence. All four Actions cells and Linux real-symlink execution remain pending."
+}
