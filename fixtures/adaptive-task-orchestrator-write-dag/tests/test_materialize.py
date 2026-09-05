@@ -134,14 +134,16 @@ class MaterializeRunTests(unittest.TestCase):
         for failing_method in ("write", "flush"):
             with self.subTest(failing_method=failing_method):
                 with tempfile.TemporaryDirectory() as temporary_directory:
-                    temporary_root = Path(temporary_directory)
+                    # Exercise a lexical alias even when the host temp path is canonical.
+                    (Path(temporary_directory) / "alias").mkdir()
+                    temporary_root = Path(temporary_directory) / "alias" / ".."
                     template_root = temporary_root / "template"
                     runs_root = temporary_root / "runs"
                     template_root.mkdir()
                     (template_root / "user-notes.md").write_text(
                         "baseline\n", encoding="utf-8"
                     )
-                    lock_path = runs_root / ".test-run.materialize.lock"
+                    lock_path = (runs_root / ".test-run.materialize.lock").resolve()
                     original_open = Path.open
 
                     def open_with_lock_failure(path: Path, *args: object, **kwargs: object):
@@ -207,12 +209,13 @@ class MaterializeRunTests(unittest.TestCase):
 
     def test_receipt_failure_after_promotion_rolls_back_and_allows_same_id_retry(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
-            temporary_root = Path(temporary_directory)
+            (Path(temporary_directory) / "alias").mkdir()
+            temporary_root = Path(temporary_directory) / "alias" / ".."
             template_root = temporary_root / "template"
             runs_root = temporary_root / "runs"
             template_root.mkdir()
             (template_root / "user-notes.md").write_text("baseline\n", encoding="utf-8")
-            record_path = runs_root / "test-run.baseline.json"
+            record_path = (runs_root / "test-run.baseline.json").resolve()
             original_open = Path.open
             promoted_state_at_failure = []
 

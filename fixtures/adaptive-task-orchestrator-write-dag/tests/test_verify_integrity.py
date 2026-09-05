@@ -422,9 +422,11 @@ class VerifyIntegrityTests(unittest.TestCase):
 
     def test_manifest_and_listed_file_read_errors_are_stable_and_read_only(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
-            root = Path(temporary_directory)
+            # Keep the input aliased, but match the canonical paths used for I/O.
+            (Path(temporary_directory) / "alias").mkdir()
+            root = Path(temporary_directory) / "alias" / ".."
             self.make_package(root, [])
-            manifest = root / MANIFEST_NAME
+            manifest = (root / MANIFEST_NAME).resolve()
             original_open = Path.open
 
             def fail_manifest_read(path: Path, *args: object, **kwargs: object):
@@ -439,9 +441,10 @@ class VerifyIntegrityTests(unittest.TestCase):
             self.assert_record_runs(root, first, second, [("MANIFEST_READ_ERROR", MANIFEST_NAME)], before, cli=False)
 
         with tempfile.TemporaryDirectory() as temporary_directory:
-            root = Path(temporary_directory)
+            (Path(temporary_directory) / "alias").mkdir()
+            root = Path(temporary_directory) / "alias" / ".."
             self.make_package(root, [("file.txt", b"file\n")])
-            listed = root / "file.txt"
+            listed = (root / "file.txt").resolve()
             original_open = Path.open
 
             def fail_listed_read(path: Path, *args: object, **kwargs: object):
@@ -457,12 +460,14 @@ class VerifyIntegrityTests(unittest.TestCase):
 
     def test_inventory_error_and_read_boundary_replacement_fail_closed(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
-            root = Path(temporary_directory)
+            (Path(temporary_directory) / "alias").mkdir()
+            root = Path(temporary_directory) / "alias" / ".."
             self.make_package(root, [])
+            canonical_root = root.resolve()
             original_iterdir = Path.iterdir
 
             def fail_inventory(path: Path):
-                if path == root:
+                if path == canonical_root:
                     raise OSError("injected inventory failure")
                 return original_iterdir(path)
 
@@ -470,9 +475,10 @@ class VerifyIntegrityTests(unittest.TestCase):
                 self.assert_repeatable_and_read_only(root, [("INVENTORY_READ_ERROR", "")], cli=False)
 
         with tempfile.TemporaryDirectory() as temporary_directory:
-            root = Path(temporary_directory)
+            (Path(temporary_directory) / "alias").mkdir()
+            root = Path(temporary_directory) / "alias" / ".."
             self.make_package(root, [("file.txt", b"file\n")])
-            listed = root / "file.txt"
+            listed = (root / "file.txt").resolve()
             original_open = Path.open
 
             def replaced_at_read_boundary(path: Path, *args: object, **kwargs: object):

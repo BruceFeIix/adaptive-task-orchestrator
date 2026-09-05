@@ -13,6 +13,10 @@ windows are unknown; usage is account-wide. Never automatically downgrade or
 consume reset credits. Public push, PR, tag/release, global installation,
 external model CLIs and permission expansion need their applicable authorization.
 
+The user has now explicitly authorized pushing feature/v0.5-runtime-routing and
+creating a PR to main for CI verification, including bounded CI repairs. Do not
+merge, tag or release. This removes the previous push/PR authorization boundary.
+
 ## Current state
 
 - Branch: feature/v0.5-runtime-routing. Inspect git status and git log on resume.
@@ -25,10 +29,18 @@ external model CLIs and permission expansion need their applicable authorization
   belong outside them, for example docs/validation/.
 - Repository and parent workspace Skill copies both have 9 files. All exact paths
   and SHA-256 pairs match. No global install; historical v0.1 snapshot unchanged.
-- Latest quota observation: 11% remaining, 89% used in the reported weekly window,
-  at 2026-09-05 19:04:39 UTC. No reset consumed, no automatic downgrade.
-- No child agents or test sessions remain running. No push, PR, tag or release
-  was performed. The saved origin/main ref is not a fresh remote-state assertion.
+- Latest quota observation: 9% remaining, 91% used in the reported weekly window
+  during the CI repair batch. No reset consumed, no automatic downgrade.
+- Feature branch was pushed without force or tags. Draft PR #1 is open to main:
+  https://github.com/BruceFeIix/adaptive-task-orchestrator/pull/1.
+- Initial PR head: e21a8ab5848d2f671c269c99607b2da2103eb8c9. Remote main was observed
+  at 52ec8c9fbc5b018b8f669d4176100899e8802deb before PR creation; recheck when needed.
+- CI run 33995561302: both Linux cells passed all 110 tests without skips and all
+  later gates. Both Windows cells failed five fault-injection assertions/subtests
+  across four methods. All four cells executed the three real-symlink tests.
+- A deterministic alias/.. reproduction identified lexical-versus-canonical mock
+  target mismatch. ADR-0012 records the test-only correction; full local suites
+  pass 107 with 3 permission skips on both Python versions. Corrected CI pending.
 
 ## Completion audit
 
@@ -44,24 +56,23 @@ external model CLIs and permission expansion need their applicable authorization
 | Historical regression gates | Done locally; 12 v0.2/v0.3/v0.4 structural/integrity checks across both runtimes, no historical diff |
 | Two local Skill copies | Done; 9/9 exact inventory and byte-hash matches, rechecked after sealing |
 | Bilingual docs, CI definitions, evidence and manifest | Done locally; 34-entry seal and four post-seal checks, zero diagnostics |
-| Actual Windows/Linux four-cell GitHub Actions | Not run; requires publication workflow authorization and actual result inspection |
-| Real symlink assertions | Not executed locally because Windows denied required privilege; Linux/platform gate remains open |
+| Actual Windows/Linux four-cell GitHub Actions | First run observed; Linux passed, Windows fault-injection repair requires CI revalidation |
+| Real symlink assertions | All three passed in all four first-run CI cells; local host still lacks the required privilege |
 | Effective model/effort attestation | Unavailable from observed native task-name-only responses; do not fabricate it |
 | Public release | Not authorized/performed; local acceptance is not release completion |
 
 Current receipt: docs/context/adaptive-task-orchestrator-v0.5/evidence/final-validation-receipt.json.
 Post-seal evidence: docs/validation/v0.5-postseal-local.json.
+First actual CI observation: docs/validation/v0.5-ci-initial.json.
 Read the package README for the evidence order and exact scope of each review.
 
 ## Next actionable work
 
-1. Obtain explicit authorization to push this feature branch and create a PR to
-   main to trigger the configured four-cell CI. Pushing a feature branch alone
-   does not trigger this workflow's main-only push event. Do not merge or release
-   merely because CI later passes.
-2. With authorization, inspect actual remote state, push without force, create or
-   reuse the matching PR, and inspect each cell's test counts, real-symlink
-   execution, structural/integrity and route gates.
+1. The bounded ADR-0012 test correction passed independent requested-Astra review
+   with no Critical/Required findings. Push it to the existing feature branch and
+   inspect the new PR #1 CI run. Do not create a duplicate PR.
+2. Inspect each cell's test counts, real-symlink execution, structural/integrity
+   and route gates. Do not merge or release merely because CI later passes.
 3. If CI finds a real issue, implement a bounded fix with relevant RED/GREEN tests.
    Preserve sealed packages; record corrections via new ADR/errata/evidence and
    rerun only affected checks plus the final integration gate.
@@ -86,12 +97,7 @@ Read this checkpoint, applicable AGENTS.md, actual git state and fresh account
 quota. Follow the first incomplete authorized item rather than stale chat text.
 Do not repeat accepted local reviews without changed artifacts or a new failure.
 
-Suggested user instruction after approving publication:
-"Resume from tasks/CONTINUATION.md. You may push the current feature branch and
-create a PR to main for CI, but do not merge, tag or release. Keep important work
-on Astra and retain a 2% quota reserve."
-
-This turn produced concrete commits, synchronized the Skill, completed a frozen
-pilot and sealed local evidence. The goal remains active because platform gates
-are incomplete. The current stop is an authorization boundary, not quota exhaustion
-or a claim that the full goal is complete.
+Push/PR authorization is recorded above. Continue the existing PR's verification;
+do not repeat accepted local reviews or request the same authorization again.
+Platform success, effective-model attestation and public release are distinct
+claims. CI success alone does not close the latter two boundaries.
