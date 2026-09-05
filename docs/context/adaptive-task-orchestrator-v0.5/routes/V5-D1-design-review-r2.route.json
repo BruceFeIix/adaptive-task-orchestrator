@@ -1,0 +1,26 @@
+{
+  "task_id": "V5-D1-design-review",
+  "task_revision": 2,
+  "profile": "user_pinned",
+  "preferred_capability": "frontier_reviewer",
+  "requested_capability": "frontier_reviewer",
+  "route_reason_codes": [
+    "USER_ASTRA_PIN",
+    "NEW_POLICY_WEAK_ORACLE",
+    "BOUNDED_DESIGN_REPAIR_REVIEW"
+  ],
+  "effective_floor": "frontier_reviewer",
+  "floor_reasons": [
+    "New evidence semantics must not overstate effective identity or runtime guarantees."
+  ],
+  "selected_model": "gpt-6-astra",
+  "selected_effort": "high",
+  "fork_turns": "none",
+  "fallback_chain": [],
+  "selection_reason": "preferred",
+  "route_status": "requested",
+  "capability_attested": true,
+  "attestation_source": "runtime-schema",
+  "floor_satisfied": true,
+  "semantic_note": "Legacy route shape records current user-authorized requestability; actual effective model identity is not observed."
+}

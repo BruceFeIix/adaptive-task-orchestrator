@@ -1,0 +1,68 @@
+{
+  "id": "V5-D1-design-review",
+  "revision": 2,
+  "objective": "Find correctness, scope, and compatibility defects in the v0.5 runtime-routing contract before implementation.",
+  "task_type": "review",
+  "mode": "read",
+  "dependencies": [],
+  "inputs": [
+    "Corrected v0.5 specification at 872a8f6",
+    "ADR-0011 at 009212c",
+    "V5-D1@1 findings and correction diff 009212c..872a8f6"
+  ],
+  "deliverable": "Bounded prioritized design findings and ACCEPT_WITH_CAVEATS or REVISE decision.",
+  "read_scope": [
+    "F:/Projects/CodexProjects/AGENTS.md",
+    "Repository AGENTS.md and live Skill references",
+    "Supplied v0.5 spec and ADR",
+    "Current validate_evidence.py and its tests",
+    "README.md",
+    "Git metadata"
+  ],
+  "write_scope": [],
+  "resource_locks": [],
+  "context_package": {
+    "authoritative_facts": [
+      "The user approved Astra adaptation without external runtimes/dependencies and requests critical work on Astra.",
+      "The project remains a policy Skill and offline validator, not a scheduler.",
+      "The design must distinguish declared availability from observed effective identity.",
+      "Five Required design findings and two clarifications were addressed in 872a8f6; verify the repairs, not the author's claim."
+    ],
+    "relevant_artifacts": [
+      "docs/specs/adaptive-task-orchestrator-v0.5-runtime-routing.md",
+      "docs/decisions/0011-validate-runtime-specific-model-routes.md"
+    ],
+    "accepted_upstream_results": [],
+    "user_constraints": [
+      "Read-only; no network, external CLI, writes, or further delegation."
+    ],
+    "permissions": [
+      "Inspect the declared files and supplied runtime tool contract."
+    ],
+    "non_goals": [
+      "No implementation, broad audit, paid/API experiment, or v0.4 re-review."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 3,
+    "context_breadth": 2,
+    "uncertainty": 2,
+    "novelty": 2,
+    "impact": 2,
+    "verifiability": 1,
+    "coupling": 2
+  },
+  "acceptance_checks": [
+    "Identify contradictory schemas, incomplete states, unsafe or impossible attestation claims, override/fork/concurrency errors, legacy compatibility issues and missing decisive tests.",
+    "Bound the artifact to an offline route checker; do not turn v0.5 into a scheduler or full event/attempt evidence validator.",
+    "Return actionable findings and a decision without requiring unavailable external experiments."
+  ],
+  "evidence_required": [
+    "Reviewed commit",
+    "Prioritized finding locations",
+    "Specific proposed corrections",
+    "Remaining limitations",
+    "Decision"
+  ],
+  "assurance_requirement": "independent_adversarial"
+}
