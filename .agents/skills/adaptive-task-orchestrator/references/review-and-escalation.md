@@ -26,6 +26,13 @@ For high-risk or contradiction reviews, omit the author's persuasive narrative w
 
 Reviewer capability must be at least the author's capability. Prefer a different model family or fresh context when available and worth the extra cost. If the runtime cannot provide model diversity, disclose that limitation instead of describing the review as cross-model.
 
+For runtime-specific evidence, planned reviews compare both selected model
+capabilities. Accepted/completed reviews require an accepted/completed author and
+both effective identities, then compare effective capabilities. Missing identity
+is not filled in from the requested pair or a worker's self-description. Freshness
+requires a distinct worker and fresh context; a review relation cannot be cyclic.
+See [runtime routing](runtime-routing.md) for the separate v1 record checks.
+
 Specification, quality, and integration are review concerns, not automatically three reviewer agents. One independent reviewer may cover specification and quality for the same artifact and evidence package; root normally owns deterministic integration. Default to at most one frontier review per final artifact, adding another only after a material conflict or a changed artifact requires re-review.
 
 ## Review Outcome

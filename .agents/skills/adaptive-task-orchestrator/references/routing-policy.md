@@ -13,9 +13,9 @@ Before heterogeneous delegation, determine from the exposed tool contract or hos
 - sandbox, tool, and permission inheritance;
 - whether the effective route can be attested.
 
-Intersect the policy registry with the runtime-declared capabilities. Do not infer availability from old documentation or probe by spawning unnecessary agents. If a spawn rejects a model or effort, mark that candidate unavailable for the current run, refresh once, and choose another candidate at the same or higher floor.
+Intersect the versioned [model registry](model-registry.json) with runtime-declared capabilities for the exact tool surface. Follow [runtime routing](runtime-routing.md) for snapshots, pins, evidence states and the optional offline checker. API effort support does not establish native-tool support. Do not infer availability from old documentation or probe by spawning unnecessary agents. If a spawn rejects a model or effort, mark that candidate unavailable for the current run, refresh once, and choose another candidate at the same or higher floor; a user pin cannot silently fall back.
 
-If overrides are unavailable, use an inherited child or the root only when the runtime can attest that it meets the node's effective floor. An unattested route is not eligible for high-risk work. Low-risk work may run in the root with deterministic or root checks and a disclosed routing limitation. Otherwise return `NO_ELIGIBLE_RUNTIME` or a policy conflict; never silently weaken the floor or claim that a requested route was honored.
+Availability can substantiate a planned pair, not the effective identity of a later execution. Accepted/completed high-risk records require actual model and effort evidence with matching run/snapshot/worker identities. If the host cannot supply that assurance, disclose the limitation and return `NO_ELIGIBLE_RUNTIME` or a policy conflict for the assured result; never mark an unattested high-risk execution as accepted. Low-risk work may run in the root with deterministic or root checks and a disclosed routing limitation. An explicitly authorized exploratory result without model attestation must remain outside capability-assured execution claims.
 
 ## Stable Capability Aliases
 
@@ -26,11 +26,11 @@ Use aliases in plans so model revisions require changing one registry rather tha
 | `fast_reader` | bounded extraction, inventory, classification, formatting, repeatable checks | Luna low/medium |
 | `general_worker` | large-file reading, ordinary analysis, focused debugging, bounded implementation | Terra medium/high |
 | `deep_reasoner` | ambiguous multi-step reasoning, architecture, cross-boundary semantics, difficult diagnosis | Sol high/xhigh |
-| `frontier_reviewer` | independent assurance, conflict adjudication, high-impact weak-oracle conclusions | Sol high/xhigh; max or ultra only when supported and justified |
+| `frontier_reviewer` | independent assurance, conflict adjudication, high-impact weak-oracle conclusions | Astra high/xhigh; max or ultra only when the exact surface supports it and the task justifies it |
 
-These are defaults, not identity claims. User ceilings, unavailable routes, and future registries may change concrete models while preserving the required capability.
+These are provisional balanced-profile summaries, not identity or performance claims; the registry owns exact IDs, ranks and surface-specific efforts. Quality-profile candidates may raise difficult work to Astra. An explicit user pin takes precedence over generic profile defaults, while still satisfying permissions, floors and runtime constraints. Family labels disclose diversity, not statistical independence.
 
-Fallback is monotonic: `fast_reader` may fall upward to `general_worker`, then `deep_reasoner`, then `frontier_reviewer`; it must not fall below the effective floor. An unknown or unranked model cannot satisfy a high-risk floor unless the user explicitly selects it and accepts that limitation.
+Fallback is monotonic starting at the selected pair: `fast_reader` may fall upward to `general_worker`, then `deep_reasoner`, then `frontier_reviewer`; every pair meets both minimum and requested capability. Equal-tier moves cannot reduce effort, and no pair may repeat. Unknown host models are not eligible registry candidates. An explicitly selected unranked model remains exploratory until a new reviewed registry policy assigns its capability; it cannot silently pass the v1 checker.
 
 ## Routing Features
 
@@ -92,7 +92,7 @@ Honor a user-selected profile. Otherwise default to `balanced`:
 | `frugal` | choose the lowest safe candidate, maximize deterministic checks, sample-review low-risk work, stop early |
 | `balanced` | use the normal alias mapping, independently review medium-risk weak-oracle work, escalate on evidence |
 | `quality` | raise ambiguous work one tier when useful, increase independent review, favor stronger synthesis |
-| `user_pinned` | use the pinned child route only if it satisfies the hard floor and runtime constraints |
+| `user_pinned` | bind the exact model and effort, require an empty fallback chain, and reject effective drift even under known configuration overrides |
 
 No profile may bypass a hard floor or authorization boundary. If a user model/effort ceiling is below the floor, keep the task with a runtime-attested capable root or report a policy conflict; do not silently weaken the route. Each frontier route must record the rule and evidence showing why an ordinary independent reviewer is insufficient.
 

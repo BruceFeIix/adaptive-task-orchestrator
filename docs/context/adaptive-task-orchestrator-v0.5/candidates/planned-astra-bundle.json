@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "profile": "runtime-routes-v1",
+  "run_id": "v05-planning-example",
+  "registry_id": "ato-model-policy",
+  "registry_revision": 1,
+  "runtime": {
+    "snapshot_id": "illustrative-native-snapshot-1",
+    "run_id": "v05-planning-example",
+    "host_id": "local",
+    "surface": "codex.collaboration",
+    "source_ref": "Illustrative snapshot based on the 2026-09-06 current collaboration tool declaration; no dispatch or effective identity proof.",
+    "source_kind": "runtime-schema",
+    "models": {
+      "gpt-5.6-luna": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "gpt-5.6-terra": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ],
+      "gpt-5.6-sol": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ],
+      "gpt-6-astra": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ],
+      "gpt-5.5": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ]
+    },
+    "model_override": true,
+    "effort_override": true,
+    "full_history_with_overrides": false,
+    "configuration_overrides": "unknown",
+    "effective_config_reporting": false,
+    "concurrency": {
+      "limit": 4,
+      "includes_root": true,
+      "root_slots": 1
+    }
+  },
+  "requirements": [
+    {
+      "task_id": "analysis-example",
+      "task_revision": 1,
+      "minimum_capability": "deep_reasoner",
+      "assurance": "independent_adversarial"
+    }
+  ],
+  "routes": [
+    {
+      "route_id": "analysis-example-route",
+      "task_id": "analysis-example",
+      "task_revision": 1,
+      "snapshot_id": "illustrative-native-snapshot-1",
+      "wave": 0,
+      "worker_id": "planned-analysis-worker",
+      "profile": "user_pinned",
+      "requested_capability": "deep_reasoner",
+      "selected_model": "gpt-6-astra",
+      "selected_effort": "xhigh",
+      "model_override": true,
+      "effort_override": true,
+      "fork_turns": "none",
+      "context_complete": true,
+      "fallback_chain": [],
+      "dispatch_status": "planned",
+      "effective_route": null,
+      "review_of": null,
+      "fresh_context": true
+    }
+  ],
+  "root_only": []
+}

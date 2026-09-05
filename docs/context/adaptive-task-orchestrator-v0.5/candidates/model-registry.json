@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "registry_id": "ato-model-policy",
+  "revision": 1,
+  "sources": [
+    "2026-09-06: https://developers.openai.com/api/docs/models/gpt-6-astra ; API effort support low/medium/high/xhigh/max. No API execution claimed.",
+    "2026-09-06: current Codex collaboration.spawn_agent tool declaration; exact four candidate IDs and surface-specific efforts are requestable. No effective execution identity claimed.",
+    "Capability ranks, family labels and profile defaults are provisional project policy, not independently measured performance or statistical independence.",
+    "Only listed surfaces are eligible. Generic profiles do not override an explicitly authorized user_pinned model/effort pair."
+  ],
+  "capabilities": [
+    "fast_reader",
+    "general_worker",
+    "deep_reasoner",
+    "frontier_reviewer"
+  ],
+  "models": {
+    "gpt-5.6-luna": {
+      "capability": "fast_reader",
+      "family": "gpt-5.6",
+      "efforts_by_surface": {
+        "codex.collaboration": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ]
+      }
+    },
+    "gpt-5.6-terra": {
+      "capability": "general_worker",
+      "family": "gpt-5.6",
+      "efforts_by_surface": {
+        "codex.collaboration": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max",
+          "ultra"
+        ]
+      }
+    },
+    "gpt-5.6-sol": {
+      "capability": "deep_reasoner",
+      "family": "gpt-5.6",
+      "efforts_by_surface": {
+        "codex.collaboration": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max",
+          "ultra"
+        ]
+      }
+    },
+    "gpt-6-astra": {
+      "capability": "frontier_reviewer",
+      "family": "gpt-6",
+      "efforts_by_surface": {
+        "codex.collaboration": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max",
+          "ultra"
+        ],
+        "openai.responses": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ]
+      }
+    }
+  },
+  "defaults": {
+    "frugal": {
+      "fast_reader": [
+        "gpt-5.6-luna"
+      ],
+      "general_worker": [
+        "gpt-5.6-terra"
+      ],
+      "deep_reasoner": [
+        "gpt-5.6-sol"
+      ],
+      "frontier_reviewer": [
+        "gpt-6-astra"
+      ]
+    },
+    "balanced": {
+      "fast_reader": [
+        "gpt-5.6-luna"
+      ],
+      "general_worker": [
+        "gpt-5.6-terra"
+      ],
+      "deep_reasoner": [
+        "gpt-5.6-sol"
+      ],
+      "frontier_reviewer": [
+        "gpt-6-astra"
+      ]
+    },
+    "quality": {
+      "fast_reader": [
+        "gpt-5.6-terra"
+      ],
+      "general_worker": [
+        "gpt-5.6-sol"
+      ],
+      "deep_reasoner": [
+        "gpt-6-astra"
+      ],
+      "frontier_reviewer": [
+        "gpt-6-astra"
+      ]
+    }
+  }
+}
