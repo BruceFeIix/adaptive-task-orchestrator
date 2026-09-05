@@ -1,0 +1,25 @@
+{
+  "task_id": "V4-R1-correction-review",
+  "task_revision": 1,
+  "profile": "user_pinned",
+  "preferred_capability": "frontier_reviewer",
+  "requested_capability": "frontier_reviewer",
+  "route_reason_codes": [
+    "USER_REQUIRES_ASTRA_FOR_CRITICAL_WORK",
+    "INDEPENDENT_REVIEW_OF_REJECTED_CORRECTNESS_AND_EVIDENCE"
+  ],
+  "effective_floor": "frontier_reviewer",
+  "floor_reasons": [
+    "Unresolved previous review findings include cross-runtime correctness and unsupported evidence claims."
+  ],
+  "selected_model": "gpt-6-astra",
+  "selected_effort": "xhigh",
+  "fork_turns": "none",
+  "fallback_chain": [],
+  "selection_reason": "preferred",
+  "route_status": "requested",
+  "capability_attested": true,
+  "attestation_source": "runtime-schema",
+  "floor_satisfied": true,
+  "semantic_note": "Legacy v0.4 route profile: schema attests requestability under the user's explicit Astra selection; this does not claim observed effective model identity. Never downgrade to Sol."
+}

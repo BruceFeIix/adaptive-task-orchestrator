@@ -1,0 +1,70 @@
+{
+  "id": "V4-R1-correction-review",
+  "revision": 1,
+  "objective": "Independently review the v0.4 R1-R4 corrections, strengthened oracle, recorded observations, and current claims.",
+  "task_type": "review",
+  "mode": "read",
+  "dependencies": [],
+  "inputs": [
+    "Committed correction diff from c7a710b",
+    "docs/decisions/0010-correct-v04-count-and-canonical-output-evidence.md",
+    "docs/context/adaptive-task-orchestrator-v0.4/evidence/corrections/"
+  ],
+  "deliverable": "Evidence-backed ACCEPT_WITH_CAVEATS, REVISE, REPLAN or STOP; prioritize Critical/Required findings.",
+  "read_scope": [
+    "F:/Projects/CodexProjects/AGENTS.md",
+    "Entire committed adaptive-task-orchestrator repository at the supplied correction commit",
+    "Git metadata",
+    "Relevant local skill instructions",
+    "Python standard library and automatically cleaned temporary test fixtures"
+  ],
+  "write_scope": [],
+  "resource_locks": [],
+  "context_package": {
+    "authoritative_facts": [
+      "The user approved the correction plan and requires critical work to remain on Astra.",
+      "R1-R4 from the previous review were rejected items; the new checks must establish their correction.",
+      "The final v0.4 package manifest and four actual CI cells remain downstream."
+    ],
+    "relevant_artifacts": [
+      "fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py",
+      "fixtures/adaptive-task-orchestrator-write-dag/tests/test_verify_integrity.py",
+      "fixtures/adaptive-task-orchestrator-write-dag/tests/collect_integrity_evidence.py",
+      "docs/context/adaptive-task-orchestrator-v0.4/evidence/corrections/"
+    ],
+    "accepted_upstream_results": [
+      "Root observed two-runtime GREEN and eight legacy checks; verify decisive evidence independently."
+    ],
+    "user_constraints": [
+      "No edits, network, installs, public actions, external model CLI, or further delegation."
+    ],
+    "permissions": [
+      "Read declared sources and run bounded tests with automatically cleaned temporary directories."
+    ],
+    "non_goals": [
+      "Do not repair code, expand scope, or report pending CI as passed."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 3,
+    "context_breadth": 2,
+    "uncertainty": 2,
+    "novelty": 1,
+    "impact": 2,
+    "verifiability": 2,
+    "coupling": 2
+  },
+  "acceptance_checks": [
+    "Read the tests before the implementation; reproduce decisive counterexamples and complete canonical bytes.",
+    "Check R1-R4 corrections, read-only/path semantics, historical immutability, and truth of current evidence.",
+    "No acceptance with unresolved Critical or Required findings; distinguish downstream publication gates."
+  ],
+  "evidence_required": [
+    "Reviewed commit",
+    "File/line findings",
+    "Commands and results",
+    "Unverified scope",
+    "Decision"
+  ],
+  "assurance_requirement": "independent_adversarial"
+}

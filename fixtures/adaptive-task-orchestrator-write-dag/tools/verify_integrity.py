@@ -5,6 +5,7 @@ import hashlib
 import json
 import re
 import stat
+import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
@@ -94,11 +95,10 @@ def _parse_manifest(data: bytes) -> tuple[list[ManifestEntry] | None, list[Findi
 
     count_match = COUNT_PATTERN.fullmatch(lines[5])
     assert count_match is not None
-    declared_count = int(count_match.group(1))
+    # The grammar is unbounded; int() has version-dependent digit limits.
+    declared_count = count_match.group(1)
     raw_entries = lines[6:]
-    if any(line.startswith("#") for line in raw_entries) or (
-        declared_count == 0 and raw_entries
-    ):
+    if any(not line or line.startswith("#") for line in raw_entries):
         return None, [
             _finding(
                 "MANIFEST_HEADER_INVALID",
@@ -130,7 +130,7 @@ def _parse_manifest(data: bytes) -> tuple[list[ManifestEntry] | None, list[Findi
             )
         entries.append(ManifestEntry(digest=digest, path=relative_path))
 
-    if len(entries) != declared_count:
+    if str(len(entries)) != declared_count:
         findings.append(
             _finding(
                 "MANIFEST_ENTRY_COUNT_MISMATCH",
@@ -482,7 +482,9 @@ def main(argv: list[str] | None = None) -> int:
 
     findings = verify_integrity(arguments.context_root)
     for finding in findings:
-        print(json.dumps(asdict(finding), sort_keys=True, separators=(",", ":")))
+        line = json.dumps(asdict(finding), sort_keys=True, separators=(",", ":"))
+        # Bypass Windows text newline translation: the CLI contract is LF JSONL.
+        sys.stdout.buffer.write((line + "\n").encode("ascii"))
     return 1 if findings else 0
 
 

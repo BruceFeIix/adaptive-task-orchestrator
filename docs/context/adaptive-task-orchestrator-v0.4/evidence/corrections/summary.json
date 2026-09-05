@@ -1,0 +1,121 @@
+{
+  "record_kind": "v04_review_correction_summary",
+  "date": "2026-09-06",
+  "base_commit": "c7a710b",
+  "authority": "User approved v0.4 corrections and v0.5 staged development; critical work stays on Astra.",
+  "review_before_correction": {
+    "decision": "REVISE",
+    "source": "Returned V4-T5@2 independent review in the parent task; this is a root summary, not a verbatim transcript.",
+    "required": [
+      "R1 unbounded int conversion differs across Python 3.10/3.11",
+      "R2 zero count entries incorrectly classified as headers",
+      "R3 code/path oracle overclaims complete canonical bytes",
+      "R4 skipped tests included in pass counts"
+    ]
+  },
+  "red": {
+    "python_3_10": {
+      "discovered": 19,
+      "failure_records": 48,
+      "error_records": 0,
+      "skipped": 3,
+      "exit_code": 1
+    },
+    "python_3_11": {
+      "discovered": 19,
+      "failure_records": 47,
+      "error_records": 1,
+      "skipped": 3,
+      "exit_code": 1
+    },
+    "note": "Subtest failure records are not a count of distinct failed methods. Terminal logs were truncated; only observed summaries and representative failures are retained.",
+    "additional_counterexample": "Windows text-mode print emits CRLF; raw-byte assertions exposed the difference hidden by text=True."
+  },
+  "corrected_sources": {
+    "tests/collect_integrity_evidence.py": "A28436DFD8C8A39C2EE2842A28CEAEF5E411C6B6EE5157D025807B0C98DAB3DA",
+    "tests/test_verify_integrity.py": "00A72DE2D6015C75F1E73B8D93242C002068A9C986647B04D8B7BEAB2D3735D1",
+    "tools/verify_integrity.py": "D9DB758368C1A476B831F7F65524141B68A0ED25CD1EBDAE69C0250AB95A906A"
+  },
+  "targeted": {
+    "python_3_10": {
+      "discovered": 19,
+      "passed": 16,
+      "skipped": 3,
+      "exit_code": 0
+    },
+    "python_3_11": {
+      "discovered": 19,
+      "passed": 16,
+      "skipped": 3,
+      "exit_code": 0
+    }
+  },
+  "observations": {
+    "per_runtime": 59,
+    "compared_fields": [
+      "code",
+      "path",
+      "detail"
+    ],
+    "canonical_output": "ASCII-escaped compact sorted-key JSONL with LF",
+    "function_runs_per_case": 2,
+    "native_cli_cases": 55,
+    "native_cli_runs_per_case": 2,
+    "in_process_mock_cases": 4,
+    "cross_runtime": "All 59 aligned expected/actual complete findings, two-run hashes, and native CLI outputs match between local Python 3.10 and 3.11.",
+    "files": [
+      "python-3.10-observations.json",
+      "python-3.11-observations.json"
+    ]
+  },
+  "legacy_compatibility": {
+    "versions": [
+      "v0.2",
+      "v0.3"
+    ],
+    "python": [
+      "3.10",
+      "3.11"
+    ],
+    "tools": [
+      "validate_evidence.py",
+      "verify_integrity.py"
+    ],
+    "commands": 8,
+    "exit_codes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "output": "empty",
+    "historical_git_diff": "empty relative to c7a710b"
+  },
+  "supersedes_current_claims_in": [
+    "../mutation-matrix.json",
+    "../runtime-compatibility-matrix.json",
+    "../red-green-summary.json",
+    "../bilingual-claims.json",
+    "../../receipts/V4-T2-integrity-verifier-r2.json",
+    "../../receipts/V4-T3-compatibility-verification-r2.json",
+    "../../receipts/V4-T4-public-integration-r2.json"
+  ],
+  "historical_correction": "Prior 58/58 meant 58 discovered, 57 passed, 1 skipped; prior targeted 14 meant 13 passed, 1 skipped. Code/path checks did not establish detail or raw byte parity. Historical bytes are retained.",
+  "pending": [
+    "Fresh independent Astra review",
+    "Final local candidate package closure",
+    "Four actual GitHub Actions cells",
+    "Linux execution",
+    "Three real symlink scenarios"
+  ],
+  "decision": "AWAITING_INDEPENDENT_REVIEW",
+  "final_full_suite": {
+    "python_3_10": {"discovered": 63, "passed": 60, "skipped": 3, "exit_code": 0},
+    "python_3_11": {"discovered": 63, "passed": 60, "skipped": 3, "exit_code": 0},
+    "source_identity": "Matches corrected_sources above; collected after all test-oracle edits."
+  }
+}

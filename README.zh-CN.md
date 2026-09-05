@@ -190,7 +190,7 @@ py -3 -B -m unittest discover `
   -s fixtures/adaptive-task-orchestrator-write-dag/tests -v
 ```
 
-当前测试套件包含 58 项测试，覆盖原子化 materialization、结构化证据验证、
+当前测试套件包含 63 项测试，覆盖原子化 materialization、结构化证据验证、
 工作者独占事件流和便携 manifest 完整性行为。
 
 ### 验证已发布证据包的结构
@@ -242,7 +242,7 @@ python -B fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py \
 | v0.1 | 初始 Codex-native 政策基线 | v0.1 没有完成真实写入型多代理 DAG |
 | v0.2 | 一个有界的本地 nested-Git 写入型软件开发 DAG | 不证明持久调度器、生产负载、跨主机协调或所有路由 |
 | v0.3 | 原子化 fixture 发布、故障关闭证据验证、工作者独占事件流，以及一次真实双代理重叠探针 | 仅限单主机本地证据；不证明吞吐、崩溃恢复、签名或跨主机能力 |
-| v0.4（开发中） | 相对于可信 manifest 的便携只读精确清单与 SHA-256 校验；Windows Python 3.10 和 3.11 本地均为 58/58 | 四个 GitHub Actions 单元和 Linux 真实符号链接执行仍待完成；不证明真实性或并发对抗安全 |
+| v0.4（开发中） | 相对于可信 manifest 的便携只读精确清单与 SHA-256 校验；Windows Python 3.10／3.11 每次本地运行发现 63 项测试：60 项通过，3 项跳过 | 四个 GitHub Actions 单元和 Linux 真实符号链接执行仍待完成；不证明真实性或并发对抗安全 |
 
 已发布的 v0.3 回执记录了本地 Python 3.10 和 3.11 环境下 44/44 fixture 测试、有效的 v0.2/v0.3 证据包，以及没有未解决 Critical/Required 发现的独立审查。整体结果仍然是 `ACCEPT_WITH_CAVEATS`，不是生产认证。
 
@@ -271,7 +271,7 @@ python -B fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py \
 - 第二个端到端领域 fixture，包括逆向工程；
 - 精确重建当时没有保存的 11 个早期 v0.2 TaskContract 正文。
 - 在获准 push 前观测新版四单元 GitHub Actions 的结果；v0.4 当前本地证据覆盖
-  Windows Python 3.10/3.11，真实 `os.symlink` 方法因主机缺少权限而跳过。
+  Windows Python 3.10/3.11，三个独立的真实 `os.symlink` 测试因主机缺少权限而跳过。
 
 ## 贡献与安全
 

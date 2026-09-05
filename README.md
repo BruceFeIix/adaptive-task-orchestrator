@@ -191,7 +191,7 @@ py -3 -B -m unittest discover `
   -s fixtures/adaptive-task-orchestrator-write-dag/tests -v
 ```
 
-The current suite contains 58 tests covering atomic materialization, structural
+The current suite contains 63 tests covering atomic materialization, structural
 evidence validation, worker-owned event streams, and portable manifest-integrity
 behavior.
 
@@ -246,7 +246,7 @@ Generated runs are intentionally ignored by the public repository. The materiali
 | v0.1 | Initial Codex-native policy baseline | No real write-producing multi-agent DAG was completed at v0.1 |
 | v0.2 | One bounded local nested-Git write-producing software-development DAG | No persistent scheduler, production workload, cross-machine coordination, or universal route validation |
 | v0.3 | Atomic fixture publication, fail-closed evidence validation, worker-owned event streams, and one real two-agent overlap probe | Single-host local evidence only; no throughput, crash recovery, signature, or cross-host claim |
-| v0.4 (in development) | Portable, read-only exact-inventory and SHA-256 verification relative to a trusted manifest; 58/58 local tests on Windows Python 3.10 and 3.11 | Four GitHub Actions cells and Linux real-symlink execution remain pending; no authenticity or concurrent-adversary claim |
+| v0.4 (in development) | Portable, read-only exact-inventory and SHA-256 verification relative to a trusted manifest; each local Windows Python 3.10/3.11 run discovered 63 tests: 60 passed, 3 skipped | Four GitHub Actions cells and Linux real-symlink execution remain pending; no authenticity or concurrent-adversary claim |
 
 The published v0.3 receipt records 44/44 fixture tests on local Python 3.10 and 3.11 runtimes, valid v0.2/v0.3 evidence packages, and an independent review with no unresolved Critical or Required findings. The overall result remains `ACCEPT_WITH_CAVEATS`, not production certification.
 
@@ -277,7 +277,7 @@ The following remain intentionally unclaimed or deferred:
 - exact reconstruction of eleven early v0.2 contract bodies that were not preserved at the time.
 - observed results from the new four-cell GitHub Actions definition before an
   authorized push; local v0.4 evidence currently covers Windows Python 3.10/3.11,
-  while the real `os.symlink` method was skipped because the host lacked permission.
+  while three separate real `os.symlink` tests were skipped because the host lacked permission.
 
 ## Contributing and security
 

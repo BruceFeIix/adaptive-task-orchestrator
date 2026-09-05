@@ -16,7 +16,17 @@ are not Git release tags.
   inventory and SHA-256 verification relative to a trusted self-excluding manifest.
 - Mutation coverage for canonical manifest grammar, unsafe paths, incomplete
   inventory, filesystem read errors, reparse points, deterministic findings, and
-  CLI status/output behavior; the complete fixture suite now contains 58 tests.
+  CLI status/output behavior; the complete fixture suite now contains 63 tests.
+
+### Fixed
+
+- Compare unbounded decimal manifest counts without Python-version-dependent
+  integer conversion; distinguish valid zero-count mismatches from entry errors.
+- Emit LF-terminated CLI bytes on Windows as well as Linux. Regression tests now
+  assert complete literal finding details and exact native CLI bytes twice.
+- Count skipped tests separately: local Windows runs discover 63 tests, with 60
+  passed and 3 separately reported real-symlink skips. Earlier candidate evidence
+  is corrected by ADR-0010 without rewriting historical records.
 
 ### Changed
 
@@ -42,7 +52,7 @@ are not Git release tags.
 - Strict transitive evidence closure, process-crash recovery, third-party OpenAPI
   semantics, and a second end-to-end domain remain deferred.
 - Linux and all four GitHub Actions cells remain unobserved until an authorized
-  branch push; local Windows tests skipped the real `os.symlink` method because the
+  branch push; local Windows tests skipped three separate real `os.symlink` tests because the
   host lacked permission.
 
 ## [0.3.0] - 2026-08-25

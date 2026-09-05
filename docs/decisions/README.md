@@ -12,3 +12,5 @@ Architecture Decision Records capture why the project is designed and validated 
 | [0006](0006-validate-evidence-and-record-worker-owned-events.md) | Validate evidence and use worker-owned event streams |
 | [0007](0007-separate-root-verification-from-evidence-synthesis.md) | Separate root verification effects from evidence synthesis |
 | [0008](0008-publish-a-curated-open-source-repository.md) | Publish a curated standalone open-source repository |
+| [0009](0009-verify-evidence-manifests-portably.md) | Verify complete evidence inventories and hashes portably |
+| [0010](0010-correct-v04-count-and-canonical-output-evidence.md) | Correct v0.4 count handling, canonical output, and evidence claims |
