@@ -1,0 +1,25 @@
+{
+  "task_id": "V5-P1-policy-forward-test",
+  "task_revision": 1,
+  "profile": "user_pinned",
+  "preferred_capability": "frontier_reviewer",
+  "requested_capability": "frontier_reviewer",
+  "route_reason_codes": [
+    "USER_ASTRA_PIN",
+    "INDEPENDENT_SKILL_FORWARD_TEST"
+  ],
+  "effective_floor": "frontier_reviewer",
+  "floor_reasons": [
+    "Evaluate whether live instructions preserve declared routing and evidence constraints."
+  ],
+  "selected_model": "gpt-6-astra",
+  "selected_effort": "high",
+  "fork_turns": "none",
+  "fallback_chain": [],
+  "selection_reason": "preferred",
+  "route_status": "requested",
+  "capability_attested": true,
+  "attestation_source": "runtime-schema",
+  "floor_satisfied": true,
+  "semantic_note": "Legacy shape records requestability only. Actual evaluator model/effort remains unattested; no v1 high-risk effective-identity acceptance claim."
+}

@@ -1,0 +1,71 @@
+{
+  "id": "V5-P1-policy-forward-test",
+  "revision": 1,
+  "objective": "Use the updated Skill on bounded hypothetical user task cards and independently assess policy/registry/spec consistency.",
+  "task_type": "review",
+  "mode": "read",
+  "dependencies": [],
+  "inputs": [
+    "Repository Skill, registry, spec and checker at d6009111563733e27ef17e0a11f1f23e7be4fe43",
+    "Supplied hypothetical task cards; not real execution evidence"
+  ],
+  "deliverable": "Each card's decision and machine-readable planned bundle when eligible; check results, bounded policy findings and verdict.",
+  "read_scope": [
+    "F:/Projects/CodexProjects/AGENTS.md",
+    "Repository AGENTS.md",
+    "Repository .agents/skills/adaptive-task-orchestrator/ at d600911",
+    "docs/specs/adaptive-task-orchestrator-v0.5-runtime-routing.md",
+    "docs/decisions/0011-validate-runtime-specific-model-routes.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/tools/validate_runtime_routes.py",
+    "docs/context/adaptive-task-orchestrator-v0.5/candidates/",
+    "This immutable contract and supplied task cards",
+    "Git metadata read-only; Python standard library; applicable skill instructions"
+  ],
+  "write_scope": [],
+  "resource_locks": [],
+  "context_package": {
+    "authoritative_facts": [
+      "User approved Astra adaptation while keeping critical work on Astra.",
+      "This is a bounded native-agent forward test; task-card host facts are hypothetical, not the actual parent environment.",
+      "No author-provided expected decisions are included. Apply the Skill to the supplied request."
+    ],
+    "relevant_artifacts": [
+      ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+      ".agents/skills/adaptive-task-orchestrator/references/model-registry.json"
+    ],
+    "accepted_upstream_results": [],
+    "user_constraints": [
+      "No edits, temporary-file writes, Git writes, network, installations, external model CLI, real dispatches or further delegation."
+    ],
+    "permissions": [
+      "Read declared sources and execute Python -B in-memory checker calls with hypothetical bundles."
+    ],
+    "non_goals": [
+      "Do not perform the underlying security analysis or task implementations.",
+      "Do not infer observed effective identity from the model requested for this evaluator.",
+      "Do not review or rerun immutable v0.4 evidence."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 2,
+    "context_breadth": 2,
+    "uncertainty": 2,
+    "novelty": 2,
+    "impact": 2,
+    "verifiability": 2,
+    "coupling": 2
+  },
+  "acceptance_checks": [
+    "Handle each realistic card using the updated Skill without exceeding scope.",
+    "Return enough concrete bundle data or a precise incompatibility explanation to reproduce the decision.",
+    "After the cards, identify any Required contradictions between the updated Skill, registry and accepted v0.5 spec; do not equate assertions or no findings with identity authentication."
+  ],
+  "evidence_required": [
+    "Reviewed commit",
+    "Card decisions and planned bundles",
+    "In-memory checker results if used",
+    "Required/Optional policy findings",
+    "Caveats and verdict"
+  ],
+  "assurance_requirement": "independent"
+}
