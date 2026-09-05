@@ -3,8 +3,9 @@
 ## Status and objective
 
 The user approved the staged v0.4/v0.5 direction on 2026-09-06. This is the root's
-implementation contract under that authorization; independent design review is
-pending before the new live routing policy is accepted.
+implementation contract under that authorization. Independent design repair review
+V5-D1@2 accepted the corrected contract with caveats and no remaining Required
+findings. Implementation and live-policy acceptance are still pending.
 
 Keep Codex as executor. Add a versioned candidate registry, an explicit host/tool
 capability snapshot, and an offline standard-library semantic checker. The checker

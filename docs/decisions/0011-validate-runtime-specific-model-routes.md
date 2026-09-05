@@ -2,8 +2,9 @@
 
 ## Status
 
-Proposed implementation decision under the user-approved v0.5 direction,
-2026-09-06. Independent design review pending.
+Accepted design under the user-approved v0.5 direction, 2026-09-06.
+Independent design repair review V5-D1@2 accepted with caveats; implementation
+verification remains pending. This is not a release or effective-model claim.
 
 ## Decision
 
