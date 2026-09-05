@@ -1,0 +1,44 @@
+{
+  "record_kind": "fixed_task_pilot_oracles",
+  "revision": 1,
+  "scoring": "One point for exact JSON-value equality per task; 3 maximum; evaluate first submitted answers, no repair or prompt changes. Freeze before dispatch.",
+  "expected": {
+    "extraction": [
+      "r01",
+      "r03",
+      "r08"
+    ],
+    "waves": [
+      [
+        "A",
+        "B",
+        "C"
+      ],
+      [
+        "D",
+        "E",
+        "G"
+      ],
+      [
+        "F"
+      ],
+      [
+        "H"
+      ]
+    ],
+    "tally": [
+      [
+        "alpha",
+        1
+      ],
+      [
+        "beta",
+        3
+      ]
+    ]
+  },
+  "limitations": [
+    "Three easy/medium deterministic cases, one run per requested configuration, no statistical/general model ranking.",
+    "Elapsed dispatch-to-result observation is not pure inference time. No per-agent usage or effective model attestation available."
+  ]
+}

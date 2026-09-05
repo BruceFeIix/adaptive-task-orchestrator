@@ -1,0 +1,60 @@
+{
+  "id": "V5-E1-terra-pilot",
+  "revision": 1,
+  "objective": "Return the exact answers for three frozen, low/medium-risk deterministic pilot tasks in a single pass.",
+  "task_type": "verification",
+  "mode": "read",
+  "dependencies": [],
+  "inputs": [
+    "docs/context/adaptive-task-orchestrator-v0.5/evidence/fixed-task-pilot-cards.json"
+  ],
+  "deliverable": "One JSON object containing extraction, waves and tally answers, plus a concise scope/identity caveat.",
+  "read_scope": [
+    "Workspace and repository AGENTS.md",
+    "Applicable skill instructions",
+    "This exact revisioned contract",
+    "docs/context/adaptive-task-orchestrator-v0.5/evidence/fixed-task-pilot-cards.json",
+    "Read-only Git source identities"
+  ],
+  "write_scope": [],
+  "resource_locks": [],
+  "context_package": {
+    "authoritative_facts": [
+      "Fixed-rule pilot with deterministic root oracles, no live scheduling or security decision.",
+      "User approved bounded comparisons; important project implementation and review remain on Astra."
+    ],
+    "relevant_artifacts": [
+      "fixed-task-pilot-cards.json"
+    ],
+    "accepted_upstream_results": [],
+    "user_constraints": [
+      "No file/Git/temp writes, solver execution, oracle/result reads, network, installations, external model CLI or further delegation."
+    ],
+    "permissions": [
+      "Read declared cards and instructions, then reason over the supplied input."
+    ],
+    "non_goals": [
+      "Do not change any generic routing default.",
+      "Do not claim actual model identity, timing, usage, or broad model quality."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 1,
+    "context_breadth": 1,
+    "uncertainty": 0,
+    "novelty": 0,
+    "impact": 0,
+    "verifiability": 3,
+    "coupling": 0
+  },
+  "acceptance_checks": [
+    "Return all three answers in parseable JSON on the first response.",
+    "Stay within read-only declared scope and distinguish requested from effective identity."
+  ],
+  "evidence_required": [
+    "Answers",
+    "Source identity",
+    "Scope caveat"
+  ],
+  "assurance_requirement": "deterministic"
+}
