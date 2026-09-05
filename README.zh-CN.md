@@ -190,8 +190,10 @@ py -3 -B -m unittest discover `
   -s fixtures/adaptive-task-orchestrator-write-dag/tests -v
 ```
 
-当前测试套件包含 63 项测试，覆盖原子化 materialization、结构化证据验证、
-工作者独占事件流和便携 manifest 完整性行为。
+当前测试套件包含 110 项测试，覆盖原子化 materialization、结构化证据验证、
+工作者独占事件流、便携 manifest 完整性、运行时路由一致性、注册表示例和受控
+测试判据变异。Windows Python 3.10／3.11 各通过 107 项，并跳过相同的 3 项
+真实符号链接权限测试。跳过不计为通过。
 
 ### 验证已发布证据包的结构
 
@@ -224,6 +226,33 @@ python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.p
 来源、可信时间戳或真实性。校验假设所选证据包在调用期间保持静止，也不是
 防御并发恶意替换的文件系统沙箱。
 
+### 检查运行时模型路由
+
+v0.5 的可选校验器仅使用 Python 标准库，只读取显式指定的两个 JSON 文件。
+仅复制 Skill 不会安装这个源代码仓库附带的 CLI：
+
+```bash
+python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_runtime_routes.py \
+  --registry .agents/skills/adaptive-task-orchestrator/references/model-registry.json \
+  --bundle docs/context/adaptive-task-orchestrator-v0.5/candidates/planned-astra-bundle.json
+```
+
+示例描述的是计划，而非已完成运行。退出 `0` 只表示所提供的记录相互一致；
+`1` 输出确定性的 JSONL finding；`2` 表示参数用法错误。检查涵盖模型／effort
+交集、能力下限、精确锁定、回退链、上下文与覆盖参数兼容性、实际身份绑定、
+审查关系、并发批次和声明记录的覆盖情况。
+
+校验器不执行代理、不访问来源引用、不认证输入，也不证明完整 run 成功。
+主机返回任务 ID 并不证明实际模型／effort；缺少实际配置证据的高风险
+accepted／completed 记录会被拒绝，仅把示例改成 `completed` 不能使其通过。
+参见[运行时路由参考](.agents/skills/adaptive-task-orchestrator/references/runtime-routing.md)
+和 [v0.5 规格](docs/specs/adaptive-task-orchestrator-v0.5-runtime-routing.md)。
+
+版本化[模型注册表](.agents/skills/adaptive-task-orchestrator/references/model-registry.json)
+把 Astra 加入最高审查候选，同时保留 Luna／Terra／Sol 的职责。这些是暂定的
+项目策略，不是已测量的模型排名。候选资格取决于注册表与主机在确切工具接口上
+的支持交集；用户锁定同时约束模型和 effort，不允许静默回退。
+
 ### 创建新的 fixture run
 
 下面的命令会写入一个自包含的嵌套 Git fixture。必须使用唯一 run ID，且绝不能把项目根目录作为目标：
@@ -242,9 +271,14 @@ python -B fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py \
 | v0.1 | 初始 Codex-native 政策基线 | v0.1 没有完成真实写入型多代理 DAG |
 | v0.2 | 一个有界的本地 nested-Git 写入型软件开发 DAG | 不证明持久调度器、生产负载、跨主机协调或所有路由 |
 | v0.3 | 原子化 fixture 发布、故障关闭证据验证、工作者独占事件流，以及一次真实双代理重叠探针 | 仅限单主机本地证据；不证明吞吐、崩溃恢复、签名或跨主机能力 |
-| v0.4（开发中） | 相对于可信 manifest 的便携只读精确清单与 SHA-256 校验；Windows Python 3.10／3.11 每次本地运行发现 63 项测试：60 项通过，3 项跳过 | 四个 GitHub Actions 单元和 Linux 真实符号链接执行仍待完成；不证明真实性或并发对抗安全 |
+| v0.4（已封存本地候选） | 相对于可信 manifest 的便携只读精确清单与 SHA-256 校验；v0.4 的 Windows Python 3.10／3.11 基线发现 63 项测试：60 项通过，3 项跳过 | 四个 GitHub Actions 单元和 Linux 真实符号链接执行仍待完成；不证明真实性或并发对抗安全 |
+| v0.5（本地候选） | 版本化 Astra 注册表、运行时策略和离线路由校验器；当前本地套件在两套 Python 各发现 110 项：107 项通过，3 项跳过 | 合成记录和有界原生审查不代表实际模型认证、模型基准测试、完整 run 闭合或跨平台发布验收 |
 
 已发布的 v0.3 回执记录了本地 Python 3.10 和 3.11 环境下 44/44 fixture 测试、有效的 v0.2/v0.3 证据包，以及没有未解决 Critical/Required 发现的独立审查。整体结果仍然是 `ACCEPT_WITH_CAVEATS`，不是生产认证。
+
+v0.5 试跑中，请求使用 Astra 和 Terra 的两组配置分别首次答对了三个固定的
+确定性任务。这一小规模、仅确认请求配置的观察没有改变暂定注册表默认值，
+也不构成模型质量、延迟或成本基准测试。
 
 详细证据：
 
@@ -254,6 +288,9 @@ python -B fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py \
 - [v0.3 证据包](docs/context/adaptive-task-orchestrator-v0.3/README.md)
 - [v0.4 便携完整性规格](docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md)
 - [ADR-0009：便携校验证据 manifest](docs/decisions/0009-verify-evidence-manifests-portably.md)
+- [v0.5 运行时路由规格](docs/specs/adaptive-task-orchestrator-v0.5-runtime-routing.md)
+- [v0.5 本地候选证据](docs/context/adaptive-task-orchestrator-v0.5/README.md)
+- [ADR-0011：校验运行时模型路由](docs/decisions/0011-validate-runtime-specific-model-routes.md)
 - [架构决策](docs/decisions/README.md)
 
 ## 已知限制
@@ -268,6 +305,8 @@ python -B fixtures/adaptive-task-orchestrator-write-dag/tools/materialize.py \
 - 密码学签名、可信时间戳或工件真实性；
 - 第三方 OpenAPI 语义验证；
 - 所有运行时模型、effort、能力等级或领域拓扑都可工作；
+- 在未提供所需运行时结果的主机上证明实际模型／effort；注册表等级和 profile
+  默认值仍为暂定策略，没有模型成本、延迟或质量基准测试声明；
 - 第二个端到端领域 fixture，包括逆向工程；
 - 精确重建当时没有保存的 11 个早期 v0.2 TaskContract 正文。
 - 在获准 push 前观测新版四单元 GitHub Actions 的结果；v0.4 当前本地证据覆盖

@@ -4,8 +4,9 @@
 
 Accepted design under the user-approved v0.5 direction, 2026-09-06.
 Independent design repair review V5-D1@2, checker review V5-I1@1 and Skill
-forward-test V5-P1@1 accepted with caveats. Integration packaging remains pending.
-This is not a release or effective-model claim.
+forward-test V5-P1@1 accepted with caveats. The v0.5 local candidate retains final
+integration evidence and unresolved platform/attestation gaps. This is not a
+cross-platform release or effective-model claim.
 
 ## Decision
 

@@ -1,0 +1,259 @@
+{
+  "record_kind": "final_local_candidate_validation",
+  "version": "v0.5",
+  "date": "2026-09-06",
+  "decision": "LOCAL_CANDIDATE_ACCEPTED_WITH_PLATFORM_AND_ATTESTATION_GAPS",
+  "release_complete": false,
+  "source_identities": {
+    "checker_review_commit": "5c62bfe708f6831282ad6e2ef6542a5f99f44c82",
+    "policy_clarification_commit": "03ae7e50dffde2f8119cc27a08546ea2dad6278d",
+    "fixed_pilot_input_commit": "77eec51defede048f4e501ce34337e3fe0e71f3a",
+    "source_hashes": [
+      {
+        "path": "fixtures/adaptive-task-orchestrator-write-dag/tools/validate_runtime_routes.py",
+        "sha256": "05894122D49653B7DAC8EA740B6D02BAB204FB69CB96017307BDE0B07EBB8E26"
+      },
+      {
+        "path": "fixtures/adaptive-task-orchestrator-write-dag/tests/test_runtime_routes.py",
+        "sha256": "5B39F75A1481586E8C0C0CC261F9432A703993656544034C1E037346EDCFACB2"
+      },
+      {
+        "path": "fixtures/adaptive-task-orchestrator-write-dag/tests/test_runtime_routes_hardening.py",
+        "sha256": "F251659B2FD3C92ADCB5A792746A1A436F1B7D651E51D76EB95D14E4F3638C86"
+      },
+      {
+        "path": "fixtures/adaptive-task-orchestrator-write-dag/tests/test_runtime_route_mutations.py",
+        "sha256": "1ECB4B6EF8757F7160368B7FB39B4991CA8BCA027AD769C59CE7CBDEA7E0D307"
+      },
+      {
+        "path": "fixtures/adaptive-task-orchestrator-write-dag/tests/test_registry_candidate.py",
+        "sha256": "FE27527B42411E55D09EDAEB883810A19B6AC0DA714C506BC06CE09D2B20D388"
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "sha256": "7082A0EE58B21F630093630DAAB3BC0F42F671F4055CD86E2A388D57FEB84BF2"
+      }
+    ],
+    "checker_worktree_matches_frozen_git_blob": true
+  },
+  "verification": {
+    "full_suite": {
+      "python_3_10": {
+        "discovered": 110,
+        "passed": 107,
+        "skipped": 3,
+        "exit_code": 0
+      },
+      "python_3_11": {
+        "discovered": 110,
+        "passed": 107,
+        "skipped": 3,
+        "exit_code": 0
+      },
+      "record": "final-integrated-local-tests.json"
+    },
+    "design_review": {
+      "receipt": "../receipts/V5-D1-design-review-r2.json",
+      "decision": "ACCEPT_WITH_CAVEATS",
+      "critical": 0,
+      "required": 0
+    },
+    "checker_review": {
+      "receipt": "../receipts/V5-I1-checker-review-r1.json",
+      "decision": "ACCEPT_WITH_CAVEATS",
+      "critical": 0,
+      "required": 0,
+      "optional_byte_oracles_added": true
+    },
+    "skill_forward_test": {
+      "receipt": "../receipts/V5-P1-policy-forward-test-r1.json",
+      "decision": "ACCEPT_WITH_CAVEATS",
+      "critical": 0,
+      "required": 0,
+      "optional_wording_clarified": true,
+      "root_reproduced_cases_per_runtime": 6,
+      "root_repeated_each_case": true
+    },
+    "fixed_pilot": {
+      "record": "fixed-task-pilot-results.json",
+      "cases_per_requested_configuration": 3,
+      "first_pass_correct": {
+        "astra": 3,
+        "terra": 3
+      },
+      "repairs": 0,
+      "oracles_frozen_before_dispatch": true,
+      "root_recomputed_oracles": true,
+      "persisted_answers_exactly_match": true,
+      "defaults_changed": false,
+      "effective_identity_attested": false
+    },
+    "workspace_skill": {
+      "record": "workspace-skill-sync.json",
+      "source_files": 9,
+      "target_files": 9,
+      "inventory_equal": true,
+      "sha256_pairs_equal": 9,
+      "global_install": false
+    },
+    "preseal_commands": {
+      "python_3_10": [
+        {
+          "target": "v0.2",
+          "script": "validate_evidence.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.2",
+          "script": "verify_integrity.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.3",
+          "script": "validate_evidence.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.3",
+          "script": "verify_integrity.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.4",
+          "script": "validate_evidence.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.4",
+          "script": "verify_integrity.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.5",
+          "script": "validate_evidence.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.5-planned",
+          "script": "validate_runtime_routes.py",
+          "exit": 0,
+          "output": ""
+        }
+      ],
+      "python_3_11": [
+        {
+          "target": "v0.2",
+          "script": "validate_evidence.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.2",
+          "script": "verify_integrity.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.3",
+          "script": "validate_evidence.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.3",
+          "script": "verify_integrity.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.4",
+          "script": "validate_evidence.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.4",
+          "script": "verify_integrity.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.5",
+          "script": "validate_evidence.py",
+          "exit": 0,
+          "output": ""
+        },
+        {
+          "target": "v0.5-planned",
+          "script": "validate_runtime_routes.py",
+          "exit": 0,
+          "output": ""
+        }
+      ]
+    },
+    "historical_packages": {
+      "versions": [
+        "v0.2",
+        "v0.3",
+        "v0.4"
+      ],
+      "diff_from_v04_seal_empty": true,
+      "structural_and_integrity_checks_passed_on_both_local_runtimes": true
+    },
+    "preseal_links": {
+      "checked": 83,
+      "existing": 81,
+      "expected_final_artifacts": [
+        "final-validation-receipt.json",
+        "../integrity.sha256"
+      ],
+      "missing_other": 0,
+      "note": "Final two artifacts and post-seal gates must be checked after manifest creation; retain those results outside the package."
+    },
+    "package_line_endings": {
+      "cr_containing_files": 0
+    },
+    "skill_validation": {
+      "quick_validate": "Unavailable: PyYAML absent; not reported as passed.",
+      "fallback": "Unchanged frontmatter/UI metadata plus resolved local reference links; no dependency installed."
+    },
+    "ci": {
+      "matrix": [
+        "ubuntu-latest/3.10",
+        "ubuntu-latest/3.11",
+        "windows-latest/3.10",
+        "windows-latest/3.11"
+      ],
+      "execution": "PENDING_NOT_PASSED",
+      "permissions": "contents: read",
+      "timeout_minutes": 10
+    }
+  },
+  "manifest_sealing": {
+    "name": "integrity.sha256",
+    "entries": 34,
+    "ordering": "ASCII case-sensitive ordinal relative paths",
+    "self_excluded": true,
+    "rule": "Generate only after every other package file is final. Record all post-seal results outside this directory."
+  },
+  "pending": [
+    "Actual four-cell GitHub Actions execution",
+    "Linux runtime and real symlink assertions",
+    "Effective-model/effort assurance unavailable on observed native spawn results",
+    "Public release decision"
+  ],
+  "caveats": [
+    "The checker validates declared consistency, not evidence authenticity or full attempt/event/effect closure.",
+    "Runtime-schema requestability and task-name-only spawn acceptance are not effective identity attestation.",
+    "The fixed-task pilot is not a model-quality, latency or cost benchmark; generic defaults remain provisional.",
+    "Trusted-manifest integrity assumes a quiescent package; no signature, trusted timestamp or concurrent-adversary guarantee.",
+    "Private v0.1 fingerprint errata and accepted v0.2/v0.3/v0.4 packages were not rewritten."
+  ]
+}

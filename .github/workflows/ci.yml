@@ -74,3 +74,19 @@ jobs:
         run: >-
           python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py
           --context-root docs/context/adaptive-task-orchestrator-v0.4
+
+      - name: Validate v0.5 routing evidence structure
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.5
+
+      - name: Validate v0.5 planned runtime routes
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_runtime_routes.py
+          --registry .agents/skills/adaptive-task-orchestrator/references/model-registry.json
+          --bundle docs/context/adaptive-task-orchestrator-v0.5/candidates/planned-astra-bundle.json
+
+      - name: Verify v0.5 local candidate integrity manifest
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.5

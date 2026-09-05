@@ -4,7 +4,11 @@ This fixture creates a self-contained Git repository for validating a real write
 
 Materialization is published atomically for cooperating local creators. A call builds and verifies a unique sibling staging directory while holding an exclusive per-run lock, promotes the staging directory only after its invariants pass, and then publishes the receipt. Caught failures remove invocation-owned staging and lock artifacts; a caught receipt-publication failure also rolls back only the final run promoted by that invocation. Pre-existing runs and receipts are never deleted. Process-crash recovery and stale-lock reclamation remain out of scope.
 
-`runs_root` must resolve outside `template_root`; equal or descendant destinations are rejected before directory creation or copying, preventing recursive self-copy. The standard-library tooling suite discovers 63 tests on local Python 3.10 and 3.11: 60 passed and 3 real-symlink tests skipped on each runtime. The configured CI matrix adds `ubuntu-latest` and `windows-latest` for both runtimes; those GitHub Actions cells remain unobserved until an authorized push.
+`runs_root` must resolve outside `template_root`; equal or descendant destinations are rejected before directory creation or copying, preventing recursive self-copy. The standard-library tooling suite now discovers 110 tests on local Python 3.10 and 3.11: 107 passed and 3 real-symlink tests skipped on each runtime. The sealed v0.4 baseline remains 63 discovered / 60 passed / 3 skipped. The configured CI matrix adds `ubuntu-latest` and `windows-latest` for both runtimes; those GitHub Actions cells remain unobserved until an authorized push.
+
+The opt-in `tools/validate_runtime_routes.py` checks explicit registry/bundle JSON
+without executing agents or authenticating evidence. The top-level bilingual
+READMEs document its command and the important planned-versus-effective boundary.
 
 The template begins with a legacy `User.name` contract. A v0.2 validation run adds `displayName` while preserving compatibility, regenerates the shared field artifact once, and updates the server and client consumers in separate write scopes.
 

@@ -6,9 +6,10 @@ The user approved the staged v0.4/v0.5 direction on 2026-09-06. This is the root
 implementation contract under that authorization. Independent design repair review
 V5-D1@2 accepted the corrected contract with caveats and no remaining Required
 findings. Independent checker review and three-card Skill forward-testing accepted
-with caveats; root reproduced the six forward cases on Python 3.10/3.11. Local
-integration packaging and workspace Skill synchronization remain pending. This
-status is not a cross-platform release or effective-model identity claim.
+with caveats; root reproduced the six forward cases on Python 3.10/3.11. The local
+candidate includes integrated tests, a bounded fixed-task pilot and 9/9 workspace
+Skill synchronization. See the versioned local receipt for its exact boundaries.
+This status is not a cross-platform release or effective-model identity claim.
 
 Keep Codex as executor. Add a versioned candidate registry, an explicit host/tool
 capability snapshot, and an offline standard-library semantic checker. The checker

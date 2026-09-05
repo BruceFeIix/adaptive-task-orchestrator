@@ -12,11 +12,21 @@ are not Git release tags.
 
 ### Added
 
+- A bounded three-task routing pilot and independently reviewed Skill behavior,
+  with explicit requested-only identity and provisional-default caveats. The local
+  v0.5 package includes source identities and a self-excluding integrity manifest.
+- A versioned Astra-capable registry and runtime-specific policy, plus an opt-in
+  standard-library route consistency checker. Exact user pins, capability floors,
+  fallback chains, effective evidence, review relationships and concurrency have
+  deterministic checks; this is not an executor or authenticity mechanism.
+- Routing and registry tests, native CLI golden bytes and six controlled in-memory
+  oracle mutations. The current local suite discovers 110 methods: 107 passed and
+  three legacy real-symlink permission tests skipped on each Python 3.10/3.11 run.
 - A dependency-free `verify_integrity.py` CLI for deterministic, read-only exact
   inventory and SHA-256 verification relative to a trusted self-excluding manifest.
 - Mutation coverage for canonical manifest grammar, unsafe paths, incomplete
   inventory, filesystem read errors, reparse points, deterministic findings, and
-  CLI status/output behavior; the complete fixture suite now contains 63 tests.
+  CLI status/output behavior; the sealed v0.4 baseline contains 63 tests.
 
 ### Fixed
 
@@ -24,7 +34,7 @@ are not Git release tags.
   integer conversion; distinguish valid zero-count mismatches from entry errors.
 - Emit LF-terminated CLI bytes on Windows as well as Linux. Regression tests now
   assert complete literal finding details and exact native CLI bytes twice.
-- Count skipped tests separately: local Windows runs discover 63 tests, with 60
+- Count skipped tests separately: v0.4 Windows baseline runs discover 63 tests, with 60
   passed and 3 separately reported real-symlink skips. Earlier candidate evidence
   is corrected by ADR-0010 without rewriting historical records.
 

@@ -145,6 +145,12 @@ This is a policy artifact, not an external scheduler configuration or public ser
 
 Plans use stable capability aliases such as `fast_reader`, `general_worker`, `deep_reasoner`, and `frontier_reviewer`. The runtime must be preflighted before binding an alias to an actual model and reasoning effort.
 
+The versioned [model registry](.agents/skills/adaptive-task-orchestrator/references/model-registry.json)
+adds Astra as the frontier candidate while retaining Luna/Terra/Sol roles. These
+are provisional project-policy defaults, not measured model rankings. Candidate
+eligibility is the intersection of registry and host support for the exact tool
+surface. A user pin binds both model and effort without silent fallback.
+
 An unattested route is never presented as observed. High-risk floors constrain analysis quality but do not grant additional permissions. See the [routing policy](.agents/skills/adaptive-task-orchestrator/references/routing-policy.md).
 
 ### Evidence and review
@@ -191,9 +197,11 @@ py -3 -B -m unittest discover `
   -s fixtures/adaptive-task-orchestrator-write-dag/tests -v
 ```
 
-The current suite contains 63 tests covering atomic materialization, structural
-evidence validation, worker-owned event streams, and portable manifest-integrity
-behavior.
+The current suite contains 110 tests covering atomic materialization, structural
+evidence validation, worker-owned event streams, portable manifest integrity,
+runtime-route consistency, registry examples and controlled oracle mutations.
+Local Windows Python 3.10/3.11 runs each passed 107 and skipped the same three
+real-symlink permission tests. Skips are not counted as passes.
 
 ### Validate published evidence structure
 
@@ -228,6 +236,31 @@ manifest; it is not a signature, provenance record, trusted timestamp, or
 authenticity guarantee. Validation assumes the selected package is quiescent and is
 not a filesystem sandbox against concurrent hostile replacement.
 
+### Check runtime-specific model routes
+
+The opt-in v0.5 checker reads only the two explicit JSON files, using the Python
+standard library. Copying the Skill alone does not install this source-repository
+CLI:
+
+```bash
+python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_runtime_routes.py \
+  --registry .agents/skills/adaptive-task-orchestrator/references/model-registry.json \
+  --bundle docs/context/adaptive-task-orchestrator-v0.5/candidates/planned-astra-bundle.json
+```
+
+The example describes a plan, not a completed run. Exit `0` means the supplied
+records are consistent; `1` emits deterministic JSONL findings; `2` means usage
+error. Checks cover model/effort intersection, capability floors, exact pins,
+fallbacks, context/override compatibility, effective-identity bindings, review
+relationships, concurrent batches and declared-record coverage.
+
+The checker does not execute agents, fetch source references, authenticate input,
+or prove complete-run success. A task ID returned by a host does not attest actual
+model/effort. High-risk accepted/completed records without effective evidence fail
+the gate; changing the example to `completed` alone must not make it pass. See the
+[runtime routing reference](.agents/skills/adaptive-task-orchestrator/references/runtime-routing.md)
+and [v0.5 specification](docs/specs/adaptive-task-orchestrator-v0.5-runtime-routing.md).
+
 ### Materialize a new fixture run
 
 This command writes a self-contained nested Git fixture. Use a unique run ID and never target the project root:
@@ -246,9 +279,15 @@ Generated runs are intentionally ignored by the public repository. The materiali
 | v0.1 | Initial Codex-native policy baseline | No real write-producing multi-agent DAG was completed at v0.1 |
 | v0.2 | One bounded local nested-Git write-producing software-development DAG | No persistent scheduler, production workload, cross-machine coordination, or universal route validation |
 | v0.3 | Atomic fixture publication, fail-closed evidence validation, worker-owned event streams, and one real two-agent overlap probe | Single-host local evidence only; no throughput, crash recovery, signature, or cross-host claim |
-| v0.4 (in development) | Portable, read-only exact-inventory and SHA-256 verification relative to a trusted manifest; each local Windows Python 3.10/3.11 run discovered 63 tests: 60 passed, 3 skipped | Four GitHub Actions cells and Linux real-symlink execution remain pending; no authenticity or concurrent-adversary claim |
+| v0.4 (sealed local candidate) | Portable, read-only exact-inventory and SHA-256 verification relative to a trusted manifest; the v0.4 Windows Python 3.10/3.11 baseline discovered 63 tests: 60 passed, 3 skipped | Four GitHub Actions cells and Linux real-symlink execution remain pending; no authenticity or concurrent-adversary claim |
+| v0.5 (local candidate) | Versioned Astra registry, runtime-specific policy and offline route checker; the current local suite discovers 110 tests: 107 passed, 3 skipped on each Python runtime | Synthetic records and bounded native review are not effective-model authentication, model benchmarks, complete-run closure or cross-platform release acceptance |
 
 The published v0.3 receipt records 44/44 fixture tests on local Python 3.10 and 3.11 runtimes, valid v0.2/v0.3 evidence packages, and an independent review with no unresolved Critical or Required findings. The overall result remains `ACCEPT_WITH_CAVEATS`, not production certification.
+
+The v0.5 pilot's requested Astra and Terra configurations each returned correct
+first-pass answers for three fixed deterministic tasks. This small requested-only
+observation did not change provisional registry defaults and is not a model
+quality, latency or cost benchmark.
 
 Detailed evidence:
 
@@ -258,6 +297,9 @@ Detailed evidence:
 - [v0.3 evidence package](docs/context/adaptive-task-orchestrator-v0.3/README.md)
 - [v0.4 portable-integrity specification](docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md)
 - [ADR-0009: verify evidence manifests portably](docs/decisions/0009-verify-evidence-manifests-portably.md)
+- [v0.5 runtime-routing specification](docs/specs/adaptive-task-orchestrator-v0.5-runtime-routing.md)
+- [v0.5 local candidate evidence](docs/context/adaptive-task-orchestrator-v0.5/README.md)
+- [ADR-0011: validate runtime-specific model routes](docs/decisions/0011-validate-runtime-specific-model-routes.md)
 - [architecture decisions](docs/decisions/README.md)
 
 ## Known limitations
@@ -273,6 +315,9 @@ The following remain intentionally unclaimed or deferred:
 - cryptographic signatures, trusted timestamps, or artifact authenticity;
 - third-party OpenAPI semantic validation;
 - proof that every runtime model, effort, capability tier, or domain topology works;
+- effective model/effort assurance on hosts that do not expose the required runtime
+  result; registry ranks and profile defaults remain provisional, without model
+  cost/latency/quality benchmark claims;
 - a second end-to-end domain fixture, including reverse engineering;
 - exact reconstruction of eleven early v0.2 contract bodies that were not preserved at the time.
 - observed results from the new four-cell GitHub Actions definition before an

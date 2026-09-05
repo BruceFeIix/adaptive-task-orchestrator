@@ -14,3 +14,4 @@ Architecture Decision Records capture why the project is designed and validated 
 | [0008](0008-publish-a-curated-open-source-repository.md) | Publish a curated standalone open-source repository |
 | [0009](0009-verify-evidence-manifests-portably.md) | Verify complete evidence inventories and hashes portably |
 | [0010](0010-correct-v04-count-and-canonical-output-evidence.md) | Correct v0.4 count handling, canonical output, and evidence claims |
+| [0011](0011-validate-runtime-specific-model-routes.md) | Separate registry, host capability, planned routes and effective execution evidence |
