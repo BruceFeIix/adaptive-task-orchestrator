@@ -17,7 +17,8 @@ Do not consume reset credits automatically. No automatic model downgrade.
 
 ## Current baseline
 
-- Branch: `feature/v0.4-portable-integrity`.
+- Active branch: `feature/v0.5-runtime-routing`.
+- Sealed v0.4 branch: `feature/v0.4-portable-integrity`, commit `0ea8bfd`.
 - Starting commit: `c7a710b`; worktree was clean.
 - First usage observation: 23% remaining in the only reported weekly window.
 - P0 local candidate is sealed; actual platform gates remain pending. P1 design

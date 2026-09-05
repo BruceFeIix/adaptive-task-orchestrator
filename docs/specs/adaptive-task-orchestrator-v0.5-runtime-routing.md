@@ -67,7 +67,8 @@ Each model has `capability` (maximum approved alias), `family` (project label fo
 disclosing diversity, not statistical independence), and `efforts_by_surface`
 (surface -> nonempty unique effort list). Supported efforts have explicit ordering
 low, medium, high, xhigh, max, ultra. Unknown models and efforts fail validation.
-Defaults map each capability to an ordered candidate model list. Candidates must
+Unregistered models may appear in a host snapshot but are never eligible selected,
+effective, or fallback candidates. Defaults map each capability to an ordered candidate model list. Candidates must
 exist and satisfy that capability. No model-name lexical ranking or online lookup.
 The first registry's concrete choices remain provisional until evaluation.
 
@@ -91,6 +92,11 @@ Unknown fields are rejected in v1 objects; future extensions require a new versi
   root_slots, otherwise limit is already the child capacity. Invalid or negative
   capacity is rejected; do not subtract root twice.
 
+The snapshot's run_id must equal the bundle run_id. Every route, including planned
+routes, must reference this snapshot_id. Effective configuration evidence requires
+effective_config_reporting=true. A later reporting capability needs an updated
+snapshot and consistent rebinding, not silent disregard of a false declaration.
+
 `requirements` is an array of root-declared policy assessments, separate from
 TaskContracts: `task_id`, `task_revision`, `minimum_capability`, `assurance`
 (deterministic, root_check, independent, independent_adversarial). Each task
@@ -106,16 +112,28 @@ Each `routes` entry has:
   positive integer. Overrides with all require snapshot support. Inherited values
   must still be described as selected/requested, not observed.
 - `context_complete`: boolean; an override with no/bounded history requires true.
-- `fallback_chain`: array of objects with `model`, `effort`; each must be available
-  in the same snapshot, satisfy the task floor, and be monotonic in capability.
-  Equal-capability moves cannot lower effort. No duplicate candidate pair.
+- `fallback_chain`: array of objects with `model`, `effort`. Validate the entire
+  sequence `[selected_candidate] + fallback_chain`: each must be available, meet
+  both minimum/requested capabilities, and be monotonic in capability from its
+  predecessor. Equal-capability moves cannot lower effort. No duplicate pair in
+  the entire sequence, including repetition of the selected pair. Empty is valid.
 - `dispatch_status`: `planned`, `accepted`, `rejected`, `completed`, or `cancelled`.
 - `effective_route`: null or object with `model`, `effort`, `source_kind`
   (`runtime-result`), `source_ref`, `run_id`, `snapshot_id`, `worker_id`.
 - `review_of`: null or an author route ID; `fresh_context`: boolean.
 
 Availability is derived from the registry/snapshot intersection, never supplied as
-an unchecked boolean. Only accepted/completed dispatches may carry effective route
+an unchecked boolean. Every selected pair, including planned routes, must exist
+in that intersection and meet both minimum_capability and requested_capability.
+A requested_capability below the minimum is itself invalid. Stronger selected
+candidates are allowed. Effective routes must also meet both declared requirements.
+
+`user_pinned` pins the exact selected model AND effort. Its fallback_chain must be
+empty; any effective route must match the selected pair regardless of known custom
+configuration overrides. Changing either value needs a new authorized decision.
+Unpinned profiles may honor known overrides when all effective constraints pass.
+
+Only accepted/completed dispatches may carry effective route
 evidence; schema-only observations cannot do so. Effective model/effort must be
 available, satisfy the floor, and carry matching run/snapshot/worker bindings.
 When configuration overrides are none, effective and selected values must match.
@@ -128,14 +146,21 @@ accepted/completed high-risk routes require effective-route evidence. This is a
 policy acceptance gate, not a claim that the checker enforces host dispatch.
 
 Review routes require a real author route, a different worker, fresh_context=true,
-and capability at least the author's effective (or, for planning only, selected)
-model. A completed review of a completed high-risk author needs effective evidence
-for both. Family equality is not a failure; disclose diversity separately rather
-than equating freshness with cross-model assurance. Self/cyclic review is invalid.
+and capability at least the author's. A planned review compares both SELECTED
+model capabilities; it makes no claim about effective execution. An accepted or
+completed review requires an accepted/completed author and compares both EFFECTIVE
+model capabilities. Missing either effective identity produces a specific
+unsubstantiated-review finding, even for a low-risk author. A standalone low-risk
+execution without review_of may remain valid without identity evidence. Never
+substitute selected identity in an execution-level comparison. Family equality is
+not a failure; disclose diversity separately rather than equating freshness with
+cross-model assurance. Self/cyclic review is invalid. Rejected/cancelled reviews
+validate the relationship and planned capability compatibility only; they claim
+no execution-level comparative assurance.
 
 Routes sharing a wave represent one concurrent batch. Planned, accepted, and
 completed entries count toward that batch's capacity; rejected/cancelled entries
-do not. Worker IDs must be unique per wave. This offline convention does not
+  do not. Worker IDs must be unique per wave. This offline convention does not
 reconstruct arbitrary event timing or peak live concurrency across wave history.
 
 Each `root_only` entry has task identity, `reason`, and `check_ref`. It may satisfy
@@ -143,6 +168,9 @@ only deterministic/root_check low-risk requirements. A task cannot be both a
 root-only record and a route. This v1 profile allows only one selected route per
 task identity; retries/attempt histories require separate bundles, not an implied
 strict-complete-run model. All declared requirements need a route or root record.
+This is structural coverage of the declared subset: planned, rejected and cancelled
+routes satisfy record coverage too. A zero-finding bundle may contain unfinished
+work and must never be described as a complete successful run.
 
 ## Diagnostics and tests
 

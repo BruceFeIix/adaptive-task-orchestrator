@@ -12,6 +12,7 @@ This repository contains the repo-local `adaptive-task-orchestrator` Skill, its 
 ## Preserve evidence
 
 - Treat `docs/context/adaptive-task-orchestrator-v0.2/` and `docs/context/adaptive-task-orchestrator-v0.3/` as immutable accepted evidence packages.
+- Treat the sealed `docs/context/adaptive-task-orchestrator-v0.4/` local candidate as immutable too. Record pending platform results outside that package; its 33-entry manifest does not imply cross-platform release completion.
 - Do not rewrite accepted contracts, routes, receipts, event streams, final validation receipts, or `integrity.sha256` files.
 - Record corrections or later changes in a new ADR, specification, or versioned context directory.
 - Keep text files LF-normalized so byte-level integrity manifests remain portable.
