@@ -2,83 +2,96 @@
 
 ## Authority and stop policy
 
-The user approved completing v0.4 correctness/evidence closure and v0.5
-runtime-aware Astra routing, then continuing bounded work toward that scope.
-Important design, implementation and review stay with the current Astra root or
-an explicitly requested gpt-6-astra reviewer; generic Sol defaults do not override
-that instruction. Requested identity is not runtime-attested effective identity.
+The user approved the v0.4 correctness/evidence closure and v0.5 runtime-aware
+Astra routing plan, with bounded fixed-task comparisons and a quota reserve.
+Important design, implementation and review stay on Astra; generic Sol defaults
+do not override that instruction. Requested identity is not effective identity.
 
 Check account usage before/after bounded batches. Start no long worker below 5%
-remaining; stop implementation at or before the observed 2% reserve and save a
-checkpoint. Missing usage windows are unknown, and usage is account-wide.
-Never automatically downgrade, consume reset credits, push, tag, release, install
-globally, invoke an external model CLI, or broaden execution permissions.
+remaining; stop implementation at or before the observed 2% reserve. Missing
+windows are unknown; usage is account-wide. Never automatically downgrade or
+consume reset credits. Public push, PR, tag/release, global installation,
+external model CLIs and permission expansion need their applicable authorization.
 
-## Current authoritative state
+## Current state
 
-- Branch: feature/v0.5-runtime-routing. Run git status and git log before resuming.
-- Latest policy/evidence increment: 03ae7e5; workspace Skill sync verified 9/9.
-- v0.4 local candidate sealed at 0ea8bfd, with 33 manifest entries.
-- v0.4 manifest SHA-256: ECE91E9E802C0E171FA5F9F165CA746F5F8290313032934936FCD8613492CC4A.
-- v0.2/v0.3/v0.4 accepted or sealed packages remain immutable.
-- Latest observed quota: 14% remaining in the only reported weekly window.
-- Six existing README/CHANGELOG/index/CI edits are root-authored pending closure;
-  preserve any additional dirty paths rather than assuming ownership.
+- Branch: feature/v0.5-runtime-routing. Inspect git status and git log on resume.
+- v0.5 sealed local candidate: 82ccf02f825bf7ff83e30d6fe9717dab0f4d5eb8.
+- v0.5 manifest: 34 entries, self-excluding, case-sensitive ordinal paths.
+- v0.5 manifest SHA-256: AF635FD87B6CF0AD03230116B67C2AC890E821621B050752F8D56DB5A1A857C2.
+- v0.4 sealed local candidate: 0ea8bfd, 33 entries; manifest SHA-256:
+  ECE91E9E802C0E171FA5F9F165CA746F5F8290313032934936FCD8613492CC4A.
+- v0.2/v0.3/v0.4/v0.5 accepted/sealed packages are immutable. Later observations
+  belong outside them, for example docs/validation/.
+- Repository and parent workspace Skill copies both have 9 files. All exact paths
+  and SHA-256 pairs match. No global install; historical v0.1 snapshot unchanged.
+- Latest quota observation: 11% remaining, 89% used in the reported weekly window,
+  at 2026-09-05 19:04:39 UTC. No reset consumed, no automatic downgrade.
+- No child agents or test sessions remain running. No push, PR, tag or release
+  was performed. The saved origin/main ref is not a fresh remote-state assertion.
 
-## Completed and evidenced
+## Completion audit
 
-- v0.4 R1-R4 corrections and independent correction review accepted with caveats.
-  Its frozen full-suite baseline is 63 discovered, 60 passed, 3 skipped per Python.
-- v0.5 design repair review V5-D1@2 and checker review V5-I1@1 accepted with
-  caveats, zero remaining Critical/Required. Registry and runtime Skill implemented.
-- Checker tests include malformed input, complete CLI bytes, pins, effective
-  evidence, review cycles, concurrency, immutable inputs and controlled mutations.
-  Retained postreview evidence has 42 targeted + 5 registry tests per Python;
-  prior root full-suite run had 110 discovered, 107 passed, 3 legacy symlink skips.
-  Do not treat an earlier 80/98-test increment as the final integrated count.
-- Policy forward-test V5-P1@1 accepted with caveats, zero Critical/Required.
-  Full hypothetical inputs and a clearly labeled root-transcribed receipt are
-  retained. Root reproduced all six positive/negative cases twice each on
-  Python 3.10.0 and 3.11.9 with exact findings and unchanged inputs.
-- Two optional policy ambiguities were clarified without changing checker or
-  registry behavior. Independent-task creation is not a child-capacity workaround.
-- Latest read-only Python 3.11 checks: v0.2/v0.3/v0.4 structure + integrity
-  (six commands) and the v0.5 planned route CLI all exited zero with no findings.
+| Requirement | Evidence and current status |
+|---|---|
+| v0.4 R1-R4 correctness repairs | Done locally; frozen correction review ACCEPT_WITH_CAVEATS, zero Critical/Required |
+| Versioned registry and host/effort rules | Done; live 9-file Skill, v0.5 spec and ADR-0011 |
+| Offline semantic checker and meaningful negative tests | Done; V5-I1 review, Cartesian/adversarial probes and six controlled mutations |
+| Independent Skill behavior test | Done; V5-P1 receipt, six cases reproduced twice on Python 3.10/3.11; two optional wording clarifications applied |
+| Bounded fixed-task comparison | Done as a pilot; frozen three-task inputs/oracles, requested Astra and Terra first-pass 3/3 each, no repairs |
+| Generic model calibration | Defaults remain explicitly provisional; this pilot does not justify a model ranking or cost/latency claim |
+| Integrated local suite | Done; Python 3.10.0 and 3.11.9 each discovered 110, passed 107, skipped 3 real-symlink cases |
+| Historical regression gates | Done locally; 12 v0.2/v0.3/v0.4 structural/integrity checks across both runtimes, no historical diff |
+| Two local Skill copies | Done; 9/9 exact inventory and byte-hash matches, rechecked after sealing |
+| Bilingual docs, CI definitions, evidence and manifest | Done locally; 34-entry seal and four post-seal checks, zero diagnostics |
+| Actual Windows/Linux four-cell GitHub Actions | Not run; requires publication workflow authorization and actual result inspection |
+| Real symlink assertions | Not executed locally because Windows denied required privilege; Linux/platform gate remains open |
+| Effective model/effort attestation | Unavailable from observed native task-name-only responses; do not fabricate it |
+| Public release | Not authorized/performed; local acceptance is not release completion |
 
-## Remaining work in dependency order
+Current receipt: docs/context/adaptive-task-orchestrator-v0.5/evidence/final-validation-receipt.json.
+Post-seal evidence: docs/validation/v0.5-postseal-local.json.
+Read the package README for the evidence order and exact scope of each review.
 
-1. Local Skill synchronization is complete: exact inventories and all nine SHA-256
-   pairs match. Evidence: v0.5/evidence/workspace-skill-sync.json. Recheck after any
-   later source edits; do not assume this point-in-time result remains current.
-2. Complete bounded fixed-task comparisons before changing provisional generic
-   defaults. Keep requested-only observations distinct from effective model proof;
-   no broad quality/cost/latency claim or subscription-cost inference.
-3. Finish bilingual docs, indexes, CI commands and current integration evidence.
-   Add v0.5 context README/final local receipt; generate its manifest LAST.
-   Validate the integrated package on both local Python runtimes.
-4. Keep actual GitHub Actions four-cell execution, Linux and real symlink checks
-   explicitly pending until observed. Do not publish just to trigger CI.
-5. Apply the full completion audit against the specification, not only green
-   validators. If quota is low, save progress without marking the goal complete.
+## Next actionable work
 
-## Known boundaries
+1. Obtain explicit authorization to push this feature branch and create a PR to
+   main to trigger the configured four-cell CI. Pushing a feature branch alone
+   does not trigger this workflow's main-only push event. Do not merge or release
+   merely because CI later passes.
+2. With authorization, inspect actual remote state, push without force, create or
+   reuse the matching PR, and inspect each cell's test counts, real-symlink
+   execution, structural/integrity and route gates.
+3. If CI finds a real issue, implement a bounded fix with relevant RED/GREEN tests.
+   Preserve sealed packages; record corrections via new ADR/errata/evidence and
+   rerun only affected checks plus the final integration gate.
+4. Save later platform results outside sealed packages. Ask for a separate merge
+   or release decision when the complete relevant gates genuinely pass.
+5. When quota approaches the reserve, save progress and stop. Do not spend quota
+   on unchanged audits or broaden the task merely to reach the threshold.
 
-The checker checks declared records, not authenticity or complete-run success.
-The native spawn response only established accepted request/task identity, not the
-effective model/effort. High-risk accepted/completed assurance cannot be fabricated.
-Skill quick_validate.py could not run because PyYAML is absent; unchanged metadata
-and resolved links were checked manually, not called a validator pass.
-Local WSL listing returned access denied; no Linux execution claim.
-Generic capability ranks/defaults remain provisional. Full attempt/event/effect
-closure, crash recovery, signatures, external runtimes and second-domain validation
-are deferred, not silently folded into the current version.
+## Remaining boundaries
+
+The native checker proves declared consistency, not authentic identity or full
+attempt/event/effect closure. Skill quick_validate.py could not run because PyYAML
+was absent; manual unchanged-metadata/link validation is disclosed as a fallback.
+WSL listing returned access denied; no Linux execution or permission change was
+inferred. The tiny requested-configuration pilot is not a general benchmark.
+Full lifecycle/crash recovery, signatures, external runtimes, second-domain
+validation and inventory optimization remain separately scoped later work.
 
 ## Fast resume
 
-Read this file, applicable AGENTS.md, git status/current HEAD and current quota.
-Inspect the receipts and actual artifacts for the first incomplete item. Reuse
-valid prior checks; repeat tests only for changed artifacts or unresolved concerns.
+Read this checkpoint, applicable AGENTS.md, actual git state and fresh account
+quota. Follow the first incomplete authorized item rather than stale chat text.
+Do not repeat accepted local reviews without changed artifacts or a new failure.
 
-Suggested user instruction: "Resume the approved v0.4/v0.5 plan from
-tasks/CONTINUATION.md; keep critical work on Astra and retain a 2% quota reserve."
-The goal remains active until the complete authorized outcome is genuinely proved.
+Suggested user instruction after approving publication:
+"Resume from tasks/CONTINUATION.md. You may push the current feature branch and
+create a PR to main for CI, but do not merge, tag or release. Keep important work
+on Astra and retain a 2% quota reserve."
+
+This turn produced concrete commits, synchronized the Skill, completed a frozen
+pilot and sealed local evidence. The goal remains active because platform gates
+are incomplete. The current stop is an authorization boundary, not quota exhaustion
+or a claim that the full goal is complete.
