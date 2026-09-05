@@ -1,0 +1,26 @@
+{
+  "task_id": "V5-I1-checker-review",
+  "task_revision": 1,
+  "profile": "user_pinned",
+  "preferred_capability": "frontier_reviewer",
+  "requested_capability": "frontier_reviewer",
+  "route_reason_codes": [
+    "USER_ASTRA_PIN",
+    "IMPLEMENTATION_INDEPENDENT_REVIEW",
+    "EVIDENCE_BOUNDARY_COUNTEREXAMPLES"
+  ],
+  "effective_floor": "frontier_reviewer",
+  "floor_reasons": [
+    "Incorrect evidence acceptance can silently defeat user model pins and review requirements."
+  ],
+  "selected_model": "gpt-6-astra",
+  "selected_effort": "xhigh",
+  "fork_turns": "none",
+  "fallback_chain": [],
+  "selection_reason": "preferred",
+  "route_status": "requested",
+  "capability_attested": true,
+  "attestation_source": "runtime-schema",
+  "floor_satisfied": true,
+  "semantic_note": "Legacy shape records user-authorized requestability only. Effective model and effort are NOT observed; this is not a passing runtime-routes-v1 high-risk execution bundle."
+}

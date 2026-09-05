@@ -1,0 +1,78 @@
+{
+  "id": "V5-I1-checker-review",
+  "revision": 1,
+  "objective": "Independently find required correctness, security, compatibility, and evidence-claim defects in the frozen v0.5 offline route checker and tests.",
+  "task_type": "review",
+  "mode": "write",
+  "dependencies": [],
+  "inputs": [
+    "Checker implementation and tests at 5c62bfe708f6831282ad6e2ef6542a5f99f44c82",
+    "Accepted v0.5 specification and ADR-0011",
+    "V5-D1@1 and V5-D1@2 design findings"
+  ],
+  "deliverable": "Prioritized findings with decisive counterexamples, exact reviewed commit and bounded ACCEPT_WITH_CAVEATS or REVISE verdict.",
+  "read_scope": [
+    "F:/Projects/CodexProjects/AGENTS.md",
+    "Repository AGENTS.md and applicable local skill instructions",
+    "Entire committed adaptive-task-orchestrator repository at 5c62bfe708f6831282ad6e2ef6542a5f99f44c82",
+    "Git metadata for read-only inspection",
+    "Python 3.10/3.11 standard library and automatically cleaned temporary fixtures created by the reviewed tests"
+  ],
+  "write_scope": [
+    "Only newly created, automatically cleaned per-test temporary directories owned by the standard-library runtime-route tests; no repository, Git, live Skill, or pre-existing file writes"
+  ],
+  "resource_locks": [],
+  "context_package": {
+    "authoritative_facts": [
+      "User approved development and requires critical work on Astra without automatic downgrade.",
+      "The checker validates declared record consistency, not identity authenticity, complete-run closure, or host execution.",
+      "The current spawn tool permits an Astra request but does not by itself attest effective execution identity."
+    ],
+    "relevant_artifacts": [
+      "docs/specs/adaptive-task-orchestrator-v0.5-runtime-routing.md",
+      "docs/decisions/0011-validate-runtime-specific-model-routes.md",
+      "fixtures/adaptive-task-orchestrator-write-dag/tools/validate_runtime_routes.py",
+      "fixtures/adaptive-task-orchestrator-write-dag/tests/test_runtime_routes.py",
+      "fixtures/adaptive-task-orchestrator-write-dag/tests/test_runtime_routes_hardening.py",
+      "docs/context/adaptive-task-orchestrator-v0.5/evidence/"
+    ],
+    "accepted_upstream_results": [
+      "Design repair review V5-D1@2 accepted with caveats. Root reports 35 targeted methods passed on each runtime; verify rather than trust."
+    ],
+    "user_constraints": [
+      "No repository edits, Git writes, network, installs, external model CLI, public actions, or further delegation."
+    ],
+    "permissions": [
+      "Read declared sources, invoke bounded Python -B tests/probes using only owned self-cleaning temporary scratch.",
+      "Run targeted runtime-route tests and read-only legacy package validators. Do not run materialization/full-suite Git-writing tests."
+    ],
+    "non_goals": [
+      "No live registry or policy review yet; those are not implemented at the reviewed commit.",
+      "Do not require authentication or a persistent scheduler outside the accepted design.",
+      "Do not fix findings; root owns source edits."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 3,
+    "context_breadth": 2,
+    "uncertainty": 2,
+    "novelty": 2,
+    "impact": 2,
+    "verifiability": 2,
+    "coupling": 2
+  },
+  "acceptance_checks": [
+    "Read tests before implementation and compare every material rule to the accepted spec.",
+    "Probe bypasses, malformed nesting/identities, selected/effective comparison, overrides/pins, fallback, cycles, coverage, concurrency and deterministic CLI behavior.",
+    "Identify decisive missing tests or unsupported claims; do not report synthetic data as observed model identity.",
+    "Return verdict with no acceptance if Critical or Required defects remain; disclose untested scope."
+  ],
+  "evidence_required": [
+    "Reviewed commit",
+    "File/line findings",
+    "Reproduction inputs and commands",
+    "Check results and skipped scope",
+    "Verdict"
+  ],
+  "assurance_requirement": "independent_adversarial"
+}
