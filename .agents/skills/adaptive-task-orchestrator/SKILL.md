@@ -50,4 +50,4 @@ Workers should return one of `DONE`, `DONE_WITH_CONCERNS`, `NEEDS_CONTEXT`, or `
 - Default to one delegation level. Do not create recursive swarms unless the user or a more specific policy explicitly requires them.
 - Allow at most one capability escalation and two author-review repair loops per node unless the user requests a larger budget.
 - Do not retry an unchanged prompt on an unchanged route.
-- If orchestration tools are unavailable, low-risk work may execute sequentially in the root with appropriate checks. For a node with a hard capability floor, continue only when the runtime can attest that root meets that floor; otherwise stop that node and report the capability limitation instead of silently weakening it.
+- If orchestration tools are unavailable, low-risk work may execute sequentially in the root with appropriate checks. For a node with a hard capability floor, continue only when the runtime can attest that root meets that floor; otherwise stop that node and report the capability limitation instead of silently weakening it. The runtime-routes-v1 format does not represent high-risk root-only execution, even when root identity is attested.

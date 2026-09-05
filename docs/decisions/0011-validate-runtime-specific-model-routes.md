@@ -3,8 +3,9 @@
 ## Status
 
 Accepted design under the user-approved v0.5 direction, 2026-09-06.
-Independent design repair review V5-D1@2 accepted with caveats; implementation
-verification remains pending. This is not a release or effective-model claim.
+Independent design repair review V5-D1@2, checker review V5-I1@1 and Skill
+forward-test V5-P1@1 accepted with caveats. Integration packaging remains pending.
+This is not a release or effective-model claim.
 
 ## Decision
 

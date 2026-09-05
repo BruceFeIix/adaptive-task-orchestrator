@@ -19,6 +19,10 @@ and profile defaults are versioned project policy, not benchmark results.
 5. With explicit overrides and no/bounded history, provide a complete bounded
    context package. Use full history with overrides only if the tool permits it.
 
+Use the native collaboration tools for child-agent work. App tools that create
+independent tasks are a different lifecycle and require the user's explicit new-task
+request; do not use them to bypass unavailable delegation or child capacity limits.
+
 `user_pinned` binds both exact model and effort. Its fallback chain must be empty.
 Custom agent configuration may change effective values; that does not authorize a
 silent change to a pin. A different pair requires a new authorized decision.

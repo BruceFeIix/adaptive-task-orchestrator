@@ -1,0 +1,67 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "V5-P1-policy-forward-test",
+  "task_revision": 1,
+  "summary": "Root transcription of the independent three-card forward test, not a verbatim transcript. ACCEPT_WITH_CAVEATS, zero Critical/Required and two Optional clarifications.",
+  "claims": [
+    {
+      "claim": "Frozen Skill supports the three hypothetical routing decisions without a Required contradiction.",
+      "confidence": "high",
+      "evidence": [
+        "Skill source d6009111563733e27ef17e0a11f1f23e7be4fe43; contract/cards 7cf00ef7578e86cd0d7d7a19763b4d7dd5191309.",
+        "A planned security analysis and independent review are eligible; changing the author to accepted/completed without effective evidence is rejected.",
+        "B four independent extraction tasks fit in two waves, 3+1, when the declared three-child limit excludes root; putting four in one wave is rejected.",
+        "C pinned Astra ultra is ineligible on the Responses surface despite the hypothetical host declaring it."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "Cards are hypothetical, not live host observations or a real DAG execution.",
+    "Requested Astra high review configuration is not runtime-attested effective identity.",
+    "No model quality/cost/latency comparison, Linux, real symlink or GitHub Actions claim.",
+    "Offline findings do not authenticate supplied data or establish complete-run success."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    "Frozen Skill, registry, checker, specification, declared contracts and cards via read-only git show; Python standard library"
+  ],
+  "external_calls": [],
+  "checks": [
+    {
+      "check": "Independent six cases repeated in memory with input deep-copy comparison",
+      "result": "pass"
+    },
+    {
+      "check": "Root reproduced six cases twice each on Python 3.10.0 and 3.11.9, checked full findings and unchanged inputs",
+      "result": "pass"
+    }
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "decision": "ACCEPT_WITH_CAVEATS",
+  "critical_findings": [],
+  "required_findings": [],
+  "optional_findings": [
+    "Clarify that choosing a frontier-capable model for a lower-risk user-pinned task does not require a frontier assurance justification.",
+    "Clarify that runtime-attested high-risk root work is not represented by the v1 low-risk root-only format."
+  ],
+  "root_followup": {
+    "policy_clarifications": "Applied narrowly in SKILL.md and routing-policy.md; native-child versus independent-task boundary clarified in runtime-routing.md. No checker or registry behavior changed.",
+    "inputs": "../evidence/policy-forward-test-inputs.json",
+    "root_verification": {
+      "python": [
+        "3.10.0",
+        "3.11.9"
+      ],
+      "cases_per_runtime": 6,
+      "repeated": true,
+      "inputs_unchanged": true,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "checker_sha256": "05894122D49653B7DAC8EA740B6D02BAB204FB69CB96017307BDE0B07EBB8E26",
+      "registry_sha256": "73B423591B3CA722D89A773D4E014FC510DC7FAC2B8B69CF15FBA418E2FCEE59"
+    }
+  }
+}

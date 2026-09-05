@@ -94,7 +94,9 @@ Honor a user-selected profile. Otherwise default to `balanced`:
 | `quality` | raise ambiguous work one tier when useful, increase independent review, favor stronger synthesis |
 | `user_pinned` | bind the exact model and effort, require an empty fallback chain, and reject effective drift even under known configuration overrides |
 
-No profile may bypass a hard floor or authorization boundary. If a user model/effort ceiling is below the floor, keep the task with a runtime-attested capable root or report a policy conflict; do not silently weaken the route. Each frontier route must record the rule and evidence showing why an ordinary independent reviewer is insufficient.
+No profile may bypass a hard floor or authorization boundary. If a user model/effort ceiling is below the floor, keep the task with a runtime-attested capable root or report a policy conflict; do not silently weaken the route. The runtime-routes-v1 root-only format remains limited to low-risk work; root attestation does not expand that format.
+
+When the assurance requirement calls for a frontier reviewer, record the rule and evidence showing why ordinary independent review is insufficient. Selecting a frontier-capable model for a lower-risk task does not itself raise that task's risk or assurance requirement; an explicit user pin is a sufficient reason for that stronger selection.
 
 ## Escalation
 
