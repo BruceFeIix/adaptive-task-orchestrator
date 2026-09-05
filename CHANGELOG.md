@@ -30,6 +30,10 @@ are not Git release tags.
 
 ### Fixed
 
+- Canonicalize fault-injection targets while retaining aliased input paths in
+  regression tests. The initial Windows CI mismatch and the independently reviewed
+  test-only correction are documented in ADR-0012; cleanup and fail-closed
+  assertions remain intact.
 - Compare unbounded decimal manifest counts without Python-version-dependent
   integer conversion; distinguish valid zero-count mismatches from entry errors.
 - Emit LF-terminated CLI bytes on Windows as well as Linux. Regression tests now
@@ -61,9 +65,10 @@ are not Git release tags.
   filesystem sandbox.
 - Strict transitive evidence closure, process-crash recovery, third-party OpenAPI
   semantics, and a second end-to-end domain remain deferred.
-- Linux and all four GitHub Actions cells remain unobserved until an authorized
-  branch push; local Windows tests skipped three separate real `os.symlink` tests because the
-  host lacked permission.
+- The four Windows/Linux Python 3.10/3.11 CI cells subsequently passed 110/110
+  tests each, zero skips, including all three real `os.symlink` cases and all nine
+  later validation gates. See the [platform receipt](docs/validation/v0.5-ci-platform.json).
+  Local permission skips remain historical skips; other platforms are unverified.
 
 ## [0.3.0] - 2026-08-25
 

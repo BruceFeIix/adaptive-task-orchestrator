@@ -1,14 +1,18 @@
 # Implementation Plan: v0.4 portable evidence integrity
 
-Current continuation: [Astra checkpoint](CONTINUATION.md). The 2026-09-06 corrected
-local candidate is sealed with 33 manifest entries; actual four-cell CI remains
-pending. The checklists below preserve the original platform-complete plan and
-must not be read as proof that pending platform gates passed.
+Current continuation: [Astra checkpoint](CONTINUATION.md) and the
+[completion audit](../docs/validation/v0.4-v0.5-completion-audit.md). The corrected
+local candidate is sealed with 33 entries; later four-cell CI and real-symlink
+execution passed. The original checklists below preserve their historical state,
+including the accepted first-invocation RED caveat. They are not a current queue
+or evidence that later platform checks are still pending.
 
 ## Status
 
-Approved by the user on 2026-08-31. Implementation is in progress under the
-accompanying specification and accepted ADR-0009.
+Approved by the user on 2026-08-31. The reviewed implementation and later platform
+validation are delivered on the feature branch; publication remains subject to
+the user's explicit no-merge/no-tag/no-release boundary. See the current audit
+for requirement-level evidence and remaining limitations.
 
 ## Overview
 

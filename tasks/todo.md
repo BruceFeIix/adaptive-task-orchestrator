@@ -1,10 +1,13 @@
 # v0.4 portable evidence integrity tasks
 
-See [the current Astra checkpoint](CONTINUATION.md) for the corrected, sealed local
-candidate and v0.5 continuation. Original platform-complete gates below remain
-pending until actual CI evidence exists; old candidate records are historical.
+See [the current Astra checkpoint](CONTINUATION.md) and
+[completion audit](../docs/validation/v0.4-v0.5-completion-audit.md) for current
+delivery state. The original checklist below is a historical execution record,
+not the active work queue. Later CI passed all four cells; immutable candidate
+records and the first-invocation RED caveat are not retroactively changed.
 
-Status: approved by the user on 2026-08-31; implementation is in progress.
+Status: approved implementation and platform validation delivered on the feature
+branch with disclosed caveats. Merge, tags and release remain unauthorized.
 
 - [x] Establish repository instructions, clean baseline, remote parity, and existing
       validation commands.

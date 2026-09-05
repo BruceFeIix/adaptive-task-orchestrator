@@ -29,8 +29,8 @@ merge, tag or release. This removes the previous push/PR authorization boundary.
   belong outside them, for example docs/validation/.
 - Repository and parent workspace Skill copies both have 9 files. All exact paths
   and SHA-256 pairs match. No global install; historical v0.1 snapshot unchanged.
-- Latest quota observation: 9% remaining, 91% used in the reported weekly window
-  during the CI repair batch. No reset consumed, no automatic downgrade.
+- Audit-start quota observation: 8% remaining, 92% used in the reported weekly window
+  at the start of the completion audit. No reset consumed, no automatic downgrade.
 - Feature branch was pushed without force or tags. Draft PR #1 is open to main:
   https://github.com/BruceFeIix/adaptive-task-orchestrator/pull/1.
 - Initial PR head: e21a8ab5848d2f671c269c99607b2da2103eb8c9. Remote main was observed
@@ -46,6 +46,12 @@ merge, tag or release. This removes the previous push/PR authorization boundary.
   symlink assertions and all nine later evidence/route/integrity steps. GitHub
   checked out synthetic PR merge e5413270a5b7cb98eb976498a6ecf99e629241b0; this is
   not a merge into main. Actual PR state remains open/draft, merged=false.
+- Documentation head 2ee546683105524b4a2eb378ac8b09d907618c14 also passed all four
+  cells in run 33996360195; each had 110/110, zero skips and all later gates passed.
+- A subsequent completion audit found stale platform-pending text in the
+  changelog, fixture guide, context index and original task headers. The docs-only
+  correction and requirement map are in docs/validation/v0.4-v0.5-completion-audit.md.
+  Check the live PR body for the newest documentation head and its CI result.
 
 ## Completion audit
 
@@ -74,8 +80,9 @@ Read the package README for the evidence order and exact scope of each review.
 
 ## Next actionable work
 
-1. Publish the docs-only platform receipt/update after 96ba830, then inspect the
-   latest PR-head CI. Record that final head/run in the PR body and handoff, without
+1. The initial publication and CI task is complete. Publish the docs-only
+   completion-audit correction, then inspect its latest PR-head CI. Record that
+   final head/run in the PR body and handoff, without
    recursively creating another receipt commit solely to record a docs-only CI.
    On resume, check those live PR details before repeating any completed work.
 2. If current-head CI finds a real issue, implement a bounded, evidenced fix.
