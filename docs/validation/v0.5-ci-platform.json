@@ -1,0 +1,335 @@
+{
+  "schema_version": 1,
+  "kind": "postseal-ci-observation",
+  "repository": "BruceFeIix/adaptive-task-orchestrator",
+  "pull_request": 1,
+  "run_id": 33996138462,
+  "run_url": "https://github.com/BruceFeIix/adaptive-task-orchestrator/actions/runs/33996138462",
+  "source_head_sha": "96ba8307ba55171b17352eef6ef47e1ed94dac79",
+  "checked_out_pr_merge_sha": "e5413270a5b7cb98eb976498a6ecf99e629241b0",
+  "checkout_note": "GitHub checked out a synthetic PR merge ref. The PR remains open/draft; this is not a merge into main.",
+  "overall_conclusion": "success",
+  "jobs": [
+    {
+      "id": 101386917258,
+      "name": "windows-latest / Python 3.11",
+      "job_url": "https://github.com/BruceFeIix/adaptive-task-orchestrator/actions/runs/33996138462/job/101386917258",
+      "conclusion": "success",
+      "python_version": "3.11.9",
+      "checked_out_commit": "e5413270a5b7cb98eb976498a6ecf99e629241b0",
+      "suite": {
+        "discovered": 110,
+        "passed": 110,
+        "skipped": 0,
+        "failed": 0,
+        "observed_successful_test_lines": 110,
+        "summary": "2026-09-05T22:31:42.1650559Z Ran 110 tests in 16.219s",
+        "completion": "2026-09-05T22:31:42.1650877Z OK"
+      },
+      "real_symlink_assertions": [
+        "2026-09-05T22:31:33.8897338Z test_directory_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests.test_directory_symlink_is_rejected_without_following_it) ... ok",
+        "2026-09-05T22:31:38.6235196Z test_listed_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests.test_listed_symlink_is_rejected_without_following_it) ... ok",
+        "2026-09-05T22:31:38.7930160Z test_manifest_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests.test_manifest_symlink_is_rejected_without_following_it) ... ok"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run fixture tooling suite",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.2 evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.3 evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.2 integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.3 integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.4 candidate evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.4 candidate integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.5 routing evidence structure",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.5 planned runtime routes",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.5 local candidate integrity manifest",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 101386917291,
+      "name": "windows-latest / Python 3.10",
+      "job_url": "https://github.com/BruceFeIix/adaptive-task-orchestrator/actions/runs/33996138462/job/101386917291",
+      "conclusion": "success",
+      "python_version": "3.10.11",
+      "checked_out_commit": "e5413270a5b7cb98eb976498a6ecf99e629241b0",
+      "suite": {
+        "discovered": 110,
+        "passed": 110,
+        "skipped": 0,
+        "failed": 0,
+        "observed_successful_test_lines": 110,
+        "summary": "2026-09-05T22:31:40.4673646Z Ran 110 tests in 16.503s",
+        "completion": "2026-09-05T22:31:40.4673852Z OK"
+      },
+      "real_symlink_assertions": [
+        "2026-09-05T22:31:32.2732817Z test_directory_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests) ... ok",
+        "2026-09-05T22:31:36.9674216Z test_listed_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests) ... ok",
+        "2026-09-05T22:31:37.1421874Z test_manifest_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests) ... ok"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run fixture tooling suite",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.2 evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.3 evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.2 integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.3 integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.4 candidate evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.4 candidate integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.5 routing evidence structure",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.5 planned runtime routes",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.5 local candidate integrity manifest",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 101386917324,
+      "name": "ubuntu-latest / Python 3.11",
+      "job_url": "https://github.com/BruceFeIix/adaptive-task-orchestrator/actions/runs/33996138462/job/101386917324",
+      "conclusion": "success",
+      "python_version": "3.11.16",
+      "checked_out_commit": "e5413270a5b7cb98eb976498a6ecf99e629241b0",
+      "suite": {
+        "discovered": 110,
+        "passed": 110,
+        "skipped": 0,
+        "failed": 0,
+        "observed_successful_test_lines": 110,
+        "summary": "2026-09-05T22:31:27.9781845Z Ran 110 tests in 8.663s",
+        "completion": "2026-09-05T22:31:27.9782150Z OK"
+      },
+      "real_symlink_assertions": [
+        "2026-09-05T22:31:22.6196520Z test_directory_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests.test_directory_symlink_is_rejected_without_following_it) ... ok",
+        "2026-09-05T22:31:25.6680411Z test_listed_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests.test_listed_symlink_is_rejected_without_following_it) ... ok",
+        "2026-09-05T22:31:25.7715286Z test_manifest_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests.test_manifest_symlink_is_rejected_without_following_it) ... ok"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run fixture tooling suite",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.2 evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.3 evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.2 integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.3 integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.4 candidate evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.4 candidate integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.5 routing evidence structure",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.5 planned runtime routes",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.5 local candidate integrity manifest",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 101386917368,
+      "name": "ubuntu-latest / Python 3.10",
+      "job_url": "https://github.com/BruceFeIix/adaptive-task-orchestrator/actions/runs/33996138462/job/101386917368",
+      "conclusion": "success",
+      "python_version": "3.10.21",
+      "checked_out_commit": "e5413270a5b7cb98eb976498a6ecf99e629241b0",
+      "suite": {
+        "discovered": 110,
+        "passed": 110,
+        "skipped": 0,
+        "failed": 0,
+        "observed_successful_test_lines": 110,
+        "summary": "2026-09-05T22:31:29.8697744Z Ran 110 tests in 6.590s",
+        "completion": "2026-09-05T22:31:29.8697944Z OK"
+      },
+      "real_symlink_assertions": [
+        "2026-09-05T22:31:25.8799341Z test_directory_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests) ... ok",
+        "2026-09-05T22:31:28.1814978Z test_listed_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests) ... ok",
+        "2026-09-05T22:31:28.2612946Z test_manifest_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests) ... ok"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run fixture tooling suite",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.2 evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.3 evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.2 integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.3 integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.4 candidate evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.4 candidate integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.5 routing evidence structure",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.5 planned runtime routes",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.5 local candidate integrity manifest",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "sealed_packages": {
+    "modified": false,
+    "v0_2_entries": 100,
+    "v0_3_entries": 65,
+    "v0_4_entries": 33,
+    "v0_5_entries": 34,
+    "v0_4_manifest_sha256": "ECE91E9E802C0E171FA5F9F165CA746F5F8290313032934936FCD8613492CC4A",
+    "v0_5_manifest_sha256": "AF635FD87B6CF0AD03230116B67C2AC890E821621B050752F8D56DB5A1A857C2"
+  },
+  "scope": [
+    "Observed four configured GitHub-hosted Windows/Linux Python 3.10/3.11 cells, 110 successful test log lines each, no test skips, all three real-symlink tests each.",
+    "All nine post-suite evidence/route/integrity steps succeeded in every cell.",
+    "Closes the pending platform observation gate for this source commit after the ADR-0012 test-only correction; does not retrospectively rewrite sealed local receipts.",
+    "Does not authenticate effective agent model/effort, calibrate model ranking/cost/latency, or establish full run lifecycle/crash recovery.",
+    "No merge, tag or release was authorized or performed.",
+    "A subsequent docs-only commit will require its own current-head CI check. This receipt intentionally remains tied to the exact source commit above."
+  ]
+}

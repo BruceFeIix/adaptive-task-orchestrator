@@ -40,7 +40,12 @@ merge, tag or release. This removes the previous push/PR authorization boundary.
   across four methods. All four cells executed the three real-symlink tests.
 - A deterministic alias/.. reproduction identified lexical-versus-canonical mock
   target mismatch. ADR-0012 records the test-only correction; full local suites
-  pass 107 with 3 permission skips on both Python versions. Corrected CI pending.
+  pass 107 with 3 permission skips on both Python versions.
+- Corrected source commit: 96ba8307ba55171b17352eef6ef47e1ed94dac79. CI run
+  33996138462 passed all four cells: each 110/110 tests, zero skips, all three real
+  symlink assertions and all nine later evidence/route/integrity steps. GitHub
+  checked out synthetic PR merge e5413270a5b7cb98eb976498a6ecf99e629241b0; this is
+  not a merge into main. Actual PR state remains open/draft, merged=false.
 
 ## Completion audit
 
@@ -56,29 +61,29 @@ merge, tag or release. This removes the previous push/PR authorization boundary.
 | Historical regression gates | Done locally; 12 v0.2/v0.3/v0.4 structural/integrity checks across both runtimes, no historical diff |
 | Two local Skill copies | Done; 9/9 exact inventory and byte-hash matches, rechecked after sealing |
 | Bilingual docs, CI definitions, evidence and manifest | Done locally; 34-entry seal and four post-seal checks, zero diagnostics |
-| Actual Windows/Linux four-cell GitHub Actions | First run observed; Linux passed, Windows fault-injection repair requires CI revalidation |
-| Real symlink assertions | All three passed in all four first-run CI cells; local host still lacks the required privilege |
+| Actual Windows/Linux four-cell GitHub Actions | Done for corrected source 96ba830, run 33996138462; each 110/110, zero skips, every later gate passed |
+| Real symlink assertions | All three passed in all four corrected CI cells; local host still lacks the required privilege |
 | Effective model/effort attestation | Unavailable from observed native task-name-only responses; do not fabricate it |
 | Public release | Not authorized/performed; local acceptance is not release completion |
 
 Current receipt: docs/context/adaptive-task-orchestrator-v0.5/evidence/final-validation-receipt.json.
 Post-seal evidence: docs/validation/v0.5-postseal-local.json.
 First actual CI observation: docs/validation/v0.5-ci-initial.json.
+Passing source-bound platform receipt: docs/validation/v0.5-ci-platform.json.
 Read the package README for the evidence order and exact scope of each review.
 
 ## Next actionable work
 
-1. The bounded ADR-0012 test correction passed independent requested-Astra review
-   with no Critical/Required findings. Push it to the existing feature branch and
-   inspect the new PR #1 CI run. Do not create a duplicate PR.
-2. Inspect each cell's test counts, real-symlink execution, structural/integrity
-   and route gates. Do not merge or release merely because CI later passes.
-3. If CI finds a real issue, implement a bounded fix with relevant RED/GREEN tests.
-   Preserve sealed packages; record corrections via new ADR/errata/evidence and
-   rerun only affected checks plus the final integration gate.
-4. Save later platform results outside sealed packages. Ask for a separate merge
-   or release decision when the complete relevant gates genuinely pass.
-5. When quota approaches the reserve, save progress and stop. Do not spend quota
+1. Publish the docs-only platform receipt/update after 96ba830, then inspect the
+   latest PR-head CI. Record that final head/run in the PR body and handoff, without
+   recursively creating another receipt commit solely to record a docs-only CI.
+   On resume, check those live PR details before repeating any completed work.
+2. If current-head CI finds a real issue, implement a bounded, evidenced fix.
+   Preserve sealed packages and use relevant RED/GREEN and integration gates.
+3. When the latest head is green, stop at the user's no-merge/no-release boundary.
+   Effective-model attestation and a broader benchmark remain explicitly open;
+   neither is a reason to expand this authorized CI task.
+4. When quota approaches the reserve, save progress and stop. Do not spend quota
    on unchanged audits or broaden the task merely to reach the threshold.
 
 ## Remaining boundaries
@@ -86,8 +91,9 @@ Read the package README for the evidence order and exact scope of each review.
 The native checker proves declared consistency, not authentic identity or full
 attempt/event/effect closure. Skill quick_validate.py could not run because PyYAML
 was absent; manual unchanged-metadata/link validation is disclosed as a fallback.
-WSL listing returned access denied; no Linux execution or permission change was
-inferred. The tiny requested-configuration pilot is not a general benchmark.
+WSL listing returned access denied; no local Linux execution or permission change
+was inferred. Linux execution is now separately observed on GitHub-hosted runners.
+The tiny requested-configuration pilot is not a general benchmark.
 Full lifecycle/crash recovery, signatures, external runtimes, second-domain
 validation and inventory optimization remain separately scoped later work.
 

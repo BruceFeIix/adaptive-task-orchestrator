@@ -203,6 +203,14 @@ runtime-route consistency, registry examples and controlled oracle mutations.
 Local Windows Python 3.10/3.11 runs each passed 107 and skipped the same three
 real-symlink permission tests. Skips are not counted as passes.
 
+Subsequent [four-cell CI evidence](docs/validation/v0.5-ci-platform.json) for
+`96ba830` records **110/110 passed, zero skipped in each Windows/Linux Python
+3.10/3.11 cell**, including all three real-symlink assertions and all nine
+post-suite evidence/route/integrity gates. The initial Windows fault-injection
+test mismatch and its test-only correction are recorded in
+[ADR-0012](docs/decisions/0012-canonicalize-fault-injection-targets.md).
+These observations supplement, rather than rewrite, the sealed local receipts.
+
 ### Validate published evidence structure
 
 ```bash
@@ -279,7 +287,7 @@ Generated runs are intentionally ignored by the public repository. The materiali
 | v0.1 | Initial Codex-native policy baseline | No real write-producing multi-agent DAG was completed at v0.1 |
 | v0.2 | One bounded local nested-Git write-producing software-development DAG | No persistent scheduler, production workload, cross-machine coordination, or universal route validation |
 | v0.3 | Atomic fixture publication, fail-closed evidence validation, worker-owned event streams, and one real two-agent overlap probe | Single-host local evidence only; no throughput, crash recovery, signature, or cross-host claim |
-| v0.4 (sealed local candidate) | Portable, read-only exact-inventory and SHA-256 verification relative to a trusted manifest; the v0.4 Windows Python 3.10/3.11 baseline discovered 63 tests: 60 passed, 3 skipped | Four GitHub Actions cells and Linux real-symlink execution remain pending; no authenticity or concurrent-adversary claim |
+| v0.4 (sealed local candidate) | Portable, read-only exact-inventory and SHA-256 verification relative to a trusted manifest; the v0.4 Windows Python 3.10/3.11 baseline discovered 63 tests: 60 passed, 3 skipped | Later four-cell CI and real-symlink observations are recorded separately; no authenticity or concurrent-adversary claim |
 | v0.5 (local candidate) | Versioned Astra registry, runtime-specific policy and offline route checker; the current local suite discovers 110 tests: 107 passed, 3 skipped on each Python runtime | Synthetic records and bounded native review are not effective-model authentication, model benchmarks, complete-run closure or cross-platform release acceptance |
 
 The published v0.3 receipt records 44/44 fixture tests on local Python 3.10 and 3.11 runtimes, valid v0.2/v0.3 evidence packages, and an independent review with no unresolved Critical or Required findings. The overall result remains `ACCEPT_WITH_CAVEATS`, not production certification.
@@ -320,9 +328,9 @@ The following remain intentionally unclaimed or deferred:
   cost/latency/quality benchmark claims;
 - a second end-to-end domain fixture, including reverse engineering;
 - exact reconstruction of eleven early v0.2 contract bodies that were not preserved at the time.
-- observed results from the new four-cell GitHub Actions definition before an
-  authorized push; local v0.4 evidence currently covers Windows Python 3.10/3.11,
-  while three separate real `os.symlink` tests were skipped because the host lacked permission.
+- platforms and Python versions beyond the four observed CI cells. The later
+  platform receipt does not retroactively turn local permission skips into passes
+  or constitute a merge, tag, release, or effective-model attestation.
 
 ## Contributing and security
 
