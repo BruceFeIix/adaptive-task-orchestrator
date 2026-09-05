@@ -1,0 +1,35 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "V5-E1-terra-pilot",
+  "task_revision": 1,
+  "summary": "Root transcription: first-pass answers matched 3/3 frozen deterministic oracles. Effective model identity and per-agent usage are not attested.",
+  "claims": [
+    {
+      "claim": "Returned extraction, hypothetical wave scheduling and tally outputs match their exact expected values.",
+      "confidence": "high",
+      "evidence": [
+        "../evidence/fixed-task-pilot-results.json",
+        "../evidence/fixed-task-pilot-oracles.json"
+      ]
+    }
+  ],
+  "uncertainty": [
+    "One run per arm, three deterministic cases: no statistical or broad model-quality conclusion.",
+    "Task-name-only spawn results establish accepted request IDs, not effective model/effort.",
+    "Reported timestamps are observation bounds, not inference-latency measurements.",
+    "No per-agent token/credit usage was exposed; no subscription-cost or API-cost inference."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    "Worker-declared frozen task cards, contract, applicable instructions and read-only Git identities"
+  ],
+  "external_calls": [],
+  "checks": [
+    {
+      "check": "Root exact JSON-value grading after independently recomputing frozen oracles",
+      "result": "pass"
+    }
+  ],
+  "contradictions": [],
+  "recommended_next": "accept"
+}

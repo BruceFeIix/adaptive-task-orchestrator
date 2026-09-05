@@ -1,0 +1,125 @@
+{
+  "record_kind": "bounded_fixed_task_pilot_results",
+  "date": "2026-09-06",
+  "frozen_inputs_commit": "77eec51defede048f4e501ce34337e3fe0e71f3a",
+  "scoring": "Three exact JSON-value comparisons against frozen oracles; root independently recomputed all oracles after answers arrived.",
+  "arms": {
+    "astra": {
+      "before": "2026-09-05 18:49:55 UTC",
+      "after": "2026-09-05 18:50:12 UTC",
+      "request": {
+        "model": "gpt-6-astra",
+        "reasoning_effort": "high",
+        "fork_turns": "none"
+      },
+      "response": {
+        "task_name": "/root/v05_astra_fixed_pilot"
+      },
+      "observed_completed_by": "2026-09-05 18:51:49 UTC",
+      "answers": {
+        "extraction": [
+          "r01",
+          "r03",
+          "r08"
+        ],
+        "waves": [
+          [
+            "A",
+            "B",
+            "C"
+          ],
+          [
+            "D",
+            "E",
+            "G"
+          ],
+          [
+            "F"
+          ],
+          [
+            "H"
+          ]
+        ],
+        "tally": [
+          [
+            "alpha",
+            1
+          ],
+          [
+            "beta",
+            3
+          ]
+        ]
+      }
+    },
+    "terra": {
+      "before": "2026-09-05 18:50:12 UTC",
+      "after": "2026-09-05 18:50:32 UTC",
+      "request": {
+        "model": "gpt-5.6-terra",
+        "reasoning_effort": "high",
+        "fork_turns": "none"
+      },
+      "response": {
+        "task_name": "/root/v05_terra_fixed_pilot"
+      },
+      "observed_completed_by": "2026-09-05 18:51:49 UTC",
+      "answers": {
+        "extraction": [
+          "r01",
+          "r03",
+          "r08"
+        ],
+        "waves": [
+          [
+            "A",
+            "B",
+            "C"
+          ],
+          [
+            "D",
+            "E",
+            "G"
+          ],
+          [
+            "F"
+          ],
+          [
+            "H"
+          ]
+        ],
+        "tally": [
+          [
+            "alpha",
+            1
+          ],
+          [
+            "beta",
+            3
+          ]
+        ]
+      }
+    },
+    "caveat": "Observation timestamps bound dispatch-to-result observation only; result arrival was not independently timestamped. Effective identities and per-agent usage are unknown."
+  },
+  "grades": {
+    "astra": {
+      "first_pass": 3,
+      "total": 3,
+      "repairs": 0
+    },
+    "terra": {
+      "first_pass": 3,
+      "total": 3,
+      "repairs": 0
+    }
+  },
+  "policy_decision": "Do not change registry ranks or generic defaults. This pilot establishes only first-pass correctness on three bounded examples under requested configurations.",
+  "scope_evidence": "Workers reported reasoning from declared inputs without solver/oracle reads, writes, network or delegation. This self-report is not independent authentication of all actions.",
+  "limitations": [
+    "One run per arm, three deterministic cases: no statistical or broad model-quality conclusion.",
+    "Task-name-only spawn results establish accepted request IDs, not effective model/effort.",
+    "Reported timestamps are observation bounds, not inference-latency measurements.",
+    "No per-agent token/credit usage was exposed; no subscription-cost or API-cost inference."
+  ]
+}

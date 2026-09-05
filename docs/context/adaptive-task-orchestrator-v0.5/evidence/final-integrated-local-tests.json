@@ -1,0 +1,27 @@
+{
+  "record_kind": "final_integrated_local_test_run",
+  "date": "2026-09-06",
+  "source_commit": "77eec51defede048f4e501ce34337e3fe0e71f3a",
+  "command": "py -VERSION -B -m unittest discover -s fixtures/adaptive-task-orchestrator-write-dag/tests",
+  "runtime_results": {
+    "3.10": {
+      "discovered": 110,
+      "passed": 107,
+      "skipped": 3,
+      "exit_code": 0,
+      "output": "..............................................................................................s.....s.s.......\r\n----------------------------------------------------------------------\r\nRan 110 tests in 31.307s\r\n\r\nOK (skipped=3)\r\n"
+    },
+    "3.11": {
+      "discovered": 110,
+      "passed": 107,
+      "skipped": 3,
+      "exit_code": 0,
+      "output": "..............................................................................................s.....s.s.......\r\n----------------------------------------------------------------------\r\nRan 110 tests in 28.685s\r\n\r\nOK (skipped=3)\r\n"
+    }
+  },
+  "caveats": [
+    "Windows only; the three real-symlink permission cases were skipped, not passed.",
+    "No actual GitHub Actions or Linux execution.",
+    "Local tests exercise deterministic fixture/tool behavior, not effective model identity or full production-run closure."
+  ]
+}
