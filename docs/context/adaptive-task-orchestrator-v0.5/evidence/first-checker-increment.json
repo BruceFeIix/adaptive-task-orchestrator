@@ -1,0 +1,32 @@
+{
+  "record_kind": "root_increment_checks",
+  "date": "2026-09-06",
+  "status": "FIRST_IMPLEMENTATION_TESTED_NOT_INDEPENDENTLY_ACCEPTED",
+  "source_sha256": {
+    "tools/validate_runtime_routes.py": "05894122D49653B7DAC8EA740B6D02BAB204FB69CB96017307BDE0B07EBB8E26",
+    "tests/test_runtime_routes.py": "5B39F75A1481586E8C0C0CC261F9432A703993656544034C1E037346EDCFACB2"
+  },
+  "red": {
+    "python": "3.10",
+    "discovered": 17,
+    "error_records": 32,
+    "exit_code": 1,
+    "cause": "ModuleNotFoundError: validate_runtime_routes was not implemented",
+    "output_retention": "Summary and representative failures; tool output was truncated."
+  },
+  "targeted": [
+    {"python": "3.10", "discovered": 17, "passed": 17, "skipped": 0, "exit_code": 0},
+    {"python": "3.11", "discovered": 17, "passed": 17, "skipped": 0, "exit_code": 0}
+  ],
+  "full_suite": [
+    {"python": "3.10", "discovered": 80, "passed": 77, "skipped": 3, "exit_code": 0},
+    {"python": "3.11", "discovered": 80, "passed": 77, "skipped": 3, "exit_code": 0}
+  ],
+  "limitations": [
+    "Existing real-symlink permission skips remain; no Linux or GitHub Actions execution.",
+    "17 methods contain subtests; this count does not establish exhaustive contract coverage.",
+    "Most semantic negative checks assert diagnostic codes plus repeatability, not independent full golden diagnostics.",
+    "Registry, live policy updates, expanded tests, native smoke and implementation review remain pending.",
+    "Synthetic records are not observed effective-model identity evidence."
+  ]
+}

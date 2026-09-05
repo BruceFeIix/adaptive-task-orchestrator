@@ -22,7 +22,10 @@ Do not consume reset credits automatically. No automatic model downgrade.
 - Starting commit: `c7a710b`; worktree was clean.
 - First usage observation: 23% remaining in the only reported weekly window.
 - P0 local candidate is sealed; actual platform gates remain pending. P1 design
-  review returned five Required clarifications; P2-P4 are not implemented.
+  repair review accepted with caveats and no remaining Required findings. The
+  first P2 checker increment passes 17 targeted tests and the 80-method full suite
+  on both local runtimes (77 passed, 3 legacy symlink skips). Expanded tests,
+  implementation review, registry, native smoke, live policy and P3-P4 remain.
 - The previous independent review returned REVISE with R1-R4 below.
 - Existing v0.4 receipts describe pre-repair candidates, not final acceptance.
 - v0.2/v0.3 accepted evidence and all historical contracts remain immutable.
@@ -67,7 +70,18 @@ structural and integrity checks. Manifest SHA-256:
 `ECE91E9E802C0E171FA5F9F165CA746F5F8290313032934936FCD8613492CC4A`.
 Correction reviewer accepted with caveats, zero Critical/Required. Do not edit the
 v0.4 package now; record all later checks and CI outside it.
-Latest observed quota: 20% remaining. No reset used.
+Latest observed quota: 18% remaining. No reset used.
+
+## Latest v0.5 increment
+
+The root-only module `validate_runtime_routes.py` now implements schema, candidate
+intersection, floors, overrides/history/context, pinned pairs, monotonic fallbacks,
+effective evidence bindings, review relationships/cycles, concurrency and record
+coverage. It is opt-in and does not execute agents. First validation and source
+hashes are in `docs/context/adaptive-task-orchestrator-v0.5/evidence/first-checker-increment.json`.
+This is an implementation candidate, not independently accepted. The next action
+is expanded malformed-input/negative/golden-byte tests, then a frozen Astra review.
+Do not claim the currently unchanged live Skill or README already describes v0.5.
 
 Read this file and applicable AGENTS.md; inspect `git status`, current HEAD, and
 the latest quota. Preserve any newly dirty user files. Resume from the first
