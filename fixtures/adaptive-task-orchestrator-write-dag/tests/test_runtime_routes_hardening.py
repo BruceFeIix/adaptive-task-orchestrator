@@ -292,6 +292,29 @@ class RuntimeRouteHardeningTests(unittest.TestCase):
             self.assertEqual((result.returncode, result.stderr), (1, b""))
             self.assertEqual(result.stdout, b'{"code":"VERSION_UNSUPPORTED","detail":"expected schema version 1","path":"/bundle/schema_version"}\n')
 
+    def test_native_cli_literal_multiple_findings_and_unicode_bytes(self):
+        data = bundle()
+        data["routes"][0].update(requested_capability="fast_reader", selected_model="unknown", context_complete=False)
+        expected = (
+            b'{"code":"CAPABILITY_FLOOR","detail":"requested capability below minimum","path":"/bundle/routes/0/requested_capability"}\n'
+            b'{"code":"CONTEXT_INCOMPLETE","detail":"overridden no/bounded-history worker needs complete context","path":"/bundle/routes/0/context_complete"}\n'
+            b'{"code":"MODEL_UNAVAILABLE","detail":"model not in registry/runtime surface intersection","path":"/bundle/routes/0/selected_model"}\n'
+        )
+        unicode_data = bundle(); unicode_data["/\u00e9~"] = 1
+        unicode_expected = b'{"code":"SCHEMA_INVALID","detail":"unknown field","path":"/bundle/~1\\u00e9~0"}\n'
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); policy_file = root / "registry.json"; bundle_file = root / "bundle.json"
+            policy_file.write_text(json.dumps(registry()), encoding="utf-8")
+            command = [sys.executable, "-B", str(TOOLS / "validate_runtime_routes.py"),
+                "--registry", str(policy_file), "--bundle", str(bundle_file)]
+            for value, literal in ((data, expected), (unicode_data, unicode_expected)):
+                bundle_file.write_text(json.dumps(value), encoding="utf-8")
+                before = (policy_file.read_bytes(), bundle_file.read_bytes())
+                for _ in range(2):
+                    result = subprocess.run(command, capture_output=True, check=False)
+                    self.assertEqual((result.returncode, result.stdout, result.stderr), (1, literal, b""))
+                self.assertEqual((policy_file.read_bytes(), bundle_file.read_bytes()), before)
+
 
 if __name__ == "__main__":
     unittest.main()

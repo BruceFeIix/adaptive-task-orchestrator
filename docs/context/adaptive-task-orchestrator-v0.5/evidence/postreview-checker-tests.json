@@ -1,0 +1,79 @@
+{
+  "record_kind": "root_postreview_checks",
+  "date": "2026-09-06",
+  "checker_source_commit": "f1073ffe8e8e3297df0e77c42b15d961711964cf",
+  "reviewed_commit": "5c62bfe708f6831282ad6e2ef6542a5f99f44c82",
+  "optional_review_followup": "Added formal native CLI multi-finding ordering and non-ASCII pointer byte assertions, each executed twice with unchanged input bytes.",
+  "controlled_mutations": [
+    "Disabled planned eligibility",
+    "Disabled effective attestation",
+    "Disabled fallback checks",
+    "Disabled review comparison",
+    "Disabled cycle detection",
+    "Correct diagnostic code/path with corrupted detail"
+  ],
+  "mutation_result": {
+    "python_3_10": {
+      "methods": 6,
+      "passed": 6
+    },
+    "python_3_11": {
+      "methods": 6,
+      "passed": 6
+    },
+    "meaning": "All six in-memory mutations caused the selected independent assertions to fail, without crashing or modifying source files."
+  },
+  "targeted": {
+    "python_3_10": {
+      "methods": 42,
+      "passed": 42,
+      "skipped": 0,
+      "exit": 0
+    },
+    "python_3_11": {
+      "methods": 42,
+      "passed": 42,
+      "skipped": 0,
+      "exit": 0
+    }
+  },
+  "candidate_registry": {
+    "python_3_10": {
+      "methods": 5,
+      "passed": 5,
+      "exit": 0
+    },
+    "python_3_11": {
+      "methods": 5,
+      "passed": 5,
+      "exit": 0
+    },
+    "native_cli_planned_example_exit": 0
+  },
+  "preceding_full_suite": {
+    "scope": "Before adding the candidate, mutation and one optional-followup test; not the current full count.",
+    "python_3_10": {
+      "methods": 98,
+      "passed": 95,
+      "skipped": 3,
+      "exit": 0
+    },
+    "python_3_11": {
+      "methods": 98,
+      "passed": 95,
+      "skipped": 3,
+      "exit": 0
+    }
+  },
+  "test_sha256": {
+    "test_runtime_routes_hardening.py": "F251659B2FD3C92ADCB5A792746A1A436F1B7D651E51D76EB95D14E4F3638C86",
+    "test_runtime_route_mutations.py": "1ECB4B6EF8757F7160368B7FB39B4991CA8BCA027AD769C59CE7CBDEA7E0D307",
+    "test_registry_candidate.py": "FE27527B42411E55D09EDAEB883810A19B6AC0DA714C506BC06CE09D2B20D388"
+  },
+  "skill_static_validation": {
+    "bundled_quick_validate": "Could not run: local Python lacks PyYAML. No dependency installed.",
+    "workspace_dependency_locator": "Read-only lookup did not return; waiting cell terminated. No runtime installation or state change was requested.",
+    "fallback": "Manually checked unchanged two-field frontmatter, name/description constraints, absent scaffold placeholders, unchanged agents/openai.yaml; 10 relative links resolved, 0 missing.",
+    "claim": "Fallback is not reported as a successful quick_validate.py run."
+  }
+}
