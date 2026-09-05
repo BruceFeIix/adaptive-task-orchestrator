@@ -1,5 +1,10 @@
 # Implementation Plan: v0.4 portable evidence integrity
 
+Current continuation: [Astra checkpoint](CONTINUATION.md). The 2026-09-06 corrected
+local candidate is sealed with 33 manifest entries; actual four-cell CI remains
+pending. The checklists below preserve the original platform-complete plan and
+must not be read as proof that pending platform gates passed.
+
 ## Status
 
 Approved by the user on 2026-08-31. Implementation is in progress under the

@@ -1,5 +1,9 @@
 # v0.4 portable evidence integrity tasks
 
+See [the current Astra checkpoint](CONTINUATION.md) for the corrected, sealed local
+candidate and v0.5 continuation. Original platform-complete gates below remain
+pending until actual CI evidence exists; old candidate records are historical.
+
 Status: approved by the user on 2026-08-31; implementation is in progress.
 
 - [x] Establish repository instructions, clean baseline, remote parity, and existing

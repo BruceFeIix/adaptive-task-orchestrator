@@ -20,7 +20,8 @@ Do not consume reset credits automatically. No automatic model downgrade.
 - Branch: `feature/v0.4-portable-integrity`.
 - Starting commit: `c7a710b`; worktree was clean.
 - First usage observation: 23% remaining in the only reported weekly window.
-- P0 is active; P1-P4 are not implemented.
+- P0 local candidate is sealed; actual platform gates remain pending. P1 design
+  review returned five Required clarifications; P2-P4 are not implemented.
 - The previous independent review returned REVISE with R1-R4 below.
 - Existing v0.4 receipts describe pre-repair candidates, not final acceptance.
 - v0.2/v0.3 accepted evidence and all historical contracts remain immutable.
@@ -34,8 +35,8 @@ Do not consume reset credits automatically. No automatic model downgrade.
 - [x] R4: distinguish discovered/passed/skipped/failed counts in current claims.
 - [x] Split real symlink scenarios so each execution or skip is observable.
 - [x] Record RED/GREEN and corrected mutation evidence in new records.
-- [ ] Independently review the changed artifact with Astra.
-- [ ] Close the local candidate package; generate its manifest last.
+- [x] Independently review the changed artifact with Astra.
+- [x] Close the local candidate package; generate its manifest last.
 - [ ] Keep actual four-cell CI and real-platform gaps explicitly pending until run.
 
 ## P1-P4: v0.5 approved direction
@@ -60,7 +61,12 @@ skipped 3; each targeted suite discovered 19, passed 16, skipped 3. There are 59
 directly collected two-run observations per runtime; complete findings and native
 CLI output hashes match across the two runtimes. Eight legacy validator commands
 passed. ADR-0010 corrects the earlier candidate overclaims. Review remains pending.
-Latest observed quota: 22% remaining. No reset used.
+The sealed v0.4 package has 33 manifest entries. Both Python runtimes pass its
+structural and integrity checks. Manifest SHA-256:
+`ECE91E9E802C0E171FA5F9F165CA746F5F8290313032934936FCD8613492CC4A`.
+Correction reviewer accepted with caveats, zero Critical/Required. Do not edit the
+v0.4 package now; record all later checks and CI outside it.
+Latest observed quota: 20% remaining. No reset used.
 
 Read this file and applicable AGENTS.md; inspect `git status`, current HEAD, and
 the latest quota. Preserve any newly dirty user files. Resume from the first

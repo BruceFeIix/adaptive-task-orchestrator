@@ -64,3 +64,13 @@ jobs:
         run: >-
           python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py
           --context-root docs/context/adaptive-task-orchestrator-v0.3
+
+      - name: Validate v0.4 candidate evidence
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.4
+
+      - name: Verify v0.4 candidate integrity manifest
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.4

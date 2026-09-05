@@ -6,6 +6,7 @@ The directories in this location preserve accepted validation artifacts. They ar
 
 - `adaptive-task-orchestrator-v0.2/` records the first bounded local write-producing multi-agent software-development DAG.
 - `adaptive-task-orchestrator-v0.3/` records atomic fixture hardening, evidence validation, worker-owned event streams, and one real single-host overlap probe.
+- [v0.4 local candidate](adaptive-task-orchestrator-v0.4/README.md) records portable integrity corrections and independent local review. Actual four-cell CI and real-symlink execution remain pending; this is not a cross-platform release acceptance.
 
 Each package defines its own read order, claim boundary, caveats, and self-excluding SHA-256 manifest. Treat accepted package files as immutable. Record later corrections through a new ADR or a new versioned package.
 

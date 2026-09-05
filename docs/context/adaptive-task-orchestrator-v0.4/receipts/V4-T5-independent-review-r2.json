@@ -1,0 +1,46 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "V4-T5-independent-review",
+  "task_revision": 2,
+  "summary": "Historical independent review returned REVISE on c7a710b. This is a root transcription summary of the returned review, not its verbatim transcript.",
+  "claims": [
+    {
+      "claim": "R1-R4 required correction before v0.4 acceptance.",
+      "confidence": "high",
+      "evidence": [
+        "Unbounded count int conversion differed across local Python versions.",
+        "Zero-count entries were misclassified.",
+        "Most oracle checks discarded detail while evidence claimed complete canonical bytes.",
+        "Headline 58/58 included one skipped method."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "Linux, four actual GHA cells, real symlinks and final package closure were unverified."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    "v0.4 specification, ADR-0009, tests, verifier, CI, documentation and candidate evidence at c7a710b"
+  ],
+  "external_calls": [],
+  "checks": [
+    {
+      "check": "R1-R2 adversarial reproductions",
+      "result": "fail"
+    },
+    {
+      "check": "R3-R4 evidence and coverage audit",
+      "result": "fail"
+    },
+    {
+      "check": "Legacy v0.2/v0.3 checks on two runtimes",
+      "result": "pass"
+    }
+  ],
+  "contradictions": [
+    "Upstream GREEN claims did not prove full canonical detail/byte parity or execution of skipped assertions."
+  ],
+  "recommended_next": "review",
+  "decision": "REVISE",
+  "reviewed_commit": "c7a710bdf67eaecc0d2aaaa1710b681605c971b1"
+}
