@@ -1,0 +1,90 @@
+{
+  "id": "V4-T1-red-tests",
+  "revision": 1,
+  "objective": "Define the approved portable-integrity behavior as deterministic RED tests before any production verifier exists.",
+  "task_type": "implementation",
+  "mode": "write",
+  "dependencies": [],
+  "inputs": [
+    "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+    "tasks/plan.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/",
+    "docs/context/adaptive-task-orchestrator-v0.2/integrity.sha256",
+    "docs/context/adaptive-task-orchestrator-v0.3/integrity.sha256"
+  ],
+  "deliverable": "One focused unittest module plus a worker receipt containing the exact expected RED command, failure signature, and repository before/after identity.",
+  "read_scope": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/SKILL.md",
+    ".agents/skills/adaptive-task-orchestrator/references/task-contract.md",
+    ".agents/skills/adaptive-task-orchestrator/references/routing-policy.md",
+    ".agents/skills/adaptive-task-orchestrator/references/domains/software-development.md",
+    "F:/CodexData/.codex/skills/test-driven-development/SKILL.md",
+    "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+    "docs/decisions/0009-verify-evidence-manifests-portably.md",
+    "tasks/plan.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/ (entire fixture, read-only except the declared test file)",
+    "docs/context/adaptive-task-orchestrator-v0.2/ (entire immutable package)",
+    "docs/context/adaptive-task-orchestrator-v0.3/ (entire immutable package)"
+  ],
+  "write_scope": [
+    "fixtures/adaptive-task-orchestrator-write-dag/tests/test_verify_integrity.py",
+    "Automatically cleaned unittest TemporaryDirectory paths outside the repository"
+  ],
+  "resource_locks": [
+    "fixture:verify-integrity-tests"
+  ],
+  "context_package": {
+    "authoritative_facts": [
+      "The user approved Assumptions 1-8 and the v0.4 specification on 2026-08-31.",
+      "No production verify_integrity.py file exists when the first targeted RED command is run.",
+      "Manifest bytes and package paths are untrusted parser input; expected digests are trusted only after the manifest passes the approved grammar.",
+      "The verifier is read-only under a quiescent-package model and must reject observed symlinks and unsupported objects.",
+      "Accepted v0.2 and v0.3 package bytes are immutable."
+    ],
+    "relevant_artifacts": [
+      "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+      "fixtures/adaptive-task-orchestrator-write-dag/tests/test_validate_evidence.py",
+      "fixtures/adaptive-task-orchestrator-write-dag/tests/test_materialize.py",
+      "docs/context/adaptive-task-orchestrator-v0.2/integrity.sha256",
+      "docs/context/adaptive-task-orchestrator-v0.3/integrity.sha256"
+    ],
+    "accepted_upstream_results": [
+      "The clean baseline had 44 passing tests; v0.2 and v0.3 structural validation passed; integrity counts were 100/100 and 65/65."
+    ],
+    "user_constraints": [
+      "Standard library only; do not mutate v0.2/v0.3, add dependencies, use the network, push, tag, or publish."
+    ],
+    "permissions": [
+      "Edit only the declared test file and automatically cleaned temporary directories."
+    ],
+    "non_goals": [
+      "Do not create production code, alter existing tests, weaken the grammar, implement signatures, strict evidence closure, crash recovery, or a second domain."
+    ]
+  },
+  "classification": {
+    "reasoning_depth": 2,
+    "context_breadth": 2,
+    "uncertainty": 1,
+    "novelty": 2,
+    "impact": 1,
+    "verifiability": 3,
+    "coupling": 1
+  },
+  "acceptance_checks": [
+    "Cover every positive, grammar, path-safety, inventory, digest, ordering, collision, filesystem-object, read-error, repeatability, and read-only behavior required by the approved spec.",
+    "Use exact stable finding-set assertions whenever one mutation necessarily produces multiple findings.",
+    "Exercise real temporary files by default and bounded test doubles only for deterministic OSError, unsupported-object, and read-boundary replacement cases.",
+    "Run the targeted command before production code exists and retain an expected failure caused by the absent implementation rather than malformed tests.",
+    "Do not modify any file outside the declared test path."
+  ],
+  "evidence_required": [
+    "changed path",
+    "test discovery count",
+    "targeted RED command",
+    "targeted RED exit status and failure signature",
+    "owned-path before/after identity",
+    "out-of-scope change check"
+  ],
+  "assurance_requirement": "root_check"
+}

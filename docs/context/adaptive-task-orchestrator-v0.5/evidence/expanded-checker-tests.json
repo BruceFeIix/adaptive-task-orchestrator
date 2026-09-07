@@ -1,0 +1,21 @@
+{
+  "record_kind": "root_expanded_route_tests",
+  "date": "2026-09-06",
+  "implementation_commit": "f1073ffe8e8e3297df0e77c42b15d961711964cf",
+  "additional_test_sha256": "552A3314D03DE768103C5EED785F3B0056A8B06755DBC82C61597F9901FDA46B",
+  "targeted": [
+    {"python": "3.10", "discovered": 35, "passed": 35, "skipped": 0, "exit_code": 0},
+    {"python": "3.11", "discovered": 35, "passed": 35, "skipped": 0, "exit_code": 0}
+  ],
+  "additional_checks": [
+    "Malformed registry and record fields, missing and unknown fields, bool-as-int rejection",
+    "All 64 minimum/requested/selected capability combinations in a synthetic planned bundle",
+    "Fallback/effective model and effort intersection, both floors, dispatch and attestation gates",
+    "Zero child capacity, root-inclusive/exclusive counting, per-wave worker identity",
+    "1100-node acyclic review chain and 1100-node cycle without recursive graph traversal",
+    "Literal complete diagnostic fields and JSON-pointer escaping for two selected failures",
+    "Explicit-file CLI reads, native strict JSON diagnostics repeated twice, input inventories unchanged",
+    "5000-digit integer identity preservation and unsupported-version diagnostics on both runtimes"
+  ],
+  "claim_boundary": "Tests use synthetic policy and host records. Method counts are not an exhaustive proof; implementation review and real-host attestation remain separate."
+}

@@ -1,0 +1,2215 @@
+{
+  "discovered": 19,
+  "error_records": 0,
+  "exit_code": 0,
+  "failure_records": 0,
+  "observations": [
+    {
+      "actual": [],
+      "actual_jsonl_sha256": [
+        "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_completed_v0_2_and_v0_3_packages_have_no_findings (version='v0.2', entry_count=100)",
+      "cli_runs": [
+        {
+          "exit_code": 0,
+          "stderr": "",
+          "stdout_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "exit_code": 0,
+          "stderr": "",
+          "stdout_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [],
+      "expected_jsonl_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "function_runs": 2,
+      "input_inventory_sha256": "1F65652C518491C26C47D64098EFEC6F33520845376F966E81253933B37ACA4C",
+      "output_inventory_sha256": "1F65652C518491C26C47D64098EFEC6F33520845376F966E81253933B37ACA4C"
+    },
+    {
+      "actual": [],
+      "actual_jsonl_sha256": [
+        "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_completed_v0_2_and_v0_3_packages_have_no_findings (version='v0.3', entry_count=65)",
+      "cli_runs": [
+        {
+          "exit_code": 0,
+          "stderr": "",
+          "stdout_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "exit_code": 0,
+          "stderr": "",
+          "stdout_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [],
+      "expected_jsonl_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "function_runs": 2,
+      "input_inventory_sha256": "01E693C340C2B9F40D1E37B48E76939959C19C186E4EEFDE26CAD589809D3482",
+      "output_inventory_sha256": "01E693C340C2B9F40D1E37B48E76939959C19C186E4EEFDE26CAD589809D3482"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_DIGEST_MISMATCH",
+          "detail": "expected 25718360E05D3C2D0963D1381E9DD4DAE5FCA789244EE4B9F861ADCC0CC96218; actual 7F8B1DFC466B6249F06CBE55C9174DF2578E7754DA793FDED244EF5CBA2A38F1",
+          "path": "evidence/result.json"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "DB0C375681046B54F3A738B1C91FA564549DA342615DC50FDE1C1973885670F6",
+        "DB0C375681046B54F3A738B1C91FA564549DA342615DC50FDE1C1973885670F6"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_digest_mismatch_missing_file_and_unlisted_file_are_exact_and_read_only (name='digest')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "DB0C375681046B54F3A738B1C91FA564549DA342615DC50FDE1C1973885670F6"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "DB0C375681046B54F3A738B1C91FA564549DA342615DC50FDE1C1973885670F6"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_DIGEST_MISMATCH",
+          "detail": "expected 25718360E05D3C2D0963D1381E9DD4DAE5FCA789244EE4B9F861ADCC0CC96218; actual 7F8B1DFC466B6249F06CBE55C9174DF2578E7754DA793FDED244EF5CBA2A38F1",
+          "path": "evidence/result.json"
+        }
+      ],
+      "expected_jsonl_sha256": "DB0C375681046B54F3A738B1C91FA564549DA342615DC50FDE1C1973885670F6",
+      "function_runs": 2,
+      "input_inventory_sha256": "93F43A208E1C220BD8A976ACE4162E482C6C26C13B18012B2FDCE5D390D5F8D3",
+      "output_inventory_sha256": "93F43A208E1C220BD8A976ACE4162E482C6C26C13B18012B2FDCE5D390D5F8D3"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_FILE_MISSING",
+          "detail": "listed file does not exist",
+          "path": "evidence/result.json"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B3C88942EFE89EEA844C4D49AEDDB26FF96D5E709488D72B69B39A921C26B228",
+        "B3C88942EFE89EEA844C4D49AEDDB26FF96D5E709488D72B69B39A921C26B228"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_digest_mismatch_missing_file_and_unlisted_file_are_exact_and_read_only (name='missing')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B3C88942EFE89EEA844C4D49AEDDB26FF96D5E709488D72B69B39A921C26B228"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B3C88942EFE89EEA844C4D49AEDDB26FF96D5E709488D72B69B39A921C26B228"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_FILE_MISSING",
+          "detail": "listed file does not exist",
+          "path": "evidence/result.json"
+        }
+      ],
+      "expected_jsonl_sha256": "B3C88942EFE89EEA844C4D49AEDDB26FF96D5E709488D72B69B39A921C26B228",
+      "function_runs": 2,
+      "input_inventory_sha256": "86316A1E9D5311AA67E592E6887DF768A4E907CDE7FF3AA0E8E9C9C87EAD41B2",
+      "output_inventory_sha256": "86316A1E9D5311AA67E592E6887DF768A4E907CDE7FF3AA0E8E9C9C87EAD41B2"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_UNLISTED_FILE",
+          "detail": "regular package file is not listed in the manifest",
+          "path": "extra.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "4ECD6173C6C46B9A69E581C0963B69BD6617E0CB185AA0991610C70730A04E18",
+        "4ECD6173C6C46B9A69E581C0963B69BD6617E0CB185AA0991610C70730A04E18"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_digest_mismatch_missing_file_and_unlisted_file_are_exact_and_read_only (name='unlisted')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "4ECD6173C6C46B9A69E581C0963B69BD6617E0CB185AA0991610C70730A04E18"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "4ECD6173C6C46B9A69E581C0963B69BD6617E0CB185AA0991610C70730A04E18"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_UNLISTED_FILE",
+          "detail": "regular package file is not listed in the manifest",
+          "path": "extra.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "4ECD6173C6C46B9A69E581C0963B69BD6617E0CB185AA0991610C70730A04E18",
+      "function_runs": 2,
+      "input_inventory_sha256": "707C2FE7BF358C88A6D47827E09D3C256080AF933A6B25330B359FDAD7D4AB60",
+      "output_inventory_sha256": "707C2FE7BF358C88A6D47827E09D3C256080AF933A6B25330B359FDAD7D4AB60"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_DUPLICATE_PATH",
+          "detail": "manifest path appears more than once",
+          "path": "a.txt"
+        },
+        {
+          "code": "MANIFEST_ORDER_INVALID",
+          "detail": "manifest paths are not strictly increasing by ASCII bytes",
+          "path": "a.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "E2A83EE07FD6AA1A814252261CC504BCBC2A07D8D3099D0C8CB310AAE08C8DD0",
+        "E2A83EE07FD6AA1A814252261CC504BCBC2A07D8D3099D0C8CB310AAE08C8DD0"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_duplicate_case_collision_order_and_count_mutations_have_complete_sets (name='duplicate')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "E2A83EE07FD6AA1A814252261CC504BCBC2A07D8D3099D0C8CB310AAE08C8DD0"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "E2A83EE07FD6AA1A814252261CC504BCBC2A07D8D3099D0C8CB310AAE08C8DD0"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_DUPLICATE_PATH",
+          "detail": "manifest path appears more than once",
+          "path": "a.txt"
+        },
+        {
+          "code": "MANIFEST_ORDER_INVALID",
+          "detail": "manifest paths are not strictly increasing by ASCII bytes",
+          "path": "a.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "E2A83EE07FD6AA1A814252261CC504BCBC2A07D8D3099D0C8CB310AAE08C8DD0",
+      "function_runs": 2,
+      "input_inventory_sha256": "B544721203339A00F303D5734E169F238A428FD5932248489483926E29F1ACCF",
+      "output_inventory_sha256": "B544721203339A00F303D5734E169F238A428FD5932248489483926E29F1ACCF"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_CASE_COLLISION",
+          "detail": "case-collides with A.txt",
+          "path": "a.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "82275999ECB745A61A9139A2B2C2C466631A03B5E93FFFF6544767D9B6937F0C",
+        "82275999ECB745A61A9139A2B2C2C466631A03B5E93FFFF6544767D9B6937F0C"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_duplicate_case_collision_order_and_count_mutations_have_complete_sets (name='case_collision')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "82275999ECB745A61A9139A2B2C2C466631A03B5E93FFFF6544767D9B6937F0C"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "82275999ECB745A61A9139A2B2C2C466631A03B5E93FFFF6544767D9B6937F0C"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_CASE_COLLISION",
+          "detail": "case-collides with A.txt",
+          "path": "a.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "82275999ECB745A61A9139A2B2C2C466631A03B5E93FFFF6544767D9B6937F0C",
+      "function_runs": 2,
+      "input_inventory_sha256": "C6EC08EB4CA2462908955CA7DCD198AC0AEAE6B7A7448B0819445088C1CBBDA0",
+      "output_inventory_sha256": "C6EC08EB4CA2462908955CA7DCD198AC0AEAE6B7A7448B0819445088C1CBBDA0"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_ORDER_INVALID",
+          "detail": "manifest paths are not strictly increasing by ASCII bytes",
+          "path": "a.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "79620A250EF28810F230735DDFC2B9A6F40EEF6924C7D5247EC72DE000001A46",
+        "79620A250EF28810F230735DDFC2B9A6F40EEF6924C7D5247EC72DE000001A46"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_duplicate_case_collision_order_and_count_mutations_have_complete_sets (name='order')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "79620A250EF28810F230735DDFC2B9A6F40EEF6924C7D5247EC72DE000001A46"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "79620A250EF28810F230735DDFC2B9A6F40EEF6924C7D5247EC72DE000001A46"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_ORDER_INVALID",
+          "detail": "manifest paths are not strictly increasing by ASCII bytes",
+          "path": "a.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "79620A250EF28810F230735DDFC2B9A6F40EEF6924C7D5247EC72DE000001A46",
+      "function_runs": 2,
+      "input_inventory_sha256": "B68FDBC76B59E743DC8D221E177DCDDC10F3F43A892BF948B9A401154C1037EB",
+      "output_inventory_sha256": "B68FDBC76B59E743DC8D221E177DCDDC10F3F43A892BF948B9A401154C1037EB"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_ENTRY_COUNT_MISMATCH",
+          "detail": "declared 2; parsed 1",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "07E94AF2F6321806B9FFD93AD7A9F839BF843288DBA9D7403F98975B9F0F96B2",
+        "07E94AF2F6321806B9FFD93AD7A9F839BF843288DBA9D7403F98975B9F0F96B2"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_duplicate_case_collision_order_and_count_mutations_have_complete_sets (name='count')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "07E94AF2F6321806B9FFD93AD7A9F839BF843288DBA9D7403F98975B9F0F96B2"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "07E94AF2F6321806B9FFD93AD7A9F839BF843288DBA9D7403F98975B9F0F96B2"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_ENTRY_COUNT_MISMATCH",
+          "detail": "declared 2; parsed 1",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "07E94AF2F6321806B9FFD93AD7A9F839BF843288DBA9D7403F98975B9F0F96B2",
+      "function_runs": 2,
+      "input_inventory_sha256": "59C8AE342E8E25C908A89EA1F1690D594B9A3F6F65231EF98631A4937332DF21",
+      "output_inventory_sha256": "59C8AE342E8E25C908A89EA1F1690D594B9A3F6F65231EF98631A4937332DF21"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_SELF_INCLUDED",
+          "detail": "manifest must exclude itself",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "6EDB4CCB5BF7C920D3C04F01B3C23C08A5C126E7F821619607EF82A4C77E1099",
+        "6EDB4CCB5BF7C920D3C04F01B3C23C08A5C126E7F821619607EF82A4C77E1099"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_duplicate_case_collision_order_and_count_mutations_have_complete_sets (name='self')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6EDB4CCB5BF7C920D3C04F01B3C23C08A5C126E7F821619607EF82A4C77E1099"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6EDB4CCB5BF7C920D3C04F01B3C23C08A5C126E7F821619607EF82A4C77E1099"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_SELF_INCLUDED",
+          "detail": "manifest must exclude itself",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "6EDB4CCB5BF7C920D3C04F01B3C23C08A5C126E7F821619607EF82A4C77E1099",
+      "function_runs": 2,
+      "input_inventory_sha256": "C94542C8BA544598E786BC5A8F1BA06B45AB3D442A7E8CDC2DF5067FB346D565",
+      "output_inventory_sha256": "C94542C8BA544598E786BC5A8F1BA06B45AB3D442A7E8CDC2DF5067FB346D565"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "detail": "manifest entry does not match the canonical entry grammar",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B",
+        "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_entries_and_missing_final_newline_have_exact_findings (entry='2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881 *file.txt')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "detail": "manifest entry does not match the canonical entry grammar",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B",
+      "function_runs": 2,
+      "input_inventory_sha256": "CA4C622A8E3C4B4F0AF75877BA9AE43B75068A7AB89A18F0EB8356DD5649645D",
+      "output_inventory_sha256": "CA4C622A8E3C4B4F0AF75877BA9AE43B75068A7AB89A18F0EB8356DD5649645D"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "detail": "manifest entry does not match the canonical entry grammar",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B",
+        "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_entries_and_missing_final_newline_have_exact_findings (entry='GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG *file.txt')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "detail": "manifest entry does not match the canonical entry grammar",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B",
+      "function_runs": 2,
+      "input_inventory_sha256": "5380AAB4CC3AFE7EC054BFFC496BA34E53D08FD664A3A13704256B9492545552",
+      "output_inventory_sha256": "5380AAB4CC3AFE7EC054BFFC496BA34E53D08FD664A3A13704256B9492545552"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "detail": "manifest entry does not match the canonical entry grammar",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B",
+        "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_entries_and_missing_final_newline_have_exact_findings (entry='2D711642B726B04401627CA9FBAC32F5C8530FB1903CC4DB02258717921A4881 file.txt')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "detail": "manifest entry does not match the canonical entry grammar",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B",
+      "function_runs": 2,
+      "input_inventory_sha256": "473A346ABB50D256AD34411BEE19E3FB5AF38C0E7E4F0F8EB43AE6B877D8ABC4",
+      "output_inventory_sha256": "473A346ABB50D256AD34411BEE19E3FB5AF38C0E7E4F0F8EB43AE6B877D8ABC4"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "detail": "manifest entry does not match the canonical entry grammar",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B",
+        "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_entries_and_missing_final_newline_have_exact_findings (entry='2D711642B726B04401627CA9FBAC32F5C8530FB1903CC4DB02258717921A4881 *file.txt ')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "detail": "manifest entry does not match the canonical entry grammar",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B",
+      "function_runs": 2,
+      "input_inventory_sha256": "1C642C0108631A6A657FDFD86BC36144C61BD779087CC92BA42A73C3F2D53196",
+      "output_inventory_sha256": "1C642C0108631A6A657FDFD86BC36144C61BD779087CC92BA42A73C3F2D53196"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "detail": "manifest entry does not match the canonical entry grammar",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B",
+        "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_entries_and_missing_final_newline_have_exact_findings (entry='2D711642B726B04401627CA9FBAC32F5C8530FB1903CC4DB02258717921A4881 *file.txt # comment')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "detail": "manifest entry does not match the canonical entry grammar",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B",
+      "function_runs": 2,
+      "input_inventory_sha256": "98B993AFF844DEA9F4993F949803EE8B816399ACD8EA49251D86FA5E0679D878",
+      "output_inventory_sha256": "98B993AFF844DEA9F4993F949803EE8B816399ACD8EA49251D86FA5E0679D878"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest contains a blank line or extra comment",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225",
+        "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_entries_and_missing_final_newline_have_exact_findings (entry='')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest contains a blank line or extra comment",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225",
+      "function_runs": 2,
+      "input_inventory_sha256": "02554907957528B8D0C4D5BD0C9AE6DA863EA5A7DEDBA192A3864ACAE052F60B",
+      "output_inventory_sha256": "02554907957528B8D0C4D5BD0C9AE6DA863EA5A7DEDBA192A3864ACAE052F60B"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_FINAL_NEWLINE_MISSING",
+          "detail": "manifest must end with LF",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "41A6D47D3A2CF3F35F412252BF7E3A2CCEE0EB52615C0A449964F6150FF6ACD2",
+        "41A6D47D3A2CF3F35F412252BF7E3A2CCEE0EB52615C0A449964F6150FF6ACD2"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_entries_and_missing_final_newline_have_exact_findings",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "41A6D47D3A2CF3F35F412252BF7E3A2CCEE0EB52615C0A449964F6150FF6ACD2"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "41A6D47D3A2CF3F35F412252BF7E3A2CCEE0EB52615C0A449964F6150FF6ACD2"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_FINAL_NEWLINE_MISSING",
+          "detail": "manifest must end with LF",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "41A6D47D3A2CF3F35F412252BF7E3A2CCEE0EB52615C0A449964F6150FF6ACD2",
+      "function_runs": 2,
+      "input_inventory_sha256": "CAC61C9023813D0E847105DCB4998935ED86F0F07CD5A7ABD4D693CAD5BCB4CE",
+      "output_inventory_sha256": "CAC61C9023813D0E847105DCB4998935ED86F0F07CD5A7ABD4D693CAD5BCB4CE"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (name='empty_title')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+      "function_runs": 2,
+      "input_inventory_sha256": "18B94EBE0614C5C49FE27EB8464F03B6EB990E01D268D6B987EB5D1986B69A08",
+      "output_inventory_sha256": "18B94EBE0614C5C49FE27EB8464F03B6EB990E01D268D6B987EB5D1986B69A08"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (name='title_start')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+      "function_runs": 2,
+      "input_inventory_sha256": "8D20D3ABECF3672982EEF848D7D4C901527AE66C44083A17F5454EAC26526AB9",
+      "output_inventory_sha256": "8D20D3ABECF3672982EEF848D7D4C901527AE66C44083A17F5454EAC26526AB9"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (name='title_invalid_character')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+      "function_runs": 2,
+      "input_inventory_sha256": "0B56636A8BC6B75DC0AB294B8C06209405D291DCC97FA5F70F99FAD5CD5AEAF6",
+      "output_inventory_sha256": "0B56636A8BC6B75DC0AB294B8C06209405D291DCC97FA5F70F99FAD5CD5AEAF6"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (name='title_too_long')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+      "function_runs": 2,
+      "input_inventory_sha256": "435886A91E71C741FCA371A5853BD6B73D008DA7809022EF24D42EAE7DC4F6FD",
+      "output_inventory_sha256": "435886A91E71C741FCA371A5853BD6B73D008DA7809022EF24D42EAE7DC4F6FD"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (name='algorithm')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+      "function_runs": 2,
+      "input_inventory_sha256": "0B903306BF8C8578FB5D5CAAF5AC54D3E1E44457372C1C1D74405ED6B5521F6F",
+      "output_inventory_sha256": "0B903306BF8C8578FB5D5CAAF5AC54D3E1E44457372C1C1D74405ED6B5521F6F"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (name='trailing_space')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+      "function_runs": 2,
+      "input_inventory_sha256": "860EA532239553FD732499A7C69AB88663C005A74424B2F294C22C586D3205BC",
+      "output_inventory_sha256": "860EA532239553FD732499A7C69AB88663C005A74424B2F294C22C586D3205BC"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (name='missing_header')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+      "function_runs": 2,
+      "input_inventory_sha256": "8750D99DB8A8416240003147137936738AE87FBF9140733C1E7BF5E5D25E4C0B",
+      "output_inventory_sha256": "8750D99DB8A8416240003147137936738AE87FBF9140733C1E7BF5E5D25E4C0B"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (name='reordered_headers')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+      "function_runs": 2,
+      "input_inventory_sha256": "DCA4E097D992B7B8D98151EB9EE914CF17044AE2193341B905A1051BB7A7DB19",
+      "output_inventory_sha256": "DCA4E097D992B7B8D98151EB9EE914CF17044AE2193341B905A1051BB7A7DB19"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest contains a blank line or extra comment",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225",
+        "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (name='extra_header')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest contains a blank line or extra comment",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225",
+      "function_runs": 2,
+      "input_inventory_sha256": "0E42674DED5C1F1293C388BB5096306F984A347FC73A3141C343119D7E490A80",
+      "output_inventory_sha256": "0E42674DED5C1F1293C388BB5096306F984A347FC73A3141C343119D7E490A80"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest contains a blank line or extra comment",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225",
+        "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (name='blank_line')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest contains a blank line or extra comment",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "03012D6046C9DDC8201EF389E5689009F756E28F1BEDF446EB3CE057F2EC6225",
+      "function_runs": 2,
+      "input_inventory_sha256": "9DB580CCA8E20E9A98507B3782AF97438C1B45806D11750E6F72198F597E394C",
+      "output_inventory_sha256": "9DB580CCA8E20E9A98507B3782AF97438C1B45806D11750E6F72198F597E394C"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (name='crlf')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+      "function_runs": 2,
+      "input_inventory_sha256": "A589AA6C049C110F40A2E306D1A1C35E7A88619FC70B8840F315B8FEFAD6D655",
+      "output_inventory_sha256": "A589AA6C049C110F40A2E306D1A1C35E7A88619FC70B8840F315B8FEFAD6D655"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (name='bom')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+      "function_runs": 2,
+      "input_inventory_sha256": "02922106DFCAA5968A4B0FE07D57DA5E9B3E44C3883687F5F203DEE1D32D35AF",
+      "output_inventory_sha256": "02922106DFCAA5968A4B0FE07D57DA5E9B3E44C3883687F5F203DEE1D32D35AF"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (invalid_count='+1')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+      "function_runs": 2,
+      "input_inventory_sha256": "6F29D8E1F459F7D853B3122B0C26582A958D9FF46A50627E5F720717E5E23B97",
+      "output_inventory_sha256": "6F29D8E1F459F7D853B3122B0C26582A958D9FF46A50627E5F720717E5E23B97"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (invalid_count='-1')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+      "function_runs": 2,
+      "input_inventory_sha256": "7C2DD562326A774AB47B5304196BD55DC67DE69A78498BDAA3F9964E7C52670A",
+      "output_inventory_sha256": "7C2DD562326A774AB47B5304196BD55DC67DE69A78498BDAA3F9964E7C52670A"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+        "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed (invalid_count='01')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "detail": "manifest header does not match the canonical six-line header",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "B0DB659A74F2031D1B996EFCA3AB8DD51531D00080495754C20BC2954062B58F",
+      "function_runs": 2,
+      "input_inventory_sha256": "ED90A0C25AF491C5B31ED6593BEAA82343962B631FB9FA2E29608074E0BA0DF7",
+      "output_inventory_sha256": "ED90A0C25AF491C5B31ED6593BEAA82343962B631FB9FA2E29608074E0BA0DF7"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_INVALID_UTF8",
+          "detail": "manifest is not valid UTF-8",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "82ECD263B9AD87F91778B2739CEBD43F8993BE8E9D22468553FDA70BDE46E842",
+        "82ECD263B9AD87F91778B2739CEBD43F8993BE8E9D22468553FDA70BDE46E842"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_invalid_headers_and_manifest_encodings_fail_closed",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "82ECD263B9AD87F91778B2739CEBD43F8993BE8E9D22468553FDA70BDE46E842"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "82ECD263B9AD87F91778B2739CEBD43F8993BE8E9D22468553FDA70BDE46E842"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_INVALID_UTF8",
+          "detail": "manifest is not valid UTF-8",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "82ECD263B9AD87F91778B2739CEBD43F8993BE8E9D22468553FDA70BDE46E842",
+      "function_runs": 2,
+      "input_inventory_sha256": "ECFCFA1F01D37E87DFC659363947FBEE708AA30FDFE570144E832306914C04A4",
+      "output_inventory_sha256": "ECFCFA1F01D37E87DFC659363947FBEE708AA30FDFE570144E832306914C04A4"
+    },
+    {
+      "actual": [
+        {
+          "code": "INVENTORY_READ_ERROR",
+          "detail": "package inventory could not be read",
+          "path": ""
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "BAF7EB27FFD71D2537ADC60A7867FD1C72AD95CC416FA3BA2FC70480A09252FE",
+        "BAF7EB27FFD71D2537ADC60A7867FD1C72AD95CC416FA3BA2FC70480A09252FE"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_inventory_error_and_read_boundary_replacement_fail_closed",
+      "cli_runs": [],
+      "cli_state": "NOT_RUN_IN_PROCESS_IO_INJECTION",
+      "expected": [
+        {
+          "code": "INVENTORY_READ_ERROR",
+          "detail": "package inventory could not be read",
+          "path": ""
+        }
+      ],
+      "expected_jsonl_sha256": "BAF7EB27FFD71D2537ADC60A7867FD1C72AD95CC416FA3BA2FC70480A09252FE",
+      "function_runs": 2,
+      "input_inventory_sha256": "AE2BFE86EFDB375BCEFED51CDF9634A195441056303EAA52FA8F1F502FB52BFA",
+      "output_inventory_sha256": "AE2BFE86EFDB375BCEFED51CDF9634A195441056303EAA52FA8F1F502FB52BFA"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_FILE_READ_ERROR",
+          "detail": "listed file could not be read",
+          "path": "file.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "75D28CC87CD10160B1722CF0A9854BCBAD22448B751A98BEA0FEA690FF27ADFD",
+        "75D28CC87CD10160B1722CF0A9854BCBAD22448B751A98BEA0FEA690FF27ADFD"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_inventory_error_and_read_boundary_replacement_fail_closed",
+      "cli_runs": [],
+      "cli_state": "NOT_RUN_IN_PROCESS_IO_INJECTION",
+      "expected": [
+        {
+          "code": "MANIFEST_FILE_READ_ERROR",
+          "detail": "listed file could not be read",
+          "path": "file.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "75D28CC87CD10160B1722CF0A9854BCBAD22448B751A98BEA0FEA690FF27ADFD",
+      "function_runs": 2,
+      "input_inventory_sha256": "0A989F73B27E66CB932AF4733A37B895F880061B3070612D277B692D47D34563",
+      "output_inventory_sha256": "0A989F73B27E66CB932AF4733A37B895F880061B3070612D277B692D47D34563"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_FILE_NOT_REGULAR",
+          "detail": "listed path is not a regular file",
+          "path": "directory"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "CC5B3A7F20650FE42F8663FCB554DC320A2776C2BCC062706E31A4A1AEF146A0",
+        "CC5B3A7F20650FE42F8663FCB554DC320A2776C2BCC062706E31A4A1AEF146A0"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_listed_directory_is_not_a_regular_file",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "CC5B3A7F20650FE42F8663FCB554DC320A2776C2BCC062706E31A4A1AEF146A0"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "CC5B3A7F20650FE42F8663FCB554DC320A2776C2BCC062706E31A4A1AEF146A0"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_FILE_NOT_REGULAR",
+          "detail": "listed path is not a regular file",
+          "path": "directory"
+        }
+      ],
+      "expected_jsonl_sha256": "CC5B3A7F20650FE42F8663FCB554DC320A2776C2BCC062706E31A4A1AEF146A0",
+      "function_runs": 2,
+      "input_inventory_sha256": "2D7A6239E10EE3590F9AD98CC13785BA49BF2E50BF7491ABFA557EFF45FD5B9C",
+      "output_inventory_sha256": "2D7A6239E10EE3590F9AD98CC13785BA49BF2E50BF7491ABFA557EFF45FD5B9C"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_READ_ERROR",
+          "detail": "manifest could not be read",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "A552648ECE9B63E1EAACC5B7FA3C22F56A808C272DF66A1561421B8E2CDEFF9A",
+        "A552648ECE9B63E1EAACC5B7FA3C22F56A808C272DF66A1561421B8E2CDEFF9A"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_manifest_and_listed_file_read_errors_are_stable_and_read_only",
+      "cli_runs": [],
+      "cli_state": "NOT_RUN_IN_PROCESS_IO_INJECTION",
+      "expected": [
+        {
+          "code": "MANIFEST_READ_ERROR",
+          "detail": "manifest could not be read",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "A552648ECE9B63E1EAACC5B7FA3C22F56A808C272DF66A1561421B8E2CDEFF9A",
+      "function_runs": 2,
+      "input_inventory_sha256": "AE2BFE86EFDB375BCEFED51CDF9634A195441056303EAA52FA8F1F502FB52BFA",
+      "output_inventory_sha256": "AE2BFE86EFDB375BCEFED51CDF9634A195441056303EAA52FA8F1F502FB52BFA"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_FILE_READ_ERROR",
+          "detail": "listed file could not be read",
+          "path": "file.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "75D28CC87CD10160B1722CF0A9854BCBAD22448B751A98BEA0FEA690FF27ADFD",
+        "75D28CC87CD10160B1722CF0A9854BCBAD22448B751A98BEA0FEA690FF27ADFD"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_manifest_and_listed_file_read_errors_are_stable_and_read_only",
+      "cli_runs": [],
+      "cli_state": "NOT_RUN_IN_PROCESS_IO_INJECTION",
+      "expected": [
+        {
+          "code": "MANIFEST_FILE_READ_ERROR",
+          "detail": "listed file could not be read",
+          "path": "file.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "75D28CC87CD10160B1722CF0A9854BCBAD22448B751A98BEA0FEA690FF27ADFD",
+      "function_runs": 2,
+      "input_inventory_sha256": "0A989F73B27E66CB932AF4733A37B895F880061B3070612D277B692D47D34563",
+      "output_inventory_sha256": "0A989F73B27E66CB932AF4733A37B895F880061B3070612D277B692D47D34563"
+    },
+    {
+      "actual": [],
+      "actual_jsonl_sha256": [
+        "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_minimal_valid_self_excluding_package_has_no_findings",
+      "cli_runs": [
+        {
+          "exit_code": 0,
+          "stderr": "",
+          "stdout_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        },
+        {
+          "exit_code": 0,
+          "stderr": "",
+          "stdout_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [],
+      "expected_jsonl_sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "function_runs": 2,
+      "input_inventory_sha256": "44E6B74B39562A6AD3226827DDE49B9CE2F6BC95C5230E2B2B0FA15C90BBFB4D",
+      "output_inventory_sha256": "44E6B74B39562A6AD3226827DDE49B9CE2F6BC95C5230E2B2B0FA15C90BBFB4D"
+    },
+    {
+      "actual": [
+        {
+          "code": "CONTEXT_ROOT_NOT_FOUND",
+          "detail": "context root does not exist",
+          "path": ""
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "977A63D3E8F9E2FE2F7BC4B2AABDD2464720346D78AEF26267C17A58DA6F4FE8",
+        "977A63D3E8F9E2FE2F7BC4B2AABDD2464720346D78AEF26267C17A58DA6F4FE8"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_missing_and_nonregular_context_roots_and_manifests_fail_closed",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "977A63D3E8F9E2FE2F7BC4B2AABDD2464720346D78AEF26267C17A58DA6F4FE8"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "977A63D3E8F9E2FE2F7BC4B2AABDD2464720346D78AEF26267C17A58DA6F4FE8"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "CONTEXT_ROOT_NOT_FOUND",
+          "detail": "context root does not exist",
+          "path": ""
+        }
+      ],
+      "expected_jsonl_sha256": "977A63D3E8F9E2FE2F7BC4B2AABDD2464720346D78AEF26267C17A58DA6F4FE8",
+      "function_runs": 2,
+      "input_inventory_sha256": "44136FA355B3678A1146AD16F7E8649E94FB4FC21FE77E8310C060F61CAAFF8A",
+      "output_inventory_sha256": "44136FA355B3678A1146AD16F7E8649E94FB4FC21FE77E8310C060F61CAAFF8A"
+    },
+    {
+      "actual": [
+        {
+          "code": "CONTEXT_ROOT_NOT_DIRECTORY",
+          "detail": "context root is not a directory",
+          "path": ""
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "7610F5FA861BD901D76A9AEB2E10E6222D05EAF6EF395A288AF5A316DD9469B2",
+        "7610F5FA861BD901D76A9AEB2E10E6222D05EAF6EF395A288AF5A316DD9469B2"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_missing_and_nonregular_context_roots_and_manifests_fail_closed",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "7610F5FA861BD901D76A9AEB2E10E6222D05EAF6EF395A288AF5A316DD9469B2"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "7610F5FA861BD901D76A9AEB2E10E6222D05EAF6EF395A288AF5A316DD9469B2"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "CONTEXT_ROOT_NOT_DIRECTORY",
+          "detail": "context root is not a directory",
+          "path": ""
+        }
+      ],
+      "expected_jsonl_sha256": "7610F5FA861BD901D76A9AEB2E10E6222D05EAF6EF395A288AF5A316DD9469B2",
+      "function_runs": 2,
+      "input_inventory_sha256": "6613311B09254C8130F4AD60E4EC64DED1DD73A78EB035A63517CD2F80640D2F",
+      "output_inventory_sha256": "6613311B09254C8130F4AD60E4EC64DED1DD73A78EB035A63517CD2F80640D2F"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_NOT_FOUND",
+          "detail": "manifest does not exist",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "BD80D8803DE34F75671DA2F7C5053BF0E69D075F905FA8188F1395E055BC3E96",
+        "BD80D8803DE34F75671DA2F7C5053BF0E69D075F905FA8188F1395E055BC3E96"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_missing_and_nonregular_context_roots_and_manifests_fail_closed",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "BD80D8803DE34F75671DA2F7C5053BF0E69D075F905FA8188F1395E055BC3E96"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "BD80D8803DE34F75671DA2F7C5053BF0E69D075F905FA8188F1395E055BC3E96"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_NOT_FOUND",
+          "detail": "manifest does not exist",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "BD80D8803DE34F75671DA2F7C5053BF0E69D075F905FA8188F1395E055BC3E96",
+      "function_runs": 2,
+      "input_inventory_sha256": "44136FA355B3678A1146AD16F7E8649E94FB4FC21FE77E8310C060F61CAAFF8A",
+      "output_inventory_sha256": "44136FA355B3678A1146AD16F7E8649E94FB4FC21FE77E8310C060F61CAAFF8A"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_NOT_REGULAR",
+          "detail": "manifest is not a regular file",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "FA143A4D7E7092CE8F79325DC863824D4D51717D8D0F7455E013C3670E3A72B9",
+        "FA143A4D7E7092CE8F79325DC863824D4D51717D8D0F7455E013C3670E3A72B9"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_missing_and_nonregular_context_roots_and_manifests_fail_closed",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "FA143A4D7E7092CE8F79325DC863824D4D51717D8D0F7455E013C3670E3A72B9"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "FA143A4D7E7092CE8F79325DC863824D4D51717D8D0F7455E013C3670E3A72B9"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_NOT_REGULAR",
+          "detail": "manifest is not a regular file",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "FA143A4D7E7092CE8F79325DC863824D4D51717D8D0F7455E013C3670E3A72B9",
+      "function_runs": 2,
+      "input_inventory_sha256": "B89AB4FAF3F67B5D66F426A70F8913972C5343F43D4B3CB90C6A263710F1FD47",
+      "output_inventory_sha256": "B89AB4FAF3F67B5D66F426A70F8913972C5343F43D4B3CB90C6A263710F1FD47"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_DUPLICATE_PATH",
+          "detail": "manifest path appears more than once",
+          "path": "a.txt"
+        },
+        {
+          "code": "MANIFEST_ORDER_INVALID",
+          "detail": "manifest paths are not strictly increasing by ASCII bytes",
+          "path": "a.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "E2A83EE07FD6AA1A814252261CC504BCBC2A07D8D3099D0C8CB310AAE08C8DD0",
+        "E2A83EE07FD6AA1A814252261CC504BCBC2A07D8D3099D0C8CB310AAE08C8DD0"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_returned_findings_are_immutable_and_ordered",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "E2A83EE07FD6AA1A814252261CC504BCBC2A07D8D3099D0C8CB310AAE08C8DD0"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "E2A83EE07FD6AA1A814252261CC504BCBC2A07D8D3099D0C8CB310AAE08C8DD0"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_DUPLICATE_PATH",
+          "detail": "manifest path appears more than once",
+          "path": "a.txt"
+        },
+        {
+          "code": "MANIFEST_ORDER_INVALID",
+          "detail": "manifest paths are not strictly increasing by ASCII bytes",
+          "path": "a.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "E2A83EE07FD6AA1A814252261CC504BCBC2A07D8D3099D0C8CB310AAE08C8DD0",
+      "function_runs": 2,
+      "input_inventory_sha256": "B544721203339A00F303D5734E169F238A428FD5932248489483926E29F1ACCF",
+      "output_inventory_sha256": "B544721203339A00F303D5734E169F238A428FD5932248489483926E29F1ACCF"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_ENTRY_COUNT_MISMATCH",
+          "detail": "declared 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999; parsed 0",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "A39F1FBB9A96BDCA7A5858AC4C7ED9B6B1627C03B800E4547B660F52C7409BFB",
+        "A39F1FBB9A96BDCA7A5858AC4C7ED9B6B1627C03B800E4547B660F52C7409BFB"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_unbounded_decimal_count_has_exact_cross_runtime_output",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "A39F1FBB9A96BDCA7A5858AC4C7ED9B6B1627C03B800E4547B660F52C7409BFB"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "A39F1FBB9A96BDCA7A5858AC4C7ED9B6B1627C03B800E4547B660F52C7409BFB"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_ENTRY_COUNT_MISMATCH",
+          "detail": "declared 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999; parsed 0",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "A39F1FBB9A96BDCA7A5858AC4C7ED9B6B1627C03B800E4547B660F52C7409BFB",
+      "function_runs": 2,
+      "input_inventory_sha256": "6D71D5456B0E93026B44F43E1B8545B9237448476C84D477408DB284EABB276E",
+      "output_inventory_sha256": "6D71D5456B0E93026B44F43E1B8545B9237448476C84D477408DB284EABB276E"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": ""
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "202E746FB8D9936FC8A9F58376E5CA7D649A825DCAE844DA0B47DE4953E4D596",
+        "202E746FB8D9936FC8A9F58376E5CA7D649A825DCAE844DA0B47DE4953E4D596"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_unsafe_paths_are_rejected_before_any_out_of_root_target_read (unsafe_path='')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "202E746FB8D9936FC8A9F58376E5CA7D649A825DCAE844DA0B47DE4953E4D596"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "202E746FB8D9936FC8A9F58376E5CA7D649A825DCAE844DA0B47DE4953E4D596"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": ""
+        }
+      ],
+      "expected_jsonl_sha256": "202E746FB8D9936FC8A9F58376E5CA7D649A825DCAE844DA0B47DE4953E4D596",
+      "function_runs": 2,
+      "input_inventory_sha256": "CD6935A185F144B6E56A25A2AE5700FB843901FA5DFA8339F43C4052CC91A860",
+      "output_inventory_sha256": "CD6935A185F144B6E56A25A2AE5700FB843901FA5DFA8339F43C4052CC91A860"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "/absolute.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "7E2D527883BD85C41AE64FE3D8FCD7010B781F34D24714FF109B5E57FB4754B7",
+        "7E2D527883BD85C41AE64FE3D8FCD7010B781F34D24714FF109B5E57FB4754B7"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_unsafe_paths_are_rejected_before_any_out_of_root_target_read (unsafe_path='/absolute.txt')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "7E2D527883BD85C41AE64FE3D8FCD7010B781F34D24714FF109B5E57FB4754B7"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "7E2D527883BD85C41AE64FE3D8FCD7010B781F34D24714FF109B5E57FB4754B7"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "/absolute.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "7E2D527883BD85C41AE64FE3D8FCD7010B781F34D24714FF109B5E57FB4754B7",
+      "function_runs": 2,
+      "input_inventory_sha256": "81B743CB7FACE6B934025C657FCD05C81F45567A9B7CD9CBFA3F1062C3E0DD5A",
+      "output_inventory_sha256": "81B743CB7FACE6B934025C657FCD05C81F45567A9B7CD9CBFA3F1062C3E0DD5A"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "C:/drive.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "E4F8787D0FE59905DA7C0CF55AC6A3C802726FF34154A7988E0C1D28D94D559A",
+        "E4F8787D0FE59905DA7C0CF55AC6A3C802726FF34154A7988E0C1D28D94D559A"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_unsafe_paths_are_rejected_before_any_out_of_root_target_read (unsafe_path='C:/drive.txt')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "E4F8787D0FE59905DA7C0CF55AC6A3C802726FF34154A7988E0C1D28D94D559A"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "E4F8787D0FE59905DA7C0CF55AC6A3C802726FF34154A7988E0C1D28D94D559A"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "C:/drive.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "E4F8787D0FE59905DA7C0CF55AC6A3C802726FF34154A7988E0C1D28D94D559A",
+      "function_runs": 2,
+      "input_inventory_sha256": "B8FFEA01B003E1A228272199C617521C6F8B3C73BB60EBFC1E81B0CF72F45C8B",
+      "output_inventory_sha256": "B8FFEA01B003E1A228272199C617521C6F8B3C73BB60EBFC1E81B0CF72F45C8B"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "http:thing"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "130E2FCE31BB99F0BFE9B7D4FDA13FB50E070F70DA43E83352AB3AEE0F93F764",
+        "130E2FCE31BB99F0BFE9B7D4FDA13FB50E070F70DA43E83352AB3AEE0F93F764"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_unsafe_paths_are_rejected_before_any_out_of_root_target_read (unsafe_path='http:thing')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "130E2FCE31BB99F0BFE9B7D4FDA13FB50E070F70DA43E83352AB3AEE0F93F764"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "130E2FCE31BB99F0BFE9B7D4FDA13FB50E070F70DA43E83352AB3AEE0F93F764"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "http:thing"
+        }
+      ],
+      "expected_jsonl_sha256": "130E2FCE31BB99F0BFE9B7D4FDA13FB50E070F70DA43E83352AB3AEE0F93F764",
+      "function_runs": 2,
+      "input_inventory_sha256": "AAFA799A28C9C5233B646C26CFE9F01CDDC457B90ACBA98257FA39CE4D1646A7",
+      "output_inventory_sha256": "AAFA799A28C9C5233B646C26CFE9F01CDDC457B90ACBA98257FA39CE4D1646A7"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "dir\\file.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "BBB85EF905F12C056421CF73F8F530353F3EB71FB91F9A10D05FBCCCD2257FF4",
+        "BBB85EF905F12C056421CF73F8F530353F3EB71FB91F9A10D05FBCCCD2257FF4"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_unsafe_paths_are_rejected_before_any_out_of_root_target_read (unsafe_path='dir\\\\file.txt')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "BBB85EF905F12C056421CF73F8F530353F3EB71FB91F9A10D05FBCCCD2257FF4"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "BBB85EF905F12C056421CF73F8F530353F3EB71FB91F9A10D05FBCCCD2257FF4"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "dir\\file.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "BBB85EF905F12C056421CF73F8F530353F3EB71FB91F9A10D05FBCCCD2257FF4",
+      "function_runs": 2,
+      "input_inventory_sha256": "8B845A733B76958FC88041D14428AD7B522892E21FDE057B032FA5340C8F889F",
+      "output_inventory_sha256": "8B845A733B76958FC88041D14428AD7B522892E21FDE057B032FA5340C8F889F"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "a//b.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "9CABA45D49FC16B583FBC463FEB9A786842CE7A6C0ADAE9C0997BE29C20502AD",
+        "9CABA45D49FC16B583FBC463FEB9A786842CE7A6C0ADAE9C0997BE29C20502AD"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_unsafe_paths_are_rejected_before_any_out_of_root_target_read (unsafe_path='a//b.txt')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "9CABA45D49FC16B583FBC463FEB9A786842CE7A6C0ADAE9C0997BE29C20502AD"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "9CABA45D49FC16B583FBC463FEB9A786842CE7A6C0ADAE9C0997BE29C20502AD"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "a//b.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "9CABA45D49FC16B583FBC463FEB9A786842CE7A6C0ADAE9C0997BE29C20502AD",
+      "function_runs": 2,
+      "input_inventory_sha256": "4B58CE14D380A6E95E0D6E726D88878E4A21919296F45000AABFBEFCD60F36E7",
+      "output_inventory_sha256": "4B58CE14D380A6E95E0D6E726D88878E4A21919296F45000AABFBEFCD60F36E7"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "./file.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "3586E4F6A14A9E55CA82441F3FA12AA343711EC0149BB7490FD3BA85A7A6E69F",
+        "3586E4F6A14A9E55CA82441F3FA12AA343711EC0149BB7490FD3BA85A7A6E69F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_unsafe_paths_are_rejected_before_any_out_of_root_target_read (unsafe_path='./file.txt')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "3586E4F6A14A9E55CA82441F3FA12AA343711EC0149BB7490FD3BA85A7A6E69F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "3586E4F6A14A9E55CA82441F3FA12AA343711EC0149BB7490FD3BA85A7A6E69F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "./file.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "3586E4F6A14A9E55CA82441F3FA12AA343711EC0149BB7490FD3BA85A7A6E69F",
+      "function_runs": 2,
+      "input_inventory_sha256": "8EB6C6EB3F5DE9D9C69559702FA579753712197F3ED53A117088FC32726CABFE",
+      "output_inventory_sha256": "8EB6C6EB3F5DE9D9C69559702FA579753712197F3ED53A117088FC32726CABFE"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "../outside.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "27BBEEBCF9839A62296C33A2852E746FBD68435D29A516A0177DA3A19DC0E49A",
+        "27BBEEBCF9839A62296C33A2852E746FBD68435D29A516A0177DA3A19DC0E49A"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_unsafe_paths_are_rejected_before_any_out_of_root_target_read (unsafe_path='../outside.txt')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "27BBEEBCF9839A62296C33A2852E746FBD68435D29A516A0177DA3A19DC0E49A"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "27BBEEBCF9839A62296C33A2852E746FBD68435D29A516A0177DA3A19DC0E49A"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "../outside.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "27BBEEBCF9839A62296C33A2852E746FBD68435D29A516A0177DA3A19DC0E49A",
+      "function_runs": 2,
+      "input_inventory_sha256": "BF7D057AFFE1418750776030502069F289AE8880FE7511BC572517FC7C03FCFE",
+      "output_inventory_sha256": "BF7D057AFFE1418750776030502069F289AE8880FE7511BC572517FC7C03FCFE"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "a/../b.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "B23961AA012A4F2C5546DA5E12D1C8E45CABC553A894EB9B733EAC026E136839",
+        "B23961AA012A4F2C5546DA5E12D1C8E45CABC553A894EB9B733EAC026E136839"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_unsafe_paths_are_rejected_before_any_out_of_root_target_read (unsafe_path='a/../b.txt')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B23961AA012A4F2C5546DA5E12D1C8E45CABC553A894EB9B733EAC026E136839"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "B23961AA012A4F2C5546DA5E12D1C8E45CABC553A894EB9B733EAC026E136839"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "a/../b.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "B23961AA012A4F2C5546DA5E12D1C8E45CABC553A894EB9B733EAC026E136839",
+      "function_runs": 2,
+      "input_inventory_sha256": "1F942FC77EF756AC22F9C0C12FC606B1A8509860473DEBA65326F223029D389E",
+      "output_inventory_sha256": "1F942FC77EF756AC22F9C0C12FC606B1A8509860473DEBA65326F223029D389E"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "directory/file name.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "F53A40A4B463131920DD6A2F8FCEAD56DDAB0608194893F776131B90F8868E5F",
+        "F53A40A4B463131920DD6A2F8FCEAD56DDAB0608194893F776131B90F8868E5F"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_unsafe_paths_are_rejected_before_any_out_of_root_target_read (unsafe_path='directory/file name.txt')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "F53A40A4B463131920DD6A2F8FCEAD56DDAB0608194893F776131B90F8868E5F"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "F53A40A4B463131920DD6A2F8FCEAD56DDAB0608194893F776131B90F8868E5F"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "directory/file name.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "F53A40A4B463131920DD6A2F8FCEAD56DDAB0608194893F776131B90F8868E5F",
+      "function_runs": 2,
+      "input_inventory_sha256": "7B39D10F50075FF80012A86C29CCCF28D663DFEB80FADC82A1FAE6FE718708A5",
+      "output_inventory_sha256": "7B39D10F50075FF80012A86C29CCCF28D663DFEB80FADC82A1FAE6FE718708A5"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "naïve.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "C48A9C6BF10FF1C3C41E1660A44E3AAD0120F960A0F681D843C2228D620E463E",
+        "C48A9C6BF10FF1C3C41E1660A44E3AAD0120F960A0F681D843C2228D620E463E"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_unsafe_paths_are_rejected_before_any_out_of_root_target_read (unsafe_path='naïve.txt')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "C48A9C6BF10FF1C3C41E1660A44E3AAD0120F960A0F681D843C2228D620E463E"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "C48A9C6BF10FF1C3C41E1660A44E3AAD0120F960A0F681D843C2228D620E463E"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "naïve.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "C48A9C6BF10FF1C3C41E1660A44E3AAD0120F960A0F681D843C2228D620E463E",
+      "function_runs": 2,
+      "input_inventory_sha256": "E54D95CE1B859C7D36438F2E08B947E934083CF8340F11EBD116F6A28B93EA0D",
+      "output_inventory_sha256": "E54D95CE1B859C7D36438F2E08B947E934083CF8340F11EBD116F6A28B93EA0D"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "control\u0001.txt"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "7958D6DCDF6EC0827DC0CC4E7DE81B7C0E6353223E7D1F4455B57BB13E8F2FB8",
+        "7958D6DCDF6EC0827DC0CC4E7DE81B7C0E6353223E7D1F4455B57BB13E8F2FB8"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_unsafe_paths_are_rejected_before_any_out_of_root_target_read (unsafe_path='control\\x01.txt')",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "7958D6DCDF6EC0827DC0CC4E7DE81B7C0E6353223E7D1F4455B57BB13E8F2FB8"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "7958D6DCDF6EC0827DC0CC4E7DE81B7C0E6353223E7D1F4455B57BB13E8F2FB8"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "detail": "manifest path is not a safe canonical package-relative path",
+          "path": "control\u0001.txt"
+        }
+      ],
+      "expected_jsonl_sha256": "7958D6DCDF6EC0827DC0CC4E7DE81B7C0E6353223E7D1F4455B57BB13E8F2FB8",
+      "function_runs": 2,
+      "input_inventory_sha256": "0AA6C7BEFE8682A834D5131629E7D686937A07EA038468B1E6148C2FBA3811A8",
+      "output_inventory_sha256": "0AA6C7BEFE8682A834D5131629E7D686937A07EA038468B1E6148C2FBA3811A8"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "detail": "manifest entry does not match the canonical entry grammar",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B",
+        "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_zero_count_with_invalid_entry_reports_entry_grammar",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "detail": "manifest entry does not match the canonical entry grammar",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "6554C00440F3E5290FD885254E0C07D20DACF4BCDBD0F08F6649EF59F108380B",
+      "function_runs": 2,
+      "input_inventory_sha256": "4B07EC24AF88512E4807AA3043C2F18721CBD1E5C1FCFAE3A42F0B223C119B0B",
+      "output_inventory_sha256": "4B07EC24AF88512E4807AA3043C2F18721CBD1E5C1FCFAE3A42F0B223C119B0B"
+    },
+    {
+      "actual": [
+        {
+          "code": "MANIFEST_ENTRY_COUNT_MISMATCH",
+          "detail": "declared 0; parsed 1",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_jsonl_sha256": [
+        "11D91E44F2091FABA96314A4A16CD417EEB5597DFEEEB6F1D62CF3794F755EFF",
+        "11D91E44F2091FABA96314A4A16CD417EEB5597DFEEEB6F1D62CF3794F755EFF"
+      ],
+      "case": "test_verify_integrity.VerifyIntegrityTests.test_zero_count_with_valid_entry_reports_count_mismatch",
+      "cli_runs": [
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "11D91E44F2091FABA96314A4A16CD417EEB5597DFEEEB6F1D62CF3794F755EFF"
+        },
+        {
+          "exit_code": 1,
+          "stderr": "",
+          "stdout_sha256": "11D91E44F2091FABA96314A4A16CD417EEB5597DFEEEB6F1D62CF3794F755EFF"
+        }
+      ],
+      "cli_state": "PASS",
+      "expected": [
+        {
+          "code": "MANIFEST_ENTRY_COUNT_MISMATCH",
+          "detail": "declared 0; parsed 1",
+          "path": "integrity.sha256"
+        }
+      ],
+      "expected_jsonl_sha256": "11D91E44F2091FABA96314A4A16CD417EEB5597DFEEEB6F1D62CF3794F755EFF",
+      "function_runs": 2,
+      "input_inventory_sha256": "B4287A3C10BC21759D2FAE4E5A68F0AEAFCF36C01F6A1D1848ED1BCAB4C9CCDB",
+      "output_inventory_sha256": "B4287A3C10BC21759D2FAE4E5A68F0AEAFCF36C01F6A1D1848ED1BCAB4C9CCDB"
+    }
+  ],
+  "passed": 16,
+  "platform": "win32",
+  "python": "3.10.0",
+  "record_kind": "integrity_test_observations",
+  "schema_version": 1,
+  "scope": "Only recorded cases have complete two-run function and optional native-CLI observations; mock I/O is function-only. Skipped tests did not execute their assertions.",
+  "skipped": [
+    {
+      "reason": "directory symlink creation unavailable: errno=22, winerror=1314",
+      "test": "test_verify_integrity.VerifyIntegrityTests.test_directory_symlink_is_rejected_without_following_it"
+    },
+    {
+      "reason": "symlink creation unavailable: errno=22, winerror=1314",
+      "test": "test_verify_integrity.VerifyIntegrityTests.test_listed_symlink_is_rejected_without_following_it"
+    },
+    {
+      "reason": "symlink creation unavailable: errno=22, winerror=1314",
+      "test": "test_verify_integrity.VerifyIntegrityTests.test_manifest_symlink_is_rejected_without_following_it"
+    }
+  ],
+  "sources": {
+    "tests/collect_integrity_evidence.py": "A28436DFD8C8A39C2EE2842A28CEAEF5E411C6B6EE5157D025807B0C98DAB3DA",
+    "tests/test_verify_integrity.py": "00A72DE2D6015C75F1E73B8D93242C002068A9C986647B04D8B7BEAB2D3735D1",
+    "tools/verify_integrity.py": "D9DB758368C1A476B831F7F65524141B68A0ED25CD1EBDAE69C0250AB95A906A"
+  }
+}

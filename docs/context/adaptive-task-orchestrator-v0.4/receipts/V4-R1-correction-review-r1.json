@@ -1,0 +1,83 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "V4-R1-correction-review",
+  "task_revision": 1,
+  "summary": "Independent Astra-requested review accepts the bounded corrections with explicit downstream verification limits.",
+  "claims": [
+    {
+      "claim": "R1-R4 are corrected with no unresolved Critical, Required, or Optional finding.",
+      "confidence": "high",
+      "evidence": [
+        "Reviewed a45922e3ba0088032056f50cefa18d7ec3833da8; diff c7a710b..a45922e.",
+        "Both fresh collector reports exactly matched the committed observations.",
+        "Independent detail-only and LF-to-CRLF mutations were rejected by the oracle."
+      ]
+    },
+    {
+      "claim": "59 complete observations per runtime are reproducible on local Python 3.10.0 and 3.11.9.",
+      "confidence": "high",
+      "evidence": [
+        "55 native CLI cases twice and four function-only injected-I/O cases.",
+        "19 discovered, 16 passed, 3 independently identified symlink skips.",
+        "Eight legacy checks exited 0 with empty stdout/stderr."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "Full suite was discovered as 63 but not independently executed because its temporary Git writes were excluded by the review boundary; root full-suite results remain root evidence.",
+    "Linux, four actual GitHub Actions cells, and real symlink assertions remain unverified.",
+    "No effective model-identity attestation was returned by the collaboration tool."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    "AGENTS.md",
+    "Live Skill and code-review instructions",
+    "Committed correction diff c7a710b..a45922e",
+    "Verifier, tests, collector, corrections JSON, ADR-0010, changed bilingual documentation",
+    "Legacy package validation inputs",
+    "Python standard library and cleaned temporary fixtures"
+  ],
+  "external_calls": [],
+  "checks": [
+    {
+      "check": "Fresh collector run on Python 3.10.0 and 3.11.9",
+      "result": "pass"
+    },
+    {
+      "check": "Independent exact report equality, source hashes and complete expected finding/output audit",
+      "result": "pass"
+    },
+    {
+      "check": "Eight v0.2/v0.3 structural and integrity CLI checks",
+      "result": "pass"
+    },
+    {
+      "check": "Per-runtime eight large-count, two zero-count, six blank/comment and nine unsafe-path probes",
+      "result": "pass"
+    },
+    {
+      "check": "Old R1/R2 reproduction from committed source in memory",
+      "result": "expected_fail"
+    },
+    {
+      "check": "Independent detail-only and CRLF oracle mutations",
+      "result": "expected_fail"
+    },
+    {
+      "check": "Historical package committed diff and reviewed-path worktree identity",
+      "result": "pass"
+    },
+    {
+      "check": "Full-suite independent execution and actual Linux/GHA/real-symlink runs",
+      "result": "inconclusive"
+    }
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "decision": "ACCEPT_WITH_CAVEATS",
+  "critical_findings": [],
+  "required_findings": [],
+  "reviewed_commit": "a45922e3ba0088032056f50cefa18d7ec3833da8",
+  "model_request": "gpt-6-astra",
+  "effective_model_identity": "unattested"
+}

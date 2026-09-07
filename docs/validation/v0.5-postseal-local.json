@@ -1,0 +1,58 @@
+{
+  "record_kind": "postseal_local_validation",
+  "date": "2026-09-06",
+  "observed_at_utc": "2026-09-05 19:04:39 UTC",
+  "sealed_commit": "82ccf02f825bf7ff83e30d6fe9717dab0f4d5eb8",
+  "package": "docs/context/adaptive-task-orchestrator-v0.5",
+  "manifest_sha256": "AF635FD87B6CF0AD03230116B67C2AC890E821621B050752F8D56DB5A1A857C2",
+  "manifest_entries": 34,
+  "postseal_commands": [
+    {
+      "python": "3.10",
+      "script": "validate_evidence.py",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "python": "3.11",
+      "script": "validate_evidence.py",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "python": "3.10",
+      "script": "verify_integrity.py",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "python": "3.11",
+      "script": "verify_integrity.py",
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "final_artifact_links_resolved": true,
+  "historical_v02_v03_v04_diff_empty": true,
+  "sealed_v05_diff_empty": true,
+  "workspace_skill_recheck": {
+    "source_files": 9,
+    "target_files": 9,
+    "all_nine_match_sealed_hashes": true
+  },
+  "git_worktree_clean_before_this_record": true,
+  "publication": {
+    "push_performed": false,
+    "tag_created": false,
+    "release_created": false,
+    "actual_four_cell_ci": "PENDING_AUTHORIZATION_AND_EXECUTION"
+  },
+  "quota": {
+    "used_percent": 89,
+    "remaining_percent": 11,
+    "scope": "account-wide only reported weekly window; other windows unknown",
+    "reset_credits_consumed": 0,
+    "automatic_downgrade": false
+  },
+  "caveat": "Stored outside the immutable v0.5 package. This is local verification, not Linux/CI/effective-model assurance or complete-run closure."
+}

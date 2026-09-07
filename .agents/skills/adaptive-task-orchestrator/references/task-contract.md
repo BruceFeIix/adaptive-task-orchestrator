@@ -64,6 +64,13 @@ Split a node when it has unrelated deliverables, incompatible tools, a mix of ex
 
 Create a route decision only after validating the contract and preflighting the runtime:
 
+The sketch below is the legacy structural record shape. Existing records retain
+their meaning; do not rewrite historical evidence to fit a newer registry. New
+runtime-specific checks use a separate versioned registry and `runtime-routes-v1`
+bundle as described in [runtime routing](runtime-routing.md). A legacy
+`runtime-schema` source does not by itself establish an execution's effective
+model/effort pair.
+
 ```yaml
 task_id: stable-short-id
 task_revision: 1
@@ -84,7 +91,7 @@ attestation_source: runtime-schema | runtime-result | none
 floor_satisfied: true | false
 ```
 
-If the host cannot attest the effective route, label it `requested` or `inherited-unattested`; never present it as observed fact. A high-risk node cannot run when `floor_satisfied` is false or unattested. A child cannot change its own task contract, capability floor, route policy, or permissions.
+If the host cannot attest the effective route, label it `requested` or `inherited-unattested`; never present it as observed fact. A high-risk result cannot be accepted as capability-assured from a schema-only or unattested route. Check planned candidate eligibility separately from effective execution evidence. A child cannot change its own task contract, capability floor, route policy, or permissions.
 
 Every route decision references one exact `task_id + task_revision`. Changing only model selection creates a new route decision without changing the task revision. Changing objective, scope, permissions, classification, acceptance, evidence, or assurance requirements increments the task revision and makes prior routes and receipts stale. Any difference between `preferred_capability` and `requested_capability` must be explained by `route_reason_codes` or `floor_reasons`.
 

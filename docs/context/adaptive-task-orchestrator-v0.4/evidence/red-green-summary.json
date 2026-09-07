@@ -1,0 +1,99 @@
+{
+  "evidence_id": "v0.4-red-green-summary",
+  "specification": "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+  "test_contract": "V4-T1-red-tests@1",
+  "implementation_contract": "V4-T2-integrity-verifier@2",
+  "red": {
+    "oracle_sha256": "1FFBD6FA3C264D48385262F385AA2C447E2A2C93C57602734D29B50EA1A89E98",
+    "python_3_10": {
+      "tests": 14,
+      "errors": 52,
+      "skipped": 1,
+      "exit_code": 1,
+      "failure_signature": "ModuleNotFoundError: No module named 'verify_integrity'"
+    },
+    "python_3_11": {
+      "tests": 14,
+      "errors": 52,
+      "skipped": 1,
+      "exit_code": 1,
+      "failure_signature": "ModuleNotFoundError: No module named 'verify_integrity'"
+    },
+    "caveat": "The worker's first historical invocation exposed and repaired a test f-string syntax error before the qualifying missing-module RED and before any production implementation existed."
+  },
+  "green": {
+    "implementation_sha256": "E595F6141B48480D10CB1AA9B354B012DB8FE756E09A81C1FD31BEA26276337E",
+    "python_3_10": {
+      "targeted_tests": 14,
+      "full_tests": 58,
+      "skipped": 1,
+      "exit_code": 0
+    },
+    "python_3_11": {
+      "targeted_tests": 14,
+      "full_tests": 58,
+      "skipped": 1,
+      "exit_code": 0
+    },
+    "skip_reason": "Local Windows os.symlink creation failed with WinError 1314; the combined real-symlink method remains pending a permitted environment."
+  },
+  "repair_loop": {
+    "loops_used": 1,
+    "resolved": [
+      "Refused every listed-path reparse or symbolic-link component before hashing.",
+      "Prevented inventory descent through Windows reparse points.",
+      "Enforced exact case-sensitive component lookup on case-insensitive hosts.",
+      "Stopped target verification after manifest parser-semantic findings."
+    ],
+    "retained_intermediate_evidence": [
+      "The interrupted first implementation passed the accepted tests but had an untested intermediate-symlink path-read defect.",
+      "The first exact-case patch caused one case-collision targeted failure on each runtime before the parser gate repaired it."
+    ]
+  },
+  "compatibility": {
+    "v0.2": {
+      "entries": 100,
+      "manifest_sha256": "1B6B79AF7428AB0FF2D9F883858DBF4B78B4106880C3720D0E374397F7322A56",
+      "integrity_python_3_10": 0,
+      "integrity_python_3_11": 0,
+      "structural_python_3_10": 0,
+      "structural_python_3_11": 0
+    },
+    "v0.3": {
+      "entries": 65,
+      "manifest_sha256": "5B5831CFB6F597DC5D41E456D36B8C8CC4EB244E2E58D6EC25B00A84E11041A1",
+      "integrity_python_3_10": 0,
+      "integrity_python_3_11": 0,
+      "structural_python_3_10": 0,
+      "structural_python_3_11": 0
+    },
+    "historical_diff_from_52ec8c9": []
+  },
+  "bounded_probes": [
+    {
+      "name": "windows-exact-case",
+      "exit_code": 1,
+      "finding_pairs": [
+        ["MANIFEST_FILE_MISSING", "Case.txt"],
+        ["MANIFEST_UNLISTED_FILE", "case.txt"]
+      ],
+      "temporary_directory_cleaned": true
+    },
+    {
+      "name": "windows-intermediate-junction",
+      "exit_code": 1,
+      "finding_pairs": [
+        ["MANIFEST_FILE_NOT_REGULAR", "linked/target.txt"],
+        ["MANIFEST_UNSUPPORTED_OBJECT", "linked"]
+      ],
+      "outside_canary_unchanged": true,
+      "temporary_directory_cleaned": true
+    }
+  ],
+  "root_disposition": "ACCEPT_WITH_CAVEATS",
+  "pending": [
+    "Linux Python 3.10 and 3.11 execution",
+    "GitHub Actions Windows/Linux by Python 3.10/3.11 execution",
+    "real symlink execution without the local WinError 1314 skip"
+  ]
+}

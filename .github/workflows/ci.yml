@@ -17,12 +17,15 @@ concurrency:
 
 jobs:
   test:
-    name: Python ${{ matrix.python-version }}
-    runs-on: ubuntu-latest
+    name: ${{ matrix.os }} / Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
         python-version:
           - "3.10"
           - "3.11"
@@ -53,9 +56,37 @@ jobs:
           --context-root docs/context/adaptive-task-orchestrator-v0.3
 
       - name: Verify v0.2 integrity manifest
-        working-directory: docs/context/adaptive-task-orchestrator-v0.2
-        run: sha256sum --check integrity.sha256
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.2
 
       - name: Verify v0.3 integrity manifest
-        working-directory: docs/context/adaptive-task-orchestrator-v0.3
-        run: sha256sum --check integrity.sha256
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.3
+
+      - name: Validate v0.4 candidate evidence
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.4
+
+      - name: Verify v0.4 candidate integrity manifest
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.4
+
+      - name: Validate v0.5 routing evidence structure
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.5
+
+      - name: Validate v0.5 planned runtime routes
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_runtime_routes.py
+          --registry .agents/skills/adaptive-task-orchestrator/references/model-registry.json
+          --bundle docs/context/adaptive-task-orchestrator-v0.5/candidates/planned-astra-bundle.json
+
+      - name: Verify v0.5 local candidate integrity manifest
+        run: >-
+          python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py
+          --context-root docs/context/adaptive-task-orchestrator-v0.5

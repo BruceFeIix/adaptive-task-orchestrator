@@ -1,0 +1,111 @@
+{
+  "record_kind": "final_local_candidate_validation",
+  "version": "v0.4",
+  "date": "2026-09-06",
+  "decision": "LOCAL_CANDIDATE_ACCEPTED_WITH_PLATFORM_GAPS",
+  "release_complete": false,
+  "reviewed_implementation_commit": "a45922e3ba0088032056f50cefa18d7ec3833da8",
+  "verification": {
+    "root_full_suite": {
+      "python_3_10": {
+        "discovered": 63,
+        "passed": 60,
+        "skipped": 3,
+        "exit_code": 0
+      },
+      "python_3_11": {
+        "discovered": 63,
+        "passed": 60,
+        "skipped": 3,
+        "exit_code": 0
+      }
+    },
+    "independent_integrity_subset": {
+      "python_3_10": {
+        "discovered": 19,
+        "passed": 16,
+        "skipped": 3,
+        "exit_code": 0
+      },
+      "python_3_11": {
+        "discovered": 19,
+        "passed": 16,
+        "skipped": 3,
+        "exit_code": 0
+      }
+    },
+    "independent_review": {
+      "receipt": "../receipts/V4-R1-correction-review-r1.json",
+      "decision": "ACCEPT_WITH_CAVEATS",
+      "critical": 0,
+      "required": 0
+    },
+    "cross_runtime_observations": {
+      "cases_per_runtime": 59,
+      "native_cli_cases": 55,
+      "function_only_io_injection_cases": 4,
+      "complete_findings_and_output_hashes_equal": true
+    },
+    "legacy_packages": {
+      "v0_2_entries": 100,
+      "v0_3_entries": 65,
+      "structural_and_integrity_checks": 8,
+      "all_exit_zero": true,
+      "all_output_empty": true,
+      "historical_diff_empty": true
+    },
+    "preseal_structure": {
+      "python_3_10_exit": 0,
+      "python_3_11_exit": 0
+    },
+    "preseal_document_links": {
+      "checked": 54,
+      "existing": 52,
+      "expected_final_artifacts": [
+        "final-validation-receipt.json",
+        "../integrity.sha256"
+      ],
+      "note": "Final resolution must run after this receipt and the manifest are written."
+    },
+    "bounded_secret_pattern_scan": {
+      "matches": 0,
+      "scope": "Changed tracked text paths relative to c7a710b; token/private-key patterns only, not proof of absence of all secrets."
+    },
+    "ci_definition": {
+      "sha256": "4695A063004CA5659B3A6BD79836D2D1731EC83071874A010B8B0724B654DD8A",
+      "matrix": [
+        "ubuntu-latest/3.10",
+        "ubuntu-latest/3.11",
+        "windows-latest/3.10",
+        "windows-latest/3.11"
+      ],
+      "permissions": "contents: read",
+      "timeout_minutes": 10,
+      "package_gates": [
+        "v0.2",
+        "v0.3",
+        "v0.4"
+      ],
+      "execution": "PENDING_NOT_PASSED"
+    }
+  },
+  "manifest_sealing": {
+    "name": "integrity.sha256",
+    "entries": 33,
+    "ordering": "ASCII case-sensitive ordinal relative paths",
+    "self_excluded": true,
+    "rule": "All package files including this receipt are finalized before manifest generation. Post-seal checks and later CI results are recorded outside this package."
+  },
+  "pending": [
+    "Actual four-cell GitHub Actions execution",
+    "Linux runtime execution",
+    "Real manifest-file, listed-file and directory symlink assertions",
+    "Public release decision"
+  ],
+  "caveats": [
+    "Historical candidate statements are corrected by ADR-0010, never retroactively revalidated.",
+    "Root executed the whole suite; independent review executed only the integrity subset.",
+    "Model schema/dispatch records do not attest effective identity.",
+    "Manifest integrity is relative to a trusted manifest under a quiescent-package assumption; not authenticity or event truth."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "record_kind": "v04_postseal_local_checks",
+  "date": "2026-09-06",
+  "entries": 33,
+  "manifest_sha256": "ECE91E9E802C0E171FA5F9F165CA746F5F8290313032934936FCD8613492CC4A",
+  "json_files_parsed": 32,
+  "checks": [
+    {
+      "python": "3.10",
+      "structural_exit": 0,
+      "integrity_exit": 0,
+      "output": ""
+    },
+    {
+      "python": "3.11",
+      "structural_exit": 0,
+      "integrity_exit": 0,
+      "output": ""
+    }
+  ],
+  "relative_links": {
+    "checked": 54,
+    "missing": 0
+  },
+  "git_diff_check": "pass",
+  "historical_v02_v03_diff": "empty",
+  "status": "local candidate sealed; actual four-cell CI pending",
+  "rule": "This record is outside the immutable v0.4 package. Later observations must not alter that package."
+}

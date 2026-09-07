@@ -1,0 +1,1794 @@
+{
+  "evidence_id": "v0.4-mutation-matrix",
+  "verifier_sha256": "E595F6141B48480D10CB1AA9B354B012DB8FE756E09A81C1FD31BEA26276337E",
+  "oracle_sha256": "1FFBD6FA3C264D48385262F385AA2C447E2A2C93C57602734D29B50EA1A89E98",
+  "host": {
+    "os": "Windows",
+    "python": [
+      "3.10.0",
+      "3.11.9"
+    ]
+  },
+  "targeted_commands": {
+    "python_3_10": {
+      "exit": 0,
+      "tests": 14,
+      "skipped": 1
+    },
+    "python_3_11": {
+      "exit": 0,
+      "tests": 14,
+      "skipped": 1
+    }
+  },
+  "rows": [
+    {
+      "id": "valid-minimal",
+      "input_identity": "canonical six-line header, zero entries, manifest self-excluded",
+      "expected_findings": [],
+      "actual_findings": [],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "valid-v0.2",
+      "input_identity": "immutable v0.2 manifest SHA-256 1B6B79AF7428AB0FF2D9F883858DBF4B78B4106880C3720D0E374397F7322A56; 100 entries",
+      "expected_findings": [],
+      "actual_findings": [],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations per targeted runtime produced no findings",
+      "pre_post_identity": "complete historical package snapshot equal"
+    },
+    {
+      "id": "valid-v0.3",
+      "input_identity": "immutable v0.3 manifest SHA-256 5B5831CFB6F597DC5D41E456D36B8C8CC4EB244E2E58D6EC25B00A84E11041A1; 65 entries",
+      "expected_findings": [],
+      "actual_findings": [],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations per targeted runtime produced no findings",
+      "pre_post_identity": "complete historical package snapshot equal"
+    },
+    {
+      "id": "digest-mismatch",
+      "input_identity": "listed evidence/result.json bytes changed after manifest creation",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_DIGEST_MISMATCH",
+          "path": "evidence/result.json"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_DIGEST_MISMATCH",
+          "path": "evidence/result.json"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "listed-file-missing",
+      "input_identity": "listed evidence/result.json deleted",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_FILE_MISSING",
+          "path": "evidence/result.json"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_FILE_MISSING",
+          "path": "evidence/result.json"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "unlisted-file",
+      "input_identity": "extra.txt added without a manifest entry",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_UNLISTED_FILE",
+          "path": "extra.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_UNLISTED_FILE",
+          "path": "extra.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "duplicate-path",
+      "input_identity": "two manifest entries for a.txt",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_DUPLICATE_PATH",
+          "path": "a.txt"
+        },
+        {
+          "code": "MANIFEST_ORDER_INVALID",
+          "path": "a.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_DUPLICATE_PATH",
+          "path": "a.txt"
+        },
+        {
+          "code": "MANIFEST_ORDER_INVALID",
+          "path": "a.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "case-collision",
+      "input_identity": "manifest entries A.txt and a.txt",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_CASE_COLLISION",
+          "path": "a.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_CASE_COLLISION",
+          "path": "a.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "ordinal-order",
+      "input_identity": "manifest entries b.txt then a.txt",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_ORDER_INVALID",
+          "path": "a.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_ORDER_INVALID",
+          "path": "a.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "entry-count",
+      "input_identity": "declared 2 with one parsed entry",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_ENTRY_COUNT_MISMATCH",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_ENTRY_COUNT_MISMATCH",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "self-inclusion",
+      "input_identity": "integrity.sha256 appears as an entry",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_SELF_INCLUDED",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_SELF_INCLUDED",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "unsafe-11",
+      "input_identity": "manifest relative_path=\"\"",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": ""
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": ""
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "unsafe-12",
+      "input_identity": "manifest relative_path=\"/absolute.txt\"",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "/absolute.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "/absolute.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "unsafe-13",
+      "input_identity": "manifest relative_path=\"C:/drive.txt\"",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "C:/drive.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "C:/drive.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "unsafe-14",
+      "input_identity": "manifest relative_path=\"http:thing\"",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "http:thing"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "http:thing"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "unsafe-15",
+      "input_identity": "manifest relative_path=\"dir\\\\file.txt\"",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "dir\\file.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "dir\\file.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "unsafe-16",
+      "input_identity": "manifest relative_path=\"a//b.txt\"",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "a//b.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "a//b.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "unsafe-17",
+      "input_identity": "manifest relative_path=\"./file.txt\"",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "./file.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "./file.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "unsafe-18",
+      "input_identity": "manifest relative_path=\"../outside.txt\"",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "../outside.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "../outside.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "unsafe-19",
+      "input_identity": "manifest relative_path=\"a/../b.txt\"",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "a/../b.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "a/../b.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "unsafe-20",
+      "input_identity": "manifest relative_path=\"directory/file name.txt\"",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "directory/file name.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "directory/file name.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "unsafe-21",
+      "input_identity": "manifest relative_path=\"naïve.txt\"",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "naïve.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "naïve.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "unsafe-22",
+      "input_identity": "manifest relative_path contains U+0001 between control and .txt",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "control\u0001.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_PATH_UNSAFE",
+          "path": "control\u0001.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-empty-title",
+      "input_identity": "empty-title",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-invalid-title-start",
+      "input_identity": "invalid-title-start",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-invalid-title-character",
+      "input_identity": "invalid-title-character",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-title-over-128-bytes",
+      "input_identity": "title-over-128-bytes",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-algorithm-token",
+      "input_identity": "algorithm-token",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-trailing-header-space",
+      "input_identity": "trailing-header-space",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-missing-header",
+      "input_identity": "missing-header",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-reordered-headers",
+      "input_identity": "reordered-headers",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-extra-header",
+      "input_identity": "extra-header",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-blank-line",
+      "input_identity": "blank-line",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-crlf",
+      "input_identity": "crlf",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-bom",
+      "input_identity": "bom",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-count-plus-one",
+      "input_identity": "count-plus-one",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-count-minus-one",
+      "input_identity": "count-minus-one",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "header-count-leading-zero",
+      "input_identity": "count-leading-zero",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_HEADER_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "invalid-utf8",
+      "input_identity": "manifest contains invalid UTF-8 bytes",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_INVALID_UTF8",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_INVALID_UTF8",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "entry-lowercase-digest",
+      "input_identity": "lowercase-digest",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "entry-non-hex-digest",
+      "input_identity": "non-hex-digest",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "entry-missing-star",
+      "input_identity": "missing-star",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "entry-trailing-path-space",
+      "input_identity": "trailing-path-space",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "entry-inline-comment",
+      "input_identity": "inline-comment",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "entry-blank-entry",
+      "input_identity": "blank-entry",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_ENTRY_INVALID",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "missing-final-lf",
+      "input_identity": "canonical manifest without final LF",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_FINAL_NEWLINE_MISSING",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_FINAL_NEWLINE_MISSING",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "finding-surface",
+      "input_identity": "duplicate-path findings returned through public API",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_DUPLICATE_PATH",
+          "path": "a.txt"
+        },
+        {
+          "code": "MANIFEST_ORDER_INVALID",
+          "path": "a.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_DUPLICATE_PATH",
+          "path": "a.txt"
+        },
+        {
+          "code": "MANIFEST_ORDER_INVALID",
+          "path": "a.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "ordered by full public tuple; assignment to finding.code rejected",
+      "pre_post_identity": "not applicable; public return-surface assertion"
+    },
+    {
+      "id": "root-missing",
+      "input_identity": "context root absent",
+      "expected_findings": [
+        {
+          "code": "CONTEXT_ROOT_NOT_FOUND",
+          "path": ""
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "CONTEXT_ROOT_NOT_FOUND",
+          "path": ""
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "stable result",
+      "pre_post_identity": "absent root remained absent"
+    },
+    {
+      "id": "root-file",
+      "input_identity": "context root is a regular file",
+      "expected_findings": [
+        {
+          "code": "CONTEXT_ROOT_NOT_DIRECTORY",
+          "path": ""
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "CONTEXT_ROOT_NOT_DIRECTORY",
+          "path": ""
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "stable result",
+      "pre_post_identity": "root file unchanged"
+    },
+    {
+      "id": "manifest-missing",
+      "input_identity": "context directory without integrity.sha256",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_NOT_FOUND",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_NOT_FOUND",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "manifest-directory",
+      "input_identity": "integrity.sha256 is a directory",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_NOT_REGULAR",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_NOT_REGULAR",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "manifest-read-error",
+      "input_identity": "Path.open injects OSError for integrity.sha256",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_READ_ERROR",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_READ_ERROR",
+          "path": "integrity.sha256"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "listed-read-error",
+      "input_identity": "Path.open injects OSError for file.txt",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_FILE_READ_ERROR",
+          "path": "file.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_FILE_READ_ERROR",
+          "path": "file.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "inventory-read-error",
+      "input_identity": "Path.iterdir injects OSError at context root",
+      "expected_findings": [
+        {
+          "code": "INVENTORY_READ_ERROR",
+          "path": ""
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "INVENTORY_READ_ERROR",
+          "path": ""
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "read-boundary-replacement",
+      "input_identity": "listed file raises FileNotFoundError when opened after inspection",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_FILE_READ_ERROR",
+          "path": "file.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_FILE_READ_ERROR",
+          "path": "file.txt"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "listed-directory",
+      "input_identity": "manifest lists directory as a file",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_FILE_NOT_REGULAR",
+          "path": "directory"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_FILE_NOT_REGULAR",
+          "path": "directory"
+        }
+      ],
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two validations produced byte-identical ordered findings",
+      "pre_post_identity": "complete pre/post package snapshot equal"
+    },
+    {
+      "id": "manifest-symlink",
+      "input_identity": "integrity.sha256 is a real os.symlink",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_NOT_REGULAR",
+          "path": "integrity.sha256"
+        },
+        {
+          "code": "MANIFEST_UNSUPPORTED_OBJECT",
+          "path": "integrity.sha256"
+        }
+      ],
+      "actual_findings": "PENDING_NOT_EXECUTED",
+      "execution": {
+        "python_3_10": {
+          "state": "PENDING_NOT_EXECUTED",
+          "targeted_command_exit": 0,
+          "reason": "combined method skipped at first os.symlink WinError 1314"
+        },
+        "python_3_11": {
+          "state": "PENDING_NOT_EXECUTED",
+          "targeted_command_exit": 0,
+          "reason": "combined method skipped at first os.symlink WinError 1314"
+        }
+      },
+      "repeatability": null,
+      "pre_post_identity": "PENDING"
+    },
+    {
+      "id": "listed-file-symlink",
+      "input_identity": "listed-link.txt is a real os.symlink",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_FILE_NOT_REGULAR",
+          "path": "listed-link.txt"
+        },
+        {
+          "code": "MANIFEST_UNSUPPORTED_OBJECT",
+          "path": "listed-link.txt"
+        }
+      ],
+      "actual_findings": "PENDING_NOT_EXECUTED",
+      "execution": {
+        "python_3_10": {
+          "state": "PENDING_NOT_EXECUTED",
+          "targeted_command_exit": 0,
+          "reason": "combined method skipped at first os.symlink WinError 1314"
+        },
+        "python_3_11": {
+          "state": "PENDING_NOT_EXECUTED",
+          "targeted_command_exit": 0,
+          "reason": "combined method skipped at first os.symlink WinError 1314"
+        }
+      },
+      "repeatability": null,
+      "pre_post_identity": "PENDING"
+    },
+    {
+      "id": "directory-symlink",
+      "input_identity": "linked-directory is a real directory os.symlink",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_UNSUPPORTED_OBJECT",
+          "path": "linked-directory"
+        }
+      ],
+      "actual_findings": "PENDING_NOT_EXECUTED",
+      "execution": {
+        "python_3_10": {
+          "state": "PENDING_NOT_EXECUTED",
+          "targeted_command_exit": 0,
+          "reason": "combined method skipped at first os.symlink WinError 1314"
+        },
+        "python_3_11": {
+          "state": "PENDING_NOT_EXECUTED",
+          "targeted_command_exit": 0,
+          "reason": "combined method skipped at first os.symlink WinError 1314"
+        }
+      },
+      "repeatability": null,
+      "pre_post_identity": "PENDING"
+    },
+    {
+      "id": "cli-contract",
+      "input_identity": "missing --context-root; valid package; unlisted extra.txt mutation",
+      "expected_findings": {
+        "usage": {
+          "exit": 2
+        },
+        "valid": {
+          "exit": 0,
+          "stdout": ""
+        },
+        "mutation": {
+          "exit": 1,
+          "findings": [
+            {
+              "code": "MANIFEST_UNLISTED_FILE",
+              "path": "extra.txt"
+            }
+          ]
+        }
+      },
+      "actual_findings": {
+        "usage": {
+          "exit": 2
+        },
+        "valid": {
+          "exit": 0,
+          "stdout": ""
+        },
+        "mutation": {
+          "exit": 1,
+          "findings": [
+            {
+              "code": "MANIFEST_UNLISTED_FILE",
+              "path": "extra.txt"
+            }
+          ]
+        }
+      },
+      "execution": {
+        "python_3_10": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        },
+        "python_3_11": {
+          "state": "PASS",
+          "targeted_command_exit": 0
+        }
+      },
+      "repeatability": "two mutation CLI runs produced byte-identical canonical JSONL",
+      "pre_post_identity": "temporary package snapshot equal"
+    },
+    {
+      "id": "windows-exact-case-probe",
+      "input_identity": "real case.txt with manifest path Case.txt on Windows",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_FILE_MISSING",
+          "path": "Case.txt"
+        },
+        {
+          "code": "MANIFEST_UNLISTED_FILE",
+          "path": "case.txt"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_FILE_MISSING",
+          "path": "Case.txt"
+        },
+        {
+          "code": "MANIFEST_UNLISTED_FILE",
+          "path": "case.txt"
+        }
+      ],
+      "execution": {
+        "python_3_11": {
+          "state": "PASS",
+          "wrapper_exit": 0,
+          "executions": 2
+        },
+        "python_3_10": {
+          "state": "NOT_RUN_OPTIONAL_PROBE"
+        }
+      },
+      "repeatability": "two identical ordered finding lists",
+      "pre_post_identity": "complete temporary-package digest map equal; temp cleaned"
+    },
+    {
+      "id": "windows-intermediate-junction-probe",
+      "input_identity": "package/linked is NTFS junction to out-of-package target; manifest lists linked/target.txt",
+      "expected_findings": [
+        {
+          "code": "MANIFEST_FILE_NOT_REGULAR",
+          "path": "linked/target.txt"
+        },
+        {
+          "code": "MANIFEST_UNSUPPORTED_OBJECT",
+          "path": "linked"
+        }
+      ],
+      "actual_findings": [
+        {
+          "code": "MANIFEST_FILE_NOT_REGULAR",
+          "path": "linked/target.txt"
+        },
+        {
+          "code": "MANIFEST_UNSUPPORTED_OBJECT",
+          "path": "linked"
+        }
+      ],
+      "execution": {
+        "python_3_11": {
+          "state": "PASS",
+          "wrapper_exit": 0,
+          "mklink_exit": 0,
+          "executions": 2
+        },
+        "python_3_10": {
+          "state": "NOT_RUN_OPTIONAL_PROBE"
+        }
+      },
+      "repeatability": "two identical ordered finding lists",
+      "pre_post_identity": "outside canary and manifest SHA-256 equal; temp cleaned"
+    }
+  ],
+  "interpretation": {
+    "integrity_boundary": "trusted self-excluding manifest",
+    "execution_model": "quiescent package",
+    "authenticity": false,
+    "unexecuted_real_symlinks": "PENDING_NOT_PASSED"
+  }
+}

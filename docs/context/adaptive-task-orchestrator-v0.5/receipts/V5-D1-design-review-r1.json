@@ -1,0 +1,42 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "V5-D1-design-review",
+  "task_revision": 1,
+  "summary": "Independent design review returned REVISE with five Required findings and two bounded clarifications.",
+  "claims": [
+    {
+      "claim": "The offline registry/snapshot/checker architecture fits the approved scope but needs precise cross-field rules.",
+      "confidence": "high",
+      "evidence": [
+        "R1 selected planned routes lack explicit floor/intersection checks.",
+        "R2 user_pinned has no enforceable pair semantics.",
+        "R3 execution-level review comparisons need both effective identities.",
+        "R4 fallback monotonicity must start at selected candidate.",
+        "R5 effective reporting flag and enclosing run/snapshot bindings need enforced semantics."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "Requested Astra model is not runtime-result identity attestation."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    "Spec and ADR at 009212c",
+    "Contract at 9f45247",
+    "AGENTS, live references, legacy validator interface"
+  ],
+  "external_calls": [],
+  "checks": [
+    {
+      "check": "Adversarial schema counterexamples and scope/compatibility inspection",
+      "result": "fail"
+    }
+  ],
+  "contradictions": [],
+  "recommended_next": "review",
+  "decision": "REVISE",
+  "optional": [
+    "Allow unused unknown host models while excluding them from eligibility.",
+    "Record coverage must not imply completed work."
+  ]
+}

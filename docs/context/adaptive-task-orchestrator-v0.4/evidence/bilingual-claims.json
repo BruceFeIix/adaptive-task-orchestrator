@@ -1,0 +1,78 @@
+{
+  "evidence_id": "v0.4-bilingual-claims",
+  "files": {
+    "english": "README.md",
+    "simplified_chinese": "README.zh-CN.md"
+  },
+  "facts": [
+    {
+      "id": "version",
+      "english": "v0.4 (in development)",
+      "simplified_chinese": "v0.4（开发中）",
+      "equivalent": true
+    },
+    {
+      "id": "current_test_count",
+      "english": "58 tests",
+      "simplified_chinese": "58 项测试",
+      "equivalent": true
+    },
+    {
+      "id": "historical_v0.3_count",
+      "english": "44/44",
+      "simplified_chinese": "44/44",
+      "equivalent": true
+    },
+    {
+      "id": "command",
+      "english": "verify_integrity.py --context-root <v0.2-or-v0.3>",
+      "simplified_chinese": "verify_integrity.py --context-root <v0.2 或 v0.3>",
+      "equivalent": true
+    },
+    {
+      "id": "exit_codes",
+      "english": "0 no findings; 1 deterministic JSONL findings; 2 usage",
+      "simplified_chinese": "0 无 finding；1 输出确定性 JSON Lines finding；2 用法错误",
+      "equivalent": true
+    },
+    {
+      "id": "supported_definition",
+      "english": "Configured ubuntu-latest/windows-latest by Python 3.10/3.11",
+      "simplified_chinese": "配置 ubuntu-latest/windows-latest × Python 3.10/3.11",
+      "equivalent": true
+    },
+    {
+      "id": "observed_status",
+      "english": "Local Windows 3.10/3.11 pass with one real-symlink skip; all Actions cells pending",
+      "simplified_chinese": "本地 Windows 3.10/3.11 通过但真实符号链接方法跳过；全部 Actions 单元待执行",
+      "equivalent": true
+    },
+    {
+      "id": "trust_premise",
+      "english": "Integrity relative to trusted self-excluding manifest",
+      "simplified_chinese": "相对于可信自排除 manifest 的完整性",
+      "equivalent": true
+    },
+    {
+      "id": "authenticity",
+      "english": "Not signature, provenance, trusted time, or authenticity",
+      "simplified_chinese": "不代表签名、来源、可信时间或真实性",
+      "equivalent": true
+    },
+    {
+      "id": "execution_model",
+      "english": "Quiescent package; not concurrent-adversary sandbox",
+      "simplified_chinese": "静止证据包；不是并发对抗文件系统沙箱",
+      "equivalent": true
+    },
+    {
+      "id": "deferred",
+      "english": "Strict evidence closure, crash recovery, third-party OpenAPI semantics, second domain",
+      "simplified_chinese": "严格证据闭合、崩溃恢复、第三方 OpenAPI 语义、第二领域",
+      "equivalent": true
+    }
+  ],
+  "comparison_result": "MATCH",
+  "relative_link_result": "PASS",
+  "claim_ceiling": "No claim of observed GitHub Actions, Linux execution, authenticity, production readiness, or concurrent-adversary safety."
+}

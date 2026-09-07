@@ -32,7 +32,7 @@ The Skill helps the root agent:
 | Task contracts, route decisions, receipts, and review gates | A replacement for Codex's own tools, permissions, or sandbox |
 | Dependency-aware orchestration and write-ownership rules | Automatic permission expansion or unbounded autonomous delegation |
 | Capability-aware routing with fail-closed risk floors | Guaranteed model availability or route attestation |
-| Standard-library fixture and evidence-validation tools | Production, throughput, latency, or cross-machine guarantees |
+| Standard-library fixture, structural-validation, and portable integrity tools | Production, throughput, latency, or cross-machine guarantees |
 | Single-host instrumented overlap evidence | Cross-host clock correctness or distributed tracing |
 
 Codex remains the execution environment. The current conversation model remains responsible for scope, authorization, conflict resolution, external actions, integration, and final delivery.
@@ -145,6 +145,12 @@ This is a policy artifact, not an external scheduler configuration or public ser
 
 Plans use stable capability aliases such as `fast_reader`, `general_worker`, `deep_reasoner`, and `frontier_reviewer`. The runtime must be preflighted before binding an alias to an actual model and reasoning effort.
 
+The versioned [model registry](.agents/skills/adaptive-task-orchestrator/references/model-registry.json)
+adds Astra as the frontier candidate while retaining Luna/Terra/Sol roles. These
+are provisional project-policy defaults, not measured model rankings. Candidate
+eligibility is the intersection of registry and host support for the exact tool
+surface. A user pin binds both model and effort without silent fallback.
+
 An unattested route is never presented as observed. High-risk floors constrain analysis quality but do not grant additional permissions. See the [routing policy](.agents/skills/adaptive-task-orchestrator/references/routing-policy.md).
 
 ### Evidence and review
@@ -191,9 +197,21 @@ py -3 -B -m unittest discover `
   -s fixtures/adaptive-task-orchestrator-write-dag/tests -v
 ```
 
-The current suite contains 44 tests covering atomic materialization, evidence validation, and worker-owned event streams.
+The current suite contains 110 tests covering atomic materialization, structural
+evidence validation, worker-owned event streams, portable manifest integrity,
+runtime-route consistency, registry examples and controlled oracle mutations.
+Local Windows Python 3.10/3.11 runs each passed 107 and skipped the same three
+real-symlink permission tests. Skips are not counted as passes.
 
-### Validate the published evidence packages
+Subsequent [four-cell CI evidence](docs/validation/v0.5-ci-platform.json) for
+`96ba830` records **110/110 passed, zero skipped in each Windows/Linux Python
+3.10/3.11 cell**, including all three real-symlink assertions and all nine
+post-suite evidence/route/integrity gates. The initial Windows fault-injection
+test mismatch and its test-only correction are recorded in
+[ADR-0012](docs/decisions/0012-canonicalize-fault-injection-targets.md).
+These observations supplement, rather than rewrite, the sealed local receipts.
+
+### Validate published evidence structure
 
 ```bash
 python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.py \
@@ -204,6 +222,52 @@ python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_evidence.
 ```
 
 Exit `0` means all selected TaskContract, route, immutable-revision, and receipt records passed. The validator does not prove signatures, artifact authenticity, arbitrary domain JSON correctness, OpenAPI semantics, or runtime model availability.
+
+### Verify published package inventory and bytes
+
+The portable verifier checks the exact regular-file inventory and SHA-256 bytes of
+each package against its self-excluding `integrity.sha256` trust input:
+
+```bash
+python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py \
+  --context-root docs/context/adaptive-task-orchestrator-v0.2
+
+python -B fixtures/adaptive-task-orchestrator-write-dag/tools/verify_integrity.py \
+  --context-root docs/context/adaptive-task-orchestrator-v0.3
+```
+
+The command is read-only and uses only the Python standard library. It exits `0`
+with no output when there are no findings, exits `1` with deterministic JSON Lines
+findings when validation fails, and lets argument parsing return `2` for usage
+errors. A successful result detects package changes only relative to the trusted
+manifest; it is not a signature, provenance record, trusted timestamp, or
+authenticity guarantee. Validation assumes the selected package is quiescent and is
+not a filesystem sandbox against concurrent hostile replacement.
+
+### Check runtime-specific model routes
+
+The opt-in v0.5 checker reads only the two explicit JSON files, using the Python
+standard library. Copying the Skill alone does not install this source-repository
+CLI:
+
+```bash
+python -B fixtures/adaptive-task-orchestrator-write-dag/tools/validate_runtime_routes.py \
+  --registry .agents/skills/adaptive-task-orchestrator/references/model-registry.json \
+  --bundle docs/context/adaptive-task-orchestrator-v0.5/candidates/planned-astra-bundle.json
+```
+
+The example describes a plan, not a completed run. Exit `0` means the supplied
+records are consistent; `1` emits deterministic JSONL findings; `2` means usage
+error. Checks cover model/effort intersection, capability floors, exact pins,
+fallbacks, context/override compatibility, effective-identity bindings, review
+relationships, concurrent batches and declared-record coverage.
+
+The checker does not execute agents, fetch source references, authenticate input,
+or prove complete-run success. A task ID returned by a host does not attest actual
+model/effort. High-risk accepted/completed records without effective evidence fail
+the gate; changing the example to `completed` alone must not make it pass. See the
+[runtime routing reference](.agents/skills/adaptive-task-orchestrator/references/runtime-routing.md)
+and [v0.5 specification](docs/specs/adaptive-task-orchestrator-v0.5-runtime-routing.md).
 
 ### Materialize a new fixture run
 
@@ -223,8 +287,15 @@ Generated runs are intentionally ignored by the public repository. The materiali
 | v0.1 | Initial Codex-native policy baseline | No real write-producing multi-agent DAG was completed at v0.1 |
 | v0.2 | One bounded local nested-Git write-producing software-development DAG | No persistent scheduler, production workload, cross-machine coordination, or universal route validation |
 | v0.3 | Atomic fixture publication, fail-closed evidence validation, worker-owned event streams, and one real two-agent overlap probe | Single-host local evidence only; no throughput, crash recovery, signature, or cross-host claim |
+| v0.4 (sealed local candidate) | Portable, read-only exact-inventory and SHA-256 verification relative to a trusted manifest; the v0.4 Windows Python 3.10/3.11 baseline discovered 63 tests: 60 passed, 3 skipped | Later four-cell CI and real-symlink observations are recorded separately; no authenticity or concurrent-adversary claim |
+| v0.5 (local candidate) | Versioned Astra registry, runtime-specific policy and offline route checker; the current local suite discovers 110 tests: 107 passed, 3 skipped on each Python runtime | Synthetic records and bounded native review are not effective-model authentication, model benchmarks, complete-run closure or cross-platform release acceptance |
 
 The published v0.3 receipt records 44/44 fixture tests on local Python 3.10 and 3.11 runtimes, valid v0.2/v0.3 evidence packages, and an independent review with no unresolved Critical or Required findings. The overall result remains `ACCEPT_WITH_CAVEATS`, not production certification.
+
+The v0.5 pilot's requested Astra and Terra configurations each returned correct
+first-pass answers for three fixed deterministic tasks. This small requested-only
+observation did not change provisional registry defaults and is not a model
+quality, latency or cost benchmark.
 
 Detailed evidence:
 
@@ -232,6 +303,11 @@ Detailed evidence:
 - [v0.2 evidence package](docs/context/adaptive-task-orchestrator-v0.2/README.md)
 - [v0.3 hardening specification](docs/specs/adaptive-task-orchestrator-v0.3-hardening.md)
 - [v0.3 evidence package](docs/context/adaptive-task-orchestrator-v0.3/README.md)
+- [v0.4 portable-integrity specification](docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md)
+- [ADR-0009: verify evidence manifests portably](docs/decisions/0009-verify-evidence-manifests-portably.md)
+- [v0.5 runtime-routing specification](docs/specs/adaptive-task-orchestrator-v0.5-runtime-routing.md)
+- [v0.5 local candidate evidence](docs/context/adaptive-task-orchestrator-v0.5/README.md)
+- [ADR-0011: validate runtime-specific model routes](docs/decisions/0011-validate-runtime-specific-model-routes.md)
 - [architecture decisions](docs/decisions/README.md)
 
 ## Known limitations
@@ -242,11 +318,19 @@ The following remain intentionally unclaimed or deferred:
 - production workload readiness or performance guarantees;
 - cross-machine execution and cross-host clock correctness;
 - process-crash recovery, stale-lock detection, and stale-lock reclamation;
+- strict closure of every transitive evidence read beyond the selected structural
+  record validator and trusted-manifest inventory;
 - cryptographic signatures, trusted timestamps, or artifact authenticity;
 - third-party OpenAPI semantic validation;
 - proof that every runtime model, effort, capability tier, or domain topology works;
+- effective model/effort assurance on hosts that do not expose the required runtime
+  result; registry ranks and profile defaults remain provisional, without model
+  cost/latency/quality benchmark claims;
 - a second end-to-end domain fixture, including reverse engineering;
 - exact reconstruction of eleven early v0.2 contract bodies that were not preserved at the time.
+- platforms and Python versions beyond the four observed CI cells. The later
+  platform receipt does not retroactively turn local permission skips into passes
+  or constitute a merge, tag, release, or effective-model attestation.
 
 ## Contributing and security
 

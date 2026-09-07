@@ -1,0 +1,29 @@
+{
+  "task_id": "V4-T2-integrity-verifier",
+  "task_revision": 2,
+  "profile": "quality",
+  "preferred_capability": "deep_reasoner",
+  "requested_capability": "deep_reasoner",
+  "route_reason_codes": [
+    "untrusted-manifest-boundary",
+    "portable-path-containment",
+    "public-fail-closed-cli"
+  ],
+  "effective_floor": "deep_reasoner",
+  "floor_reasons": [
+    "Incorrect path, symlink, or filesystem-error handling could create false integrity acceptance or an out-of-root read."
+  ],
+  "selected_model": "gpt-5.6-sol",
+  "selected_effort": "high",
+  "fork_turns": "none",
+  "fallback_chain": [
+    "gpt-5.6-sol/xhigh"
+  ],
+  "selection_reason": "preferred",
+  "route_status": "requested",
+  "capability_attested": true,
+  "attestation_source": "runtime-schema",
+  "floor_satisfied": true,
+  "worker": "/root/v4_integrity_verifier",
+  "dispatch_result": "requested"
+}

@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "kind": "postseal-ci-observation",
+  "repository": "BruceFeIix/adaptive-task-orchestrator",
+  "pull_request": 1,
+  "run_id": 33995561302,
+  "run_url": "https://github.com/BruceFeIix/adaptive-task-orchestrator/actions/runs/33995561302",
+  "head_sha": "e21a8ab5848d2f671c269c99607b2da2103eb8c9",
+  "overall_conclusion": "failure",
+  "sealed_packages_modified": false,
+  "jobs": [
+    {
+      "id": 101385389258,
+      "name": "windows-latest / Python 3.10",
+      "conclusion": "failure",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run fixture tooling suite",
+          "conclusion": "failure"
+        },
+        {
+          "name": "Validate v0.2 evidence",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Validate v0.3 evidence",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify v0.2 integrity manifest",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify v0.3 integrity manifest",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Validate v0.4 candidate evidence",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify v0.4 candidate integrity manifest",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Validate v0.5 routing evidence structure",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Validate v0.5 planned runtime routes",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify v0.5 local candidate integrity manifest",
+          "conclusion": "skipped"
+        }
+      ],
+      "log_excerpts": [
+        "2026-09-05T22:19:21.0883852Z Successfully set up CPython (3.10.11)",
+        "2026-09-05T22:19:31.5202005Z test_directory_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests) ... ok",
+        "2026-09-05T22:19:36.2407373Z test_listed_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests) ... ok",
+        "2026-09-05T22:19:36.4136386Z test_manifest_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests) ... ok",
+        "2026-09-05T22:19:39.7373862Z FAIL: test_lock_token_write_or_flush_failure_cleans_and_allows_same_id_retry (test_materialize.MaterializeRunTests) (failing_method='write')",
+        "2026-09-05T22:19:39.7383941Z AssertionError: OSError not raised",
+        "2026-09-05T22:19:39.7385032Z FAIL: test_lock_token_write_or_flush_failure_cleans_and_allows_same_id_retry (test_materialize.MaterializeRunTests) (failing_method='flush')",
+        "2026-09-05T22:19:39.7388170Z AssertionError: OSError not raised",
+        "2026-09-05T22:19:39.7389006Z FAIL: test_receipt_failure_after_promotion_rolls_back_and_allows_same_id_retry (test_materialize.MaterializeRunTests)",
+        "2026-09-05T22:19:39.7392743Z AssertionError: OSError not raised",
+        "2026-09-05T22:19:39.7393562Z FAIL: test_inventory_error_and_read_boundary_replacement_fail_closed (test_verify_integrity.VerifyIntegrityTests)",
+        "2026-09-05T22:19:39.7400974Z AssertionError: Lists differ: [] != [{'code': 'INVENTORY_READ_ERROR', 'path': [48 chars]ad'}]",
+        "2026-09-05T22:19:39.7404888Z FAIL: test_manifest_and_listed_file_read_errors_are_stable_and_read_only (test_verify_integrity.VerifyIntegrityTests)",
+        "2026-09-05T22:19:39.7410145Z AssertionError: Lists differ: [] != [{'code': 'MANIFEST_READ_ERROR', 'path': '[54 chars]ad'}]",
+        "2026-09-05T22:19:39.7413098Z Ran 110 tests in 16.228s",
+        "2026-09-05T22:19:39.7413305Z FAILED (failures=5)"
+      ]
+    },
+    {
+      "id": 101385389334,
+      "name": "ubuntu-latest / Python 3.10",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run fixture tooling suite",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.2 evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.3 evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.2 integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.3 integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.4 candidate evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.4 candidate integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.5 routing evidence structure",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.5 planned runtime routes",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.5 local candidate integrity manifest",
+          "conclusion": "success"
+        }
+      ],
+      "log_excerpts": [
+        "2026-09-05T22:19:11.9533994Z Successfully set up CPython (3.10.21)",
+        "2026-09-05T22:19:14.8041098Z test_directory_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests) ... ok",
+        "2026-09-05T22:19:16.9372394Z test_listed_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests) ... ok",
+        "2026-09-05T22:19:17.0110137Z test_manifest_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests) ... ok",
+        "2026-09-05T22:19:18.5122679Z Ran 110 tests in 6.138s",
+        "2026-09-05T22:19:18.5123072Z OK"
+      ]
+    },
+    {
+      "id": 101385389343,
+      "name": "windows-latest / Python 3.11",
+      "conclusion": "failure",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run fixture tooling suite",
+          "conclusion": "failure"
+        },
+        {
+          "name": "Validate v0.2 evidence",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Validate v0.3 evidence",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify v0.2 integrity manifest",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify v0.3 integrity manifest",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Validate v0.4 candidate evidence",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify v0.4 candidate integrity manifest",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Validate v0.5 routing evidence structure",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Validate v0.5 planned runtime routes",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify v0.5 local candidate integrity manifest",
+          "conclusion": "skipped"
+        }
+      ],
+      "log_excerpts": [
+        "2026-09-05T22:19:24.0610492Z Successfully set up CPython (3.11.9)",
+        "2026-09-05T22:19:35.0210881Z test_directory_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests.test_directory_symlink_is_rejected_without_following_it) ... ok",
+        "2026-09-05T22:19:40.4850656Z test_listed_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests.test_listed_symlink_is_rejected_without_following_it) ... ok",
+        "2026-09-05T22:19:40.6578272Z test_manifest_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests.test_manifest_symlink_is_rejected_without_following_it) ... ok",
+        "2026-09-05T22:19:44.2500272Z FAIL: test_lock_token_write_or_flush_failure_cleans_and_allows_same_id_retry (test_materialize.MaterializeRunTests.test_lock_token_write_or_flush_failure_cleans_and_allows_same_id_retry) (failing_method='write')",
+        "2026-09-05T22:19:44.2509884Z AssertionError: OSError not raised",
+        "2026-09-05T22:19:44.2511062Z FAIL: test_lock_token_write_or_flush_failure_cleans_and_allows_same_id_retry (test_materialize.MaterializeRunTests.test_lock_token_write_or_flush_failure_cleans_and_allows_same_id_retry) (failing_method='flush')",
+        "2026-09-05T22:19:44.2514777Z AssertionError: OSError not raised",
+        "2026-09-05T22:19:44.2515925Z FAIL: test_receipt_failure_after_promotion_rolls_back_and_allows_same_id_retry (test_materialize.MaterializeRunTests.test_receipt_failure_after_promotion_rolls_back_and_allows_same_id_retry)",
+        "2026-09-05T22:19:44.2519558Z AssertionError: OSError not raised",
+        "2026-09-05T22:19:44.2520563Z FAIL: test_inventory_error_and_read_boundary_replacement_fail_closed (test_verify_integrity.VerifyIntegrityTests.test_inventory_error_and_read_boundary_replacement_fail_closed)",
+        "2026-09-05T22:19:44.2529643Z AssertionError: Lists differ: [] != [{'code': 'INVENTORY_READ_ERROR', 'path': [48 chars]ad'}]",
+        "2026-09-05T22:19:44.2532878Z FAIL: test_manifest_and_listed_file_read_errors_are_stable_and_read_only (test_verify_integrity.VerifyIntegrityTests.test_manifest_and_listed_file_read_errors_are_stable_and_read_only)",
+        "2026-09-05T22:19:44.2538567Z AssertionError: Lists differ: [] != [{'code': 'MANIFEST_READ_ERROR', 'path': '[54 chars]ad'}]",
+        "2026-09-05T22:19:44.2541292Z Ran 110 tests in 17.553s",
+        "2026-09-05T22:19:44.2541490Z FAILED (failures=5)"
+      ]
+    },
+    {
+      "id": 101385389353,
+      "name": "ubuntu-latest / Python 3.11",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run fixture tooling suite",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.2 evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.3 evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.2 integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.3 integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.4 candidate evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.4 candidate integrity manifest",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.5 routing evidence structure",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate v0.5 planned runtime routes",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify v0.5 local candidate integrity manifest",
+          "conclusion": "success"
+        }
+      ],
+      "log_excerpts": [
+        "2026-09-05T22:19:12.1995511Z Successfully set up CPython (3.11.16)",
+        "2026-09-05T22:19:15.1537362Z test_directory_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests.test_directory_symlink_is_rejected_without_following_it) ... ok",
+        "2026-09-05T22:19:17.2870655Z test_listed_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests.test_listed_symlink_is_rejected_without_following_it) ... ok",
+        "2026-09-05T22:19:17.3600815Z test_manifest_symlink_is_rejected_without_following_it (test_verify_integrity.VerifyIntegrityTests.test_manifest_symlink_is_rejected_without_following_it) ... ok",
+        "2026-09-05T22:19:18.8689706Z Ran 110 tests in 6.451s",
+        "2026-09-05T22:19:18.8690897Z OK"
+      ]
+    }
+  ],
+  "interpretation": [
+    "Both Linux jobs ran all 110 tests without skips and all nine post-suite evidence/route/integrity gates succeeded.",
+    "Both Windows jobs reported five failed assertions/subtests across four test methods; all subsequent validation steps were skipped.",
+    "Three real symlink tests executed successfully in all four jobs, including the otherwise failing Windows jobs.",
+    "A local noncanonical alias/.. temp-root reproduction on Python 3.11 reproduced the same five failures before the test-harness correction.",
+    "Fault injectors compared lexical paths while implementations resolve roots before I/O. The exact Windows temp-path alias spelling was not captured by these logs; no specific short-name mapping is attested.",
+    "This observation does not authenticate effective agent model/effort or authorize merge, tags or release."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "task_id": "V5-E1-astra-pilot",
+  "task_revision": 1,
+  "profile": "balanced",
+  "preferred_capability": "general_worker",
+  "requested_capability": "general_worker",
+  "route_reason_codes": [
+    "BOUNDED_FIXED_TASK_EVALUATION"
+  ],
+  "effective_floor": "general_worker",
+  "floor_reasons": [
+    "All questions are frozen deterministic transformations; no live concurrency/security judgment."
+  ],
+  "selected_model": "gpt-6-astra",
+  "selected_effort": "high",
+  "fork_turns": "none",
+  "fallback_chain": [],
+  "selection_reason": "preferred",
+  "route_status": "requested",
+  "capability_attested": true,
+  "attestation_source": "runtime-schema",
+  "floor_satisfied": true,
+  "semantic_note": "Legacy shape records requestability only. Evaluator effective identity is not attested. The stronger Astra candidate is a bounded comparison arm, not a higher-risk task."
+}

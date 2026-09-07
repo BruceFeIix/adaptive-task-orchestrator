@@ -1,0 +1,43 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "V5-D1-design-review",
+  "task_revision": 2,
+  "summary": "Root transcription of independent repair review: ACCEPT_WITH_CAVEATS; no remaining Required findings. Not a verbatim transcript.",
+  "claims": [
+    {
+      "claim": "All five Required design findings and both optional clarifications were resolved without a decisive new contradiction.",
+      "confidence": "high",
+      "evidence": [
+        "Selected pairs satisfy the registry/runtime intersection and both capability floors.",
+        "User pins bind model and effort, disallow fallback, and survive known overrides.",
+        "Execution-level reviews compare both effective identities and require a dispatched author.",
+        "Fallback monotonicity and uniqueness begin at the selected pair.",
+        "Effective reporting capability and enclosing run/snapshot identities are enforced.",
+        "Unused unknown host models remain representable; record coverage is not completion."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "The checker validates supplied records rather than authenticating them.",
+    "Task-name-only native spawn results do not attest effective model identity.",
+    "This review neither executed tests nor verified implementation."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    "Corrected specification at 872a8f6dfca4fb00e9d4f9d831683023b4400cde",
+    "Original specification at 009212c",
+    "Frozen V5-D1@2 contract at 8e83e5db69d9a345ab5c2339064ee12b1ef588c2",
+    "ADR-0011"
+  ],
+  "external_calls": [],
+  "checks": [
+    {
+      "check": "Read-only repair verification against the five prior Required counterexamples",
+      "result": "pass"
+    }
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "decision": "ACCEPT_WITH_CAVEATS",
+  "required_findings": []
+}

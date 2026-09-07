@@ -6,8 +6,14 @@ The directories in this location preserve accepted validation artifacts. They ar
 
 - `adaptive-task-orchestrator-v0.2/` records the first bounded local write-producing multi-agent software-development DAG.
 - `adaptive-task-orchestrator-v0.3/` records atomic fixture hardening, evidence validation, worker-owned event streams, and one real single-host overlap probe.
+- [v0.4 local candidate](adaptive-task-orchestrator-v0.4/README.md) records portable integrity corrections and independent local review. Later four-cell CI and real-symlink results are retained in the [post-seal platform receipt](../validation/v0.5-ci-platform.json), not rewritten into this package. No release is implied.
+- [v0.5 local candidate](adaptive-task-orchestrator-v0.5/README.md) records runtime-specific Astra routing, offline checker review, Skill behavior tests and a bounded requested-configuration pilot. It does not authenticate model identity or complete cross-platform release gates.
 
 Each package defines its own read order, claim boundary, caveats, and self-excluding SHA-256 manifest. Treat accepted package files as immutable. Record later corrections through a new ADR or a new versioned package.
+
+The [current completion audit](../validation/v0.4-v0.5-completion-audit.md) maps
+approved requirements to historical records and later platform observations,
+separating completed delivery gates, permanent caveats and future work.
 
 Some immutable historical documents retain the original
 `F:\Projects\CodexProjects` workspace path. That path is provenance, not a public

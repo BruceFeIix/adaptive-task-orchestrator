@@ -1,0 +1,131 @@
+{
+  "record_kind": "fixed_task_pilot_cards",
+  "revision": 1,
+  "instructions": "Solve each bounded task from its inputs. Return one JSON object with keys extraction, waves, tally. Do not read oracle/result files, write files, delegate, install, use the network or invoke external model tools. Only read the declared cards, contract, applicable instructions and read-only Git source identities; do not execute a solver. This is a one-pass reasoning pilot, not a model benchmark.",
+  "tasks": [
+    {
+      "id": "extraction",
+      "rule": "Return request IDs sorted ascending for rows with status exactly 200 or 204, elapsed_ms <= 120, and retries == 0.",
+      "rows": [
+        {
+          "id": "r08",
+          "status": 204,
+          "elapsed_ms": 120,
+          "retries": 0
+        },
+        {
+          "id": "r04",
+          "status": 200,
+          "elapsed_ms": 121,
+          "retries": 0
+        },
+        {
+          "id": "r03",
+          "status": 200,
+          "elapsed_ms": 90,
+          "retries": 0
+        },
+        {
+          "id": "r09",
+          "status": 201,
+          "elapsed_ms": 50,
+          "retries": 0
+        },
+        {
+          "id": "r01",
+          "status": 200,
+          "elapsed_ms": 25,
+          "retries": 0
+        },
+        {
+          "id": "r06",
+          "status": 200,
+          "elapsed_ms": 100,
+          "retries": 1
+        },
+        {
+          "id": "r07",
+          "status": 404,
+          "elapsed_ms": 40,
+          "retries": 0
+        },
+        {
+          "id": "r02",
+          "status": 204,
+          "elapsed_ms": 125,
+          "retries": 1
+        }
+      ]
+    },
+    {
+      "id": "waves",
+      "rule": "This is a hypothetical deterministic scheduling calculation, not a dispatch request. Three CHILD slots exclude root. At each wave choose up to three not-yet-scheduled nodes whose dependencies finished in prior waves, sorted ASCII ascending. A wave's nodes all finish before the next wave. Return the array of wave arrays.",
+      "dependencies": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [
+          "A"
+        ],
+        "E": [
+          "B",
+          "C"
+        ],
+        "F": [
+          "D",
+          "E"
+        ],
+        "G": [
+          "C"
+        ],
+        "H": [
+          "F",
+          "G"
+        ]
+      }
+    },
+    {
+      "id": "tally",
+      "rule": "Trace the following Python function without running it. Return its result as JSON arrays.",
+      "code": "def tally(events):\n    counts = {}\n    for label, delta in events:\n        counts[label] = max(0, counts.get(label, 0) + delta)\n        if counts[label] == 0:\n            counts.pop(label)\n    return sorted(counts.items())",
+      "events": [
+        [
+          "alpha",
+          2
+        ],
+        [
+          "beta",
+          1
+        ],
+        [
+          "alpha",
+          -3
+        ],
+        [
+          "gamma",
+          4
+        ],
+        [
+          "beta",
+          -1
+        ],
+        [
+          "alpha",
+          1
+        ],
+        [
+          "gamma",
+          -2
+        ],
+        [
+          "gamma",
+          -5
+        ],
+        [
+          "beta",
+          3
+        ]
+      ]
+    }
+  ]
+}

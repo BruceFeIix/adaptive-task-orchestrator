@@ -30,7 +30,7 @@ Keep work in the root task when it is small, sequential, tightly coupled, cheape
 1. Classify the task's domain, risk, coupling, context size, uncertainty, and verifiability.
 2. If delegating, read [references/task-contract.md](references/task-contract.md), then build the smallest useful dependency graph. Every node must produce a bounded artifact or decision with explicit acceptance checks.
 3. Assign non-overlapping read/write scopes. Parallelize independent readers; serialize shared writers unless isolation is proven.
-4. Read [references/routing-policy.md](references/routing-policy.md), then route each node by required capability, applying risk floors before cost optimization.
+4. Read [references/routing-policy.md](references/routing-policy.md), then route each node by required capability, applying risk floors before cost optimization. For concrete model/effort binding or runtime evidence checks, read [references/runtime-routing.md](references/runtime-routing.md) and its versioned registry.
 5. Send each worker a self-contained context package. When a model override prevents full-history inheritance, include only the facts and artifacts needed for that node.
 6. Accept results only with the required evidence and checks. On failure, add missing context, split the node, or escalate capability; do not blindly repeat the same request on the same route.
 7. For high-impact, weakly verifiable, conflicting, or final-assurance work, read [references/review-and-escalation.md](references/review-and-escalation.md) and use a fresh reviewer. Reviewer capability must not be lower than the authoring worker.
@@ -46,8 +46,8 @@ Workers should return one of `DONE`, `DONE_WITH_CONCERNS`, `NEEDS_CONTEXT`, or `
 
 ## Bound the Search
 
-- Respect the runtime concurrency limit; the root also consumes a slot.
+- Respect the runtime concurrency limit and its counting convention; reserve root coordination capacity without subtracting root twice.
 - Default to one delegation level. Do not create recursive swarms unless the user or a more specific policy explicitly requires them.
 - Allow at most one capability escalation and two author-review repair loops per node unless the user requests a larger budget.
 - Do not retry an unchanged prompt on an unchanged route.
-- If orchestration tools are unavailable, low-risk work may execute sequentially in the root with appropriate checks. For a node with a hard capability floor, continue only when the runtime can attest that root meets that floor; otherwise stop that node and report the capability limitation instead of silently weakening it.
+- If orchestration tools are unavailable, low-risk work may execute sequentially in the root with appropriate checks. For a node with a hard capability floor, continue only when the runtime can attest that root meets that floor; otherwise stop that node and report the capability limitation instead of silently weakening it. The runtime-routes-v1 format does not represent high-risk root-only execution, even when root identity is attested.

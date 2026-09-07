@@ -1,0 +1,51 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "V5-I1-checker-review",
+  "task_revision": 1,
+  "summary": "Root transcription of independent frozen checker review: ACCEPT_WITH_CAVEATS, no Critical or Required findings. Not a verbatim transcript.",
+  "claims": [
+    {
+      "claim": "Frozen checker implements the reviewed offline consistency contract within the stated trust boundary.",
+      "confidence": "high",
+      "evidence": [
+        "Reviewed commit 5c62bfe708f6831282ad6e2ef6542a5f99f44c82; contract at 594de35.",
+        "35 targeted methods passed on Python 3.10 and 3.11; exit 0.",
+        "256 minimum/requested/selected/effective combinations, 81 author/reviewer effective comparisons, 108 pin/override combinations, and 13824 selected/two-fallback combinations matched the declared rules.",
+        "1264 malformed-node calls had no crash and stable ordered unique diagnostics.",
+        "Native multi-finding and non-ASCII CLI probes matched literal bytes, LF and repeatability.",
+        "Python 3.10 legacy v0.2/v0.3 structural checks exited 0 with no output."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "No full materialization/Git-writing suite, Linux, GitHub Actions, real symlink or agent-execution test in this review.",
+    "Later candidate registry/live policy was outside the frozen review.",
+    "Supplied record authenticity and complete-run success are not proved.",
+    "Requested Astra xhigh identity is not runtime-result effective identity attestation."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    "Frozen checker, two runtime-route test modules, specification, ADR-0011, evidence records",
+    "Declared repository/skill instructions and read-only Git metadata",
+    "Python standard library and automatically cleaned owned CLI scratch"
+  ],
+  "external_calls": [],
+  "checks": [
+    {
+      "check": "Frozen sources compared before and after execution",
+      "result": "pass"
+    },
+    {
+      "check": "Independent targeted tests and bounded adversarial probes",
+      "result": "pass"
+    }
+  ],
+  "contradictions": [],
+  "recommended_next": "accept",
+  "decision": "ACCEPT_WITH_CAVEATS",
+  "critical_findings": [],
+  "required_findings": [],
+  "optional_findings": [
+    "Persist literal multi-finding sorted CLI and non-ASCII JSON pointer bytes as formal tests; independent probes show current implementation is correct."
+  ]
+}

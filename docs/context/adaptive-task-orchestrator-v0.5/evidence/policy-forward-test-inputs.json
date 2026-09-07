@@ -1,0 +1,308 @@
+{
+  "record_kind": "root_transcription_of_independent_forward_test_inputs",
+  "source_commit": "d6009111563733e27ef17e0a11f1f23e7be4fe43",
+  "cards_commit": "7cf00ef7578e86cd0d7d7a19763b4d7dd5191309",
+  "caveat": "Hypothetical inputs transcribed from the independent response, not live host observations. Card C is deliberately ineligible.",
+  "cards": {
+    "A": {
+      "schema_version": 1,
+      "profile": "runtime-routes-v1",
+      "run_id": "forward-a-run",
+      "registry_id": "ato-model-policy",
+      "registry_revision": 1,
+      "runtime": {
+        "snapshot_id": "forward-a-snapshot",
+        "run_id": "forward-a-run",
+        "host_id": "hypothetical-local-a",
+        "surface": "codex.collaboration",
+        "source_ref": "git:7cf00ef:docs/context/adaptive-task-orchestrator-v0.5/evidence/policy-forward-test-cards.md#card-a",
+        "source_kind": "runtime-schema",
+        "models": {
+          "gpt-6-astra": [
+            "high",
+            "max",
+            "ultra"
+          ]
+        },
+        "model_override": true,
+        "effort_override": true,
+        "full_history_with_overrides": false,
+        "configuration_overrides": "unknown",
+        "effective_config_reporting": false,
+        "concurrency": {
+          "limit": 4,
+          "includes_root": true,
+          "root_slots": 1
+        }
+      },
+      "requirements": [
+        {
+          "task_id": "card-a-analysis",
+          "task_revision": 1,
+          "minimum_capability": "deep_reasoner",
+          "assurance": "independent_adversarial"
+        },
+        {
+          "task_id": "card-a-review",
+          "task_revision": 1,
+          "minimum_capability": "frontier_reviewer",
+          "assurance": "root_check"
+        }
+      ],
+      "routes": [
+        {
+          "route_id": "card-a-analysis-route",
+          "task_id": "card-a-analysis",
+          "task_revision": 1,
+          "snapshot_id": "forward-a-snapshot",
+          "wave": 0,
+          "worker_id": "/root/card-a",
+          "profile": "user_pinned",
+          "requested_capability": "deep_reasoner",
+          "selected_model": "gpt-6-astra",
+          "selected_effort": "high",
+          "model_override": true,
+          "effort_override": true,
+          "fork_turns": "none",
+          "context_complete": true,
+          "fallback_chain": [],
+          "dispatch_status": "planned",
+          "effective_route": null,
+          "review_of": null,
+          "fresh_context": true
+        },
+        {
+          "route_id": "card-a-review-route",
+          "task_id": "card-a-review",
+          "task_revision": 1,
+          "snapshot_id": "forward-a-snapshot",
+          "wave": 1,
+          "worker_id": "/root/card-a-review",
+          "profile": "user_pinned",
+          "requested_capability": "frontier_reviewer",
+          "selected_model": "gpt-6-astra",
+          "selected_effort": "high",
+          "model_override": true,
+          "effort_override": true,
+          "fork_turns": "none",
+          "context_complete": true,
+          "fallback_chain": [],
+          "dispatch_status": "planned",
+          "effective_route": null,
+          "review_of": "card-a-analysis-route",
+          "fresh_context": true
+        }
+      ],
+      "root_only": []
+    },
+    "B": {
+      "schema_version": 1,
+      "profile": "runtime-routes-v1",
+      "run_id": "forward-b-run",
+      "registry_id": "ato-model-policy",
+      "registry_revision": 1,
+      "runtime": {
+        "snapshot_id": "forward-b-snapshot",
+        "run_id": "forward-b-run",
+        "host_id": "hypothetical-local-b",
+        "surface": "codex.collaboration",
+        "source_ref": "git:7cf00ef:docs/context/adaptive-task-orchestrator-v0.5/evidence/policy-forward-test-cards.md#card-b",
+        "source_kind": "runtime-schema",
+        "models": {
+          "gpt-6-astra": [
+            "high",
+            "max",
+            "ultra"
+          ]
+        },
+        "model_override": true,
+        "effort_override": true,
+        "full_history_with_overrides": false,
+        "configuration_overrides": "unknown",
+        "effective_config_reporting": false,
+        "concurrency": {
+          "limit": 3,
+          "includes_root": false,
+          "root_slots": 1
+        }
+      },
+      "requirements": [
+        {
+          "task_id": "card-b-extract-1",
+          "task_revision": 1,
+          "minimum_capability": "general_worker",
+          "assurance": "deterministic"
+        },
+        {
+          "task_id": "card-b-extract-2",
+          "task_revision": 1,
+          "minimum_capability": "general_worker",
+          "assurance": "deterministic"
+        },
+        {
+          "task_id": "card-b-extract-3",
+          "task_revision": 1,
+          "minimum_capability": "general_worker",
+          "assurance": "deterministic"
+        },
+        {
+          "task_id": "card-b-extract-4",
+          "task_revision": 1,
+          "minimum_capability": "general_worker",
+          "assurance": "deterministic"
+        }
+      ],
+      "routes": [
+        {
+          "route_id": "card-b-extract-1-route",
+          "task_id": "card-b-extract-1",
+          "task_revision": 1,
+          "snapshot_id": "forward-b-snapshot",
+          "wave": 0,
+          "worker_id": "/root/card-b-1",
+          "profile": "user_pinned",
+          "requested_capability": "general_worker",
+          "selected_model": "gpt-6-astra",
+          "selected_effort": "high",
+          "model_override": true,
+          "effort_override": true,
+          "fork_turns": "none",
+          "context_complete": true,
+          "fallback_chain": [],
+          "dispatch_status": "planned",
+          "effective_route": null,
+          "review_of": null,
+          "fresh_context": true
+        },
+        {
+          "route_id": "card-b-extract-2-route",
+          "task_id": "card-b-extract-2",
+          "task_revision": 1,
+          "snapshot_id": "forward-b-snapshot",
+          "wave": 0,
+          "worker_id": "/root/card-b-2",
+          "profile": "user_pinned",
+          "requested_capability": "general_worker",
+          "selected_model": "gpt-6-astra",
+          "selected_effort": "high",
+          "model_override": true,
+          "effort_override": true,
+          "fork_turns": "none",
+          "context_complete": true,
+          "fallback_chain": [],
+          "dispatch_status": "planned",
+          "effective_route": null,
+          "review_of": null,
+          "fresh_context": true
+        },
+        {
+          "route_id": "card-b-extract-3-route",
+          "task_id": "card-b-extract-3",
+          "task_revision": 1,
+          "snapshot_id": "forward-b-snapshot",
+          "wave": 0,
+          "worker_id": "/root/card-b-3",
+          "profile": "user_pinned",
+          "requested_capability": "general_worker",
+          "selected_model": "gpt-6-astra",
+          "selected_effort": "high",
+          "model_override": true,
+          "effort_override": true,
+          "fork_turns": "none",
+          "context_complete": true,
+          "fallback_chain": [],
+          "dispatch_status": "planned",
+          "effective_route": null,
+          "review_of": null,
+          "fresh_context": true
+        },
+        {
+          "route_id": "card-b-extract-4-route",
+          "task_id": "card-b-extract-4",
+          "task_revision": 1,
+          "snapshot_id": "forward-b-snapshot",
+          "wave": 1,
+          "worker_id": "/root/card-b-4",
+          "profile": "user_pinned",
+          "requested_capability": "general_worker",
+          "selected_model": "gpt-6-astra",
+          "selected_effort": "high",
+          "model_override": true,
+          "effort_override": true,
+          "fork_turns": "none",
+          "context_complete": true,
+          "fallback_chain": [],
+          "dispatch_status": "planned",
+          "effective_route": null,
+          "review_of": null,
+          "fresh_context": true
+        }
+      ],
+      "root_only": []
+    },
+    "C": {
+      "schema_version": 1,
+      "profile": "runtime-routes-v1",
+      "run_id": "forward-c-run",
+      "registry_id": "ato-model-policy",
+      "registry_revision": 1,
+      "runtime": {
+        "snapshot_id": "forward-c-snapshot",
+        "run_id": "forward-c-run",
+        "host_id": "hypothetical-local-c",
+        "surface": "openai.responses",
+        "source_ref": "git:7cf00ef:docs/context/adaptive-task-orchestrator-v0.5/evidence/policy-forward-test-cards.md#card-c",
+        "source_kind": "runtime-schema",
+        "models": {
+          "gpt-6-astra": [
+            "high",
+            "max",
+            "ultra"
+          ]
+        },
+        "model_override": true,
+        "effort_override": true,
+        "full_history_with_overrides": false,
+        "configuration_overrides": "unknown",
+        "effective_config_reporting": false,
+        "concurrency": {
+          "limit": 4,
+          "includes_root": true,
+          "root_slots": 1
+        }
+      },
+      "requirements": [
+        {
+          "task_id": "card-c-analysis",
+          "task_revision": 1,
+          "minimum_capability": "deep_reasoner",
+          "assurance": "root_check"
+        }
+      ],
+      "routes": [
+        {
+          "route_id": "card-c-analysis-route",
+          "task_id": "card-c-analysis",
+          "task_revision": 1,
+          "snapshot_id": "forward-c-snapshot",
+          "wave": 0,
+          "worker_id": "/root/card-c",
+          "profile": "user_pinned",
+          "requested_capability": "deep_reasoner",
+          "selected_model": "gpt-6-astra",
+          "selected_effort": "ultra",
+          "model_override": true,
+          "effort_override": true,
+          "fork_turns": "none",
+          "context_complete": true,
+          "fallback_chain": [],
+          "dispatch_status": "planned",
+          "effective_route": null,
+          "review_of": null,
+          "fresh_context": true
+        }
+      ],
+      "root_only": []
+    }
+  }
+}

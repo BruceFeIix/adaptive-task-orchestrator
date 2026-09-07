@@ -1,0 +1,192 @@
+{
+  "status": "DONE_WITH_CONCERNS",
+  "task_id": "V4-T3-compatibility-verification",
+  "task_revision": 2,
+  "summary": "Independent read-only compatibility verification accepted the final verifier and unchanged oracle on local Windows Python 3.10.0 and 3.11.9. Targeted and full suites, eight legacy-package commands, complete executed mutation assertions, exact-case behavior, and an intermediate-junction probe all passed without repository or package changes. Real os.symlink execution, Linux, and every GitHub Actions matrix cell remain pending rather than passed.",
+  "claims": [
+    {
+      "claim": "The independently reviewed verifier and accepted oracle retained their committed identities.",
+      "confidence": "high",
+      "evidence": [
+        "verify_integrity.py SHA-256 before/after: E595F6141B48480D10CB1AA9B354B012DB8FE756E09A81C1FD31BEA26276337E.",
+        "test_verify_integrity.py SHA-256 before/after: 1FFBD6FA3C264D48385262F385AA2C447E2A2C93C57602734D29B50EA1A89E98.",
+        "git diff --exit-code 1597daa for those two paths returned 0.",
+        "Pre-run and post-run git status were exactly the clean feature/v0.4-portable-integrity branch."
+      ]
+    },
+    {
+      "claim": "Every contract-required local test and legacy-package command passed on Python 3.10 and 3.11.",
+      "confidence": "high",
+      "evidence": [
+        "Python 3.10 targeted 14 and full 58 tests passed; each run skipped the same combined real-symlink method; exits 0.",
+        "Python 3.11 targeted 14 and full 58 tests passed; each run skipped the same combined real-symlink method; exits 0.",
+        "Four verify_integrity.py and four validate_evidence.py legacy-package commands exited 0 with empty stdout.",
+        "v0.2/v0.3 retained 100/65 manifest entries."
+      ]
+    },
+    {
+      "claim": "The executed mutation corpus was exact, repeatable, and read-only.",
+      "confidence": "high",
+      "evidence": [
+        "All executed mutation assertions compared complete expected and actual finding sets and passed on both runtimes.",
+        "The accepted helper ran validations twice and compared full pre/post temporary-package snapshots.",
+        "Unsafe paths patched Path.open to reject every out-of-package open; no boundary assertion fired.",
+        "Injected manifest, inventory, listed-file, and read-boundary failures produced stable repeated findings."
+      ]
+    },
+    {
+      "claim": "Independent Windows probes confirmed case-sensitive serialized lookup and no-follow behavior for intermediate junctions.",
+      "confidence": "high",
+      "evidence": [
+        "case.txt versus manifest Case.txt produced MANIFEST_FILE_MISSING Case.txt plus MANIFEST_UNLISTED_FILE case.txt twice with equal package identities.",
+        "A junction at linked pointing out of the selected package produced MANIFEST_FILE_NOT_REGULAR linked/target.txt plus MANIFEST_UNSUPPORTED_OBJECT linked twice.",
+        "The junction target canary and manifest SHA-256 values were unchanged before/after.",
+        "Both automatically cleaned probe roots were removed."
+      ]
+    },
+    {
+      "claim": "No unresolved Critical or Required local-scope finding exists.",
+      "confidence": "high",
+      "evidence": [
+        "Critical findings: none.",
+        "Required findings: none.",
+        "Unexecuted platform cells and real os.symlink coverage remain explicit caveats rather than false passing claims."
+      ]
+    }
+  ],
+  "uncertainty": [
+    "The combined manifest/listed-file/directory real-os.symlink test method skipped before any of its three assertions on both local runtimes because Windows returned WinError 1314.",
+    "Linux Python 3.10 and 3.11 were not executed locally.",
+    "GitHub Actions ubuntu-latest/Python 3.10, ubuntu-latest/Python 3.11, windows-latest/Python 3.10, and windows-latest/Python 3.11 were not dispatched or observed.",
+    "The checked-in workflow remains the pre-V4-T4 Ubuntu-only GNU sha256sum workflow; this is pending downstream integration, not a V4-T3 defect.",
+    "Integrity is relative to a trusted manifest, assumes a quiescent package, and does not establish authenticity or concurrent-adversary safety."
+  ],
+  "artifacts_or_changes": [],
+  "resources_accessed": [
+    "AGENTS.md",
+    ".agents/skills/adaptive-task-orchestrator/",
+    "docs/context/adaptive-task-orchestrator-v0.4/contracts/revisions/V4-T3-compatibility-verification-r2.contract.json",
+    "docs/context/adaptive-task-orchestrator-v0.4/routes/V4-T3-compatibility-verification-r2.route.json",
+    "docs/context/adaptive-task-orchestrator-v0.4/receipts/V4-T2-integrity-verifier-r2.json",
+    "docs/specs/adaptive-task-orchestrator-v0.4-portable-integrity.md",
+    "docs/decisions/0009-verify-evidence-manifests-portably.md",
+    "fixtures/adaptive-task-orchestrator-write-dag/",
+    "docs/context/adaptive-task-orchestrator-v0.2/",
+    "docs/context/adaptive-task-orchestrator-v0.3/",
+    ".github/workflows/ci.yml",
+    "Automatically cleaned unittest and bounded Windows probe temporary directories"
+  ],
+  "external_calls": [],
+  "checks": [
+    {
+      "check": "Python 3.10 targeted verifier suite",
+      "result": "pass",
+      "tests": 14,
+      "skipped": 1,
+      "exit_code": 0
+    },
+    {
+      "check": "Python 3.10 full fixture suite",
+      "result": "pass",
+      "tests": 58,
+      "skipped": 1,
+      "exit_code": 0
+    },
+    {
+      "check": "Python 3.11 targeted verifier suite",
+      "result": "pass",
+      "tests": 14,
+      "skipped": 1,
+      "exit_code": 0
+    },
+    {
+      "check": "Python 3.11 full fixture suite",
+      "result": "pass",
+      "tests": 58,
+      "skipped": 1,
+      "exit_code": 0
+    },
+    {
+      "check": "v0.2/v0.3 integrity and structural commands on both runtimes",
+      "result": "pass",
+      "command_count": 8,
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stdout": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "check": "Complete executed mutation finding-set, repeatability, and read-only assertions",
+      "result": "pass",
+      "exit_code": 0
+    },
+    {
+      "check": "Independent Windows exact-case probe",
+      "result": "pass",
+      "wrapper_exit_code": 0,
+      "repeatable": true,
+      "read_only": true
+    },
+    {
+      "check": "Independent Windows intermediate-junction probe",
+      "result": "pass",
+      "wrapper_exit_code": 0,
+      "mklink_exit_code": 0,
+      "repeatable": true,
+      "read_only": true
+    },
+    {
+      "check": "v0.2/v0.3 and verifier/oracle before-after identities plus clean repository status",
+      "result": "pass",
+      "exit_code": 0
+    },
+    {
+      "check": "Real os.symlink execution",
+      "result": "inconclusive",
+      "state": "PENDING_NOT_PASSED",
+      "reason": "WinError 1314 skipped the combined method."
+    },
+    {
+      "check": "Linux and four GitHub Actions cells",
+      "result": "inconclusive",
+      "state": "PENDING_NOT_PASSED",
+      "reason": "No authorized execution occurred."
+    }
+  ],
+  "contradictions": [
+    "HEAD was d304741 while 1597daa is the implementation commit; a scoped diff proves later evidence/route commits changed neither verifier nor oracle.",
+    "Green local suites include one skipped method, not executed real-symlink assertions; the receipt preserves the skip and separate junction evidence.",
+    "An initial optional exact-case probe serialized literal backslash-n text and correctly failed manifest grammar. The corrected LF fixture produced the expected case findings twice; the malformed probe is retained as non-product test-fixture evidence.",
+    "The approved final CI matrix differs from the current workflow; V4-T4 owns that pending change."
+  ],
+  "recommended_next": "accept-with-caveats-and-start-V4-T4@2; integrate the exact four-cell portable-verifier workflow and synchronized public documentation without claiming GitHub Actions passed before an authorized push.",
+  "root_disposition": {
+    "accepted": true,
+    "decision": "ACCEPT_WITH_CAVEATS",
+    "scheduler_state": "ACCEPTED",
+    "critical_findings": [],
+    "required_findings": [],
+    "residual_caveats": [
+      "real os.symlink mutation method skipped locally",
+      "Linux Python 3.10/3.11 not locally executed",
+      "all four GitHub Actions cells pending",
+      "trusted-manifest and quiescent-package boundaries remain"
+    ]
+  }
+}

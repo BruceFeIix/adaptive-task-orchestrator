@@ -1,0 +1,29 @@
+{
+  "record_kind": "independent_review_summary",
+  "initial": {
+    "task": "V4-T5-independent-review@2",
+    "decision": "REVISE",
+    "required": [
+      "R1",
+      "R2",
+      "R3",
+      "R4"
+    ]
+  },
+  "correction": {
+    "task": "V4-R1-correction-review@1",
+    "decision": "ACCEPT_WITH_CAVEATS",
+    "reviewed_commit": "a45922e3ba0088032056f50cefa18d7ec3833da8",
+    "critical": 0,
+    "required": 0,
+    "optional": 0,
+    "receipt": "../receipts/V4-R1-correction-review-r1.json"
+  },
+  "root_reconciliation": "All four Required findings are actionable and corrected; independent re-review reproduced the new observations. No external model CLI was used. User's instruction keeps critical work on requested Astra.",
+  "remaining": [
+    "Final local candidate packaging",
+    "Four actual CI cells",
+    "Linux and real symlinks"
+  ],
+  "scope": "Acceptance of the corrected artifact, not cross-platform release completion."
+}
